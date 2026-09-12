@@ -1,0 +1,109 @@
+{
+  "id": "S03",
+  "name": "Yavaş İşlem Hızı",
+  "name_en": "Slow Processing Speed",
+  "severity_in_profile": "SECONDARY",
+  "definition": "Bilgiyi al → anla → karar ver → hareket döngüsünün canlı ortamda normalden uzun sürmesi. Zeka düşük değil; zamanlama sorunu.",
+  "symptoms": [
+    "Sosyal ortamda yetişememe",
+    "Oyunlarda geç tepki",
+    "Ders anlatımında kopma",
+    "Sonradan 'aa şunu deseydim' deme",
+    "Sakin/yazılı ortamda iyi, canlıda zayıf"
+  ],
+  "mechanisms": {
+    "primary": "Processing speed bottleneck in working memory pipeline",
+    "note": "NOT intelligence — separate construct from IQ",
+    "secondary": [
+      "Social scene moves too quickly to process (verbal + nonverbal)",
+      "WM capacity limits under time pressure",
+      "May co-occur with ADHD, autism, anxiety — but exists independently"
+    ]
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Braaten & Willoughby", "year": 2014, "finding": "Slow processing speed: doesn't listen, can't follow directions, overwhelmed by verbal info, needs more time to answer, hesitant even when knows answer.", "effect_size": null, "url": "https://ian.guilfordpub.com/excerpts/braaten3.pdf", "tier": "A"},
+    {"id": 2, "authors": "SOPT Meta-analysis (Older Adults)", "year": 2018, "finding": "Speed-of-processing training: 10 hours, 9.8-14.9 percentage point improvement >0.5 SD. UFOV-based.", "effect_size": "0.25-0.40", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6133746/", "tier": "A"},
+    {"id": 3, "authors": "IHAMS RCT", "year": 2013, "finding": "Visual speed of processing training: small-medium effects on UFOV. On-site + booster best. 3-4 years protection against age decline.", "effect_size": "Cohen's d small-medium", "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061624", "tier": "A"},
+    {"id": 4, "authors": "SOPT TBI RCT", "year": 2024, "finding": "SOPT improves trained task (UFOV) but NO near/far transfer to neuropsychological measures. Transfer limited.", "effect_size": "trained task only", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11390365/", "tier": "A"},
+    {"id": 5, "authors": "Time Pressure Management", "year": 2009, "finding": "COMPENSATORY approach superior to restoration. TPM: prevent/manage time pressure rather than speed up brain. Significant real-world task speed improvement at 3 months.", "effect_size": "t=-2.7, p=.01", "url": "https://doi.org/10.1016/j.apmr.2009.04.016", "tier": "A"},
+    {"id": 6, "authors": "Fasotti et al.", "year": 2000, "finding": "TPM > concentration training for head injury. Greater gains, generalizes to speed and memory measures.", "effect_size": null, "url": "https://doi.org/10.1177/0269215508097855", "tier": "A"},
+    {"id": 7, "authors": "CCT Meta-analysis", "year": 2014, "finding": "Commercial cognitive games: g=0.40 processing speed in older adults. Working memory g=0.21, executive g=0.21.", "effect_size": "g=0.40", "url": "https://www.nature.com/articles/s41598-020-72281-3", "tier": "B"},
+    {"id": 8, "authors": "Cognitive Rehabilitation Review", "year": 2019, "finding": "TPM = Practice Standard for attention/processing speed after TBI. Metacognitive strategy training for generalization.", "effect_size": null, "url": "https://www.bumc.bu.edu/neurorehabilitationlab/files/2021/04/Evidence-Based-Cognitive-Rehabilitation_Systematic-Review_2019_AuthorCopy.pdf", "tier": "A"},
+    {"id": 9, "authors": "Thinking Skills for Work", "year": 2015, "finding": "Compensatory strategies + cognitive exercise + strategy coaching improves work outcomes. Chunking, planning, coping strategies.", "effect_size": null, "url": "https://ajp.psychiatryonline.org/doi/10.1176/appi.ajp.2015.14030374", "tier": "B"},
+    {"id": 10, "authors": "ABI CCT Meta-analysis", "year": 2020, "finding": "Computer-based training: NO effect on processing speed in ABI. Compensatory TPM more suited.", "effect_size": "no effect ABI", "url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0235510", "tier": "A"},
+    {"id": 11, "authors": "Michon Task Analysis", "year": null, "finding": "TPM based on Michon: transfer actions from high time pressure to low time pressure situations where preserved decision levels work.", "effect_size": null, "url": "https://doi.org/10.1177/0269215508097855", "tier": "B"},
+    {"id": 12, "authors": "Karman Line TPM Game", "year": 2023, "finding": "Game-supported TPM: 5-step strategy for everyday activities. Identify time pressure → compensate via prevention/reduction strategies.", "effect_size": null, "url": "https://pubmed.ncbi.nlm.nih.gov/37734890/", "tier": "B"},
+    {"id": 13, "authors": "Soccer WMC Study", "year": 2023, "finding": "WMC predicts faster tactical decisions at ALL expertise levels. Deliberate practice + WMC = independent contributions.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050259/", "tier": "B"},
+    {"id": 14, "authors": "Deep vs Fast Processing", "year": null, "finding": "Slow processors: methodical analysis, deep thinking, reduced impulsivity as advantages. Design environment, don't white-knuckle speed.", "effect_size": null, "url": "https://lifeskillsadvocate.com/blog/slow-processing-speed/", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Time Pressure Management (TPM)",
+      "evidence": "STRONG — RCT, 3-month follow-up",
+      "protocol": "5 adım: (1) Zaman baskısını fark et (2) Önle (hazırlık) (3) Yönet (yedek strateji) (4) Görevi parçala (5) Performansı izle",
+      "time_to_effect": "10 hours training, 3 months maintained",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 2,
+      "name": "Ortamı Yavaşlat (Async)",
+      "evidence": "STRONG — compensatory",
+      "protocol": "Canlı yerine yazılı/async ortam seç. Kararı mesaj/yazıya taşı. Kendi temponda cevap.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 3,
+      "name": "Ön Hazırlık (S02 ile birleşik)",
+      "evidence": "STRONG",
+      "protocol": "Yüksek baskı anını düşük baskı hazırlığa taşı. Bilgiyi önceden yükle.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 4,
+      "name": "UFOV / Speed-of-Processing Training",
+      "evidence": "MODERATE — trained task improves, transfer limited",
+      "protocol": "10 seans, 2x/hafta, 5 hafta. Useful Field of View exercises. Be realistic about transfer.",
+      "time_to_effect": "5 weeks",
+      "daily_minutes": 20
+    },
+    {
+      "rank": 5,
+      "name": "Dikkat Dağıtıcıları Azalt",
+      "evidence": "MODERATE — CLT",
+      "protocol": "Çoklu görev yapma. Tek odak. Gürültü/kalabalık azalt.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 6,
+      "name": "Ekstra Süre İste",
+      "evidence": "MODERATE — clinical practice",
+      "protocol": "'Bana bir saniye ver' de. Out yourself about slow processing. Radically Open DBT technique.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    }
+  ],
+  "tpm_five_steps": [
+    "1. Zaman baskısı durumunu tanı",
+    "2. Önle: hazırlık, plan, önceden bilgi",
+    "3. Yönet: yedek strateji, görevi küçült",
+    "4. Parçala: büyük görevi adımlara böl",
+    "5. İzle: performansı değerlendir, ayarla"
+  ],
+  "daily_protocol": {
+    "morning": "Bugünkü zaman baskısı anlarını tahmin et + TPM planı",
+    "during_day": "TPM 5 adım uygula; async ortamı tercih et",
+    "evening": "Hangi anlarda yetişemedin? Hangi ön hazırlık işe yarardı?"
+  },
+  "metrics": {
+    "weekly": ["Kaç kez TPM kullandın", "Kaç kez ekstra süre istedin", "Ortam seçimi: canlı vs async oranı"]
+  },
+  "interactions": {
+    "worsened_by": ["S01_ASIRI_DUSUNME", "S08_CALISMA_BELLEGI"],
+    "improved_by": ["S02_BILGI_EKSIKLIGI"],
+    "note": "Hızı artırmaya çalışma; baskıyı azalt ve telafi et."
+  }
+}

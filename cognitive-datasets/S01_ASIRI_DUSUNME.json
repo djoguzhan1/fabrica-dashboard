@@ -1,0 +1,122 @@
+{
+  "id": "S01",
+  "name": "Aşırı Düşünme / Karar Felci",
+  "name_en": "Over-thinking / Decision Paralysis",
+  "severity_in_profile": "PRIMARY_ROOT",
+  "definition": "Soru veya fırsat geldiğinde mükemmel cevabı aramak, belirsizliğe tahammül edememek ve eylem başlatmadan önce 3-5 saniye içsel döngüye girmek.",
+  "symptoms": [
+    "Garson örneğinde başkası 1 sn'de konuşurken sen 3-5 sn düşünüyorsun",
+    "Ne desem? Doğru mu? Bileyim mi? döngüsü",
+    "Mükemmel karar bekleme → fırsat kaçırma",
+    "Sosyal ortamda iç ses konuşurken dışarı ses çıkmıyor",
+    "Oyun/sosyal/sohbet: ilk hareket başkasında"
+  ],
+  "mechanisms": {
+    "primary": "Intolerance of Uncertainty (IU) — belirsizliğe negatif reaksiyon",
+    "secondary": [
+      "Decision paralysis at commitment threshold (Anderson, 2003)",
+      "Maladaptive safety behaviors in decision making (reassurance seeking, over-research)",
+      "Cognitive Attentional Syndrome — repetitive negative thinking (Wells, 2009)",
+      "Socially prescribed perfectionism",
+      "Means-ends analysis consuming working memory (Sweller, 1988)"
+    ],
+    "brain": "Prefrontal cortex overloaded; dlPFC under-engaged or over-engaged depending on anxiety level"
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Decision Paralysis CBT Account", "year": 2025, "finding": "Decision paralysis ≠ procrastination. Paralysis = freezing at commitment under ambiguity. Interventions: exposure to uncertainty, good-enough criteria, remove reassurance rituals.", "effect_size": null, "url": "https://doi.org/10.5709/ah-03.03.2025-03", "tier": "A"},
+    {"id": 2, "authors": "Appel et al.", "year": 2025, "finding": "IU causally affects indecisiveness (N=301, pre-registered). Increased IU → more indecisiveness. IU reduction = promising treatment target.", "effect_size": "causal", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12334985/", "tier": "A"},
+    {"id": 3, "authors": "Making it Worse by Trying to Make it Better", "year": 2025, "finding": "IU associated with maladaptive safety behavior in decision making. Overthinking and seeking too many opinions makes decisions harder.", "effect_size": null, "url": "https://link.springer.com/article/10.1007/s10608-025-10659-1", "tier": "A"},
+    {"id": 4, "authors": "Gollwitzer & Sheeran", "year": 2006, "finding": "Implementation intentions bypass deliberation. If-then plans automate goal-directed responses. d=0.65 across 94 studies, 8461 participants.", "effect_size": "d=0.65", "url": "https://cancercontrol.cancer.gov/sites/default/files/2020-06/goal_intent_attain.pdf", "tier": "A"},
+    {"id": 5, "authors": "Parks-Stamm et al.", "year": 2007, "finding": "II increases cue accessibility AND automates response. Two distinct processes: better cue detection + faster response initiation.", "effect_size": null, "url": "https://bpb-us-e1.wpmucdn.com/wp.nyu.edu/dist/c/6235/files/2019/02/parks-stamm-at-al-2007-action-control-by-implementation-intentions.pdf", "tier": "A"},
+    {"id": 6, "authors": "Klein (RPD Model)", "year": 1985, "finding": "80%+ expert decisions: recognize pattern → act. <12% compare options. Experts DON'T think faster — they DON'T NEED to think.", "effect_size": "80% RPD", "url": "https://doi.org/10.1518/155534310x12844000801203", "tier": "A"},
+    {"id": 7, "authors": "Sweller", "year": 1988, "finding": "Means-ends analysis during problem solving consumes working memory, leaving little for action. Reducing goal specificity enhances performance.", "effect_size": null, "url": "https://andymatuschak.org/files/papers/Sweller%20-%201988%20-%20Cognitive%20load%20during%20problem%20solving.pdf", "tier": "A"},
+    {"id": 8, "authors": "Carleton", "year": 2016, "finding": "Exposure to uncertainty: graduated practice committing under ambiguity with bounded stakes and explicit good-enough criteria.", "effect_size": null, "url": "https://doi.org/10.5709/ah-03.03.2025-03", "tier": "B"},
+    {"id": 9, "authors": "Simon (Satisficing)", "year": 1955, "finding": "RPD model relies on satisficing — first workable option, not optimal. Speed > perfection in time-critical situations.", "effect_size": null, "url": "https://www.gary-klein.com/rpd", "tier": "A"},
+    {"id": 10, "authors": "Bocanegra & Hommel", "year": 2014, "finding": "When cognitive control is NOT adaptive — over-control can hurt in social contexts with high anxiety.", "effect_size": null, "url": "https://doi.org/10.1177/0956797614528522", "tier": "B"},
+    {"id": 11, "authors": "OODA Loop (Boyd)", "year": null, "finding": "Observe→Orient→Decide→Act. Over-thinkers stuck in Observe/Orient. Target: compress to Act within 1 second.", "effect_size": null, "url": "https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/", "tier": "B"},
+    {"id": 12, "authors": "Three Second Rule (Social Anxiety)", "year": null, "finding": "Must act within 3 seconds of considering a comment. Prevents second-guessing and conversation moving on.", "effect_size": null, "url": "https://socialanxietywebsite.com/example_exposures.html", "tier": "B"},
+    {"id": 13, "authors": "Time Pressure Management", "year": 2009, "finding": "Don't try to think faster — prevent/manage time pressure. Transfer high-pressure decisions to low-pressure preparation.", "effect_size": "t=-2.7, p=.01", "url": "https://doi.org/10.1016/j.apmr.2009.04.016", "tier": "A"},
+    {"id": 14, "authors": "80% Solution (Roosevelt/SA)", "year": null, "finding": "In emergencies, people drop to lowest level of training. Aim for 80% solution, not perfection. Perfect is enemy of good.", "effect_size": null, "url": "https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/", "tier": "B"},
+    {"id": 15, "authors": "Webb & Sheeran", "year": 2004, "finding": "II effects mediated by cue accessibility and cue-response linkage strength. Planning BEFORE event is key.", "effect_size": null, "url": "https://eprints.whiterose.ac.uk/id/eprint/10753/", "tier": "A"},
+    {"id": 16, "authors": "Gollwitzer", "year": 1999, "finding": "Implementation intentions = passing control of behavior to environment. Strategic automation of goal striving.", "effect_size": null, "url": "https://bpb-us-e1.wpmucdn.com/wp.nyu.edu/dist/c/6235/files/2019/02/gollwitzer-1999-implementation-intentions.pdf", "tier": "A"},
+    {"id": 17, "authors": "Alden & Taylor", "year": 2014, "finding": "Social skills often adequate in anxiety — can't ACCESS them under threat. Prefrontal throttled by anxiety.", "effect_size": null, "url": "https://articulated.app/blog/social-anxiety-conversation-practice", "tier": "B"},
+    {"id": 18, "authors": "Militello et al.", "year": 2023, "finding": "Assessment-action pairing supports executive function for quick situation sizing and acting. Don't separate assessment from action in training.", "effect_size": null, "url": "https://doi.org/10.1177/15553434221147415", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Implementation Intentions (If-Then)",
+      "evidence": "STRONG — d=0.65, 94 studies",
+      "protocol": "Her sabah 3 plan: 'X olursa → Y yaparım'. Spesifik durum + spesifik eylem.",
+      "example": "Aidat sorulursa → 'Bakıyorum— WhatsApp listesinden kontrol ediyorum'",
+      "time_to_effect": "Immediate for planned situations; 2 weeks for habituation",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 2,
+      "name": "1 Saniye Kuralı",
+      "evidence": "MODERATE — clinical practice, RPD alignment",
+      "protocol": "Soru geldiğinde 1 sn içinde ilk sesi çıkar. 'Bakıyorum—' veya 'Evet—' veya 'Bilmiyorum—'",
+      "example": "Telefonu al + ağzı aç = aynı anda",
+      "time_to_effect": "1-2 weeks daily practice",
+      "daily_minutes": 0 (applied in moment)
+    },
+    {
+      "rank": 3,
+      "name": "Yeterince İyi (Satisficing)",
+      "evidence": "STRONG — RPD model, Klein 1985",
+      "protocol": "Mükemmel cevap arama. İlk işe yarar cevabı uygula. %80 çözüm > %0 çözüm.",
+      "time_to_effect": "Mindset shift, 1 week",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 4,
+      "name": "Belirsizlik Maruziyeti",
+      "evidence": "STRONG — IU causal research",
+      "protocol": "Günde 1 küçük belirsizlik: bilmeden hareket et, sonra sonucu gör. 'Bakayım' de, cevabı sonra bul.",
+      "time_to_effect": "3-4 weeks",
+      "daily_minutes": 2
+    },
+    {
+      "rank": 5,
+      "name": "Hazır Script Ezberleme",
+      "evidence": "MODERATE — social anxiety CBT",
+      "protocol": "5 cümle ezberle: 'Bakıyorum—', 'İlk aklıma gelen şu—', 'Bana 1 saniye ver', 'Kayboldum ne diyordun?', 'Bilmiyorum kontrol edeyim'",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 3
+    },
+    {
+      "rank": 6,
+      "name": "Ağız Önce Protokolü",
+      "evidence": "MODERATE — motor initiation bypasses deliberation",
+      "protocol": "Karar vermeden ağzı hareket ettir. Beyin cümleyi tamamlar.",
+      "time_to_effect": "2 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 7,
+      "name": "TPM — Zaman Baskısını Önle",
+      "evidence": "STRONG — RCT stroke patients",
+      "protocol": "Yüksek baskı anlarını düşük baskı hazırlığa taşı. Önceden planla, anında uygula.",
+      "time_to_effect": "10 hours training, 3 month follow-up",
+      "daily_minutes": 5
+    }
+  ],
+  "daily_protocol": {
+    "morning": "3 if-then plan yaz (5 dk)",
+    "during_day": "1 sn kuralı uygula; düşünmeden 'Bakıyorum—' de",
+    "evening": "Kaç kez düşünme döngüsüne girdin? Kaç kez 1 sn kuralını kullandın? (5 dk)"
+  },
+  "metrics": {
+    "weekly": [
+      "Kaç kez 'bendan önce oldu' (hedef: azalma)",
+      "Kaç kez 1 sn içinde konuşmaya başladın (hedef: artış)",
+      "Ortalama tepki süresi tahmini (hedef: <2 sn)"
+    ]
+  },
+  "interactions": {
+    "caused_by": ["S02_BILGI_EKSIKLIGI", "S05_SOSYAL_DONMA", "S08_CALISMA_BELLEGI"],
+    "causes": ["S06_GEC_FARK_ETME", "S07_EYLEM_BASLATMA"],
+    "note": "Bilgi eksikliği düşünmeyi artırır. Düşünme eylemi geciktir. İkisini paralel çöz."
+  }
+}

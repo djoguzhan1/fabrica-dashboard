@@ -1,0 +1,120 @@
+{
+  "id": "S04",
+  "name": "Sözlü Öğrenme / Kodlama Zayıflığı",
+  "name_en": "Verbal Learning / Encoding Deficit",
+  "severity_in_profile": "SECONDARY",
+  "definition": "Canlı/sözlü bilgiyi anında işleyip yerleştirememe. Yazılı + tekrarlı bilgiyi öğrenme. 'Defalarca okuyup kafama sokmam gerekir.'",
+  "symptoms": [
+    "Ders anlatımından öğrenememe",
+    "Sözlü talimatları takip edememe",
+    "Yazıdan tekrar tekrar okuyarak öğrenme",
+    "Canlı sohbette bilgi tutmama",
+    "Sonradan yazıyla anlama"
+  ],
+  "mechanisms": {
+    "primary": "Encoding deficit — problem at input stage, NOT retention",
+    "secondary": [
+      "Verbal/auditory processing slower than visual/written",
+      "Passive exposure insufficient — needs active retrieval",
+      "Working memory overload during live speech",
+      "Split-attention: listening + understanding + storing simultaneously fails"
+    ],
+    "key_finding": "DLD research: encoding not retention is problematic. Self-testing with feedback lessens deficit."
+  },
+  "research_sources": [
+    {"id": 1, "authors": "McGregor et al.", "year": 2018, "finding": "Adults with DLD: encoding deficits impede word learning. Encoding performance predicts vocabulary. NOT retention problem.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5945064/", "tier": "A"},
+    {"id": 2, "authors": "Leonard et al. meta-analysis", "year": 2025, "finding": "DLD word learning: focus on ENCODING phase. Shorter words, repeated retrieval, direct instruction, reconsolidation as relative strength.", "effect_size": null, "url": "https://doi.org/10.1016/j.jml.2025.104678", "tier": "A"},
+    {"id": 3, "authors": "Leonard et al.", "year": 2023, "finding": "Retrieval practice (RSR) > repeated study for verb learning in DLD. Both immediate and 1-week retention. Both DLD and TD benefit.", "effect_size": "RSR > RS", "url": "https://pubs.asha.org/doi/10.1044/2022_JSLHR-22-00509", "tier": "A"},
+    {"id": 4, "authors": "Leonard & Karpicke", "year": 2020, "finding": "Retrieval practice better retention than more study for DLD children. Shared book reading context.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12263187/", "tier": "A"},
+    {"id": 5, "authors": "Karpicke & Roediger", "year": 2008, "finding": "Repeated testing > repeated study for 1-week retention. Foundational retrieval practice evidence.", "effect_size": "significant", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5945064/", "tier": "A"},
+    {"id": 6, "authors": "Rowland meta-analysis", "year": 2014, "finding": "Retrieval practice vs reading: g=0.50 [0.42, 0.58] from 159 effect sizes.", "effect_size": "g=0.50", "url": "https://docslib.org/doc/10899796/", "tier": "A"},
+    {"id": 7, "authors": "Adesope et al.", "year": 2017, "finding": "Retrieval practice vs all other: g=0.61 [0.58, 0.65]. Stronger with complex content and feedback.", "effect_size": "g=0.61", "url": "https://docslib.org/doc/10899796/", "tier": "A"},
+    {"id": 8, "authors": "Paivio (Dual Coding)", "year": 1971, "finding": "Verbal + visual = two memory traces. 25-40% better recall. Concrete words > abstract.", "effect_size": "25-40%", "url": "https://en.m.wikipedia.org/wiki/Dual-coding_theory", "tier": "A"},
+    {"id": 9, "authors": "Mayer & Moreno", "year": null, "finding": "Split-attention effect: integrating text+diagrams reduces cognitive load. Physical integration > mental integration.", "effect_size": null, "url": "https://tecfa.unige.ch/tecfa/teaching/staf15/ref/kalyuga.pdf", "tier": "A"},
+    {"id": 10, "authors": "Spaced Retrieval Meta-analysis", "year": 2021, "finding": "Spaced retrieval practice vs massed: g=0.74. Two desirable difficulties combined.", "effect_size": "g=0.74", "url": "https://eric.ed.gov/?id=EJ1310148", "tier": "A"},
+    {"id": 11, "authors": "Murray et al.", "year": 2025, "finding": "Spaced practice for math: g=0.28 robust. Testing vs restudy: g=0.18 (less robust for math).", "effect_size": "g=0.28 spacing", "url": "https://link.springer.com/article/10.1007/s10648-025-10035-1", "tier": "A"},
+    {"id": 12, "authors": "STEM Spaced Retrieval", "year": 2024, "finding": "9 STEM courses: spaced retrieval practice mean improvement 2.06%, significant but variable (I2=89%).", "effect_size": "2.06%", "url": "https://link.springer.com/article/10.1186/s40594-024-00468-5", "tier": "B"},
+    {"id": 13, "authors": "Sweller (Split-Attention)", "year": 1992, "finding": "Learners forced to split attention between disparate sources → heavy extraneous load. Physical integration facilitates learning.", "effect_size": null, "url": "https://bpspsychub.onlinelibrary.wiley.com/doi/10.1111/j.2044-8279.1992.tb01017.x", "tier": "A"},
+    {"id": 14, "authors": "Worked Example Effect", "year": 2020, "finding": "Worked examples reduce extraneous load for novices. Replace problem-solving with studying examples, then fade.", "effect_size": null, "url": "https://journals.sagepub.com/doi/10.1177/0963721420922183", "tier": "A"},
+    {"id": 15, "authors": "Dyslexia Verbal Learning", "year": 2022, "finding": "Verbal learning + consolidation positively related to spelling. Oral rehearsal benefits encoding.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9481476/", "tier": "B"},
+    {"id": 16, "authors": "Leonard criterion-based", "year": 2023, "finding": "Retrieval + criterion-based training effective for DLD word learning. Continue until multiple successful retrievals.", "effect_size": "6/7 children improved", "url": "https://doi.org/10.1044/2023_ajslp-23-00037", "tier": "A"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Sözlü → Yazılı Boru Hattı",
+      "evidence": "STRONG — encoding research",
+      "protocol": "DİNLE → HEMEN NOT → AKŞAM ÖZET → KENDİNE SOR → TEKRAR. Asla sadece dinleme.",
+      "time_to_effect": "1-2 weeks habit",
+      "daily_minutes": 20
+    },
+    {
+      "rank": 2,
+      "name": "Retrieval Practice (Kendine Test)",
+      "evidence": "STRONG — g=0.50-0.61",
+      "protocol": "Notu kapat → 'Bu neydi?' yaz → Aç kontrol et → Yanlışları tekrar et. Pasif okuma YAPMA.",
+      "time_to_effect": "Immediate improvement in retention",
+      "daily_minutes": 15
+    },
+    {
+      "rank": 3,
+      "name": "Dual Coding",
+      "evidence": "STRONG — 25-40% better recall",
+      "protocol": "Her konu: 3 madde yazı + 1 şema/diagram çiz. Sözlüyü görsel-yazılı forma çevir.",
+      "time_to_effect": "1 week per topic",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 4,
+      "name": "Spaced Repetition",
+      "evidence": "STRONG — g=0.74",
+      "protocol": "Gün 0 öğren → Gün 1 tekrar → Gün 3 → Gün 7 → Gün 14. Aralıklı, aynı gün 10 kez okuma değil.",
+      "time_to_effect": "2 weeks per topic",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 5,
+      "name": "Ders Kaydı + Durdurma",
+      "evidence": "MODERATE — removes time pressure from encoding",
+      "protocol": "Dersi kaydet. Durdur, not al, tekrar dinle. Kendi temponda kodla.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 30
+    },
+    {
+      "rank": 6,
+      "name": "Worked Examples",
+      "evidence": "STRONG — CLT",
+      "protocol": "Problem çözmek yerine çözülmüş örneklere bak. Sonra benzerini dene. Rehberi azalt.",
+      "time_to_effect": "Per topic",
+      "daily_minutes": 15
+    },
+    {
+      "rank": 7,
+      "name": "Feynman Tekniği",
+      "evidence": "MODERATE — retrieval + encoding",
+      "protocol": "Öğrendiğini kendi kelimelerinle anlat (yazılı). Anlatamıyorsan öğrenmemişsin.",
+      "time_to_effect": "Per session",
+      "daily_minutes": 10
+    }
+  ],
+  "learning_pipeline": {
+    "step_1": "Dinle/Kaydet (sözlü giriş)",
+    "step_2": "Hemen not al (yazıya çevir)",
+    "step_3": "Şema çiz (dual coding)",
+    "step_4": "Kapat, kendine sor (retrieval practice)",
+    "step_5": "Kontrol et, düzelt",
+    "step_6": "Spaced tekrar (Gün 1, 3, 7, 14)"
+  },
+  "daily_protocol": {
+    "during_learning": "Sözlü → yazılı boru hattı. Not al, durdur, tekrar.",
+    "after_learning": "15 dk retrieval practice + dual coding",
+    "spaced": "Anki veya takvim ile Gün 1, 3, 7, 14 tekrar"
+  },
+  "metrics": {
+    "weekly": ["Kaç konuyu sadece dinledin vs boru hattı kullandın", "Retrieval test skoru (kendi kelimelerinle anlatma)", "Tekrar sayısı ihtiyacı (azalıyor mu?)"]
+  },
+  "interactions": {
+    "related_to": ["S03_YAVAS_ISLEM_HIZI", "S08_CALISMA_BELLEGI"],
+    "note": "Sözlü öğrenme zayıflığı ≠ öğrenememe. Yazılı + retrieval ile öğreniyorsun."
+  }
+}

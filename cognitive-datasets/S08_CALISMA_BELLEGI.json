@@ -1,0 +1,107 @@
+{
+  "id": "S08",
+  "name": "Çalışma Belleği Aşırı Yükü",
+  "name_en": "Working Memory Overload",
+  "severity_in_profile": "UNDERLYING",
+  "definition": "Canlı ortamda çalışma belleği taşıyor. Dikkat + anlama + karar + hareket aynı anda → çökme.",
+  "symptoms": [
+    "Sosyal ortamda donma",
+    "Çok şey olunca kafan karışıyor",
+    "Multitasking'te başarısızlık",
+    "İç ses dış sesi yiyor",
+    "Yüksek baskıda performans düşüşü"
+  ],
+  "mechanisms": {
+    "primary": "Limited WM capacity (4±1 chunks) exceeded in live multi-demand situations",
+    "secondary": [
+      "Intrinsic load: task complexity",
+      "Extraneous load: poor design, anxiety, distraction",
+      "Germane load: should be maximized but crowded out",
+      "Expertise reduces load via chunking/schemas"
+    ],
+    "formula": "Intrinsic + Extraneous load must not exceed WM capacity"
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Sweller CLT", "year": 2020, "finding": "WM bottleneck for learning. Minimize extraneous load to free capacity for germane processing.", "effect_size": null, "url": "https://journals.sagepub.com/doi/10.1177/0963721420922183", "tier": "A"},
+    {"id": 2, "authors": "Sweller Architecture", "year": 2019, "finding": "Schemas in LTM reduce WM burden. Multiple elements → single chunk. Expertise = more chunks.", "effect_size": null, "url": "https://link.springer.com/article/10.1007/s10648-019-09465-5", "tier": "A"},
+    {"id": 3, "authors": "Miller", "year": 1956, "finding": "7±2 chunks in STM. Expert chunking expands effective capacity.", "effect_size": "7±2", "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.00102/full", "tier": "A"},
+    {"id": 4, "authors": "Cowan", "year": 2001, "finding": "Revised: ~4 chunks in WM. Expert advantage via larger, more complex chunks.", "effect_size": "~4", "url": "https://doi.org/10.1080/09658210344000530", "tier": "A"},
+    {"id": 5, "authors": "Ericsson LT-WM", "year": 1995, "finding": "Experts expand functional WM via LTM retrieval structures. Rapid reliable access.", "effect_size": null, "url": "https://jimdavies.org/summaries/ericsson1995.html", "tier": "A"},
+    {"id": 6, "authors": "Social Threat WM", "year": 2014, "finding": "Social evaluative threat reduces WM performance. PFC/IPS activation decreased.", "effect_size": null, "url": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.663.5900", "tier": "A"},
+    {"id": 7, "authors": "Means-Ends Analysis", "year": 1988, "finding": "Means-ends problem solving consumes WM. Goal-free problems reduce load, enhance learning.", "effect_size": null, "url": "https://andymatuschak.org/files/papers/Sweller%20-%201988%20-%20Cognitive%20load%20during%20problem%20solving.pdf", "tier": "A"},
+    {"id": 8, "authors": "Split-Attention", "year": 1992, "finding": "Mental integration of disparate sources = heavy extraneous load. Physical integration reduces load.", "effect_size": null, "url": "https://bpspsychub.onlinelibrary.wiley.com/doi/10.1111/j.2044-8279.1992.tb01017.x", "tier": "A"},
+    {"id": 9, "authors": "Redundancy Effect", "year": null, "finding": "Same info in visual + auditory = redundant, increases load. Choose one channel.", "effect_size": null, "url": "https://tecfa.unige.ch/tecfa/teaching/staf15/ref/kalyuga.pdf", "tier": "A"},
+    {"id": 10, "authors": "Soccer WMC", "year": 2023, "finding": "WMC predicts decision speed at ALL expertise levels. Independent of practice.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10050259/", "tier": "B"},
+    {"id": 11, "authors": "Chi Chess", "year": 1978, "finding": "Expert children recall chess better via chunking, not higher WM capacity.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4207727/", "tier": "A"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Extraneous Load Azalt",
+      "evidence": "STRONG — CLT core principle",
+      "protocol": "Tek görev. Dikkat dağıtıcı kaldır. İç sesi sustur (script kullan). Multitasking yapma.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 2,
+      "name": "Dışsallaştır (Externalize)",
+      "evidence": "STRONG — cognitive offloading",
+      "protocol": "Düşünmeyi kafandan çıkar: not defteri, if-then plan, kalıp kartı, telefon. WM'yi boşalt.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 3,
+      "name": "Chunking / Şema",
+      "evidence": "STRONG — expertise research",
+      "protocol": "Tekrar eden durumları tek 'chunk'a birleştir. 'Aidat sorusu' = 1 chunk (liste+WhatsApp+bak).",
+      "time_to_effect": "2-4 weeks per domain",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 4,
+      "name": "Ön Yükleme (S02)",
+      "evidence": "STRONG — reduces intrinsic load in moment",
+      "protocol": "Bilgiyi önceden LTM'ye yükle. Anlık WM sadece tanıma + eylem için.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 5,
+      "name": "Script (S05)",
+      "evidence": "STRONG — bypasses word retrieval",
+      "protocol": "Hazır cümle = 0 WM cost for generation. Ezberlenmiş script kullan.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 3
+    },
+    {
+      "rank": 6,
+      "name": "Kaygı Azalt (S05)",
+      "evidence": "STRONG — frees WM from threat processing",
+      "protocol": "Sosyal kaygı WM'yi yiyor. Exposure + dışa odak = WM boşalır.",
+      "time_to_effect": "3-4 weeks",
+      "daily_minutes": 10
+    }
+  ],
+  "load_reduction_checklist": [
+    "Tek görev mi? (multitasking kaldır)",
+    "Bilgi dışarıda mı? (not, plan, kart)",
+    "Script hazır mı? (üretme yükü sıfır)",
+    "Ön bilgi yüklü mü? (sıfırdan kodlama yok)",
+    "Kaygı kontrol altında mı? (dışa odak)",
+    "Chunk var mı? (tek birim olarak işle)"
+  ],
+  "daily_protocol": {
+    "before_high_load": "Load reduction checklist uygula",
+    "during": "Dışsallaştır; script kullan; tek odak",
+    "after": "Hangi yük taşırdı? Nasıl boşaltılabilirdi?"
+  },
+  "metrics": {
+    "weekly": ["Donma/çökme sayısı", "Checklist kullanım oranı", "Multitasking deneme sayısı (hedef: 0)"]
+  },
+  "interactions": {
+    "underlies": ["S01", "S03", "S04", "S05", "S06", "S07"],
+    "note": "WM yükü = tüm sorunların ortak altyapısı. Yük azalt = her şey iyileşir."
+  }
+}

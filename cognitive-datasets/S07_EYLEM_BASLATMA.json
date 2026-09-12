@@ -1,0 +1,101 @@
+{
+  "id": "S07",
+  "name": "Eylem Başlatma Gecikmesi",
+  "name_en": "Action Initiation Delay",
+  "severity_in_profile": "SECONDARY",
+  "definition": "Ne yapacağını biliyor ama ilk adımı atamama. Niyet → eylem boşluğu. 'Bakayım' derken başkası bitiriyor.",
+  "symptoms": [
+    "Telefonu geç alma",
+    "Konuşmaya geç başlama",
+    "Oyunda geç hamle",
+    "Pasif kalma",
+    "İçten içe biliyorsun ama hareket yok"
+  ],
+  "mechanisms": {
+    "primary": "Intention-behavior gap — goal intention without implementation intention",
+    "secondary": [
+      "ADHD-I: initiation difficulties as behavioral consequence of inattention",
+      "Behavioral activation deficit",
+      "Passive observer habit",
+      "Motor + decision initiation coupled delay"
+    ]
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Gollwitzer & Sheeran", "year": 2006, "finding": "II closes intention-behavior gap. d=0.65. Strategic automaticity: cue triggers response without conscious deliberation.", "effect_size": "d=0.65", "url": "https://cancercontrol.cancer.gov/sites/default/files/2020-06/goal_intent_attain.pdf", "tier": "A"},
+    {"id": 2, "authors": "II Speed Study (PLOS)", "year": 2022, "finding": "If-then statements speed up responses to PM targets in everyday life. Strengthened cue-intention association.", "effect_size": "significant speed", "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0260856", "tier": "A"},
+    {"id": 3, "authors": "CADDI RCT", "year": 2025, "finding": "CBT for ADHD-I with behavioral activation: d=0.65 activation subscale. Initiation + termination strategies. > standard CBT.", "effect_size": "d=0.65", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12018340/", "tier": "A"},
+    {"id": 4, "authors": "CADDI Feasibility", "year": 2021, "finding": "14 sessions: organizing + initiating + procrastination + mindfulness. Medium effect on inattention d=0.55-0.65.", "effect_size": "d=0.55-0.65", "url": "https://doi.org/10.1080/19012276.2021.2020683", "tier": "B"},
+    {"id": 5, "authors": "Behavioral Activation", "year": null, "finding": "Shrink tasks to first physical step. Schedule it. Reduce friction. Add cues. Reward completion.", "effect_size": null, "url": "https://doi.org/10.5709/ah-03.03.2025-03", "tier": "B"},
+    {"id": 6, "authors": "Prospective Memory Habits", "year": 2022, "finding": "63 repetitions: cue detection up, interference eliminated. Action becomes automatic with repetition.", "effect_size": null, "url": "https://doi.org/10.3758/s13423-022-02214-w", "tier": "A"},
+    {"id": 7, "authors": "S-R Learning (PLOS)", "year": 2022, "finding": "Including situational cues in intention thought → stimulus-response learning → automatic triggering.", "effect_size": null, "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0264342", "tier": "A"},
+    {"id": 8, "authors": "Klein RPD", "year": 1985, "finding": "Experts: first considered option is usually viable. No option comparison needed. Pattern → action.", "effect_size": "80%", "url": "https://doi.org/10.1518/155534310x12844000801203", "tier": "A"},
+    {"id": 9, "authors": "Body Doubling", "year": null, "finding": "Physical presence of another person facilitates task initiation for ADHD. Reduces activation threshold.", "effect_size": null, "url": "clinical_practice", "tier": "C"},
+    {"id": 10, "authors": "ADHD CET vs ICT", "year": null, "finding": "Central executive training improves WM and go/no-go (d=0.84). Mixed for stop-signal.", "effect_size": "d=0.84 go/no-go", "url": "https://www.psy.fsu.edu/clc/Publications/nihms-1596585.pdf", "tier": "B"},
+    {"id": 11, "authors": "1 Second Rule", "year": null, "finding": "Compress 3-second rule to 1 second for competitive contexts. First sound within 1 second.", "effect_size": null, "url": "internal_protocol", "tier": "C"},
+    {"id": 12, "authors": "Physical Trigger", "year": null, "finding": "Phone/hand movement + mouth open simultaneously. Motor initiation bypasses cognitive deliberation.", "effect_size": null, "url": "internal_protocol", "tier": "C"},
+    {"id": 13, "authors": "Multicomponent ADHD", "year": 2026, "finding": "Multicomponent interventions best for inhibitory control g=0.63 and sustained attention g=0.95 in pediatric ADHD.", "effect_size": "g=0.63-0.95", "url": "https://www.nature.com/articles/s41398-026-04331-9", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Implementation Intentions",
+      "evidence": "STRONG — d=0.65, speeds everyday responses",
+      "protocol": "'X olursa → Y yaparım' — spesifik durum + spesifik fiziksel eylem. Sabah 3 plan.",
+      "time_to_effect": "Immediate for planned; 2 weeks habituation",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 2,
+      "name": "1 Saniye + Fiziksel Tetik",
+      "evidence": "MODERATE — motor bypass",
+      "protocol": "Soru geldi → telefonu/elini hareket ettir + ağzı aç. Aynı anda. 'Bakıyorum—'",
+      "time_to_effect": "1-2 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 3,
+      "name": "İlk Ben Antrenmanı",
+      "evidence": "MODERATE — habit loop",
+      "protocol": "Günde 3 bilinçli 'ilk ben' eylemi. Refleks kası oluştur.",
+      "time_to_effect": "2-4 weeks",
+      "daily_minutes": 2
+    },
+    {
+      "rank": 4,
+      "name": "Behavioral Activation (İlk Adım)",
+      "evidence": "STRONG — CADDI d=0.65",
+      "protocol": "Görevi en küçük fiziksel adıma böl. 'Garsona seslen' → 'Ağzımı aç ve B harfi söyle'",
+      "time_to_effect": "1-2 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 5,
+      "name": "Ağız Önce Protokolü",
+      "evidence": "MODERATE",
+      "protocol": "Karar vermeden konuşmaya başla. Beyin cümleyi tamamlar.",
+      "time_to_effect": "2 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 6,
+      "name": "Tekrar → Otomatik",
+      "evidence": "STRONG — habitual PM",
+      "protocol": "Aynı durumu 5-10 kez tekrarla → eylem otomatikleşir. Aidat sorusu × 5 = refleks.",
+      "time_to_effect": "5-10 repetitions",
+      "daily_minutes": 0
+    }
+  ],
+  "daily_protocol": {
+    "morning": "3 if-then plan (durum + fiziksel eylem)",
+    "during_day": "3x ilk ben + 1 sn kuralı + fiziksel tetik",
+    "evening": "Kaç kez niyet var ama hareket yok? Hangi if-then işe yaradı?"
+  },
+  "metrics": {
+    "weekly": ["İlk hareket eden sen oldun mu sayısı", "Niyet-eylem boşluğu sayısı", "If-then kullanım oranı"]
+  },
+  "interactions": {
+    "caused_by": ["S01_ASIRI_DUSUNME", "S06_GEC_FARK_ETME"],
+    "improved_by": ["S02_BILGI_EKSIKLIGI"],
+    "note": "II = en güçlü kanıtlı eylem başlatma aracı."
+  }
+}

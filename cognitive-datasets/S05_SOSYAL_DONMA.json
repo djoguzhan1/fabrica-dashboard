@@ -1,0 +1,123 @@
+{
+  "id": "S05",
+  "name": "Sosyal Donma / Zihin Boşalması",
+  "name_en": "Social Freeze / Mind Blank",
+  "severity_in_profile": "SECONDARY",
+  "definition": "Sosyal ortamda 'aklıma hiçbir şey gelmiyor'. Kaygı çalışma belleğini yiyor; cevap üretmek için gereken zihinsel alan kalmıyor.",
+  "symptoms": [
+    "Soru geldiğinde boşluk",
+    "Utanma/korku hissi",
+    "İç ses: ne düşünüyorlar?",
+    "Sonradan cevap geliyor",
+    "Sosyal beceri var ama erişilemiyor"
+  ],
+  "mechanisms": {
+    "primary": "Social-evaluative stress impairs working memory → mind blank",
+    "brain": "dlPFC reduced activation; amygdala increased; IPS-dlPFC connectivity disrupted",
+    "secondary": [
+      "Affective working memory disruption under emotional load (SAD)",
+      "Impaired attentional disengagement from threat stimuli",
+      "Self-monitoring consumes WM resources",
+      "Prefrontal throttled by anxiety response"
+    ],
+    "key_finding": "Social skills often adequate — can't ACCESS under threat (Alden & Taylor, 2014)"
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Adyasha et al.", "year": 2025, "finding": "Social anxiety + acute stress: independent negative effects on WM updating. Reduced accuracy, increased false alarms.", "effect_size": null, "url": "https://doi.org/10.48448/6v1t-px81", "tier": "A"},
+    {"id": 2, "authors": "Socio-evaluative N-back", "year": 2025, "finding": "Social stress impairs PFC, shifts to emotion processing regions. Intrusive thoughts consume attentional resources.", "effect_size": null, "url": "https://www.nature.com/articles/s41598-025-22611-0", "tier": "A"},
+    {"id": 3, "authors": "van Ast et al.", "year": 2014, "finding": "Social threat impairs WM. Widespread PFC/IPS reduction. IPS mediates performance impairment.", "effect_size": null, "url": "http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.663.5900", "tier": "A"},
+    {"id": 4, "authors": "Anxiety dlPFC Study", "year": 2016, "finding": "Clinical anxiety: reduced dlPFC activation during safety AND threat. Core component, not just acute.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5079837/", "tier": "A"},
+    {"id": 5, "authors": "Moriya & Tanno", "year": 2010, "finding": "Trait social anxiety: impaired top-down control under WM load. Can't inhibit task-irrelevant distractors.", "effect_size": null, "url": "https://doi.org/10.1371/journal.pone.0047221", "tier": "A"},
+    {"id": 6, "authors": "PLOS Mental Health SAD WM", "year": 2024, "finding": "SAD: WM intact under neutral conditions. Disrupted under emotionally salient/socially evaluative content.", "effect_size": null, "url": "https://journals.plos.org/mentalhealth/article?id=10.1371/journal.pmen.0000506", "tier": "A"},
+    {"id": 7, "authors": "Alden & Taylor", "year": 2014, "finding": "Social anxiety: skills often adequate/strong but can't access under threat. Prefrontal throttled.", "effect_size": null, "url": "https://articulated.app/blog/social-anxiety-conversation-practice", "tier": "A"},
+    {"id": 8, "authors": "Chesham et al.", "year": null, "finding": "Structured exposure: large, durable symptom reductions. Meta-analysis Psychological Medicine.", "effect_size": "large", "url": "https://articulated.app/blog/social-anxiety-conversation-practice", "tier": "A"},
+    {"id": 9, "authors": "Furmark et al.", "year": 2002, "finding": "Repeated exposure: amygdala rCBF reduction. Within-session anxiety decrease from 1st to 2nd speech.", "effect_size": null, "url": "https://uu.diva-portal.org/smash/get/diva2:1088575/FULLTEXT01.pdf", "tier": "A"},
+    {"id": 10, "authors": "Imaginal Exposure App RCT", "year": 2023, "finding": "7-day brief imaginal exposure via app: significantly greater SAD reduction vs self-monitoring. More exercises = better outcome.", "effect_size": "significant", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10493899/", "tier": "A"},
+    {"id": 11, "authors": "Exposure Hierarchy", "year": null, "finding": "Graded exposure: systematic approach, ranked difficulty 0-10. Repeat steps until confident. 3-5 reps for anxiety drop.", "effect_size": null, "url": "https://socialanxietyalliance.org.uk/exposure-therapy-and-hierarchies/", "tier": "B"},
+    {"id": 12, "authors": "Mind-Blank Rescue", "year": null, "finding": "'I lost my train of thought—what were you saying about [last word]?' Buys time, shows listening.", "effect_size": null, "url": "https://momentumpsychology.com/therapy-for-social-anxiety/", "tier": "B"},
+    {"id": 13, "authors": "Three Second Rule", "year": null, "finding": "Act within 3 seconds of considering a comment. Prevents second-guessing before conversation moves on.", "effect_size": null, "url": "https://socialanxietywebsite.com/example_exposures.html", "tier": "B"},
+    {"id": 14, "authors": "One-Session Exposure", "year": null, "finding": "Single session exposure effective for social anxiety. Effects remain at 4-week follow-up.", "effect_size": "large", "url": "https://link.springer.com/article/10.1007/s10879-019-09448-1", "tier": "A"},
+    {"id": 15, "authors": "eWMT vs iCBT", "year": null, "finding": "15x20min emotional WM training reduces SAD similarly to internet CBT. Stand-alone potential.", "effect_size": null, "url": "https://doi.org/10.31234/osf.io/yp6qd", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Hazır Scriptler (5 cümle)",
+      "evidence": "STRONG — bypasses WM for word retrieval",
+      "protocol": "Ezberle: 'Bakıyorum—', 'İlk aklıma gelen şu—', 'Bana 1 saniye ver', 'Kayboldum ne diyordun?', 'Bilmiyorum kontrol edeyim'",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 3
+    },
+    {
+      "rank": 2,
+      "name": "Mind-Blank Rescue",
+      "evidence": "MODERATE — CBT clinical",
+      "protocol": "Donduğunda: 'Kayboldum, ne diyordun [son kelime]?' Zemin geri verir, zaman kazanır.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 3,
+      "name": "Dışa Odak (Attention Training)",
+      "evidence": "MODERATE — reduces self-monitoring",
+      "protocol": "'Ne düşünüyorlar?' yerine 'Şu an ne oluyor?' Karşındakini dinle, kendini izleme.",
+      "time_to_effect": "2-3 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 4,
+      "name": "Graded Exposure (Mikro)",
+      "evidence": "STRONG — meta-analysis large effects",
+      "protocol": "Haftalık korku 3-4/10'dan başla. Günde 1 mikro eylem. 3-5 tekrar → kaygı düşer.",
+      "ladder": ["Hafta 1: Kasiyere teşekkür", "Hafta 2: Yabancıya soru", "Hafta 3: Grup sohbetine 1 cümle", "Hafta 4: 'Bilmiyorum' deme"],
+      "time_to_effect": "3-4 weeks",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 5,
+      "name": "Evde Prova (Rehearsal)",
+      "evidence": "MODERATE — familiarity reduces amygdala threat",
+      "protocol": "Zor konuşmayı evde 10-15 kez sesli tekrarla. Kayıt al, dinle.",
+      "time_to_effect": "1 session before event",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 6,
+      "name": "1 Cümle Kuralı",
+      "evidence": "MODERATE — reduces WM demand",
+      "protocol": "Mükemmel cevap arama. Tek cümle yeter. Beyn tek cümleyle açılır.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 7,
+      "name": "Ön Konu Hazırlığı (S02)",
+      "evidence": "STRONG — reduces encoding demand in moment",
+      "protocol": "Sohbete girmeden konuyu 30 sn tara. 1 cümle hazırla.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 1
+    }
+  ],
+  "ready_scripts": [
+    "Bakıyorum—",
+    "İlk aklıma gelen şu—",
+    "Bana 1 saniye ver",
+    "Kayboldum, ne diyordun?",
+    "Bilmiyorum, kontrol edeyim",
+    "Geç kaldım ama—",
+    "Emin değilim, düşüneyim"
+  ],
+  "daily_protocol": {
+    "morning": "Bugünkü sosyal exposure görevini belirle (korku 3-4/10)",
+    "during_day": "Script kullan; dışa odak; 1 cümle kuralı",
+    "evening": "10 dk evde prova veya exposure değerlendirme"
+  },
+  "metrics": {
+    "weekly": ["Donma sayısı (hedef: azalma)", "Script kullanım sayısı", "Exposure tamamlama", "SUDS (korku 0-100) ortalaması"]
+  },
+  "interactions": {
+    "worsened_by": ["S01_ASIRI_DUSUNME", "S08_CALISMA_BELLEGI"],
+    "improved_by": ["S02_BILGI_EKSIKLIGI", "S07_EYLEM_BASLATMA"],
+    "note": "Donma = WM dolu + kaygı. Script ve ön bilgi WM'i boşaltır."
+  }
+}

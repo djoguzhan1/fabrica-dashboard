@@ -1,0 +1,116 @@
+{
+  "id": "S09",
+  "name": "Tanıma Refleksi / Pratik Zeka Eksikliği",
+  "name_en": "Recognition Reflex / Practical Intelligence Gap",
+  "severity_in_profile": "OUTCOME",
+  "definition": "'Pratik zeka düşük' hissi. Aslında: tanıma refleksi + ön bilgi + eylem başlatma eksikliğinin birleşimi.",
+  "symptoms": [
+    "Başkası hemen çözüm buluyor",
+    "Sen sonradan 'aa öyle yapılır' diyorsun",
+    "Canlıda kötü, sonradan iyi",
+    "Pratik zeka düşük sanma",
+    "Oyun/sosyal/iş/günlük hayat genel geride kalma"
+  ],
+  "mechanisms": {
+    "primary": "Missing recognition-primed decision patterns (Klein RPD)",
+    "formula": "HIZLI PRATİK TEPKİ = Ön bilgi (2'den 1'i) + Kalıp tanıma + 1 sn hareket",
+    "not": "Bu zeka eksikliği DEĞİL — sistem eksikliği"
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Klein RPD", "year": 1985, "finding": "80%+ expert decisions: recognize → act. <12% compare options. Intuition = compressed experience.", "effect_size": "80%", "url": "https://doi.org/10.1518/155534310x12844000801203", "tier": "A"},
+    {"id": 2, "authors": "Klein RPD Book", "year": 1998, "finding": "Experts generate FIRST option as viable. Mental simulation to check. Not option comparison.", "effect_size": null, "url": "https://www.gary-klein.com/rpd", "tier": "A"},
+    {"id": 3, "authors": "Fadde Recognition Training", "year": 2007, "finding": "Recognition training can hasten expertise. Deliberate practice on recognition, not just knowledge.", "effect_size": null, "url": "https://doi.org/10.1007/s11423-007-9046-5", "tier": "A"},
+    {"id": 4, "authors": "Sternberg Triarchic", "year": 1985, "finding": "Practical intelligence = applying knowledge to real-world problems. Separate from analytical intelligence.", "effect_size": null, "url": "general_theory", "tier": "B"},
+    {"id": 5, "authors": "Ericsson Deliberate Practice", "year": 1993, "finding": "Expertise via deliberate practice on representative tasks. Wholly practiced scenarios improve; partial practice shows assessment vs action errors.", "effect_size": null, "url": "https://doi.org/10.1518/hfes.45.3.436.27251", "tier": "A"},
+    {"id": 6, "authors": "CRM Simulation", "year": 2014, "finding": "Crisis resource management simulation training transfers to clinical settings, improves patient outcomes.", "effect_size": null, "url": "https://link.springer.com/article/10.1007/s12630-014-0143-8", "tier": "A"},
+    {"id": 7, "authors": "Assessment-Action Pairing", "year": 2023, "finding": "Training should pair recognizing cues with acting. Don't separate in part-task training.", "effect_size": null, "url": "https://doi.org/10.1177/15553434221147415", "tier": "A"},
+    {"id": 8, "authors": "Pattern Recognition SA", "year": 1991, "finding": "Task-relevant cue training → better SA than full environment exposure.", "effect_size": null, "url": "https://doi.org/10.1207/s15327876mp0302_3", "tier": "A"},
+    {"id": 9, "authors": "Anticipation Training", "year": null, "finding": "'What happens next?' training improves anticipatory skills. Video occlusion effective.", "effect_size": null, "url": "https://bura.brunel.ac.uk/bitstream/2438/15186/2/Fulltext.pdf", "tier": "B"},
+    {"id": 10, "authors": "Gobet Templates", "year": 1996, "finding": "Templates: high-level schemas with variable slots. Expert recognition via templates, not raw search.", "effect_size": null, "url": "http://chrest.info/fg/preprints/Gobet-2005-ACP.pdf", "tier": "A"},
+    {"id": 11, "authors": "Automatic Chunking", "year": 2016, "finding": "Automatic chunking: unconscious, continuous, LTM-based. Expertise = many chunks linked to actions.", "effect_size": null, "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2016.00102/full", "tier": "A"},
+    {"id": 12, "authors": "ShadowBox Training", "year": 2025, "finding": "Cognitive task analysis + scenario training for RPD. Expert cue recognition teachable.", "effect_size": null, "url": "https://www.shadowboxtraining.com/news/2025/06/17/a-primer-on-recognition-primed-decision-making-rpd/", "tier": "B"},
+    {"id": 13, "authors": "Error Management Training", "year": null, "finding": "Training with errors + time pressure + uncertainty builds adaptive performance.", "effect_size": null, "url": "https://doi.org/10.1177/15553434221147415", "tier": "B"},
+    {"id": 14, "authors": "80% Solution", "year": null, "finding": "In time-critical situations: 80% solution now > 100% solution never. Training drops to lowest level under pressure.", "effect_size": null, "url": "https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Kalıp Kartı Sistemi",
+      "evidence": "STRONG — RPD + deliberate practice",
+      "protocol": "Her tekrar eden durum: TETİK → TANIMA → EYLEM → ÖN BİLGİ. 5 kart/hafta ekle.",
+      "template": "KALIP: [durum] | TETİK: [kelimeler] | EYLEM: [cümle+hareket] | ÖN BİLGİ: [kaynak]",
+      "time_to_effect": "1 week per pattern",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 2,
+      "name": "Simülasyon / Prova",
+      "evidence": "STRONG — deliberate practice, CRM",
+      "protocol": "Zor durumu evde 10-15 kez prova et. Sesli, kayıt al. Sonra gerçek hayatta uygula.",
+      "time_to_effect": "1 session before event",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 3,
+      "name": "Tam Pratik (Whole Practice)",
+      "evidence": "STRONG — Ericsson pilots study",
+      "protocol": "Durumu TAMAMEN prova et (tanıma + eylem birlikte). Kısmi pratik yetmez.",
+      "time_to_effect": "5-10 full repetitions",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 4,
+      "name": "What Happens Next?",
+      "evidence": "MODERATE — anticipation training",
+      "protocol": "Sohbet/olay akışında: 'Sırada ne gelecek?' tahmin et. Tanıma refleksini güçlendir.",
+      "time_to_effect": "2-3 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 5,
+      "name": "8 Haftalık Pratik Zeka Programı",
+      "evidence": "MODERATE — synthesis of all evidence",
+      "protocol": "Hafta 1-2: Ön yükleme + if-then. Hafta 3-4: İlk ses + katılımcı mod. Hafta 5-6: Simülasyon. Hafta 7-8: Otomatikleşme.",
+      "time_to_effect": "8 weeks",
+      "daily_minutes": 15
+    },
+    {
+      "rank": 6,
+      "name": "Geç Kaldım → Kalıp Döngüsü",
+      "evidence": "MODERATE — error management",
+      "protocol": "Her geç kalma = 1 yeni kalıp kartı. Hata yönetimi ile öğrenme.",
+      "time_to_effect": "Continuous",
+      "daily_minutes": 5
+    }
+  ],
+  "pattern_card_examples": [
+    {"trigger": "aidat, ödendi mi, yönetici", "action": "Bakıyorum— WhatsApp listesinden kontrol ediyorum", "preknowledge": "Liste X grubunda"},
+    {"trigger": "arıza, bozuk, çalışmıyor", "action": "Yönetime yazılmış mı bakayım", "preknowledge": "Son arıza mesajları"},
+    {"trigger": "ne dersin, sen ne yapardın", "action": "İlk aklıma gelen şu—", "preknowledge": "Konunun 1 cümle özeti"},
+    {"trigger": "garson, sipariş, hesap", "action": "Bakabilir misiniz?", "preknowledge": "Garson geçiş saati"},
+    {"trigger": "oyun başladı, rakip", "action": "İlk hamle — düşünmeden hareket", "preknowledge": "Harita + son meta"}
+  ],
+  "eight_week_program": {
+    "week_1_2": "Ön yükleme sistemi + 3 if-then/gün + kalıp kartı başlat",
+    "week_3_4": "1 sn kuralı + katılımcı mod + 3x ilk ben/gün",
+    "week_5_6": "Soru simülasyonu 10 tekrar/gün + sosyal exposure",
+    "week_7_8": "Birleştir: hazırlık + refleks + kalıp otomatik"
+  },
+  "daily_protocol": {
+    "morning": "3 if-then + bugünkü ortam ön yükleme + 1 kalıp kartı gözden geçir",
+    "during_day": "1 sn kuralı + katılımcı mod + kalıp uygula",
+    "evening": "Geç kaldım defteri → yeni kalıp kartı + simülasyon 10 tekrar"
+  },
+  "metrics": {
+    "weekly": [
+      "İlk cevap veren sen oldun mu (hedef: artış)",
+      "Kalıp kartı sayısı",
+      "Simülasyon tekrar sayısı",
+      "Seviye 0 anları (hedef: azalma)"
+    ]
+  },
+  "interactions": {
+    "is_outcome_of": ["S01", "S02", "S03", "S05", "S06", "S07", "S08"],
+    "note": "Pratik zeka = sistem kurulduğunda ortaya çıkar. Doğuştan değil, antrenmanla."
+  }
+}

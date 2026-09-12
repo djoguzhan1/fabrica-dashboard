@@ -1,0 +1,134 @@
+{
+  "id": "S02",
+  "name": "Bilgi Eksikliği / Ön Hazırlık Yokluğu",
+  "name_en": "Knowledge Gaps / Lack of Prior Preparation",
+  "severity_in_profile": "PRIMARY_ROOT",
+  "definition": "Canlı ortama girerken konuya, bağlama veya '2'den 1'ini' (tanıma + yol/cevap) bilmeden girmek. Olay gelince sıfırdan düşünmek zorunda kalma.",
+  "symptoms": [
+    "Aidat soruldu, liste nerede bilmiyorsun",
+    "Sohbete girerken konuyu bilmiyorsun",
+    "Ders anlatımında çerçeve yok",
+    "Oyunda harita/meta eksik",
+    "Her alanda 'ilk kez duyuyorum' hissi"
+  ],
+  "mechanisms": {
+    "primary": "Missing schema / mental model — working memory must encode from scratch",
+    "secondary": [
+      "No advance organizer activation (Ausubel, 1960)",
+      "No recognition-primed patterns (Klein, 1985)",
+      "Domain knowledge deficit increases processing time (SciDirect)",
+      "Observer mode instead of participant mode (Endsley SA Level 1 failure)",
+      "Chunking not established — each element processed individually (Miller, 1956)"
+    ],
+    "key_insight": "2'den 1'i yeterli: Tanıma (bu ne tür durum) VEYA Yol (nereden bakılır) VEYA Cevap"
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Ausubel", "year": 1960, "finding": "Advance organizers: relevant subsuming concepts introduced BEFORE learning. Activates schema, reduces WM load, improves recall.", "effect_size": "significant recall improvement", "url": "https://link.springer.com/article/10.1007/BF01322394", "tier": "A"},
+    {"id": 2, "authors": "Wetzels et al.", "year": "in press", "finding": "Prior knowledge activation effectiveness depends on learner level. Mobilisation (broad) for novices; perspective-taking (schema) for advanced.", "effect_size": null, "url": "https://research.ou.nl/ws/files/1025109/Preprint%20article%20study%202%20Wetzels%20et%20al.%20_in%20press_.pdf", "tier": "A"},
+    {"id": 3, "authors": "Shirah & Sidney", "year": 2023, "finding": "Relevant prior knowledge activation via warm-up videos → better learning than irrelevant activation.", "effect_size": null, "url": "https://link.springer.com/article/10.1007/s11251-025-09727-6", "tier": "A"},
+    {"id": 4, "authors": "Simonsmeier et al.", "year": 2022, "finding": "Activating SOME relevant knowledge (not all) prepares students for instruction. Benefits all prior knowledge levels.", "effect_size": null, "url": "https://link.springer.com/article/10.1007/s11251-025-09727-6", "tier": "A"},
+    {"id": 5, "authors": "Kalyuga et al.", "year": 2014, "finding": "Pre-training reduces intrinsic cognitive load for novices. Adaptive pre-training based on prior knowledge level.", "effect_size": null, "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1628047/full", "tier": "A"},
+    {"id": 6, "authors": "Endsley", "year": 1995, "finding": "Situation Awareness: mental models help overcome WM limits. SA = perception + comprehension + projection.", "effect_size": "SA predicts performance", "url": "https://doi.org/10.1518/001872095779049543", "tier": "A"},
+    {"id": 7, "authors": "Klein (RPD)", "year": 1985, "finding": "Experts act fast because pattern is pre-loaded in LTM. Recognition → action without deliberation. Experience = pattern library.", "effect_size": "80% RPD", "url": "https://doi.org/10.1518/155534310x12844000801203", "tier": "A"},
+    {"id": 8, "authors": "Fadde", "year": 2007, "finding": "Recognition training can hasten expertise. Deliberate practice on recognition skills, not just knowledge accumulation.", "effect_size": null, "url": "https://doi.org/10.1007/s11423-007-9046-5", "tier": "A"},
+    {"id": 9, "authors": "Domain Knowledge (SciDirect)", "year": null, "finding": "Rich domain knowledge: increases processing speed, enables chunking, reduces need for strategy activation.", "effect_size": null, "url": "https://www.sciencedirect.com/topics/psychology/domain-knowledge", "tier": "A"},
+    {"id": 10, "authors": "Ericsson & Kintsch", "year": 1995, "finding": "Long-term working memory: experts acquire domain-specific skills to expand WM by storing info in LTM in accessible form.", "effect_size": null, "url": "https://jimdavies.org/summaries/ericsson1995.html", "tier": "A"},
+    {"id": 11, "authors": "Gobet & Simon", "year": 1996, "finding": "Template theory: experts have high-level schemas with variable slots. ~50,000 chunks for chess master level.", "effect_size": null, "url": "http://chrest.info/fg/preprints/Gobet-2005-ACP.pdf", "tier": "A"},
+    {"id": 12, "authors": "Kass et al.", "year": 1991, "finding": "Training SA through pattern recognition: task-relevant cues only → better performance than full environment training.", "effect_size": null, "url": "https://doi.org/10.1207/s15327876mp0302_3", "tier": "A"},
+    {"id": 13, "authors": "O'Brien & O'Hare", "year": 2007, "finding": "SA ability + cognitive skills training in complex real-world tasks improves performance.", "effect_size": null, "url": "https://journals.sagepub.com/doi/10.1177/1541931213571275", "tier": "B"},
+    {"id": 14, "authors": "Mayer & Pilegard", "year": 2014, "finding": "Supplying relevant prior knowledge eases processing. Pre-training particularly beneficial for low prior knowledge learners.", "effect_size": null, "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1628047/full", "tier": "A"},
+    {"id": 15, "authors": "Glogger-Frey et al.", "year": 2022, "finding": "Prior knowledge activation mitigates extraneous cognitive load and optimizes learning efficiency.", "effect_size": null, "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1628047/full", "tier": "A"},
+    {"id": 16, "authors": "Kalyuga", "year": 2013, "finding": "Categorical framework pre-training helps overcome incorrect prior knowledge. Reduces cognitive overload.", "effect_size": null, "url": "https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2014.00664/full", "tier": "B"},
+    {"id": 17, "authors": "Ward et al.", "year": 2008, "finding": "Perceptual-cognitive skills trainable: situation awareness, anticipatory skills. Video occlusion, guided discovery effective.", "effect_size": null, "url": "https://journals.sagepub.com/doi/10.1177/1541931213571275", "tier": "B"},
+    {"id": 18, "authors": "Video SA Training (Surgery)", "year": 2023, "finding": "SA training (perceive → recognize → predict) reduces errors and improves performance. Randomized controlled trial.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10234874/", "tier": "A"},
+    {"id": 19, "authors": "Gollwitzer", "year": 1999, "finding": "II pre-loads cue-response in memory BEFORE event. Mental representation of situation becomes highly accessible.", "effect_size": "d=0.65", "url": "https://bpb-us-e1.wpmucdn.com/wp.nyu.edu/dist/c/6235/files/2019/02/gollwitzer-1999-implementation-intentions.pdf", "tier": "A"},
+    {"id": 20, "authors": "Prospective Memory (PLOS)", "year": 2022, "finding": "Including situational cues in thought about intended actions increases implementation success via S-R learning.", "effect_size": null, "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0264342", "tier": "A"},
+    {"id": 21, "authors": "Ericsson (Deliberate Practice)", "year": 1993, "finding": "Deliberate practice improves performance for WHOLLY practiced scenarios. Part-practiced: assessment errors vs action errors.", "effect_size": null, "url": "https://doi.org/10.1518/hfes.45.3.436.27251", "tier": "A"},
+    {"id": 22, "authors": "Schema (ASIS)", "year": 2022, "finding": "Schema help orient faster and decide best response. More comprehensive schema = greater expertise. OODA loop.", "effect_size": null, "url": "https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/", "tier": "B"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "5 Dakikalık Ön Yükleme",
+      "evidence": "STRONG — advance organizers, prior knowledge activation",
+      "protocol": "Her ortama girmeden: son 10 mesaj/duyuru oku, açık konuları not et, 2'den 1'ini kontrol et (tanıma + yol)",
+      "domains": {
+        "site_grup": "Aidat durumu, liste nerede, son duyurular (1 dk)",
+        "ders": "Konu başlığı, 3 anahtar kelime, 1 şema (2 dk)",
+        "sosyal": "Kimler, muhtemel konular, 1 hazır cümle (1 dk)",
+        "oyun": "Harita, meta, 1 taktik (1 dk)"
+      },
+      "time_to_effect": "Immediate",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 2,
+      "name": "Kalıp Kartları",
+      "evidence": "STRONG — RPD, recognition training",
+      "protocol": "Tekrar eden durumlar için: TETİK → EYLEM → ÖN BİLGİ. Ör: 'Aidat soruldu → WhatsApp listesine bak → Liste X grubunda'",
+      "time_to_effect": "1 week per pattern, 2 weeks for 5 patterns",
+      "daily_minutes": 3
+    },
+    {
+      "rank": 3,
+      "name": "2'den 1'i Kuralı",
+      "evidence": "STRONG — recognition level sufficient",
+      "protocol": "Her konu için: (A) Cevabı biliyorum VEYA (B) Yolu biliyorum. Biri yoksa → 30 sn hazırlık.",
+      "time_to_effect": "Immediate check",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 4,
+      "name": "Sohbet Radarı",
+      "evidence": "MODERATE — SA Level 3 (projection)",
+      "protocol": "Sohbet ederken iç ses: 'Bundan sonra ne sorulacak?' Aidat denildi → 'Kim ödedi?' gelir.",
+      "time_to_effect": "2-3 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 5,
+      "name": "Geç Kaldım Defteri → Kalıp",
+      "evidence": "MODERATE — deliberate practice, error management",
+      "protocol": "Akşam: hangi bilgi eksikti? → yarın için kalıp kartı ekle.",
+      "time_to_effect": "1 week cycles",
+      "daily_minutes": 5
+    },
+    {
+      "rank": 6,
+      "name": "Domain Mini-Şemalar",
+      "evidence": "STRONG — chunking, schema theory",
+      "protocol": "Her alan için 1 sayfa şema: ana kavramlar, bağlantılar, 'ne zaman ne yapılır'",
+      "time_to_effect": "2-4 weeks per domain",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 7,
+      "name": "If-Then + Ön Bilgi Birleşimi",
+      "evidence": "STRONG — II + prior knowledge",
+      "protocol": "If-then plan yazarken ön bilgiyi de ekle: 'Aidat sorulursa → liste WhatsApp X'te → bakıyorum'",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 5
+    }
+  ],
+  "knowledge_levels": {
+    "level_0": {"name": "Hiçbiri", "description": "Ne olduğunu bilmiyorum, ne yapacağımı bilmiyorum", "result": "Donma, geç kalma"},
+    "level_1": {"name": "2'den 1'i (minimum)", "description": "Tanıyorum VEYA yolu biliyorum", "result": "'Bakıyorum—' deyip hareket"},
+    "level_2": {"name": "İkisi de", "description": "Tanıyorum + yol/cevap", "result": "İlk sen konuşursun"}
+  },
+  "daily_protocol": {
+    "before_each_context": "30-60 sn tarama: son mesajlar, açık konular, 2'den 1'i kontrol",
+    "morning": "Bugünkü ortamları listele + her biri için mini ön yükleme planı",
+    "evening": "Hangi bilgi eksikti? → 1 kalıp kartı ekle"
+  },
+  "metrics": {
+    "weekly": [
+      "Kaç ortama ön yükleme yaptın / kaç ortama girdin (hedef: >80%)",
+      "Kaç kez Seviye 0'da kaldın (hedef: azalma)",
+      "Kalıp kartı sayısı (hedef: +1/hafta)"
+    ]
+  },
+  "interactions": {
+    "reduces": ["S01_ASIRI_DUSUNME", "S06_GEC_FARK_ETME", "S09_TANIMA_REFLEKSI"],
+    "note": "Bilgi eksikliği düşünmeyi tetikler. Ön yükleme = en hızlı kazanım."
+  }
+}

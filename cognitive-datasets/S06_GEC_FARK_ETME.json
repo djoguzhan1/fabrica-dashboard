@@ -1,0 +1,105 @@
+{
+  "id": "S06",
+  "name": "Geç Fark Etme / Gözlemci Mod",
+  "name_en": "Late Recognition / Observer Mode",
+  "severity_in_profile": "SECONDARY",
+  "definition": "Anlık olayları geç fark etme. Gözlemci modda kalma; katılımcı moda geçememe. 'Hızlı ama anlık geç anlarım.'",
+  "symptoms": [
+    "Garsonu başkası fark ediyor",
+    "Oyun anını kaçırma",
+    "Sohbet akışını geç takip",
+    "Tune-out / absentminded",
+    "Olay bitince 'aa öyle mi' deme"
+  ],
+  "mechanisms": {
+    "primary": "SA Level 1 failure — perception of key elements delayed",
+    "secondary": [
+      "Observer vs participant mode (default = observer)",
+      "Attention not in the moment — internal dialogue",
+      "No anticipatory processing (SA Level 3 projection missing)",
+      "Passive habit: wait for others to act",
+      "Inattention / mind-wandering"
+    ]
+  },
+  "research_sources": [
+    {"id": 1, "authors": "Endsley SA Model", "year": 1995, "finding": "SA 3 levels: (1) Perception (2) Comprehension (3) Projection. Failure at Level 1 = miss the moment.", "effect_size": null, "url": "https://doi.org/10.1518/001872095779049543", "tier": "A"},
+    {"id": 2, "authors": "Kass et al.", "year": 1991, "finding": "Pattern recognition training with task-relevant cues only → better SA in realistic test.", "effect_size": null, "url": "https://doi.org/10.1207/s15327876mp0302_3", "tier": "A"},
+    {"id": 3, "authors": "Surgical SA Training", "year": 2023, "finding": "SA training (perceive→recognize→predict) improves performance, reduces errors. RCT.", "effect_size": null, "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10234874/", "tier": "A"},
+    {"id": 4, "authors": "Anticipation Training (Sport)", "year": null, "finding": "Video occlusion, guided discovery, 'what happens next?' questions improve anticipatory skills.", "effect_size": null, "url": "https://bura.brunel.ac.uk/bitstream/2438/15186/2/Fulltext.pdf", "tier": "B"},
+    {"id": 5, "authors": "McKenna et al.", "year": 2006, "finding": "Anticipation training affects driver risk-taking. Perceptual training generalizes to behavior.", "effect_size": null, "url": "https://journals.sagepub.com/doi/10.1177/1541931213571275", "tier": "B"},
+    {"id": 6, "authors": "Prospective Memory Learning", "year": 2022, "finding": "Repeated PM performance: cue detection increases, task interference eliminated. Habitual PM needs less resources.", "effect_size": null, "url": "https://doi.org/10.3758/s13423-022-02214-w", "tier": "A"},
+    {"id": 7, "authors": "Habitual PM", "year": 2022, "finding": "63 repetitions: cue detection up, cue interference eliminated. Resource-demanding processes diminish with repetition.", "effect_size": null, "url": "https://link.springer.com/article/10.3758/s13423-022-02214-w", "tier": "A"},
+    {"id": 8, "authors": "Cue Selection Study", "year": 2020, "finding": "Effective cues: visible at right time, distinctive, related objects at hand. Prior experience influences selection.", "effect_size": null, "url": "https://doi.org/10.1186/s40359-020-0394-9", "tier": "B"},
+    {"id": 9, "authors": "Braaten SPS symptoms", "year": 2014, "finding": "Slow processing: absentminded, tunes out, starts strong then wanders, needs extra time.", "effect_size": null, "url": "https://ian.guilfordpub.com/excerpts/braaten3.pdf", "tier": "B"},
+    {"id": 10, "authors": "Participant Mode Training", "year": null, "finding": "10 min deliberate participant mode per conversation: 'What would I add?' Minimum 1 interjection.", "effect_size": null, "url": "internal_protocol", "tier": "C"},
+    {"id": 11, "authors": "OODA Loop", "year": null, "finding": "Fast actors complete Orient before event. Pre-orientation via schema = see event 0.5s early.", "effect_size": null, "url": "https://www.asisonline.org/security-management-magazine/articles/2022/09/how-to-improve-your-situational-awareness/", "tier": "B"},
+    {"id": 12, "authors": "First Mover Training", "year": null, "finding": "Daily 3 micro 'first me' actions build initiation reflex. Elevator, queue, hello.", "effect_size": null, "url": "internal_protocol", "tier": "C"}
+  ],
+  "solutions": [
+    {
+      "rank": 1,
+      "name": "Katılımcı Mod (Bilinçli)",
+      "evidence": "MODERATE — SA training principle",
+      "protocol": "Her sohbette 10 dk KATILIMCI mod: 'Buna ne eklerim?' En az 1 araya gir. Gözlemci = varsayılan, katılımcı = seçim.",
+      "time_to_effect": "2-3 weeks",
+      "daily_minutes": 10
+    },
+    {
+      "rank": 2,
+      "name": "Sohbet Radarı / Projeksiyon",
+      "evidence": "MODERATE — SA Level 3",
+      "protocol": "İç ses: 'Bundan sonra ne sorulacak?' Aidat → 'Kim ödedi?' gelir. 0.5 sn erken hazır ol.",
+      "time_to_effect": "1-2 weeks",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 3,
+      "name": "İlk Ben Antrenmanı",
+      "evidence": "MODERATE — habit formation",
+      "protocol": "Günde 3 mikro: asansör düğmesi, sıra, merhaba. İlk hareket eden = sen.",
+      "time_to_effect": "2 weeks",
+      "daily_minutes": 2
+    },
+    {
+      "rank": 4,
+      "name": "Ön Yükleme (S02)",
+      "evidence": "STRONG — SA preparation",
+      "protocol": "Ortama girmeden 30-60 sn tarama. Olay gelmeden şema aktif.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 1
+    },
+    {
+      "rank": 5,
+      "name": "Dikkat Çapası",
+      "evidence": "MODERATE — cue salience",
+      "protocol": "Sohbette 1 fiziksel çapa: telefonu elinde tut, not defteri aç. Dışa odak sinyali.",
+      "time_to_effect": "Immediate",
+      "daily_minutes": 0
+    },
+    {
+      "rank": 6,
+      "name": "Tekrar = Otomatik Fark Etme",
+      "evidence": "STRONG — habitual PM research",
+      "protocol": "Aynı ortam/konu tekrarlandığında cue detection artar. Kalıp kartları + tekrar.",
+      "time_to_effect": "3-5 repetitions per context",
+      "daily_minutes": 0
+    }
+  ],
+  "modes": {
+    "observer": {"behavior": "Dinle, izle, sonra düşün", "result": "Geç kalma"},
+    "participant": {"behavior": "Takip et, tahmin et, araya gir", "result": "Hazır olma"}
+  },
+  "daily_protocol": {
+    "before_context": "30 sn ön yükleme + katılımcı mod niyeti",
+    "during": "Sohbet radarı aktif; min 1 araya giriş",
+    "micro_actions": "3x 'ilk ben' günde"
+  },
+  "metrics": {
+    "weekly": ["Kaç kez geç fark ettin", "Kaç kez katılımcı modda kaldın", "İlk ben sayısı"]
+  },
+  "interactions": {
+    "caused_by": ["S02_BILGI_EKSIKLIGI", "S03_YAVAS_ISLEM_HIZI"],
+    "causes": ["S07_EYLEM_BASLATMA"],
+    "note": "Geç fark etme → geç hareket. Ön yükleme + katılımcı mod = en hızlı düzeltme."
+  }
+}
