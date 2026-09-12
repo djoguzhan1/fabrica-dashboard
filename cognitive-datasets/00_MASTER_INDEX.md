@@ -71,6 +71,7 @@ AKŞAM (5 dk)
 
 ## DOSYA YAPISI
 
+### Araştırma (JSON)
 Her JSON dosyası şunları içerir:
 - `problem`: Tanım, belirtiler, mekanizma
 - `research_sources[]`: Kaynak, bulgu, etki büyüklüğü, URL
@@ -78,3 +79,18 @@ Her JSON dosyası şunları içerir:
 - `daily_protocol`: Günlük rutin
 - `metrics`: Ölçüm
 - `interactions`: Diğer sorunlarla ilişki
+
+### Uygulama (Markdown) — hangi dosyayı oku?
+
+| Dosya | Ne için |
+|-------|---------|
+| `30_TEMEL_OTORITER.md` | Zorunlu temel: 5 kural, 12 dk/gün |
+| `31_TEMEL_PRO_OTORITER.md` | PRO katman: +6 kural, 40 dk/gün, 30 gün |
+| `32_OTORITE_BASLANGIC.md` | Hangi seviyeden başla |
+| `33_TEMEL_PRO_20_GUN.md` | 20 gün sıkıştırılmış özet |
+| **`34_TEMEL_PRO_20_GUN_TAM_DETAY.md`** | **20 gün eksiksiz gün-gün program (BAŞLA BURADAN)** |
+| `20_MAX_SPEED_30_DAY_SPRINT.md` | 30 gün alternatif sprint |
+| `21_DAILY_CHECKLIST.md` | Günlük tik listesi |
+| `22_KALIP_KARTLARI.md` | 15 hazır kalıp kartı |
+| `23_IF_THEN_BANKA.md` | 22 hazır if-then planı |
+| `10_COMBINED_SOLUTIONS.md` | Tüm çözümler birleşik rehber |
