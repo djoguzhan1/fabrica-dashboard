@@ -95,6 +95,8 @@ Project Catalog versions: "You will get your WordPress bug or speed problem fixe
 
 ## Notes from your screenshots (not profile copy)
 
+Field-by-field paste text for every remaining section (employment, education, 4 portfolio items, video script, Project Catalog listings) plus upload-ready images: [upwork-profile-fill-pack.md](./upwork-profile-fill-pack.md).
+
 Fixes visible in the Upwork screenshots you attached, in order of impact:
 
 1. Title and overview are currently in Turkish ("Web ve Yazilim Gelistirme"). Replace with Section A and Section B.
