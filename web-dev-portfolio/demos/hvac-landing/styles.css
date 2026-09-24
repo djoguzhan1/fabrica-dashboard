@@ -67,7 +67,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .section { padding-block: clamp(3.5rem, 7vw, 6rem); }
 .section-head { max-width: 42rem; margin-bottom: clamp(2rem, 4vw, 3rem); }
 .section-head.center { margin-inline: auto; text-align: center; }
-.section-head p { font-size: 1.125rem; color: var(--muted); margin: 0; }
+.section-head p:not(.eyebrow) { font-size: 1.125rem; color: var(--muted); margin: 0; }
 .eyebrow { display: inline-flex; align-items: center; gap: .5rem; font-size: .8125rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); margin-bottom: 1rem; }
 .eyebrow::before { content: ""; width: 1.5rem; height: 2px; background: var(--accent); border-radius: 2px; }
 .section-head.center .eyebrow::before { display: none; }
