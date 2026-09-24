@@ -1,0 +1,44 @@
+# One-click publish of web-dev-portfolio/ to djoguzhan1/web-dev-portfolio (GitHub Pages).
+#
+# Setup (once):
+# 1. Create a fine-grained PAT on GitHub with Contents read/write on web-dev-portfolio only.
+# 2. In fabrica-dashboard → Settings → Secrets → Actions, add WEB_DEV_PORTFOLIO_PAT.
+# 3. Run this workflow from the Actions tab (workflow_dispatch).
+#
+# After a successful run, the live URLs are:
+#   https://djoguzhan1.github.io/web-dev-portfolio/
+#   https://djoguzhan1.github.io/web-dev-portfolio/demos/hvac-landing/
+#   https://djoguzhan1.github.io/web-dev-portfolio/demos/plumbing-landing/
+
+name: Publish web-dev-portfolio to GitHub Pages
+
+on:
+  workflow_dispatch:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: cursor/demo-upgrade-5f90
+
+      - name: Validate secret
+        run: |
+          if [ -z "${{ secrets.WEB_DEV_PORTFOLIO_PAT }}" ]; then
+            echo "::error::Add repository secret WEB_DEV_PORTFOLIO_PAT (PAT with write access to djoguzhan1/web-dev-portfolio)."
+            exit 1
+          fi
+
+      - name: Push site to web-dev-portfolio (master)
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB_SECRETS: ${{ secrets.WEB_DEV_PORTFOLIO_PAT }}
+        with:
+          source-directory: web-dev-portfolio
+          destination-github-username: djoguzhan1
+          destination-repository-name: web-dev-portfolio
+          user-email: github-actions[bot]@users.noreply.github.com
+          user-name: github-actions[bot]
+          target-branch: master
