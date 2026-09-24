@@ -286,6 +286,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 
 /* Service area */
 .area-grid { display: grid; gap: 2rem; align-items: start; }
+.area-grid > * { min-width: 0; }
 .city-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: .45rem 1.5rem; margin: 1.25rem 0 1.75rem; }
 .city-list li { display: flex; align-items: center; gap: .5rem; color: #fff; font-weight: 500; }
 .city-list .ic { color: var(--yellow); width: 1rem; height: 1rem; }
