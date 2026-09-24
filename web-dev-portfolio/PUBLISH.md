@@ -1,5 +1,7 @@
 # web-dev-portfolio yayınlama notu
 
+**Kalıcı linkler (Upwork / profil):** [LIVE-LINKS.md](LIVE-LINKS.md) ve [links.json](links.json).
+
 Bu klasör, `djoguzhan1/web-dev-portfolio` deposunun kök dizini ile aynı yapıdadır.
 Ajanın o depoya yazma yetkisi olmadığı için (push 403 aldı) dosyalar burada tutuldu.
 Yayına almak için klasörün içeriğini o deponun köküne kopyalayıp push etmek yeterli.
