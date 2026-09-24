@@ -8,9 +8,9 @@ Yayınlandığında **asıl** adresler bunlar. Kod hazır; `web-dev-portfolio` r
 
 | Sayfa | Kalıcı URL |
 | --- | --- |
-| Ana sayfa (hub) | https://djoguzhan1.github.io/web-dev-portfolio/ |
-| CoolAir HVAC demo | https://djoguzhan1.github.io/web-dev-portfolio/demos/hvac-landing/ |
-| ProFix Plumbing demo | https://djoguzhan1.github.io/web-dev-portfolio/demos/plumbing-landing/ |
+| Ana sayfa (hub) | https://djoguzhan1.github.io/oguzehan-salatan/ |
+| CoolAir HVAC demo | https://djoguzhan1.github.io/oguzehan-salatan/demos/hvac-landing/ |
+| ProFix Plumbing demo | https://djoguzhan1.github.io/oguzehan-salatan/demos/plumbing-landing/ |
 
 **Yayın:** `fabrica-dashboard` → Actions → **Publish web-dev-portfolio to GitHub Pages** (secret `WEB_DEV_PORTFOLIO_PAT`) veya Cursor uygulamasına `web-dev-portfolio` yazma izni ver. Adımlar: `PUBLISH.md`.
 
@@ -46,9 +46,9 @@ Hub içinden demo linkleri klasör URL’si kullanır; GitHub Pages’te sorunsu
 ## Kopyala-yapıştır (tek satır)
 
 ```
-Hub:     https://djoguzhan1.github.io/web-dev-portfolio/
-HVAC:    https://djoguzhan1.github.io/web-dev-portfolio/demos/hvac-landing/
-Plumbing: https://djoguzhan1.github.io/web-dev-portfolio/demos/plumbing-landing/
+Hub:     https://djoguzhan1.github.io/oguzehan-salatan/
+HVAC:    https://djoguzhan1.github.io/oguzehan-salatan/demos/hvac-landing/
+Plumbing: https://djoguzhan1.github.io/oguzehan-salatan/demos/plumbing-landing/
 ```
 
 Pages açıkken `fabrica-dashboard` yolunu kullanacaksan `web-dev-portfolio` → `fabrica-dashboard` ile değiştir.

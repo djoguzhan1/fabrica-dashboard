@@ -37,7 +37,7 @@ git commit -m "Rebuild demos and portfolio hub"
 git push origin master
 ```
 
-GitHub Pages 1–2 dakika içinde günceller: <https://djoguzhan1.github.io/web-dev-portfolio/>
+GitHub Pages 1–2 dakika içinde günceller: <https://djoguzhan1.github.io/oguzehan-salatan/>
 
 ## Yol 2 — Ajan push etsin
 
