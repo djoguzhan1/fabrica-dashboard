@@ -56,6 +56,7 @@ Kalan ~%4–5 riskin çoğu **korelasyonlu** risktir (tüm teklifleri aynı anda
 | Connects harcaması | ~450 | ~440 | ~430 | ~1.320 (≈ $200) |
 
 Bütçe (Varsayım): Freelancer Plus $19,99 (100 Connects dahil) + ~1.200 Connects satın alma (≈ $180) + Availability Badge (~20 Connects/hafta). Toplam ≈ **$200–230**. İlk iş $49–$129 arası gelir; asıl kazanç ilk review'dur.
+Maliyet katmanı için **Ek C** geçerlidir: aynı plan, aynı olasılık, nakit ≈ $120 (Gün 1 verisi doğrularsa ≈ $90).
 
 **Şimdi yap**
 1. Bölüm 1'deki profil yamasını bu gece bitir (90 dk); yama bitmeden teklif gönderme.
@@ -299,6 +300,8 @@ Toplam ≈ 33/gün. Bildirim geldiğinde blok fark etmez: 09:00–01:00 arası w
 İstisna: ilanda "hired 1" veya "interviewing ≥3" görünüyorsa → atla (Connects iade edilmez)
 Boost bid: teklif içgörüleri (Plus) mevcut bid aralığını gösterir → aralığın üst çeyreği, tavan 20
 ```
+
+Ek C uygulanıyorsa bu ağacın boost dalları Ek C'deki "tek ödül boost'u + en fazla 2 koşullu boost" kuralıyla daraltılır; hız ve hacim dalları aynen kalır.
 
 **Şimdi yap**
 1. Freelancer Plus + 400 Connects (ilk satın alımda 50 bonus gelebilir) + Availability Badge (max 20/hafta).
@@ -589,3 +592,72 @@ Not: PageSpeed Insights lab skoru cihaz/ağ koşuluna göre 1–3 puan oynayabil
 5. Şablon kısayolları, fiyat tablosu, interview script'i, takip tablosu.
 6. Opsiyonel 45 dk: Sheets örnek dashboard (görüntüleme linki) → S4 ve portfolyo.
 7. Project Catalog 3 liste (onay 72 saati aşabilir; gönder ve bırak).
+
+## Ek C — Maliyet optimizasyonu (aynı plan, aynı olasılık, düşük nakit)
+
+İlke: Plan (100 teklif, 5 dk SLA, bloklar, şablonlar, fiyatlar, KPI) değişmez. Değişen şey **harcama katmanı**: Connects'i olasılığa katkısı en yüksek yere koy, katkısı düşük yerlerden çek, bedava girişleri sıraya al, satın almayı kademeli yap.
+
+**Neden aynı olasılık?** λ = Σ p_i (beklenen contract sayısı) korunur:
+
+| Değişiklik | λ etkisi |
+| --- | --- |
+| 15–60 dk boost'lu dilim (15 teklif, ~%2) boost'suz kalır (~%1,3) | −0,10 |
+| >60 dk ilanlara teklif kesilir (~5 teklif, ~%0,7) → yerine taze ilan (~%3,5) | +0,14 |
+| "Yerleşik müşteri" ağırlığı (≥1 hire + harcama) tüm tekliflerde p'yi göreli +%10–15 yükseltir | +0,30–0,45 |
+| **Net** | λ: 3,2 → ≥3,3 → P(≥1) ≥ %96 |
+
+**Marjinal Connect verimi (kararın matematiği)**
+
+| Harcama | Connects | p katkısı | pp / Connect |
+| --- | --- | --- | --- |
+| Taze (<5 dk) teklif | 10 | ~4,0 pp | **0,40** |
+| 5–15 dk teklif | 10 | ~2,0 pp | 0,20 |
+| Boost (15–60 dk ilan, +~1 pp) | 18 | ~1,0 pp | 0,06 |
+| >60 dk teklif | 10 | ~0,7 pp | 0,07 |
+
+Sonuç: 18 Connects'lik bir boost yerine ~2 taze teklif, olasılığa 6–7 kat fazla katkı yapar. Boost bütçesi neredeyse tamamen taze teklife döner.
+
+**Revize edilenler**
+
+| # | Plan maddesi | Eski | Yeni | Tasarruf |
+| --- | --- | --- | --- | --- |
+| R1 | Boost (Bölüm 4) | ≤20 boost × 16–20 | **1 ödül boost'u** (ilk boost ücretlenirse Upwork 10 Connects verir; bid ≤12, net ≈2) + en fazla 2 koşullu boost (skor 7 + Plus içgörüsünde ilk-4 eşiği ≤10) | ~320 Connects |
+| R2 | Teklif başına Connects | ~10 ort., sınır yok | İlanda yazan Connects **≤8 tercih, >12 atla** (skor ≥6 hariç) | ~200 Connects |
+| R3 | >60 dk ilan (Bölüm 4 ağacı) | Tier-1 tam eşleşme ise gönder | **Gönderme** (davet hariç) | ~50 Connects |
+| R4 | Satın alma | Gün 0'da 400 + gerektiğinde | **Kademeli**: Gün 0 Plus (100 + 50 bonus, Varsayım: uygunluk) + 150 satın; her gece bakiye <120 ise 150 al; ilk fonlanmış contract'tan sonra alım durur, kalan bakiyeyle 10 teklif/gün "sürdürme modu" | Beklenen nakit düşer (contract Gün 2'de gelirse Gün 3 alımı yok) |
+| R5 | Availability Badge | max 20/hafta | max 10/hafta (davet = 0 Connects kanalı, kapatma) | ~10 Connects |
+| R6 | Müşteri filtresi (Bölüm 2) | Payment verified zorunlu, ≥1 hire tercih | **Yerleşik müşteri +2 puan** (hem hire olasılığı yüksek hem interview'a dönüşürse Upwork teklif Connects'ini iade edip üstüne ekleyebilir) | Dolaylı: başarıya giden yolun kendi maliyetini geri ödemesi |
+| R7 | Gün 0 sırası (Ek B) | Önce satın al | **Önce bedava**: onboarding görevleri (profil kurulumu, kimlik doğrulama, nasıl-yapılır videoları) Connects verir → bakiyeyi gör → sonra Plus/alım | ~20 Connects (Varsayım) |
+
+**Eklenenler**
+
+| # | Ekleme | Kural |
+| --- | --- | --- |
+| E1 | **EV skoru** (her ilan, 20 sn) | <5 dk +2 · 5–15 dk +1 · Tier-1 +1 · yerleşik müşteri (≥1 hire ve harcama) +2 · <5 teklif +1 · Connects ≤8 +1 → **≥4 gönder**, 3 = yalnızca Tier-1, <3 atla. Hacim koruması: 20:00 GMT+3'te günlük hedefin %60'ı altındaysa eşik 3'e iner (plan hedefi tasarruftan önce gelir) |
+| E2 | **0-Connects kanalları** | Davetler (Badge + başlık anahtar kelimeleri + davete ≤5 dk yanıt) · Project Catalog (Gün 0'da gönder; onaylanırsa sipariş 0 Connects) · cevaplı thread'lerde 24h/48h follow-up (mesaj 0 Connects — en ucuz dönüşüm kolu) · Uma shortlist (profil uygunluğu, bedava) |
+| E3 | **İade takibi** | Takip tablosuna "İade" sütunu: müşteri ilanı hire'sız kapatırsa Connects otomatik iade; yerleşik müşteriyle interview'da iade + ödül gelebilir. Gerçekleşen maliyet nominalin ~%10–20 altı (Varsayım) |
+| E4 | **18 Connects testi** | ≥3 teklif ve ≥54 Connects harcamada Upwork bazı hesaplara 18 Connects verir (ayda 2 kez, test) — otomatik; Gün 1'de zaten tetiklenir |
+| E5 | **Plus kararı** | Plus $19,99 = 100 Connects ($15 değer) + 50 bonus (uygunsa) + anlık bildirim + bid içgörüsü → fiilen ≤$5 prim; **kal**, ama yenileme öncesi iptal hatırlatıcısı koy. Bonus için uygun değilsen ve ücretsiz bildirim aracı ≤2 dk gecikmeyle çalışıyorsa Plus'sız da aynı maliyet |
+| E6 | **Seviye 2 (veriye bağlı)** | Gün 1 sonu: cevap ≥%8 **ve** görüntülenme ≥%45 ise filtreli p ≈ %4 doğrulanmış sayılır → 72 saat hedefi 75 teklife iner (P aynı: 1 − 0,96^75 ≈ %95). Değilse 100'de kal |
+
+**Bütçe: önce / sonra**
+
+| Kalem | Plan (nominal) | Ek C Seviye 1 (n=100) | Ek C Seviye 2 (n=75) |
+| --- | --- | --- | --- |
+| Teklif Connects | 100 × 10 = 1.000 | 100 × 8 = 800 | 75 × 8 = 600 |
+| Boost | 20 × 18 = 360 | 1 ödül + ≤2 koşullu ≈ 36 (net ~26) | ≈ 36 |
+| Badge | 20 | 10 | 10 |
+| **Nominal ihtiyaç** | ~1.320–1.380 | **~850** | **~650** |
+| Bedava giriş | Plus 100 | Plus 100 + bonus 50 + onboarding ~20 = 170 | 170 |
+| Satın alınacak | ~1.220 (≈$183) | ~680 (≈$102) | ~480 (≈$72) |
+| Plus | $19,99 | $19,99 | $19,99 |
+| **Nakit** | **≈ $203** | **≈ $122 (−40%)** | **≈ $92 (−55%)** |
+| İadeler sonrası gerçekleşen (Varsayım) | – | ≈ $105 | ≈ $78 |
+| Kademeli alım + erken contract | – | beklenen ≈ $90–110 | ≈ $70–85 |
+
+**Değişmeyenler:** 100 teklif hedefi (Seviye 2 yalnızca Gün 1 verisiyle açılır), 5 dk SLA, blok saatleri, şablonlar, trust stack, fiyat tablosu, milestone yapısı, interview script'i, KPI eşikleri, Gün 1 sonu katman teşhisi.
+
+**Şimdi yap**
+1. Ek B'nin sırasını değiştir: önce onboarding görevleri → bakiye → Plus → 150 Connects; Badge max 10.
+2. Karar ağacına EV skorunu ekle; boost'u "1 ödül + ≤2 koşullu" ile sınırla; >60 dk ilanları kapat.
+3. Takip tablosuna "Skor", "İade" sütunlarını ekle; Gün 1 sonunda E6 kontrolünü yap.
