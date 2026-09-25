@@ -1,0 +1,18 @@
+{
+  "note": "Open each URL in your main Upwork session (logged in). Apply UI filters: Newest, Last 24 hours, Payment verified, $20–1000, Proposals Less than 5 + 5 to 10, Entry + Intermediate. Then run extract-tiles in console.",
+  "base": "https://www.upwork.com/nx/search/jobs/",
+  "queries": [
+    { "id": "Q1", "tier": 1, "q": "wordpress AND (broken OR \"not working\" OR error OR \"white screen\" OR \"critical error\" OR conflict OR bug) NOT woocommerce" },
+    { "id": "Q2", "tier": 1, "q": "wordpress AND (slow OR speed OR \"page speed\" OR pagespeed OR \"core web vitals\" OR gtmetrix OR lighthouse)" },
+    { "id": "Q3", "tier": 1, "q": "elementor AND (fix OR broken OR mobile OR responsive OR \"not working\")" },
+    { "id": "Q4", "tier": 1, "q": "\"landing page\" AND (hvac OR plumbing OR plumber OR roofing OR electrician OR contractor OR \"home services\" OR cleaning OR landscaping OR locksmith)" },
+    { "id": "Q5", "tier": 1, "q": "(\"landing page\" OR \"one page website\" OR \"one-page website\" OR \"single page website\") AND (\"small business\" OR local OR \"google ads\" OR leads)" },
+    { "id": "Q6", "tier": 1, "q": "(\"small business website\" OR \"simple website\" OR \"basic website\" OR \"5 page website\" OR \"3 page website\") NOT (shopify OR react OR app)" },
+    { "id": "Q7", "tier": 1, "q": "(\"mobile friendly\" OR \"mobile responsive\" OR responsive) AND (fix OR website) AND (html OR css OR wordpress)" },
+    { "id": "Q8", "tier": 1, "q": "(\"contact form\" OR \"form not sending\" OR \"form not working\") AND (wordpress OR website)" },
+    { "id": "Q9", "tier": 2, "q": "(\"google sheets\" OR excel OR spreadsheet) AND (formula OR formulas OR vlookup OR xlookup OR \"pivot table\" OR dashboard OR \"clean up\" OR cleanup OR \"conditional formatting\")" },
+    { "id": "Q10", "tier": 2, "q": "(\"google sheets\" OR excel) AND (template OR tracker OR calculator OR quick OR urgent OR \"small task\")" },
+    { "id": "Q11", "tier": 2, "q": "(figma OR psd OR pdf OR xd) AND (\"to html\" OR \"html css\" OR \"html/css\" OR convert)" },
+    { "id": "Q12", "tier": 2, "q": "(wordpress OR website OR html OR css) AND (install OR setup OR \"set up\" OR migrate OR \"small change\" OR \"small changes\" OR \"quick fix\" OR tweak OR urgent OR asap OR today)" }
+  ]
+}

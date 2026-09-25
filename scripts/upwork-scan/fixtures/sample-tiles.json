@@ -1,0 +1,46 @@
+{
+  "version": 1,
+  "kind": "upwork-tiles",
+  "scraped_at": "2026-09-25T20:00:00.000Z",
+  "jobs": [
+    {
+      "id": "abc111",
+      "title": "WordPress site broken after update — white screen on mobile",
+      "url": "https://www.upwork.com/jobs/~abc111",
+      "budget": "Fixed-price $75",
+      "job_type": "Fixed-price",
+      "experience_level": "Intermediate",
+      "posted_at": "3 minutes ago",
+      "description_snippet": "Need someone to fix https://example-hvac.com — contact form not sending. Payment verified client.",
+      "proposals_count": "Less than 5",
+      "client_location": "United States",
+      "payment_verified": true
+    },
+    {
+      "id": "abc222",
+      "title": "React Native full-time developer for SaaS app",
+      "url": "https://www.upwork.com/jobs/~abc222",
+      "budget": "$50/hr",
+      "job_type": "Hourly",
+      "experience_level": "Expert",
+      "posted_at": "2 hours ago",
+      "description_snippet": "Long-term ongoing team member for mobile app.",
+      "proposals_count": "20 to 50",
+      "client_location": "United States",
+      "payment_verified": true
+    },
+    {
+      "id": "abc333",
+      "title": "Landing page for local plumbing company — Google Ads",
+      "url": "https://www.upwork.com/jobs/~abc333",
+      "budget": "Fixed-price $200",
+      "job_type": "Fixed-price",
+      "experience_level": "Entry",
+      "posted_at": "8 minutes ago",
+      "description_snippet": "One page landing with tap to call. Urgent — need this week. Small business in Texas.",
+      "proposals_count": "5 to 10",
+      "client_location": "United States",
+      "payment_verified": true
+    }
+  ]
+}
