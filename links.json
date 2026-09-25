@@ -1,10 +1,10 @@
 {
-  "updated": "2026-09-24",
+  "updated": "2026-09-25",
   "official": {
-    "hub": "https://djoguzhan1.github.io/oguzehan-salatan/",
-    "hvac_demo": "https://djoguzhan1.github.io/oguzehan-salatan/demos/hvac-landing/",
-    "plumbing_demo": "https://djoguzhan1.github.io/oguzehan-salatan/demos/plumbing-landing/"
+    "hub": "https://djoguzhan1.github.io/web-dev-portfolio/",
+    "hvac_demo": "https://djoguzhan1.github.io/web-dev-portfolio/demos/hvac-landing/",
+    "plumbing_demo": "https://djoguzhan1.github.io/web-dev-portfolio/demos/plumbing-landing/"
   },
   "setup": "SETUP-LIVE.md",
-  "repo": "https://github.com/djoguzhan1/oguzehan-salatan"
+  "repo": "https://github.com/djoguzhan1/web-dev-portfolio"
 }
