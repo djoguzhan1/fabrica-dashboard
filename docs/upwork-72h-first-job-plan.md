@@ -56,7 +56,7 @@ Kalan ~%4–5 riskin çoğu **korelasyonlu** risktir (tüm teklifleri aynı anda
 | Connects harcaması | ~450 | ~440 | ~430 | ~1.320 (≈ $200) |
 
 Bütçe (Varsayım): Freelancer Plus $19,99 (100 Connects dahil) + ~1.200 Connects satın alma (≈ $180) + Availability Badge (~20 Connects/hafta). Toplam ≈ **$200–230**. İlk iş $49–$129 arası gelir; asıl kazanç ilk review'dur.
-Maliyet katmanı için **Ek C** geçerlidir: aynı plan, aynı olasılık, nakit ≈ $120 (Gün 1 verisi doğrularsa ≈ $90).
+Maliyet katmanı: **Ek C** (nakit ≈ $120 / ≈ $90) · **Ek D** (ilk cevap öncesi nakit tavanı ≈ $35, toplam sprint ≈ $45–70, aynı P(≥1) modeli).
 
 **Şimdi yap**
 1. Bölüm 1'deki profil yamasını bu gece bitir (90 dk); yama bitmeden teklif gönderme.
@@ -661,3 +661,92 @@ Sonuç: 18 Connects'lik bir boost yerine ~2 taze teklif, olasılığa 6–7 kat 
 1. Ek B'nin sırasını değiştir: önce onboarding görevleri → bakiye → Plus → 150 Connects; Badge max 10.
 2. Karar ağacına EV skorunu ekle; boost'u "1 ödül + ≤2 koşullu" ile sınırla; >60 dk ilanları kapat.
 3. Takip tablosuna "Skor", "İade" sütunlarını ekle; Gün 1 sonunda E6 kontrolünü yap.
+
+---
+
+## Ek D — Düşük ön ödeme (aynı olasılık, max kalite, nakit ≈ $45–70)
+
+**Sorun.** Ek C toplam sprint maliyetini düşürür ama yine de Gün 0'da ~$100+ Connects yüklemesi gibi hissedilir. Upwork'te asıl risk "iş gelmeden para çıkması"dır; çözüm **şelale harcama** + **daha az ama daha iyi teklif** (kalite ↑, düşük EV teklifleri ↓).
+
+**Temel fikir.** Olasılığı hacimle değil **seçilmiş hacimle** koru: 72 saatte **70–75 teklif**, ortalama **p ≈ %4,2–4,5** (yalnızca skor ≥5 ilanlar + <5 dk ağırlığı) → λ ≈ 3,1–3,4 → P(≥1) ≈ **%95–97** (aynı band). Gönderilen her teklif hâlâ tam özelleştirme, trust stack ve Tier-1'de demo linki — düşen şey "ucuz/uyumsuz ilana şişirilmiş hacim"dir.
+
+| Katman | Ek C | Ek D |
+| --- | --- | --- |
+| Boost | ≤3 | **0** (hız zaten kazanıyor; boost = düşük marj) |
+| Availability Badge (72 sa) | 10 Connects | **0** (davet kanalı; ilk işten sonra aç) |
+| Freelancer Plus | Gün 0 | **Gün 2'ye ertele** (ücretsiz bildirim aracı ≤2 dk ise); görüntülenme <%30 ise Plus al, bid içgörüsü için |
+| EV eşiği (varsayılan) | ≥4 | **≥5** (20:00 hacim telafisi: ≥4) |
+| Connects/ilan | ≤8, >12 atla | **≤6 tercih, 7–8 skor≥6, >8 atla** |
+| İlan yaşı | >60 dk yok | **>45 dk yok** (Tier-1 tam eşleşme bile) |
+| Teklif hedefi | 75–100 | **70–75** (λ ile telafi) |
+
+**Bedava Connects yığını (Gün 0, sıra önemli)**
+
+1. Onboarding görevleri (profil, kimlik, videolar) — Varsayım: ~10–20 Connects.
+2. Basic aylık 10 Connects (Plus yoksa).
+3. **Minimum satın alma:** 10 Connects = **$1,50** → uygun hesaplarda **+50 bonus** (Upwork: ilk bundle veya Plus; bonus her hesapta görünmeyebilir — Varsayım: görünür).
+4. Gün 1 sonu: ≥3 teklif + ≥54 harcanmış Connects → test ödülü **+18** (ayda 2 kez, herkese değil).
+
+Gün 0 sonu bakiye (Varsayım): ~70–90 Connects, nakit **$1,50**.
+
+**Şelale — ilk müşteri cevabı / interview öncesi nakit tavanı ≈ $35**
+
+| Kapı | Koşul | Nakit | Ne yapılır |
+| --- | --- | --- | --- |
+| K0 | Profil %100 + kimlik başlatıldı | $0 | Teklif yok |
+| K1 | K0 tamam | **$1,50** | Min bundle → bonus; yalnızca skor ≥5 |
+| K2 | 12 teklif gönderildi | $0 | Metrik: görüntülenme oranı |
+| K3 | Görüntülenme ≥%25 **veya** ≥1 cevap | **+$15** (~100 Connects) | Sprint devam |
+| K3b | Görüntülenme <%25 ve 0 cevap | **+$0** | Opener B + fotoğraf/ücret; para değil profil düzelt |
+| K4 | ≥1 interview veya ≥2 cevap | **+$15** (tavan) | Kapanış sprinti; Plus (gerekirse) |
+| **Tavan** | İlk fonlanmış contract öncesi | **≈ $31,50** | K3b tetiklenmediyse |
+
+Contract Gün 2–3'te gelirse toplam nakit genelde **$32–48** + iadeler; kötü profil senaryosunda (K3b) para dökülmez, önce düzeltme.
+
+**λ hesabı (Ek D)**
+
+| Dilim | Adet | p | λ katkı |
+| --- | --- | --- | --- |
+| Skor ≥5, <5 dk | ~42 | %4,8 | 2,02 |
+| Skor ≥5, 5–15 dk | ~18 | %3,0 | 0,54 |
+| Skor 5, 15–45 dk (Tier-1) | ~10 | %2,0 | 0,20 |
+| Davet (0 Connects) | ~2–4 | %12 | 0,24–0,48 |
+| **Toplam** | **~72–74** | **~%4,2 ort.** | **~3,0–3,3** |
+
+P(≥1) ≈ **%95–97**. Davet sayısı düşükse teklif hedefini 78'e çıkar (yalnızca skor ≥5); nakit K4 ile +$15.
+
+**Kalite neden max kalır (neyi kesmiyoruz)**
+
+- Profil yaması, kanıt paragrafı, portfolyo 3 öğe, kimlik, $20/sa.
+- Her gönderilen teklif: 2 işe özel satır, eleme soruları tam, şablon gövdesi aynı, Tier-1'de demo + Lighthouse.
+- <5 dk SLA **skor ≥5** ilanlarda değişmez.
+- Fiyat/milestone/interview script aynı.
+
+**Kaliteyi düşüren şeyleri bilinçli kesiyoruz:** genel/ucuz/yaşlı ilan, boost ile "görünürlük satın alma", Badge ile haftalık vergi, Plus'ı ihtiyaç yokken Gün 0'da ödeme.
+
+**Bütçe karşılaştırma (72 saat, model)**
+
+| | Orijinal | Ek C | Ek D |
+| --- | --- | --- | --- |
+| Toplam nakit (nominal) | ≈ $203 | ≈ $92–122 | **≈ $45–70** |
+| İlk cevap öncesi nakit tavanı | ≈ $180+ | ≈ $60–90 | **≈ $32–35** |
+| Teklif adedi | 100 | 75–100 | 70–75 |
+| P(≥1) model | %96 | %95–96 | %95–97 |
+| Ortalama teklif kalitesi | iyi | iyi | **daha iyi** (seçilmiş alt küme) |
+
+**Ek D'de revize / eklenen maddeler (Ek C üzerine)**
+
+| | Revize |
+| --- | --- |
+| Bölüm 4 | Boost tamamen kapalı; Badge 72 saat kapalı |
+| Bölüm 2 EV | Varsayılan eşik **5**; yerleşik müşteri +2 aynı |
+| Ek B sırası | Onboarding → Basic 10 → **$1,50 min alım** → teklif; Plus **ertele** |
+| Takip tablosu | **"Kapı"** sütunu (K0–K4), **"Ön ödeme küm."** ($) |
+| KPI | Gün 1: 22 teklif (skor ≥5), görüntülenme ≥%25; değilse K3b profil sprinti, Connects alımı dur |
+
+**Dürüst taban.** Upwork'te **sıfır nakit** ile 72 saatte %95 mümkün değil (teklif = Connects). Makul taban: **~$30–50 nakit** + bedava yığın + disiplin. Bunun altı ya hacmi ya p'yi düşürür; %95+ ile uyumlu değil.
+
+**Şimdi yap**
+1. Ek D şelalesini takip tablosuna yaz; K1 = $1,50 min alım, K3/K4 koşullarını hatırlatıcıya koy.
+2. Bildirim aracını Gün 0'da kur (Plus'sız); 2 dk test et — çalışıyorsa Plus'ı Gün 2'ye bırak.
+3. İlk 12 tekliften sonra görüntülenme hesapla: <%25 ise para ekleme, Bölüm 1 Opener B'ye geç.
