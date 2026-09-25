@@ -1,23 +1,46 @@
 #!/usr/bin/env bash
-# Updates https://djoguzhan1.github.io/web-dev-portfolio/ (existing repo, no 404 path).
+# Updates https://djoguzhan1.github.io/web-dev-portfolio/ (site files only; keeps docs/, fiverr-screenshots/, etc.)
 set -euo pipefail
 
 REPO="djoguzhan1/web-dev-portfolio"
 SRC="$(cd "$(dirname "$0")/../web-dev-portfolio" && pwd)"
-WORKDIR="${TMPDIR:-/tmp}/web-dev-portfolio-publish"
+WORKDIR="${TMPDIR:-/tmp}/web-dev-portfolio-publish-$$"
+
+SITE_PATHS=(
+  index.html
+  styles.css
+  links.json
+  LIVE-LINKS.md
+  .nojekyll
+  img
+  fonts
+  demos
+  upwork-screenshots
+)
 
 echo "→ Source: $SRC"
 gh auth status >/dev/null 2>&1 || { echo "Run: gh auth login"; exit 1; }
 
 rm -rf "$WORKDIR"
 gh repo clone "$REPO" "$WORKDIR"
-find "$WORKDIR" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
-cp -a "$SRC"/. "$WORKDIR/"
-rm -f "$WORKDIR/PUBLISH.md" "$WORKDIR/SETUP-LIVE.md"
 cd "$WORKDIR"
-git add -A
-git diff --staged --quiet && echo "→ No changes." || git commit -m "Publish rebuilt portfolio and demos"
-git push origin master
+
+for path in "${SITE_PATHS[@]}"; do
+  if [ -e "$SRC/$path" ]; then
+    rm -rf "$path"
+    cp -a "$SRC/$path" "$path"
+  fi
+done
+
+touch .nojekyll
+git add "${SITE_PATHS[@]}" .nojekyll 2>/dev/null || true
+git add -u
+if git diff --staged --quiet; then
+  echo "→ No changes."
+else
+  git commit -m "Publish rebuilt portfolio and demos (site paths only)"
+  git push origin master
+fi
 
 echo "Live in 1–2 min:"
 echo "  https://djoguzhan1.github.io/web-dev-portfolio/"

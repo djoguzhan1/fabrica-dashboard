@@ -14,6 +14,11 @@ name: Publish web-dev-portfolio to GitHub Pages
 
 on:
   workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'web-dev-portfolio/**'
+      - '.github/workflows/publish-web-dev-portfolio.yml'
 
 jobs:
   publish:
