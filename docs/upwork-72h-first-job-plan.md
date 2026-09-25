@@ -750,3 +750,166 @@ P(≥1) ≈ **%95–97**. Davet sayısı düşükse teklif hedefini 78'e çıkar
 1. Ek D şelalesini takip tablosuna yaz; K1 = $1,50 min alım, K3/K4 koşullarını hatırlatıcıya koy.
 2. Bildirim aracını Gün 0'da kur (Plus'sız); 2 dk test et — çalışıyorsa Plus'ı Gün 2'ye bırak.
 3. İlk 12 tekliften sonra görüntülenme hesapla: <%25 ise para ekleme, Bölüm 1 Opener B'ye geç.
+
+---
+
+## Ek E — Nihai düşük maliyet modu (v2): seçici saldırı + teşhis-önce teklif
+
+Öncelik: Ek E, Ek C ve Ek D ile çakıştığı yerde **geçerli olan** katmandır. Ek D'nin nakit şelalesi (K0–K4) ve bedava Connects yığını aynen kalır; Ek C'nin EV skoru ve Ek D'nin "skor ≥5" eşiği yerine aşağıdaki **A/B/C skor kartı** geçer. Bölüm 0–8'in şablonları, fiyatları, blokları, SLA'sı ve KPI mantığı değişmez.
+
+**Tez.** Olasılık teklif sayısına değil λ = Σ p_i toplamına bağlıdır. En ucuz olasılık Connects'le değil **dakikayla** satın alınır: doğru ilanı seçmek (p'yi 2× yükseltir, 0 Connects) ve müşterinin *kendi sitesi* hakkında ölçülmüş bir teşhisle açmak (p'yi bir kademe daha yükseltir, 0 Connects). Bu ikisi n'i 100'den ~57'ye indirir; Connects ihtiyacı ~1.320'den ~390'a düşer; P(≥1) aynı bantta kalır.
+
+**Marjinal verim (kararın matematiği)**
+
+| Kaldıraç | Maliyet | p etkisi (Varsayım) | Verim |
+| --- | --- | --- | --- |
+| A-sınıf ilan seçimi (skor kartı) | 0 Connects, 30 sn | ortalama p %3,2 → %5,5 | sınırsız |
+| Teşhis-önce açılış (PSI sayısı + görünür sorun) | 0 Connects, 3–4 dk | A-sınıfta +1–2 puan | sınırsız |
+| Ek taze teklif (<5 dk) | ~7 Connects | +4–5,5 puan | 0,6–0,8 pp/Connect |
+| Boost | 18 Connects | +~1 puan | 0,06 pp/Connect |
+| Availability Badge (72 sa) | ~10 Connects | 0 review'lı profilde davet nadir | düşük |
+
+**Skor kartı (her ilan, ≤30 sn, ilan sayfasındaki alanlardan)**
+
+Kapılar — hepsi geçmeli, biri kalırsa gönderme:
+
+| Kapı | Koşul |
+| --- | --- |
+| G1 | Tier-1 veya Tier-2 whitelist'te; blacklist yok |
+| G2 | Payment verified |
+| G3 | İlan yaşı ≤15 dk (Tier-1 tam eşleşme ve <5 teklif ise ≤45 dk) |
+| G4 | Proposals <10 |
+| G5 | Invites sent = 0 ve Interviewing = 0 (müşterinin elinde aday yok) |
+| G6 | Bütçe ≥ taban ve intro fiyat ≤ ilan bütçesi |
+| G7 | İlanda yazan Connects ≤8 (skor ≥12 ise ≤10) |
+| G8 | Scope tek cümlede yazılabiliyor |
+
+Puanlar:
+
+| Puan | Sinyal | Neden |
+| --- | --- | --- |
+| +3 | İlan yaşı <5 dk | Hız etkisi (hire ×4) |
+| +2 | Proposals "Less than 5" | İlk sayfada, boost'suz görünürsün |
+| +2 | Müşteri ≥1 hire **ve** hire rate ≥%50 | İlanların ~yarısı hiç hire'a dönmez; bu müşteri döner |
+| +2 | İlanda site URL'si var | Teşhis-önce açılış yapılabilir (en güçlü ikna kolu) |
+| +2 | "Last viewed by client" ≤1 saat | Müşteri şu an teklif okuyor → aynı gün karar |
+| +1 | Total spent ≥$500 | Ödeme alışkanlığı |
+| +1 | Müşteri US/UK/CA/AU | Blok D/E'de canlı kapanış |
+| +1 | Eleme sorusu var | Bot teklif azalır; Uma cevapları okur |
+| +1 | urgent / asap / today / this week | 72 saat içinde hire |
+| +1 | Sabit fiyat | Fonlanmış milestone, hızlı kapanış |
+| +1 | Connects ≤6 | Maliyet |
+| −2 | Expert seviye | 0 review'lı profil elenir |
+| −2 | 10+ ilan ve hire rate <%30 | Toplayıcı müşteri |
+| −1 | long-term / ongoing / team / full-time | 72 saatte kapanmaz |
+
+Sınıflar ve p (Varsayım): **A ≥10 → p ≈ %5,5** · **B 6–9 → p ≈ %3,5** · **C ≤5 → gönderme.** Hacim koruması: 20:00 GMT+3'te günlük kotanın %60'ı dolmadıysa o gece B eşiği 5'e iner (hedef tasarruftan önce gelir).
+
+**λ bütçesi ve günlük kota**
+
+| Dilim | Adet (72 sa) | p | λ | Connects (ort.) |
+| --- | --- | --- | --- | --- |
+| A-sınıf | 45 (15/gün) | %5,5 | 2,48 | 45 × 7 = 315 |
+| B-sınıf | 12 (4/gün) | %3,5 | 0,42 | 12 × 6 = 72 |
+| Davet (0 Connects; Badge kapalı, Varsayım: 1–2) | 1–2 | %12 | 0,12–0,24 | 0 |
+| **Toplam** | **~57–59** | **~%5,2** | **~3,0–3,1** | **~390** |
+
+P(≥1) = 1 − e^−λ ≈ **%95–96** (Bölüm 0 ile aynı bant). Blok dağılımı (19/gün): A 2 · B 4 · C 1 · D 8 · E 4. Teklif başına süre: A-sınıf 6–8 dk (teşhis + ekran görüntüsü), B-sınıf 3 dk → günde ~2 saat yazım; kalan zaman izleme ve kapanış.
+
+**Uyarlanır hacim (para yalnızca veri isterse çıkar) — Gün 1 sonu, ~19 teklif**
+
+| Gün 1 sonucu | Gün 2–3 günlük kota | Ek nakit | Not |
+| --- | --- | --- | --- |
+| ≥3 cevap (≥%15) | 16 | −$5 | p doğrulandı; A-sınıfa daralt |
+| 2 cevap (~%10) | 19 | $0 | Plan |
+| 1 cevap (~%5) | 24 | +$10 | B eşiği 5; teşhis kalitesini denetle (her A teklifinde sayı var mı?) |
+| 0 cevap, görüntülenme <%25 | 19 | $0 | Ek D K3b: liste katmanı (Opener B, fotoğraf, ücret, kimlik); Connects alımı dur |
+| 0 cevap, görüntülenme ≥%25 | 26 | +$14 | Gövde katmanı: %100 teşhisli açılış, bant tabanı fiyat, yalnızca A-sınıf |
+
+**Teşhis-önce teklif stratejisi (ikna kalitesi)**
+
+Kural: *Müşterinin sitesi hakkındaki kanıt, benim sitem hakkındaki kanıttan güçlüdür.* Trust stack sırası A-sınıfta şöyle değişir: 1 ölçülmüş teşhis (onların sitesi) → 2 düzeltme + fiyat + süre → 3 demo/Lighthouse kanıtı → 4 risk transferi (fonlanmış küçük milestone) → 5 tek soru.
+
+| Adım | Süre | Ne |
+| --- | --- | --- |
+| 1 | 60 sn | URL'yi pagespeed.web.dev'e ver (mobil): puan + ilk 2 sorun (ör. hero görsel MB, render-blocking script sayısı, LCP saniyesi) |
+| 2 | 30 sn | Telefonda aç: 1 görünür sorun (üst katta telefon yok, menü taşıyor, form hata veriyor) |
+| 3 | 60 sn | PSI sonucunun ekran görüntüsü, 3 daire → teklife ek dosya |
+| 4 | 2–3 dk | Şablon T1/T2/T3'ün ilk paragrafını aşağıdaki teşhis açılışıyla değiştir; sayı ilk cümlede |
+| 5 | 30 sn | Fiyat çapası: "$49 intro (regular $79)"; eleme sorularına "doğrudan cevap + 1 somut detay + gerekirse 1 link" |
+| 6 (ops.) | 3 dk | Bütçe ≥$150 A-sınıf ilanda 60 sn ekran videosu (Loom tarzı link); günde ≤3; videoda iletişim bilgisi yok |
+
+URL yoksa (landing/Sheets): "mikro-plan" açılışı — 3 satırlık sektöre/açıklamaya özel yapı veya formül listesi.
+
+**Teşhis açılışları (İngilizce — T1/T2/T3/S4'ün ilk paragrafının yerine)**
+
+```text
+Speed (T1):
+Your homepage scores [41]/100 on mobile PageSpeed right now — the [2.8 MB hero image] and [11 render-blocking scripts] account for most of it. I can take it to 85+ within 48 hours of the milestone being funded, for $[89] intro (regular $149), with the before/after PageSpeed reports attached.
+
+Bug (T1):
+I opened [SITE] on my phone: [the menu overlaps the logo below 400 px, and the contact form returns a 500 error] — the second one usually points to a mail plugin conflict after an update. Fixed within 24 hours of funding for $[49] intro (regular $79), full backup first, before/after screenshots included.
+
+Landing (T2, existing site or ad):
+Your [Google Ads] traffic lands on a page with [no phone number above the fold and a 4.1-second mobile load] — that is where the calls leak. A one-page, hand-coded landing page with a sticky tap-to-call button, delivered in 48 hours for $[129] intro (regular $199), fixes both.
+
+Landing (T2/T3, no site yet — micro-plan):
+For a [roofing] company in [Austin], the page that converts is: one offer in the headline ("Roof repair today — call before 2 pm"), tap-to-call in the header, three services, five reviews, service-area list, FAQ, short form. I build exactly that, hand-coded, in 48 hours for $[129] intro (regular $199).
+
+Sheets (S4, no file yet — micro-plan):
+From your description this is [a monthly summary tab driven by XLOOKUP + SUMIFS, with a dropdown to keep entries clean] — about two hours of work. Delivered today for $[35] intro (regular $59), with formulas that keep working when you add rows.
+
+Attachment caption (put as the last line before the name):
+Attached: your PageSpeed result from today with the three biggest issues circled.
+```
+
+**60 saniyelik video (opsiyonel, A-sınıf, bütçe ≥$150; İngilizce)**
+
+```text
+0–5 s   "Hi [NAME], Oğuzhan here — this is your site on a phone."
+5–25 s  Point 1 with the number: "[Mobile score 41; this 2.8 MB image is most of it.]"
+25–40 s Point 2 visible: "[No phone number above the fold — on mobile that's the call you lose.]"
+40–55 s Demo: "Here is the same structure done right — sticky call button, sub-250 KB page." (open the matching demo)
+55–60 s "Fixed price, 48 hours, funded milestone — details in the proposal."
+```
+
+**Eleme sorusu cevap kalıbı (İngilizce)**
+
+```text
+[Direct answer in one sentence.] [One specific detail from their post or site.] [Optional: one link — demo or portfolio item.]
+Never: "See cover letter." Never: a paragraph longer than three sentences.
+```
+
+**Bölüm bazlı revizyon özeti (v1 → v2)**
+
+| Bölüm | v1 | v2 (Ek E) |
+| --- | --- | --- |
+| 0 | 100 teklif, λ 3,2, ≈$200 | 57–59 teklif (uyarlanır 50–75), λ 3,0–3,1, nakit ≈ **$45–65** |
+| 2 | Filtre + müşteri filtresi | **Skor kartı** (8 kapı + puan; A/B/C); Invites 0 / Interviewing 0 / Last viewed ≤1 sa eklendi; Connects ≤8 kapısı |
+| 3 | 33/gün, blok A4 B7 C3 D14 E5 | 19/gün, blok A2 B4 C1 D8 E4; teklif başına 6–8 dk (A) |
+| 4 | Boost ≤20, Badge 20, Plus Gün 0, 400 Connects | **Boost 0, Badge 0**, Plus Gün 2'ye ertelenir (ücretsiz bildirim ≤2 dk ise), Ek D şelalesi ($1,50 → +$15 → +$15) |
+| 5 | Trust stack: problem → gözlem → demo → … | A-sınıfta **teşhis-önce** sıra; teşhis açılışları; PSI ekran görüntüsü eki; fiyat çapası; eleme kalıbı; opsiyonel 60 sn video |
+| 6 | Intro fiyat | Aynı + "intro (regular $X)" çapası her teklifte |
+| 7 | Kanıt paketi 1–8 | **Sıra 0: müşterinin sitesine ait ölçüm** (PSI sayısı + görsel), sonra 1–8 |
+| 8 | KPI 35/68/100 | KPI 19/38/57 (uyarlanır); cevap hedefleri aynı (≥2/≥5/≥7) çünkü oran yükselir; takip tablosuna "Skor", "Sınıf", "p", "λ küm.", "Teşhis (E/H)" sütunları |
+
+**Bütçe (72 saat, model)**
+
+| Kalem | v1 | Ek C | Ek D | **Ek E** |
+| --- | --- | --- | --- | --- |
+| Teklif | 100 | 75–100 | 70–75 | **57–59** (uyarlanır 50–75) |
+| Ortalama p | %3,2 | %3,5–4 | %4,2 | **%5,2** |
+| λ / P(≥1) | 3,2 / %96 | ≥3,3 / %96 | 3,0–3,3 / %95–97 | **3,0–3,1 / %95–96** |
+| Connects (nominal) | ~1.320 | ~650–850 | ~450 | **~390** |
+| Bedava yığın | 100 | 170 | ~70–100 | ~70–100 |
+| Satın alınacak | ~1.220 | ~480–680 | ~350–380 | **~290–320** |
+| Nakit (Plus dahil/hariç) | ≈$203 | ≈$92–122 | ≈$45–70 | **≈$45–50** (Plus gerekirse +$20 → ≤$65) |
+| İlk cevap öncesi nakit tavanı | $180+ | $60–90 | ≈$32 | **≈$32** (Ek D şelalesi) |
+| Teklif başına dakika | 3 | 3 | 3–4 | **6–8 (A) / 3 (B)** |
+
+**Değişmeyenler:** profil yaması, kanıt paragrafı, 5 dk SLA (A-sınıfta), şablon gövdeleri, fiyat tablosu, milestone yapısı, interview script'i, katman teşhisi, Ek D şelalesi. **Kesilenler:** boost, Badge (72 sa), yaşlı/genel/kalabalık ilanlar, Connects >8 ilanlar, Gün 0'da Plus.
+
+**Şimdi yap**
+1. Skor kartını tek sayfa yazdır; takip tablosuna "Skor / Sınıf / p / λ küm. / Teşhis" sütunlarını ekle; A ≥10, B 6–9, C gönderme.
+2. pagespeed.web.dev'i yer imine al; PSI ekran görüntüsü + 3 daire akışını bir kez 90 sn'de prova et; teşhis açılışlarını `;dx-speed` `;dx-bug` `;dx-landing` `;dx-plan` `;dx-sheets` kısayollarına kaydet.
+3. Gün 1 sonu 19 teklifte cevap sayısına göre uyarlanır kota tablosunu uygula; Connects alımı yalnızca Ek D kapıları açıldıkça.
