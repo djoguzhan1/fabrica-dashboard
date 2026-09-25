@@ -24,8 +24,8 @@ Depodaki diğer klasörlere (`docs/`, `fiverr-screenshots/`, `platform-setup/`, 
 git clone https://github.com/djoguzhan1/fabrica-dashboard.git
 git clone https://github.com/djoguzhan1/web-dev-portfolio.git
 
-# 2) Bu branch'i al
-cd fabrica-dashboard && git checkout cursor/demo-upgrade-5f90 && cd ..
+# 2) Güncel kod
+cd fabrica-dashboard && git checkout master && cd ..
 
 # 3) Kopyala (PUBLISH.md hariç)
 rsync -av --exclude PUBLISH.md fabrica-dashboard/web-dev-portfolio/ web-dev-portfolio/
