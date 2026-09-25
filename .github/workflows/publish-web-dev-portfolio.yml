@@ -22,7 +22,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: cursor/demo-upgrade-5f90
+          ref: master
 
       - name: Validate secret
         run: |

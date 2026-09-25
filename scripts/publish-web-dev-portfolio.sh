@@ -11,7 +11,9 @@ gh auth status >/dev/null 2>&1 || { echo "Run: gh auth login"; exit 1; }
 
 rm -rf "$WORKDIR"
 gh repo clone "$REPO" "$WORKDIR"
-rsync -a --delete --exclude PUBLISH.md --exclude SETUP-LIVE.md "$SRC/" "$WORKDIR/"
+find "$WORKDIR" -mindepth 1 -maxdepth 1 ! -name '.git' -exec rm -rf {} +
+cp -a "$SRC"/. "$WORKDIR/"
+rm -f "$WORKDIR/PUBLISH.md" "$WORKDIR/SETUP-LIVE.md"
 cd "$WORKDIR"
 git add -A
 git diff --staged --quiet && echo "→ No changes." || git commit -m "Publish rebuilt portfolio and demos"

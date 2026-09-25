@@ -1,24 +1,13 @@
-# Resmi kalıcı linkler (Upwork · profil · imza)
+# Kalıcı canlı linkler (Upwork / profil)
 
-**Bunları kaydet — hepsi aynı set:**
+**Tek kaynak:** `djoguzhan1.github.io/web-dev-portfolio` — Upwork portföyündeki Project URL’ler bunlar.
 
-| Sayfa | Güvenilir kalıcı URL |
+| Sayfa | URL |
 | --- | --- |
-| **Ana sayfa (hub)** | https://djoguzhan1.github.io/oguzehan-salatan/ |
-| **CoolAir HVAC demo** | https://djoguzhan1.github.io/oguzehan-salatan/demos/hvac-landing/ |
-| **ProFix Plumbing demo** | https://djoguzhan1.github.io/oguzehan-salatan/demos/plumbing-landing/ |
+| Ana sayfa (hub) | https://djoguzhan1.github.io/web-dev-portfolio/ |
+| CoolAir HVAC demo | https://djoguzhan1.github.io/web-dev-portfolio/demos/hvac-landing/ |
+| ProFix Plumbing demo | https://djoguzhan1.github.io/web-dev-portfolio/demos/plumbing-landing/ |
 
-- `github.io` + adın = müşteriye tanıdık, güvenilir.
-- Eski `web-dev-portfolio` ve CDN linkleri **kullanma**.
+Yayın: `fabrica-dashboard` → `web-dev-portfolio/` → `scripts/publish-web-dev-portfolio.sh` veya Actions workflow **Publish web-dev-portfolio to GitHub Pages**.
 
-## Henüz 404?
-
-Repo bir kez yayınlanana kadar sayfa açılmaz. **2 dakika:** [SETUP-LIVE.md](SETUP-LIVE.md)
-
-## Kopyala-yapıştır
-
-```
-https://djoguzhan1.github.io/oguzehan-salatan/
-https://djoguzhan1.github.io/oguzehan-salatan/demos/hvac-landing/
-https://djoguzhan1.github.io/oguzehan-salatan/demos/plumbing-landing/
-```
+Son güncelleme: 2026-09-25
