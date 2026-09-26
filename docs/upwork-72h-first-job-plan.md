@@ -3,7 +3,7 @@
 Oğuzhan S. · Bursa (GMT+3) · Hedef müşteri: ABD/İngiltere · Profil: 0 review, 0 iş (gerçek).
 Tek hedef: **72 saat içinde en az 1 kabul edilmiş iş** (aktif contract veya fonlanmış milestone).
 
-Sabit kurallar (tüm İngilizce metinler için): sadece İngilizce; sahte müşteri/review/deneyim yok; demolar "CoolAir HVAC style demo" / "emergency plumbing style demo" olarak anılır; Fiverr, vergi, ödeme aracı adı geçmez; "Dear client", "I would be honored", ninja/rockstar/guru/passionate yok; teklif içinde iletişim bilgisi yok (Upwork ToS).
+Sabit kurallar (tüm İngilizce metinler için): sadece İngilizce; sahte müşteri/review/deneyim yok; demolar "CoolAir HVAC style demo" / "emergency plumbing style demo" olarak anılır; Fiverr, vergi, ödeme aracı adı geçmez; "Dear client", "I would be honored", ninja/rockstar/guru/passionate yok; teklif içinde iletişim bilgisi yok (Upwork ToS). **Teklif kanıtı:** müşteri stack'i (Carrd, WP, script…) portföyde olmasa da iş yapılır; linkli örnek / mikro-demo teklifte verilir — **Ek G**.
 
 Canlı linkler (yalnızca bunlar):
 
@@ -1104,9 +1104,45 @@ Unknown codebase, first milestone: "M1 — Reproduce the issue on a copy of the 
 
 P(≥1) ≈ %95 (aynı bant). Nakit: bedava yığın sonrası ~380–400 Connects satın alma ≈ **$55–60** (Plus'sız), Plus gerekirse ≤ **$75**. Ek E'ye göre ≈ +$10–15; karşılığı **arz sorununun çözülmesi** (günde 15 A-sınıf ilan bulmak geniş havuzda kolay). Profil yaması yapılmazsa aynı λ için ~95 teklif gerekir (+~$30) — yamanın değeri budur. Gün 0'a ekleme: profil 30 dk + 2 repo ~2 sa + sorgular 20 dk ≈ **3 saat**.
 
+## Ek G — Teklifte linkli örnek / mikro-demo (platform esnekliği)
+
+**Kalıcı kural (agent + kullanıcı):** Müşteri Carrd, WordPress, Webflow, Sheets, script vb. isteyebilir. **Portföyde o araç yok** diye ilana otomatik VERME yok. Blacklist ve kapılar (G1–G13, Ek F) geçerli kalır; stack uyumsuzluğu **teklif kanıtı** ile kapatılır.
+
+**Tez.** 0 review profilde güven = tıklanabilir kanıt. Sabit portföy (iki trade demo + hub + GitHub repolar) **taban**; güçlü ilanlarda **ilana özel** link veya ek dosya = planın eksik parçası değil, **zorunlu katman** (URL yoksa mikro-plan + link; Ek E satır 842 ile aynı çizgi).
+
+### G1 — Ne zaman hangi kanıt
+
+| İlan tipi | Minimum | Güçlü (A-sınıf, ≤15 dk hazırlık) |
+| --- | --- | --- |
+| Landing / tek sayfa (Carrd, Webflow, el kodu) | Mikro-plan (bölüm listesi, CTA sırası) + **1 canlı link** (mevcut demo *veya* ilana özel statik sayfa / Carrd yayın önizleme URL’si) | Hero + 1 bölüm mobil ekran görüntüsü veya 60 sn Loom (iletişim bilgisi yok) |
+| WordPress / hız / bug | PSI veya görünür hata (teşhis-önce) | Before ekran görüntüsü + demo linki |
+| Script / Sheets / otomasyon | `github.com/djoguzhan1/tidycsv` / `docbrief` / `sheet-notify` veya ilgili dosya | Örnek çıktı (xlsx, terminal çıktısı) eki |
+| İlan “3–5 örnek + soruları cevapla” diyor | Soruları **madde madde**; linkler ilanın estetiğine uygun | Sahte “client work” deme; **sample / spec demo** de |
+
+### G2 — Dürüstlük (değişmez)
+
+- Demo = **örnek / spesifikasyon uygulaması**, bitmiş müşteri işi değilse öyle yaz.
+- Trade demolarını (HVAC / plumbing) heritage / editorial ilanda **“same code quality, different tone”** ile destekle; başka sektör diye **bitmiş müşteri projesi** gibi gösterme.
+- Sahte review, sahte müşteri adı, sahte yıllar yok.
+
+### G3 — Milestone (yeni stack veya sıkı brief)
+
+İlan fazlı onay istiyorsa veya stack ilk kez: **M1** küçük (ör. $49–79) — Hero + 1–2 bölüm, desktop + mobil, müşteri onayı → **M2** kalan + domain/SEO/handover. Fenner House tarzı işlerde bütçe $200 ise M1/M2 toplamı $200 içinde kalır.
+
+### G4 — Agent analizi (VER / VERME)
+
+| VERME | VER (teklif + demo planı) |
+| --- | --- |
+| Ek F blacklist (tam ML model, CAPTCHA, akademik, vb.) | Carrd / Wix / “platform X” + bütçe/kapılar OK |
+| G12 scope >1 iş günü, bütçe tabanın altında | İlan soruları cevaplanabilir + 15–45 dk içinde link üretilebilir |
+| DoD yazılamıyor | Preferred location TR dışında → **uyarı**, veto değil |
+
+**Kalıcı kopya:** `/cursor/stores/self/upwork-strategy-persistent.md` (sohbet silinirse agent oradan okur).
+
 **Değişmeyenler:** Ek E skor kartı, 5 dk SLA, teşhis-önce açılış ilkesi, Ek D nakit şelalesi, fiyat/milestone/interview mantığı, KPI katman teşhisi.
 
 **Şimdi yap**
 1. T-profil yaması: Title A + Opener A + "Small technical tasks" bloğu + 20 skill (4 küme) — 30 dk.
 2. İki proof repo'yu Cursor ile yaz, README + ekran görüntüsü + MIT; GitHub'da pinle, portfolyoya ekle — ~2 sa.
 3. Q13–Q20'yi Fixed filtresiyle kaydet; Tier-3 whitelist + G9–G13 kapılarını skor kartı sayfasına ekle; T6/S7/DoD kısayolları (`;t6` `;s7` `;dod`).
+4. Güçlü landing ilanında (Carrd dahil): teklif öncesi **linkli mikro-demo** veya Hero ekran görüntüsü — Ek G tablosu.
