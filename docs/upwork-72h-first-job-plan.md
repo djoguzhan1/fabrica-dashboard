@@ -913,3 +913,200 @@ Never: "See cover letter." Never: a paragraph longer than three sentences.
 1. Skor kartını tek sayfa yazdır; takip tablosuna "Skor / Sınıf / p / λ küm. / Teşhis" sütunlarını ekle; A ≥10, B 6–9, C gönderme.
 2. pagespeed.web.dev'i yer imine al; PSI ekran görüntüsü + 3 daire akışını bir kez 90 sn'de prova et; teşhis açılışlarını `;dx-speed` `;dx-bug` `;dx-landing` `;dx-plan` `;dx-sheets` kısayollarına kaydet.
 3. Gün 1 sonu 19 teklifte cevap sayısına göre uyarlanır kota tablosunu uygula; Connects alımı yalnızca Ek D kapıları açıldıkça.
+
+---
+
+## Ek F — Geniş havuz modu: "Fixed" karışık küçük teknik işler
+
+Durum: niş sorgularımızda (WordPress fix, yerel landing, Sheets) günlük taze ilan az; "Fixed price" filtresiyle bakınca çok sayıda taze, karışık küçük iş var (küçük kodlama, hata düzeltme, script, AI/API entegrasyonu, "help me with…" işleri). Bu işlerin çoğu yapılabilir. Plan (Bölüm 0–8 + Ek E) **aynı kalır**; değişen üç şey: **profil şekli**, **tarama/whitelist**, **yapabilirlik kapısı + teslim düzeni**.
+
+### F1. Profil sorun olur mu?
+
+**Evet — profil değişmeden gönderirsen.** Üç yerde uyumsuzluk cezası yersin: (1) liste katmanında başlık "WordPress … Landing Pages" bir Python/AI işinin yanında alakasız görünür; (2) Uma shortlist profil uygunluğunu puanlar (Specialized Profiles kalktı; tek profil var, skill vurgusu dinamik ama **başlık ve overview sabit**); (3) portfolyo yalnızca web demosu → kod/script işine kanıt yok. Modelde etkisi: niş-dışı A-sınıf ilanda p ≈ %4,5 yerine ≈ %3 → aynı λ için ~30 ek teklif ≈ **~200 Connects ≈ $30**. Yani profil yaması kendini ilk gün öder.
+
+**Çözüm: T-profil** — geniş ama somut. Çerçeve cümlesi her yerde aynı: *"small, clearly scoped technical tasks"*. "Her şeyi yaparım" değil, "küçük, net tanımlı teknik işleri hızlı ve düzgün yaparım".
+
+| # | Alan | Yama |
+| --- | --- | --- |
+| 1 | Başlık | Title A (65) veya B (70) — aşağıda |
+| 2 | Overview ilk 250 | Opener A — aşağıda |
+| 3 | Overview gövde | "What I do" bloğunun altına **"Small technical tasks I also take on"** bloğu (aşağıda); kalan metin aynı |
+| 4 | Skills (20) | 4 küme: WordPress Repair 5 · Landing 5 · Sheets 3 · **Scripts & AI 7** (aşağıda) |
+| 5 | Portfolyo | 3 web öğesi + **2 GitHub proof repo** (F2) = 5 öğe; başlıklar anahtar kelimeli |
+| 6 | GitHub | Profilde bağlı; 2 repo "pinned"; README'de ekran görüntüsü/GIF |
+| 7 | Ücret | $20/sa kalır; "help session" işlerinde teklif bazında $25/sa |
+| 8 | Project Catalog | 4. liste: "You will get your small script, bug fix or automation done in 24–48 hours" (onay gecikebilir) |
+
+```text
+Title A (65 chars, default):
+Web & Code Fixes | Landing Pages | Python, Sheets & AI Automation
+
+Title B (70 chars):
+WordPress & Website Fixes | Landing Pages | Scripts, Sheets & AI Tools
+
+Opener A (225 chars):
+I fix broken websites and code, build one-page landing sites, and write small scripts and automations (Python, JavaScript, Google Sheets, AI APIs). Small, clearly scoped technical tasks: fixed price, delivered in 24–48 hours.
+
+Overview block — insert after the "What I do" bullets:
+Small technical tasks I also take on (fixed price, 24–48 hours):
+• Bug fixes in HTML, CSS, JavaScript, PHP or Python — you send the error or a screenshot, you get a tested fix and a short note on what caused it
+• Scripts and automation — CSV/Excel/PDF processing, file conversion, report generation, Google Apps Script, collecting data from public web pages
+• AI integrations — connecting OpenAI or Anthropic APIs to a form, a sheet or a small app; prompt and workflow setup; document summarisation pipelines
+• Setup and deployment — GitHub Pages, Netlify or Vercel deploys, DNS and SSL, contact forms, analytics tags
+
+Every task gets a written definition of done before the milestone is funded, and a delivery note that explains what changed and how to verify it. Code samples: github.com/djoguzhan1
+```
+
+Skills (20; etiket adlarını skill kutusunda tam eşleşmeyle seç — Varsayım: AI etiketleri "ChatGPT", "OpenAI API", "AI Development", "Chatbot Development" adlarıyla mevcut):
+
+| Küme | Etiketler |
+| --- | --- |
+| WordPress Repair (5) | WordPress, WordPress Bug Fix, Page Speed Optimization, Elementor, PHP |
+| Local Landing Pages (5) | Landing Page, Landing Page Design, HTML, CSS, Responsive Design |
+| Sheets & Excel (3) | Google Sheets, Microsoft Excel, Google Apps Script |
+| **Scripts & AI (7)** | Python, JavaScript, API Integration, Automation, Bug Fix, Web Scraping (yalnızca herkese açık sayfalar), OpenAI API *(veya ChatGPT / AI Development)* |
+
+### F2. Kanıt: 2 GitHub proof repo (Gün 0, ~2 saat, Cursor ile)
+
+Demolar web kalitesini kanıtlıyor; kod/script/AI işine kanıt yok. İki küçük, gerçek, çalışan repo bunu kapatır. Her repo: README (ne / nasıl çalıştırılır / örnek çıktı), örnek veri, ekran görüntüsü veya 10 sn GIF, `.env.example`, MIT lisans, anahtar kelimeli başlık. Portfolyo öğesi olarak da eklenir.
+
+| Repo | İçerik | Kanıtladığı şey |
+| --- | --- | --- |
+| `csv-cleaner-report` | Python CLI: dağınık CSV → temizlenmiş Excel (Data + Summary sekmesi, basit grafik); `python clean.py input.csv` | Python, veri temizliği, Excel çıktısı, script teslimi |
+| `ai-doc-summarizer` | Python: PDF/URL → yapılandırılmış özet (OpenAI veya Anthropic API), `.env` ile anahtar, maliyet notu, 3 örnek çıktı | AI API entegrasyonu, prompt kurulumu, güvenli anahtar kullanımı |
+| (ops.) `sheet-webhook-notifier` | Apps Script: yeni satır → e-posta/Slack | Sheets otomasyonu, webhook |
+
+### F3. Tarama: geniş havuz sorguları ve filtreler
+
+Akış: Upwork **Most Recent** sekmesi (Fixed filtresiyle) + aşağıdaki kayıtlı aramalar + bildirim aracı. Filtreler: **Fixed price** · $30–500 · last 24 hours · Payment verified · Proposals "Less than 5" (ilan <15 dk ise 5–10) · Entry + Intermediate · Kategoriler (Varsayım: ağaç adları değişebilir): Web Development · Scripts & Utilities · AI Apps & Integration · Data Extraction/ETL · Other – Software Development.
+
+| # | Sorgu |
+| --- | --- |
+| Q13 | `(fix OR bug OR error OR broken OR "not working" OR debug) AND (html OR css OR javascript OR php OR python OR script OR website)` |
+| Q14 | `(script OR automate OR automation OR "automatic") AND (python OR javascript OR node OR "google sheets" OR "apps script" OR csv OR excel OR pdf)` |
+| Q15 | `(chatgpt OR openai OR gpt OR claude OR anthropic OR "ai") AND (integrate OR integration OR api OR automate OR chatbot OR prompt OR summarize)` |
+| Q16 | `(api OR webhook OR zapier OR make OR n8n) AND (connect OR integrate OR integration OR sync OR "send to")` |
+| Q17 | `("small task" OR "quick task" OR "one-time" OR "one time" OR "small job" OR "quick fix" OR "small project") AND (code OR script OR website OR fix OR python OR javascript)` |
+| Q18 | `("need help" OR "help me" OR "walk me through" OR troubleshoot OR "screen share") AND (code OR script OR website OR wordpress OR python OR excel OR sheets)` |
+| Q19 | `(deploy OR deployment OR hosting OR dns OR ssl OR "github pages" OR netlify OR vercel) AND (website OR site OR app)` |
+| Q20 | `(scrape OR scraping OR extract OR "pull data" OR "collect data") AND (website OR csv OR excel OR "google sheets") NOT (linkedin OR instagram OR facebook OR login)` |
+
+### F4. Tier-3 whitelist (küçük teknik görevler) + blacklist ekleri
+
+| # | İş tipi | OK bütçe | Max scope | Şablon |
+| --- | --- | --- | --- | --- |
+| 14 | Kod hatası düzeltme (HTML/CSS/JS/PHP/Python), ilanda hata metni/ekran görüntüsü/repo var | $30–200 | 1 hata, ≤4 sa, 24 sa | T6 |
+| 15 | Script: CSV/Excel/PDF işleme, dönüştürme, rapor, dosya toplu işlem | $40–250 | 1 script, 1 girdi → 1 çıktı, 24–48 sa | T6 |
+| 16 | Otomasyon / webhook / API bağlama (form → Sheet, Sheet → e-posta, iki servis arası) | $50–300 | 1 akış, 48 sa | T6 |
+| 17 | AI/LLM entegrasyonu: OpenAI/Anthropic API'yi form/sheet/küçük uygulamaya bağlama; prompt/iş akışı kurulumu; özetleme | $75–400 | 1 akış + 5 gerçek örnekle test, 48 sa | T6 |
+| 18 | Herkese açık sayfalardan veri toplama (script) | $50–250 | 1 site, 1 çıktı, ≤2.000 satır, 48 sa | T6 |
+| 19 | Kurulum/deploy: GitHub Pages/Netlify/Vercel, DNS/SSL, form, analytics | $25–150 | 1 site, aynı gün | S5 |
+| 20 | "Help me" / birlikte çözme seansı (screen share, saatlik) | $25/sa, 1–2 sa | Upwork tracker, tavan 2 sa | S7 |
+
+**Blacklist ekleri (tek cümle):** Akademik ödev/sınav/tez işleri (Upwork yasaklıyor), CAPTCHA aşma / giriş arkası veya kişisel veri kazıma, "no AI tools" yazan ilanlar, ML model eğitimi/fine-tuning, mobil uygulama, kripto/blockchain, "tüm uygulamayı düzelt/yeniden yaz", hacklenmiş sunucu temizliği, DoD yazılamayan iş ve contract öncesi production şifresi isteyen ilan → gönderme.
+
+### F5. Yapabilirlik kapısı (niş-dışı ilanda, teklif öncesi ≤10 dk) — Ek E kapılarına eklenir
+
+| Kapı | Koşul |
+| --- | --- |
+| G9 | **DoD tek cümle yazılabiliyor**: "done = …" (ör. "script örnek dosyada hatasız çalışır ve 3 sütunlu Excel üretir") |
+| G10 | Stack lokalde çalıştırılabilir (Python/Node/PHP/HTML) **veya** müşteri ortamına erişim gerekmez |
+| G11 | Hata metni / ekran görüntüsü / repo ilanda var ya da tek mesajla alınabilir |
+| G12 | Efor ≤1 iş günü; ≤4 saat ise A-sınıf adayı |
+| G13 | "No AI" yok; akademik değil; ToS temiz; kişisel veri yok |
+
+Puan ekleri: **+2** ilanda hata metni/repo/örnek dosya var · **+1** bütçe $30–150 (hızlı karar) · **+1** tek deliverable · **−2** "ongoing/maintenance/retainer".
+
+### F6. Teklif şablonları (İngilizce)
+
+**T6 — Karışık teknik iş, sabit fiyat**
+
+```text
+[CLIENT_PROBLEM_WORDS] — from your description, [the error / the behaviour] most likely comes from [LIKELY_CAUSE]; the fix is [APPROACH], and I'd confirm that on your files before changing anything. [SPECIFIC_OBSERVATION from the error text, screenshot or repo.]
+
+Fixed price $[PRICE], delivered within [TIME] of the milestone being funded:
+• Definition of done: [ONE_SENTENCE_DOD — e.g. "the export runs on your sample file without errors and produces the Excel report with the three columns you listed"]
+• You get the fixed files (or a pull request), a short note on what changed and why, and a screenshot or recording showing it working
+• One round of changes included; if the same issue comes back within 7 days, I fix it free
+
+I'm new on Upwork, so instead of reviews here is code and work you can check: github.com/djoguzhan1 (small scripts and tools) and https://djoguzhan1.github.io/web-dev-portfolio/ (hand-coded sites, 99–100 on Google Lighthouse).
+
+To start I need [FILES / REPO ACCESS / SAMPLE INPUT / THE FULL ERROR TEXT] — can you share that once the milestone is set up? I'm online until [TIME] pm ET today.
+
+Oğuzhan
+```
+
+**S7 — "Help me" seansı, saatlik**
+
+```text
+You need someone to [walk you through / sit with you and fix] [PROBLEM] — I can do that today on a screen share through Upwork, and most sessions like this take about an hour. [SPECIFIC_OBSERVATION, or the two things I'd check first.]
+
+Hourly at $25, tracked with the Upwork tracker, capped at 2 hours unless you extend it. You keep the notes and any files we change. If it can't be solved in the session, you still leave with a written list of exactly what is wrong and what to do next.
+
+I'm new on Upwork; my code and sites are here to check: github.com/djoguzhan1 · https://djoguzhan1.github.io/web-dev-portfolio/. Which times work for you today? I'm online until [TIME] pm ET.
+
+Oğuzhan
+```
+
+**Teşhis açılışları — kod/script/AI işleri (T6'nın ilk paragrafı yerine)**
+
+```text
+Error quoted in the post:
+Your error — "[EXACT ERROR LINE]" — almost always means [CAUSE]; in your case probably [SPECIFIC], because [DETAIL FROM POST]. I can have it fixed and tested within [TIME] of funding, $[PRICE] intro (regular $[REGULAR]).
+
+Script / automation:
+What you described is a [N]-step script: [STEP 1] → [STEP 2] → [OUTPUT]. About [X] hours of work; I'd deliver it as a single command you run on your own machine, with a sample run recorded, for $[PRICE] intro.
+
+AI integration:
+You want [FORM/SHEET/APP] to send [INPUT] to [OpenAI/Anthropic] and get [OUTPUT] back — that's one webhook, one prompt and one write-back. I'd build it with your own API key (never stored on my side), test it on five of your real examples, and hand over the code with a run guide, for $[PRICE] intro.
+```
+
+**DoD örnekleri (milestone metnine yapıştırılır)**
+
+```text
+"Running `python clean.py input.csv` produces report.xlsx with sheets Data and Summary, no manual steps."
+"The contact form on example.com sends to the owner's inbox and shows a success message on mobile and desktop."
+"The WordPress admin loads without the critical error; the plugin list is unchanged except the fixed one."
+"A new row in the Orders sheet triggers an email within one minute containing the row's five fields."
+Unknown codebase, first milestone: "M1 — Reproduce the issue on a copy of the repo and send a written fix plan — $19, within 2 hours."
+```
+
+### F7. Fiyat (Tier-3 intro)
+
+| İş | Intro | Normal | Teslim | Not |
+| --- | --- | --- | --- | --- |
+| Mikro düzeltme (≤1 sa) | $25 | $45 | aynı gün | tek milestone |
+| Küçük düzeltme / script (≤3 sa) | $49 | $79 | 24 sa | tek milestone |
+| Orta iş (≤1 gün) | $99 | $149 | 48 sa | M1 $29 reproduce+plan · M2 kalan |
+| Otomasyon / webhook | $79–149 | $129–199 | 48 sa | DoD'a bağlı |
+| AI/API entegrasyonu | $99–199 | $149–299 | 48 sa | 5 gerçek örnekle test dahil |
+| Help seansı | $25/sa (min 1 sa) | $35/sa | bugün | tracker, tavan 2 sa |
+| Bilinmeyen kod tabanı | M1 $19–29 | – | 2 sa | reproduce + yazılı plan, sonra fiyat |
+
+### F8. Teslim düzeni (Cursor/AI destekli çalışma kuralları)
+
+1. **Önce yeniden üret.** Hatayı kendi ortamında görmeden düzeltme yok; 45 dk'da üretilemiyorsa müşteriye 2 seçenek mesajı (saatlik devam / M1 ile dur).
+2. **Kopya/branch'te çalış**; teslimat = diff veya PR + "ne değişti / neden / nasıl doğrulanır" notu + ekran görüntüsü veya 30 sn kayıt.
+3. **Sırlar:** müşterinin API anahtarı, şifresi, kişisel verisi hiçbir AI aracına yapıştırılmaz; test anahtarı iste, `.env` kullan, logları maskele; işten sonra istenirse veriyi sil.
+4. **AI kullanımı:** Upwork'te serbest; sorulursa dürüst cevap: *"I use AI-assisted tooling for speed; every change is reviewed and tested by me."* "No AI" ilanına girme.
+5. **DoD milestone metninde**, kabul testi listede; liste dışı istek = yeni milestone (Bölüm 2 kuralları aynen).
+6. **Zaman kutusu:** tahminin 1,5 katı aşılırsa dur ve mesaj at (Bölüm 2 efor eşiği).
+7. **Paketleme:** README tarzı teslim notu + çalıştırma komutu + örnek çıktı; müşteri kendi makinesinde 1 komutla doğrulayabilmeli.
+
+### F9. Olasılık ve maliyete etkisi
+
+| Karışım (72 sa) | Adet | p (Varsayım) | λ | Connects |
+| --- | --- | --- | --- | --- |
+| Niş-içi A-sınıf (Ek E) | 10 | %5,5 | 0,55 | ~70 |
+| Geniş havuz A-sınıf (T-profil + repo kanıtı + DoD'lu teklif) | 45 | %4,5 | 2,03 | ~315 |
+| Geniş havuz B-sınıf | 15 | %3,0 | 0,45 | ~90 |
+| **Toplam** | **~70** | **~%4,3** | **~3,0** | **~475** |
+
+P(≥1) ≈ %95 (aynı bant). Nakit: bedava yığın sonrası ~380–400 Connects satın alma ≈ **$55–60** (Plus'sız), Plus gerekirse ≤ **$75**. Ek E'ye göre ≈ +$10–15; karşılığı **arz sorununun çözülmesi** (günde 15 A-sınıf ilan bulmak geniş havuzda kolay). Profil yaması yapılmazsa aynı λ için ~95 teklif gerekir (+~$30) — yamanın değeri budur. Gün 0'a ekleme: profil 30 dk + 2 repo ~2 sa + sorgular 20 dk ≈ **3 saat**.
+
+**Değişmeyenler:** Ek E skor kartı, 5 dk SLA, teşhis-önce açılış ilkesi, Ek D nakit şelalesi, fiyat/milestone/interview mantığı, KPI katman teşhisi.
+
+**Şimdi yap**
+1. T-profil yaması: Title A + Opener A + "Small technical tasks" bloğu + 20 skill (4 küme) — 30 dk.
+2. İki proof repo'yu Cursor ile yaz, README + ekran görüntüsü + MIT; GitHub'da pinle, portfolyoya ekle — ~2 sa.
+3. Q13–Q20'yi Fixed filtresiyle kaydet; Tier-3 whitelist + G9–G13 kapılarını skor kartı sayfasına ekle; T6/S7/DoD kısayolları (`;t6` `;s7` `;dod`).
