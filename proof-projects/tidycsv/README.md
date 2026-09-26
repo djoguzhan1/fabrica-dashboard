@@ -15,7 +15,7 @@ orders_messy.csv: 78 rows in, 70 rows out, 10 columns
   - empty columns removed (1)
   - order_date: parsed as dates (75)
   - amount: parsed as numbers (34)
-  - status: case variants unified (32)
+  - status: case variants unified (38)
   - duplicate rows removed (5)
   types: order_id=text, customer_name=text, customer_email=text, order_date=date, status=text, amount=number, ...
 wrote orders_report.xlsx
