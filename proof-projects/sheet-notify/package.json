@@ -1,0 +1,11 @@
+{
+  "name": "sheet-notify",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Email and Slack notifications for new rows in a Google Sheet (Apps Script).",
+  "scripts": {
+    "test": "node --test",
+    "push": "clasp push"
+  },
+  "license": "MIT"
+}
