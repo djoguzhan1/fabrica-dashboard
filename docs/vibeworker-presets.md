@@ -25,7 +25,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": [],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -50,7 +50,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["wordpress","elementor","divi","wpbakery","white screen","critical error","plugin conflict","contact form","wpforms","contact form 7"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","custom plugin","plugin development","theme development","membership","lms","from scratch"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","custom plugin","plugin development","theme development","membership","lms","from scratch"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -75,7 +75,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["page speed","pagespeed","core web vitals","gtmetrix","lighthouse","site speed","slow website","load time","mobile responsive","mobile friendly","responsive fix"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","seo retainer","monthly seo"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","seo retainer","monthly seo"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -100,7 +100,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["landing page","one page","one-page","single page","small business website","simple website","hvac","plumbing","plumber","roofing","electrician","contractor","home services","cleaning","landscaping","google ads","lead generation"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -125,7 +125,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["google sheets","excel","spreadsheet","vlookup","xlookup","pivot table","conditional formatting","formula","dashboard","tracker","calculator"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","data entry","bookkeeping","power bi","tableau","financial model","vba"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","data entry","bookkeeping","power bi","tableau","financial model","vba"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -150,7 +150,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["quick fix","small fix","small change","small task","html css","css fix","figma to html","psd to html","migrate","migration","dns","ssl","hosting","github pages","netlify","ga4","google tag manager","pixel","calendly","booking widget"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24
@@ -175,7 +175,7 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_hires": null,
   "keywords_include": ["python","apps script","google apps script","automation","automate","csv","pdf","openai","chatgpt","claude","api integration","webhook","zapier","n8n","make.com","scrape","scraping"],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","linkedin","instagram","facebook","captcha","machine learning model","fine-tune","fine-tuning","computer vision"],
+  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","linkedin","instagram","facebook","captcha","machine learning model","fine-tune","fine-tuning","computer vision"],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24

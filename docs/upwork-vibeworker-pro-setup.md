@@ -141,7 +141,7 @@ Arayüzdeki alan adları farklı olabilir; parantezde Vibeworker MCP alan adı v
 **Ortak exclude (`keywordsExclude`):**
 
 ```text
-woocommerce, shopify, react, next.js, nextjs, vue, angular, react native, flutter, mobile app, ios app, android app, fullstack, full stack, full-stack, blockchain, crypto, nft, web3, trading bot, homework, thesis, unpaid, free test, test task, telegram only, outside upwork, us citizen, us person, security clearance, senior developer, senior engineer
+woocommerce, shopify, react, next.js, nextjs, vue, angular, react native, flutter, mobile app, ios app, android app, fullstack, full stack, full-stack, blockchain, crypto, nft, web3, trading bot, homework, thesis, unpaid, free test, test task, telegram only, outside upwork, us citizen, us person, security clearance, senior developer, senior engineer, lottery, casino, betting, gambling, power apps, power automate
 ```
 
 Bilerek exclude **edilmeyenler** (iyi işi de keserler; bildirimde elle ele): `app` (“apps script”), `long-term` (“potential long-term work”), `saas` (SaaS firmasının WordPress sitesi), `whatsapp` (“WhatsApp butonu ekle”), `assignment` (“task assignment tracker”), `wix` / `squarespace` (küçük fix işleri; plan Ek G: stack portföyde olmasa da iş yapılır).
