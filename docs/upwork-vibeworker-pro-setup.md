@@ -199,8 +199,9 @@ Akış: Push → işi aç → skor + açıklama → **Opus / EV** (`upwork-propo
 | Sorun | Çözüm |
 |-------|--------|
 | Push yok | Pro aktif mi? Preset’te **mobile push** açık mı? Telefon bildirimi kapalı mı? |
-| Yanlış işler ($8k fullstack) | Preset **exclude** kelimeleri; Step 4’te $100+ fixed kapalı mı |
-| Çok az iş | Shortlist çok sıkı → Step 4 gevşet; min bütçe düşürme, exclude artır |
+| Yanlış işler ($8k fullstack) | Preset **exclude** kelimeleri; Sniper / High Value preset’lerinin alarmı kapalı mı |
+| Çok az iş | Preset müşteri eşiklerini gevşet (önce rating, sonra spent); min bütçeyi düşürme, exclude’u kontrol et |
+| Step 4 tikleri kalkmıyor | Normal, bilgi ekranı; Continue de, ayarı preset’te yap |
 | Link açılmıyor | Free kotası — **Pro** |
 | Slack | Vibeworker’da gerek yok |
 
