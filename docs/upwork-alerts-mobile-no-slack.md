@@ -1,8 +1,10 @@
 # Upwork ilan uyarısı — telefon only, Slack yok
 
+**Plandan ödün yok:** Ayrıntı → `docs/upwork-plan-bildirim-slack-degil.md`
+
 **Durum:** Telefonda Chrome → Slack (`Connect Slack`, `api.slack.com`) → *browser not supported*. Normal; Slack mobil tarayıcıyı bilerek kapatıyor.
 
-**Çözüm:** Slack’i şimdilik bırak. İlan linki = **UpHunt paneli** + **Freelancer Plus** (zaten var).
+**Çözüm:** Slack’i bırak. Plan karşılığı = **UpHunt feed** + **Freelancer Plus push** (+ isteğe bağlı **Vibeworker Pro** kilit ekranı push, Slack/Telegram gerekmez).
 
 ---
 
