@@ -13,7 +13,7 @@ Kaynak: [tryvibeworker.com/ai-info](https://tryvibeworker.com/ai-info), [how-it-
 | **Filter preset** ile eşleşeni **push / Telegram / webhook / RSS** ile gönderir | Resmi Upwork API’si değil; bağımsız 3. parti |
 | Pro’da **Upwork link** + **AI proposal draft** (düzenlemen şart) | **E-posta bildirimi yok** (2026 doküman) |
 
-Gecikme: genelde ilan sonrası **~2–5 dk** push (FAQ).
+Gecikme: uygulama FAQ’sine göre ilan **~1 dk** içinde görülür, alarm hemen ardından gider. Tüm kanallar aynı hızda; push kurulum gerektirmediği için önerilir. Upwork login istemez. İptal: Google Play / App Store aboneliğinden.
 
 ---
 
@@ -169,7 +169,7 @@ P1–P3 için skor düşük tutulur: bunlar demolarla birebir örtüşen işler,
 | Push < 5/gün | Preset’lerde rating 4.5’i kaldır; sonra spent $500’ü kaldır; P1–P3 skorunu 4’e indir |
 | Push → GO oranı < %20 | Hangi preset gürültü yapıyor bak; o preset’in include listesini daralt |
 | Aynı alakasız iş tipi 3+ kez | Tek kelime exclude (ör. `elementor pro license`) |
-| Plus push Vibeworker’dan hızlı | Normal (2–5 dk gecikme); Q1–Q8 Upwork kayıtlı aramaları açık kalsın |
+| Vibeworker push 5 dk’dan geç geliyor | FAQ ~1 dk diyor: telefonun pil tasarrufu Vibeworker’ı kısıtlıyor olabilir (Ayarlar → Pil → kısıtlama yok); Q1–Q8 Upwork kayıtlı aramaları yedek olarak açık kalsın |
 
 Hedef: **10–30 push/gün**, bunların **%25+’ı GO**.
 
