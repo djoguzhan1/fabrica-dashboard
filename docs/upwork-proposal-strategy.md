@@ -389,4 +389,79 @@ A/B: 1. hafta açılış A vs B dönüşümlü; 2. hafta kazananla devam, Loom�
 6. **Somut zaman ve saat dilimi**: “by 3pm ET Tuesday”, “online until 6pm your time”.
 7. **5 dk cevap + 24/48h takip**: kapanış sohbette olur; sohbeti sen yönetirsin.
 
+---
+
+## 16) Risk matrisi — “yapalım mı?” ve demo kararları
+
+**İlke:** Dönüşümü artırmak için kanıt veriyoruz; **ücretsiz iş / IP kaybı / scope tuzaklarına girmiyoruz.** Her ilan önce **risk sınıfı**, sonra **GO/MAYBE/SKIP**.
+
+### 16.1 Risk sınıfları
+
+| Sınıf | Ne demek | Model (Cursor) | Karar |
+| --- | --- | --- | --- |
+| **🟢 Düşük** | Net scope, $50–150, URL var, Tier-1/2, payment verified, &lt;15 teklif, demo **istemiyor** (sadece portföy linki yeter) | **Composer 2.5** veya **Sonnet Thinking Low/Medium** | Sen onayla → GO |
+| **🟡 Orta** | “Show sample / send example / see your work for **this** project”, belirsiz revizyon, 15–20 teklif, $40–49 sınırda, müşteri 0 hire | **Composer 2.5** veya **Sonnet Thinking Medium** | **MAYBE** → kanıt matrisinde **sınırda** olan (mock/Loom) |
+| **🔴 Yüksek** | Ücretsiz test, “do a page first then we hire”, sınırsız revizyon, tüm siteyi yenile $80, production şifresi önce, Upwork dışı ödeme, akademik, scrape login, “no AI” + AI işi | **Sonnet/Opus Thinking High** veya **Opus** (ikinci görüş) | Varsayılan **SKIP**; nadiren **GO + sıkı milestone** |
+| **⚫ Kesin SKIP** | Blacklist (plan Ek F4), Woo checkout, mobil app, retainer, CAPTCHA bypass | **Fast / kendin** — AI’ya bile sorma | SKIP |
+
+**Kural:** 🟡 ve 🔴 için **asla Fast** ile “çok uygun” deme. 🔴’de model “GO” dese bile **senin veto** geçer.
+
+### 16.2 “Demo / örnek” istekleri — ne verilir, ne verilmez
+
+| Müşteri ne diyor | Risk | Yapılacak (teklifte) | Yapılmayacak |
+| --- | --- | --- | --- |
+| “Link to similar work” | 🟢 | Tek **HVAC/Plumbing demo** veya **GitHub repo** | Özel mock |
+| “Can you look at my site and tell me what’s wrong?” | 🟢 | **P0**: URL → 30 dk yazılı teşhis (ücretsiz **söz**, düzeltme yok) | Canlıda kod değişikliği |
+| “Send a screenshot of how you’d fix it” | 🟡 | **İşaretli ekran görüntüsü** (mevcut site); çözüm kodu yok | Tam sayfa tasarım |
+| “Build a quick mockup / sample homepage before hire” | 🟡–🔴 | **$100+ landing:** 15 dk **hero mock** (görüntü only). **&lt;$100 veya fix:** “After milestone — preview in 24h” veya **$15–29 paid micro-milestone** | Tam site ücretsiz |
+| “Free test / trial task / prove yourself” | 🔴 | **R5:** “$[15–29] milestone for [smallest item] today” | Ücretsiz iş |
+| “We’ll pay after we see it” / off-platform | ⚫ | SKIP | Her şey |
+| “Use our brand, send full Figma-ready design free” | 🔴 | SKIP veya paid milestone + IP “you own files after payment” | Ücretsiz tasarım |
+
+**Portföy vs proje demosu:** HVAC/Plumbing = **genel kanıt** (🟢). İsim/renk mock = **sadece $100+ landing veya hire sonrası** (🟡); fix işinde mock **yok**, screenshot yeter.
+
+### 16.3 “Biz yapalım mı?” — 60 sn insan kontrolü (AI’dan sonra)
+
+AI çıktısından sonra sen şunlardan **biri** varsa veto veya MAYBE:
+
+1. Gerçek efor **&gt;4 saat** ama bütçe **&lt;$80** → SKIP veya scope küçült (AI’ya sor: “effort honest?”).
+2. İlanda **“unlimited revisions”** / **“until satisfied”** → MAYBE + teklifte **2 round** yaz; kabul etmezlerse SKIP.
+3. **Demo/mock** isteniyor + bütçe **&lt;$70** → demo **yok**, paid micro-milestone veya SKIP.
+4. Müşteri **0 hire** + **&lt;$50** + belirsiz → SKIP (plan müşteri filtresi).
+5. **Yanlış çözüm** (sadece plugin) + düşük bütçe → GO only if teklifte dürüst düzeltme + dar scope.
+
+### 16.4 Cursor model seçimi (özet)
+
+```
+İlan geldi
+  → Blacklist / $15 / 50+ proposals? → SKIP (AI yok veya Fast)
+  → Risk 🟢 → Composer 2.5 + karar prompt → GO → teklif (aynı model)
+  → Risk 🟡 → Sonnet Thinking Medium + prompt → MAYBE/GO + kanıt satırı
+  → Risk 🔴 → Opus/Thinking High → varsayılan SKIP; GO ise milestone metnini model yazsın, sen oku
+  → $120+ veya ilk 3 review için kritik iş → teklif metni Sonnet/Opus High
+```
+
+**Haftalık bütçe mantığı:** ~25 ilan 🟢 (ucuz model) + ~8 🟡 (medium) + ~2 🔴 (high) = risk kontrollü, fatura makul.
+
+### 16.5 Karar prompt’u (risk dahil — kopyala-yapıştır)
+
+```text
+Upwork ilan — risk-aware karar. Plan + proposal strategy. 0 review, $50–150 sweet spot.
+
+İlan:
+[PASTE]
+
+Önce risk sınıfı: GREEN / YELLOW / RED / BLACK (gerekçe 1 cümle).
+Demo/sample/free test isteği var mı? Ne tür? Matris 16.2’ye göre ne VERİLİR / VERİLMEZ.
+Karar: SKIP | MAYBE | GO ("çok uygun" = GO).
+Tier, EV 0–7, önerilen $, boost, şablon P0–P4.
+RED flag listesi (varsa).
+Eğer MAYBE: hangi koşulda GO (ör. "$29 micro-milestone kabul ederse").
+Eğer GO: kanıt türü (none / screenshot / mock / loom) — bütçe ve risk kurallarına uygun mu?
+Veto önerisi: AI GO dese bile sen SKIP demeli misin? (evet/hayır + neden)
+
+Kısa Türkçe özet. GO ise İngilizce ilk 2 cümle.
+Conservative bias: şüphede SKIP veya MAYBE, ücretsiz işe GO yok.
+```
+
 İlgili: `docs/upwork-72h-first-job-plan.md` (dal `cursor/upwork-72h-plan-5f90`) · `docs/upwork-profile.md` (dal `cursor/upwork-profile-5f90`) · `docs/upwork-job-alerts-setup.md`.
