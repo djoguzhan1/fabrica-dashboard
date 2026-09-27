@@ -13,7 +13,7 @@ Kaynak: [tryvibeworker.com/ai-info](https://tryvibeworker.com/ai-info), [how-it-
 | **Filter preset** ile eşleşeni **push / Telegram / webhook / RSS** ile gönderir | Resmi Upwork API’si değil; bağımsız 3. parti |
 | Pro’da **Upwork link** + **AI proposal draft** (düzenlemen şart) | **E-posta bildirimi yok** (2026 doküman) |
 
-Gecikme: uygulama FAQ’sine göre ilan **~1 dk** içinde görülür, alarm hemen ardından gider. Tüm kanallar aynı hızda; push kurulum gerektirmediği için önerilir. Upwork login istemez. İptal: Google Play / App Store aboneliğinden.
+Gecikme: uygulama FAQ’sine göre ilan **~1 dk** içinde görülür, alarm hemen ardından gider. Tüm kanallar aynı hızda; push kurulum gerektirmediği için önerilir. Upwork login istemez. İptal: abonelik uygulamadan alındıysa Google Play / App Store’dan; **web’den alındıysa (Plan: “Pro (Web)”) tryvibeworker.com hesap ayarlarından**. Web sürümünde daha fazla filtre seçeneği ve kanal var; preset’leri web’de kurmak daha kolay.
 
 ---
 
