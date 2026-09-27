@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "methodology": {
+    "name": "deprem_metaforu",
+    "description": "ONI her dönem (~1 ay) için E=10^(1.5*(ONI+5)); olay toplamı ΣE; M_toplam=(2/3)*log10(ΣE). ONI 2.0≈M7.0, 2.5≈M7.5, 3.0≈M8.0.",
+    "M_instant_formula": "ONI + 5",
+    "E_period_formula": "10^(1.5 * (ONI + 5))",
+    "M_total_formula": "(2/3) * log10(sum(E))",
+    "event_window_rule": "ONI >= 0.5 ardışık dönemler; bitiş ilk < 0.5 öncesi son dönem (2024 AMJ 0.4 hariç, MAM 0.8 dahil)."
+  },
+  "events": [
+    {
+      "id": "2015-16-super-el-nino",
+      "label": "2015 süper El Niño",
+      "source_table": "ONI tablosu 2008-2019 (kullanıcı görseli)",
+      "window": {
+        "start": "2014-SON",
+        "end": "2016-AMJ"
+      },
+      "periods": [
+        {
+          "season": "2014-SON",
+          "oni": 0.5,
+          "M_instant": 5.5,
+          "E_relative": 177827941.00389227
+        },
+        {
+          "season": "2014-OND",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2014-NDJ",
+          "oni": 0.8,
+          "M_instant": 5.8,
+          "E_relative": 501187233.6272715
+        },
+        {
+          "season": "2015-DJF",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2015-JFM",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2015-FMA",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2015-MAM",
+          "oni": 0.9,
+          "M_instant": 5.9,
+          "E_relative": 707945784.3841403
+        },
+        {
+          "season": "2015-AMJ",
+          "oni": 1.0,
+          "M_instant": 6.0,
+          "E_relative": 1000000000.0
+        },
+        {
+          "season": "2015-MJJ",
+          "oni": 1.2,
+          "M_instant": 6.2,
+          "E_relative": 1995262314.9688828
+        },
+        {
+          "season": "2015-JJA",
+          "oni": 1.4,
+          "M_instant": 6.4,
+          "E_relative": 3981071705.5349855
+        },
+        {
+          "season": "2015-JAS",
+          "oni": 1.7,
+          "M_instant": 6.7,
+          "E_relative": 11220184543.019653
+        },
+        {
+          "season": "2015-ASO",
+          "oni": 2.0,
+          "M_instant": 7.0,
+          "E_relative": 31622776601.683792
+        },
+        {
+          "season": "2015-SON",
+          "oni": 2.3,
+          "M_instant": 7.3,
+          "E_relative": 89125093813.3744
+        },
+        {
+          "season": "2015-OND",
+          "oni": 2.5,
+          "M_instant": 7.5,
+          "E_relative": 177827941003.89227
+        },
+        {
+          "season": "2015-NDJ",
+          "oni": 2.6,
+          "M_instant": 7.6,
+          "E_relative": 251188643150.95718
+        },
+        {
+          "season": "2016-DJF",
+          "oni": 2.5,
+          "M_instant": 7.5,
+          "E_relative": 177827941003.89227
+        },
+        {
+          "season": "2016-JFM",
+          "oni": 2.2,
+          "M_instant": 7.2,
+          "E_relative": 63095734448.019424
+        },
+        {
+          "season": "2016-FMA",
+          "oni": 1.7,
+          "M_instant": 6.7,
+          "E_relative": 11220184543.019653
+        },
+        {
+          "season": "2016-MAM",
+          "oni": 1.1,
+          "M_instant": 6.1,
+          "E_relative": 1412537544.6227496
+        },
+        {
+          "season": "2016-AMJ",
+          "oni": 0.6,
+          "M_instant": 5.6,
+          "E_relative": 251188643.1509572
+        }
+      ],
+      "summary": {
+        "period_count": 20,
+        "peak": {
+          "season": "2015-NDJ",
+          "oni": 2.6,
+          "M_instant": 7.6
+        },
+        "mean_oni": 1.39,
+        "sum_E_relative": 824574773832.0858,
+        "M_total": 7.944,
+        "ratio_to_one_month_oni_2_0": 26.08,
+        "bands": [
+          {
+            "threshold_oni": 0.5,
+            "period_count": 20,
+            "sum_E_relative": 824574773832.0858,
+            "M_total_if_only_this_band": 7.944
+          },
+          {
+            "threshold_oni": 1.0,
+            "period_count": 12,
+            "sum_E_relative": 821517370672.9852,
+            "M_total_if_only_this_band": 7.943
+          },
+          {
+            "threshold_oni": 1.5,
+            "period_count": 8,
+            "sum_E_relative": 813128499107.8586,
+            "M_total_if_only_this_band": 7.94
+          },
+          {
+            "threshold_oni": 2.0,
+            "period_count": 6,
+            "sum_E_relative": 790688130021.8193,
+            "M_total_if_only_this_band": 7.932
+          },
+          {
+            "threshold_oni": 2.5,
+            "period_count": 3,
+            "sum_E_relative": 606844525158.7417,
+            "M_total_if_only_this_band": 7.855
+          }
+        ]
+      }
+    },
+    {
+      "id": "2023-24-el-nino",
+      "label": "2023 El Niño",
+      "source_table": "ONI tablosu 2020-2026 (kullanıcı görseli)",
+      "window": {
+        "start": "2023-AMJ",
+        "end": "2024-MAM"
+      },
+      "periods": [
+        {
+          "season": "2023-AMJ",
+          "oni": 0.5,
+          "M_instant": 5.5,
+          "E_relative": 177827941.00389227
+        },
+        {
+          "season": "2023-MJJ",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2023-JJA",
+          "oni": 1.0,
+          "M_instant": 6.0,
+          "E_relative": 1000000000.0
+        },
+        {
+          "season": "2023-JAS",
+          "oni": 1.3,
+          "M_instant": 6.3,
+          "E_relative": 2818382931.264449
+        },
+        {
+          "season": "2023-ASO",
+          "oni": 1.5,
+          "M_instant": 6.5,
+          "E_relative": 5623413251.903491
+        },
+        {
+          "season": "2023-SON",
+          "oni": 1.7,
+          "M_instant": 6.7,
+          "E_relative": 11220184543.019653
+        },
+        {
+          "season": "2023-OND",
+          "oni": 1.9,
+          "M_instant": 6.9,
+          "E_relative": 22387211385.683468
+        },
+        {
+          "season": "2023-NDJ",
+          "oni": 2.0,
+          "M_instant": 7.0,
+          "E_relative": 31622776601.683792
+        },
+        {
+          "season": "2024-DJF",
+          "oni": 1.8,
+          "M_instant": 6.8,
+          "E_relative": 15848931924.611109
+        },
+        {
+          "season": "2024-JFM",
+          "oni": 1.5,
+          "M_instant": 6.5,
+          "E_relative": 5623413251.903491
+        },
+        {
+          "season": "2024-FMA",
+          "oni": 1.2,
+          "M_instant": 6.2,
+          "E_relative": 1995262314.9688828
+        },
+        {
+          "season": "2024-MAM",
+          "oni": 0.8,
+          "M_instant": 5.8,
+          "E_relative": 501187233.6272715
+        }
+      ],
+      "summary": {
+        "period_count": 12,
+        "peak": {
+          "season": "2023-NDJ",
+          "oni": 2.0,
+          "M_instant": 7.0
+        },
+        "mean_oni": 1.325,
+        "sum_E_relative": 99173404768.90308,
+        "M_total": 7.331,
+        "ratio_to_one_month_oni_2_0": 3.14,
+        "bands": [
+          {
+            "threshold_oni": 0.5,
+            "period_count": 12,
+            "sum_E_relative": 99173404768.90308,
+            "M_total_if_only_this_band": 7.331
+          },
+          {
+            "threshold_oni": 1.0,
+            "period_count": 9,
+            "sum_E_relative": 98139576205.03833,
+            "M_total_if_only_this_band": 7.328
+          },
+          {
+            "threshold_oni": 1.5,
+            "period_count": 6,
+            "sum_E_relative": 92325930958.80501,
+            "M_total_if_only_this_band": 7.31
+          },
+          {
+            "threshold_oni": 2.0,
+            "period_count": 1,
+            "sum_E_relative": 31622776601.683792,
+            "M_total_if_only_this_band": 7.0
+          }
+        ]
+      }
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "2015-vs-2023-total",
+      "M_total_2015": 7.944,
+      "M_total_2023": 7.331,
+      "energy_ratio_2015_over_2023": 8.31
+    }
+  ]
+}
