@@ -64,21 +64,37 @@ AI ranking alt modu: `reviewStacking` (yeni freelancer) — Quick Wins ile uyuml
 - ✅ Data / automation  
 - ❌ Diğer lane’ler
 
-### Step 2 — Kategoriler (7 kutu)
-- Web Development, Scripts & Utilities, AI Apps & Integration, Other - Software Development  
-- Data Extraction/ETL, Data Analysis & Testing  
-- DevOps & Solution Architecture  
-- ❌ Ecommerce, Mobile, Design, Marketing, Admin, Engineering, Accounting, Writing, Legal, Translation…
+### Step 2 — Kategoriler
+- ✅ Web Development, Scripts & Utilities, AI Apps & Integration, Other - Software Development  
+- ✅ Data Extraction/ETL, Data Analysis & Testing  
+- ✅ **Web & Mobile Design** (listede varsa) — landing page / Figma→HTML / küçük site işlerinin bir kısmı burada açılır  
+- ❌ **DevOps & Solution Architecture** — çoğu AWS/kurumsal (ör. “AWS FSx … US Person Required”); küçük DNS/SSL/hosting işleri zaten Web Development’a düşer  
+- ❌ Ecommerce (Shopify/Woo), Mobile, Marketing, Engineering, Accounting, Writing, Legal, Translation…  
+- Admin / Data Entry: **kapalı başla**; 3 günde Sheets işi neredeyse hiç gelmezse aç (Sheets preset’i kelimeyle süzer)
 
 ### Step 3 — Referral
 - **Skip**
 
 ### Step 4 — Shortlist zinciri (gevşet)
-**Açık tut:** payment verified · hire rate **30%+** · client spent **$500+** (tek spend eşiği; $2k/$10k/$50k üst üste **kapalı**) · client rating **4.5+** (4.8 **kapalı**)
 
-**Kapat:** hire rate 50% / 70% · spent $2k+ / $10k+ / $50k+ · **fixed price $100+** (WP $30–99 işleri için)
+Zincir **kümülatif**: her tik bir öncekinin üstüne süzer. Hepsi açıkken 349 → **14,7 iş/gün** kalıyor ve örnek listenin tamamı plana göre SKIP ($8k fullstack, React SaaS, mobil trading app, .NET/AWS, SERP altyapısı, Squarespace 2 site göçü). Sebep: $2k/$10k/$50k spend + 4.8 + 70% hire + fixed $100+ birlikte “büyük kurumsal müşteri” filtresi oluyor.
 
-Hedef: ~**40–80 iş/gün** shortlist; demo listedeki $8k SaaS ilanları kategori genişliğinden — **preset exclude** ile kesilir.
+| Tik | Karar | Neden |
+| --- | --- | --- |
+| payment verified | ✅ | Plan: zorunlu |
+| hire rate 30%+ | ✅ | Post edip hiç hire etmeyen müşteriyi keser (Connect israfı) |
+| client has spent $500+ | ✅ | Tek spend eşiği; ciddi ama küçük müşteri |
+| hire rate 50%+ | ❌ | 30% yeter; küçük işletmeleri gereksiz eler |
+| client has spent $2k+ | ❌ | $50–150 işleri veren müşterinin çoğu bunun altında |
+| client rating 4.5+ | ✅ | Zor müşteriyi eler, hacmi az düşürür (~%10) |
+| client has spent $10k+ | ❌ | Büyük proje/ajans müşterisi |
+| hire rate 70%+ | ❌ | Aşırı sıkı |
+| client rating 4.8+ | ❌ | 4.5 yeter |
+| client has spent $50k+ | ❌ | Kurumsal |
+| **fixed price $100+** | ❌ **(en kritik)** | Açıksa $30–99 WP fix / hız / Sheets işleri hiç gelmez; alt sınırı preset’lerde ver |
+| hourly $15/hr+ | ✅ | $5–10/sa işleri keser; profil ücreti $15–25 |
+
+Beklenen: kategori değişikliğine göre **~100–130 iş/gün** shortlist. Bu **feed**; push sayısını preset’ler belirler (hedef **10–30 push/gün**). Global zincir gevşek, niş sıkılığı preset’te: iki katman üst üste binerse en sıkı olan kazanır.
 
 ### Step 5
 - Bitir → ana uygulama
@@ -90,8 +106,10 @@ Hedef: ~**40–80 iş/gün** shortlist; demo listedeki $8k SaaS ilanları katego
 ### A) Pro
 - Ayarlar / Upgrade → **Pro** ($19/ay). Ödeme: uygulama içi (Play) veya web.
 
-### B) Hunting mode
-- **Settings / Profile → Hunting mode → Quick Wins**
+### B) Hunting mode + skill profili
+- **Settings / Profile → Hunting mode → Quick Wins**; AI ranking modu varsa **Review Stacking**.
+- Hazır preset’ler: **Review Stacking** → temel al, aşağıdaki P1–P5’e göre düzenle. **Sniper** ve **High Value** → alarmı kapat veya sil (0 review’da büyük işlere Connect yakar).
+- AI skorlar “skill profile”a göre hesaplanır: profil alanına `docs/upwork-profile.md` Section B overview’unu ve Section C skill listesini yapıştır (WordPress, WordPress Bug Fix, Page Speed Optimization, Landing Page, Responsive Design, CSS, Google Sheets, Microsoft Excel, Python, Google Apps Script).
 
 ### C) Bildirim (Android)
 1. Uygulama: **Settings → Notifications** (Vibeworker içi) → **Mobile push ON**, quiet hours **01:00–09:00** (Europe/Istanbul).  
@@ -99,23 +117,59 @@ Hedef: ~**40–80 iş/gün** shortlist; demo listedeki $8k SaaS ilanları katego
 
 **Slack kullanma** (telefonda çalışmıyor). Telegram opsiyonel; istemezsen kapalı.
 
-### D) Filter preset’ler (plan Q1–Q12 + Tier-3)
+### D) Filter preset’ler (plan Q1–Q20)
 
-Her preset: **Payment verified**, Fixed + Hourly, **Mobile push ON** (bu preset için).
+Arayüzdeki alan adları farklı olabilir; parantezde Vibeworker MCP alan adı var.
 
-**Ortak exclude:** `woocommerce`, `shopify`, `react`, `react native`, `next.js`, `fullstack`, `saas`, `mobile app`, `squarespace`, `homework`, `nft`, `crypto`
+**Her preset’te ortak:**
 
-| Preset adı | Min fixed $ | Include (örnek) | Bildirim |
-|------------|-------------|-----------------|----------|
-| WP-fix | 30 | wordpress, broken, elementor, plugin, mobile, contact form | Push ON |
-| Landing-local | 80 | landing page, one page, hvac, plumbing, contractor, local | Push ON |
-| Speed-mobile | 50 | page speed, pagespeed, lighthouse, slow, responsive | Push ON |
-| Sheets-excel | 25 | google sheets, excel, vlookup, formula, cleanup, dashboard | Push ON |
-| Scripts-AI | 40 | python, automation, apps script, openai, webhook, csv | Push isteğe bağlı |
+| Alan | Değer |
+| --- | --- |
+| Payment verified (`requirePaymentVerified`) | ✅ |
+| Min hire rate (`minHireRate`) | 0.3 |
+| Min client spent (`minClientSpent`) | 500 |
+| Min client rating (`minClientRating`) | 4.5 |
+| Job type (`jobType`) | Fixed + Hourly |
+| Experience (`experienceLevel`) | Entry + Intermediate (Expert kapalı) |
+| Min hourly (`budgetMinHourly`) | 15 |
+| Bütçesiz ilanı gizle (`hideUnpostedBudget`) | ❌ (saatlik ilanların çoğu ücret yazmıyor) |
+| Posted within (`postedWithinHours`) | 2 — feed için; push zaten anlık. Plan: >60 dk ilana teklif yok |
+| Exclude locations | boş |
 
-**Skor eşiği** (preset’te varsa): başlangıç **quick-win ≥ 6** veya genel **6/10**; günde 40+ push → 7.
+**Ortak exclude (`keywordsExclude`):**
 
-**Feed vs bildirim:** Bir preset’i sadece “browse” için feed’e, sadece WP-fix + Landing + Speed için push’a atayabilirsin (doküman: feed ve notification yüzeyleri ayrı atanabilir — uygulamada preset → Alerts).
+```text
+woocommerce, shopify, squarespace, wix, react, next.js, nextjs, vue, angular, react native, flutter, mobile app, ios app, android app, fullstack, full stack, full-stack, saas, blockchain, crypto, nft, web3, trading bot, homework, assignment, thesis, unpaid, free test, test task, whatsapp, telegram only, outside upwork, us citizen, us person, security clearance, senior developer, senior engineer
+```
+
+`app` tek başına ve `long-term` exclude **edilmez**: ilki “apps script”i, ikincisi küçük işlerde sık geçen “potential long-term work” cümlesini keser.
+
+**Preset’ler:**
+
+| Preset | Tier / Q | Min fixed (`budgetMinFixed`) | Include (`keywordsInclude`, herhangi biri) | Ek exclude | Connects max | Skor | Push |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| **P1 WP-Fix** | T1 · Q1, Q3, Q8 | 30 | wordpress, elementor, divi, wpbakery, white screen, critical error, plugin conflict, contact form, wpforms, contact form 7 | custom plugin, plugin development, theme development, membership, lms, from scratch | 12 | 5 | ✅ |
+| **P2 Speed-Mobile** | T1 · Q2, Q7 | 50 | page speed, pagespeed, core web vitals, gtmetrix, lighthouse, site speed, slow website, load time, mobile responsive, mobile friendly, responsive fix | seo retainer, monthly seo | 12 | 5 | ✅ |
+| **P3 Landing-Local** | T1 · Q4, Q5, Q6 | 80 | landing page, one page, one-page, single page, small business website, simple website, hvac, plumbing, plumber, roofing, electrician, contractor, home services, cleaning, landscaping, google ads, lead generation | — | 12 | 6 | ✅ |
+| **P4 Sheets-Excel** | T2 · Q9, Q10 | 25 | google sheets, excel, spreadsheet, vlookup, xlookup, pivot table, conditional formatting, formula, dashboard, tracker, calculator | data entry, bookkeeping, power bi, tableau, financial model, vba | 8 | 6 | ✅ |
+| **P5 Small-Web** | T2 · Q11, Q12, Q19 | 20 | quick fix, small fix, small change, small task, html css, css fix, figma to html, psd to html, migrate, migration, dns, ssl, hosting, github pages, netlify, ga4, google tag manager, pixel, calendly, booking widget | — | 8 | 6 | ✅ |
+| **P6 Scripts-AI** | T3 · Q13–Q18, Q20 | 40 | python, apps script, google apps script, automation, automate, csv, pdf, openai, chatgpt, claude, api integration, webhook, zapier, n8n, make.com, scrape, scraping | linkedin, instagram, facebook, captcha, machine learning model, fine-tune, fine-tuning, computer vision | 12 | 7 | İlk hafta ❌ (sadece feed) |
+
+P1–P3 için skor düşük tutulur: bunlar demolarla birebir örtüşen işler, kaçırmak pahalı. P6 kanıtları tidycsv / docbrief / sheet-notify; gürültü fazla olduğu için önce feed.
+
+**Feed vs bildirim:** P1–P5 push’a, P6 yalnızca feed’e atanır (preset → Alerts). Telegram istersen yalnızca P1–P3 için aç; push ile aynı ilan iki kez gelir.
+
+### D2) İlk 48 saat kalibrasyon
+
+| Gözlem | Ayar |
+| --- | --- |
+| Push > 40/gün, çoğu alakasız | Skoru +1, exclude’a tekrar eden kelimeyi ekle |
+| Push < 5/gün | Step 4’te rating 4.5’i kapat; sonra spent $500’ü kapat; P1–P3 skorunu 4’e indir |
+| Push → GO oranı < %20 | Hangi preset gürültü yapıyor bak; o preset’in include listesini daralt |
+| Aynı alakasız iş tipi 3+ kez | Tek kelime exclude (ör. `elementor pro license`) |
+| Plus push Vibeworker’dan hızlı | Normal (2–5 dk gecikme); Q1–Q8 Upwork kayıtlı aramaları açık kalsın |
+
+Hedef: **10–30 push/gün**, bunların **%25+’ı GO**.
 
 ### E) Freelancer Plus (zaten var)
 - Upwork app: kayıtlı arama + push = **yedek hat**.
