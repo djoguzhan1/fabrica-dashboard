@@ -77,7 +77,7 @@ AI ranking alt modu: `reviewStacking` (yeni freelancer) — Quick Wins ile uyuml
 
 ### Step 4 — Shortlist zinciri (bilgi ekranı)
 
-Bu ekran **tıklanmıyor**: kategorilerdeki ilanların sıkı müşteri filtreleriyle nasıl azaldığını gösteren tanıtım animasyonu. Tiklere dokunma, **Continue** de. Resmi dokümana göre feed ve bildirimi **filter preset**’ler belirler; aşağıdaki kararlar preset’lerdeki müşteri alanlarına girilir (Bölüm 5D).
+Onboarding’de bu ekran **tıklanmıyor**; **Continue** de. Uygulama FAQ’si: “Shortlist is just the one we set up for you”, “every setting the tuner applied is visible and editable” — yani Pro sonrası **Shortlist filtresini aç ve aşağıdaki tabloya göre düzenle** (ya da bildirimini kapat). Asıl niş filtreler yine P1–P6 preset’leri (Bölüm 5D).
 
 Hepsi açıkken 349 → **14,7 iş/gün** kalıyor ve örnek listenin tamamı plana göre SKIP ($8k fullstack, React SaaS, mobil trading app, .NET/AWS, SERP altyapısı, Squarespace 2 site göçü). Sebep: $2k/$10k/$50k spend + 4.8 + 70% hire + fixed $100+ birlikte “büyük kurumsal müşteri” filtresi oluyor. Preset’lerde bunun yerine:
 
