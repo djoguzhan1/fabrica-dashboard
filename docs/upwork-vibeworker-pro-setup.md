@@ -29,7 +29,7 @@ Yeni Upwork ilanı
 
 **İki ayrı katman:**
 
-1. **Onboarding “Shortlist” kalite zinciri** (Step 4) — “sana ping atılmaya değer mi?” global eşikler. *All Jobs* ve *Shortlist* feed’lerine uygulanır (onboarding metni).
+1. **Onboarding “Shortlist” ekranı** (Step 4) — sıkı müşteri eşikleriyle ilan sayısının nasıl düştüğünü gösteren bilgi ekranı; tikler tıklanmaz.
 2. **Filter preset’ler** (kurulumdan sonra) — kelime, bütçe, exclude, bildirim kanalı. **Asıl niş daraltma burada.**
 
 **Hunting mode (strateji):**
@@ -75,11 +75,13 @@ AI ranking alt modu: `reviewStacking` (yeni freelancer) — Quick Wins ile uyuml
 ### Step 3 — Referral
 - **Skip**
 
-### Step 4 — Shortlist zinciri (gevşet)
+### Step 4 — Shortlist zinciri (bilgi ekranı)
 
-Zincir **kümülatif**: her tik bir öncekinin üstüne süzer. Hepsi açıkken 349 → **14,7 iş/gün** kalıyor ve örnek listenin tamamı plana göre SKIP ($8k fullstack, React SaaS, mobil trading app, .NET/AWS, SERP altyapısı, Squarespace 2 site göçü). Sebep: $2k/$10k/$50k spend + 4.8 + 70% hire + fixed $100+ birlikte “büyük kurumsal müşteri” filtresi oluyor.
+Bu ekran **tıklanmıyor**: kategorilerdeki ilanların sıkı müşteri filtreleriyle nasıl azaldığını gösteren tanıtım animasyonu. Tiklere dokunma, **Continue** de. Resmi dokümana göre feed ve bildirimi **filter preset**’ler belirler; aşağıdaki kararlar preset’lerdeki müşteri alanlarına girilir (Bölüm 5D).
 
-| Tik | Karar | Neden |
+Hepsi açıkken 349 → **14,7 iş/gün** kalıyor ve örnek listenin tamamı plana göre SKIP ($8k fullstack, React SaaS, mobil trading app, .NET/AWS, SERP altyapısı, Squarespace 2 site göçü). Sebep: $2k/$10k/$50k spend + 4.8 + 70% hire + fixed $100+ birlikte “büyük kurumsal müşteri” filtresi oluyor. Preset’lerde bunun yerine:
+
+| Eşik | Preset’te | Neden |
 | --- | --- | --- |
 | payment verified | ✅ | Plan: zorunlu |
 | hire rate 30%+ | ✅ | Post edip hiç hire etmeyen müşteriyi keser (Connect israfı) |
@@ -94,7 +96,7 @@ Zincir **kümülatif**: her tik bir öncekinin üstüne süzer. Hepsi açıkken 
 | **fixed price $100+** | ❌ **(en kritik)** | Açıksa $30–99 WP fix / hız / Sheets işleri hiç gelmez; alt sınırı preset’lerde ver |
 | hourly $15/hr+ | ✅ | $5–10/sa işleri keser; profil ücreti $15–25 |
 
-Beklenen: kategori değişikliğine göre **~100–130 iş/gün** shortlist. Bu **feed**; push sayısını preset’ler belirler (hedef **10–30 push/gün**). Global zincir gevşek, niş sıkılığı preset’te: iki katman üst üste binerse en sıkı olan kazanır.
+Preset’lerle hedef **10–30 push/gün**. Preset’te hire rate / spent / rating alanı yoksa: Settings’te “Shortlist” veya “Client quality” bölümüne bak; o da yoksa bu kontrolü bildirim geldiğinde plan müşteri filtresiyle elle yap. Preset’ler kurulduktan sonra da günde 5’ten az iş görünürse onboarding’i tekrarla veya destek adresine yaz.
 
 ### Step 5
 - Bitir → ana uygulama
@@ -164,7 +166,7 @@ P1–P3 için skor düşük tutulur: bunlar demolarla birebir örtüşen işler,
 | Gözlem | Ayar |
 | --- | --- |
 | Push > 40/gün, çoğu alakasız | Skoru +1, exclude’a tekrar eden kelimeyi ekle |
-| Push < 5/gün | Step 4’te rating 4.5’i kapat; sonra spent $500’ü kapat; P1–P3 skorunu 4’e indir |
+| Push < 5/gün | Preset’lerde rating 4.5’i kaldır; sonra spent $500’ü kaldır; P1–P3 skorunu 4’e indir |
 | Push → GO oranı < %20 | Hangi preset gürültü yapıyor bak; o preset’in include listesini daralt |
 | Aynı alakasız iş tipi 3+ kez | Tek kelime exclude (ör. `elementor pro license`) |
 | Plus push Vibeworker’dan hızlı | Normal (2–5 dk gecikme); Q1–Q8 Upwork kayıtlı aramaları açık kalsın |
@@ -209,7 +211,7 @@ Akış: Push → işi aç → skor + açıklama → **Opus / EV** (`upwork-propo
 | 72h plan | Vibeworker karşılığı |
 |----------|---------------------|
 | Anlık bildirim | Pro + **mobile push** |
-| Q1–Q12 niş | 4–5 preset + exclude |
+| Q1–Q20 niş | 6 preset (P1–P5 push, P6 feed) + ortak exclude |
 | EV / Tier teklif | Değişmez; uygulama sadece alarm |
 | 0 review | **Quick Wins** + düşük quick-win eşiği değil, **scope clarity** öncelik |
 | Slack/Telegram | Opsiyonel; sen: **sadece push** |
