@@ -236,6 +236,61 @@ Takip: `docs/upwork-proposal-log.md` → “Boost sandığı” tablosu; her boo
 
 ---
 
+## 7.4 Rahat bütçe — teklif + boost (max kapanış, hâlâ marj)
+
+**Gerçek:** İlk sprint yatırım. Gelir $50–150/iş; Upwork ~%10 keser. “Kar”, 1–3 review sonrası dönüşüm yükselince gelir; şimdi amaç **iş kapatmak**, Connect’i sıfıra indirmek değil.
+
+**Görünürlük:** Taze ilan (<15 dk, <5 teklif) → boost **gerekmez**, hız + ilk 2 cümle yeter. İlan **15–60 dk**, 4 boost slotu dolu, **$80+ Tier-1** → boost **mantıklı**; görünmezsen teklif atmak boşa yakmaya yakın. O yüzden bütçe **iki havuz**.
+
+### Havuzlar (2 haftalık “rahat” sprint)
+
+| Havuz | Connect | ~$ (0,15) | Ne için |
+| --- | --- | --- | --- |
+| **A — Teklif** | **750** | **~112** | ~65–70 GO teklif (ort. 11 Connect) |
+| **B — Boost sandığı** | **80** | **~12** | 8× ~10 Connect veya 5× daha yüksek 1. sıra |
+| **C — Yedek** | **70** | **~10** | Hafta 2, ani 1. sıra 12 Connect, iade gecikmesi |
+| **Toplam Connect** | **900** | **~135** | |
+| **Freelancer Plus** | — | **~20** | Anlık iş + bid içgörüsü |
+| **Nakit tavan (rahat)** | | **~155** | Plus + 900 Connect alımı |
+
+Mevcut **104 Connect** varsa: **~800 Connect daha al** → toplam ~900; içinden **80’i boost** diye ayır (not / ayrı say).
+
+### Boost ne zaman (görünmezlik kuralı)
+
+| Durum | Boost |
+| --- | --- |
+| İlan <15 dk, proposals <5 | **Hayır** — zaten üstte |
+| İlan 15–60 dk, $80–400, Tier-1, proposals <10, 1. sıra ≤10 | **Evet** (sandıktan) |
+| İlan 15–60 dk, $50–79 | **Hayır** — fiyat düşük, boost ROI kötü; hız + ek |
+| İlan >60 dk veya proposals 20+ | **Teklif atma** veya boost’suz (çoğu zaman atla) |
+| 1. sıra ≥11 Connect | **Hayır** — sandıkta kal |
+
+Sprintte boost tavanı: **8 kullanım** (rahat) veya disiplinli **5** (marj için). Her boost = önce teklif metni + denetim/ek hazır; zayıf teklife boost yok.
+
+### Beklenen sonuç (dürüst, rahat senaryo)
+
+| Metrik | Rahat plan |
+| --- | --- |
+| GO teklif | ~65–70 / 2 hafta |
+| Boost harcaması | ~40–80 Connect (~6–12 $) |
+| Hire hedefi (strateji) | **%12–20** → **8–14 teklifte 1** → 65 teklifte **~5–8 hire** teorik üst; ilk review için **gerçekçi 2–4 hire** |
+| Gelir (2–4 × $80 ort.) | **~160–320 $** |
+| Connect + Plus | **~155 $** |
+| İlk review sonrası net | İş ücretinden Upwork payı düşülür; sprint **küçük artı veya başabaş** normal, asıl kazanç review |
+
+**Agresif (max kapanış, daha az marj):** A=1000, B=120, C=80 Connect → ~$180 Connect + Plus; boost 10–12 kez; sadece Tier-1 $100+.
+
+**Minimum (marj, yavaş):** A=500, B=40, C=30 → boost 4 kez; taze ilanlara ağırlık.
+
+### Senin bakiyeyle (104 Connect)
+
+1. **~700–800 Connect satın al** (rahat A+B+C’ye yaklaş).  
+2. **80 Connect = boost sandığı** (dokunma, sadece 7.2 + 7.4 tablosu).  
+3. Günlük: önce taze GO; 15–60 dk ve $80+ görürsen sandıktan boost.  
+4. Sandık **20’nin altına** inince 40 Connect daha al, yine sadece boost’a.
+
+---
+
 ## 8) Aylık maliyet özeti (cimri değil senaryo)
 
 | Kalem | ~USD/ay |
