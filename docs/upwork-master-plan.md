@@ -55,16 +55,48 @@
 
 ---
 
-## 2) Bütçe — 600 Connect sprinti
+## 2) Bütçe — agresif mod (Connect kotası yok, kalite kotası var)
 
-| Havuz | Connect | Kural |
+**Kaldırılan:** “600 Connect = en fazla ~45 teklif / günde 8 GO” — **yok**.  
+**Kalan:** K1–K6, §6 teklif kalitesi, $50 taban, boost tavanı. Koşulu sağlayan ilana **bakiye yettiği sürece** teklif + (K3’te) boost.
+
+### 2.1 Başlangıç (ör. 600 Connect)
+
+| Havuz | Connect | Not |
 | --- | --- | --- |
-| **Teklif havuzu** | **~480** | ~10–11 Connect/teklif → **~45 teklif** |
-| **Boost sandığı** | **120** | Ayrı say. Aynı anda **en fazla 120** kilitli (§5) |
+| **Boost için ayrı say** | **≥120** | Muhasebe; K3’te tavan bid harcanır. Kilitli boost toplamı pratikte **≤120** tut (7 gün kilit riski); yetmezse Connect al, tekliften çalma |
+| **Teklif + ek boost** | Geri kalan | ~10–11 Connect/GO; K3’te +12…20 |
 
-- **Tempo:** günde **8 GO** (en fazla 10, kalite düşmeyecekse) → **5–6 gün** agresif sprint.
-- **Sprint sonu tahmini (garanti değil):** ~45 teklif × %9–11 → **4–5 iş**. %20’ye ulaşılırsa **~9 iş**.
-- **Takviye:** Sandık boost’a yetmezse **teklif sayısını azalt**, boost’tan kısma. Daha çok hacim istersen **+300 Connect** teklif havuzuna eklenir.
+**600 Connect kabaca 3 gün agresif** (günde ~10–15 GO + çoğu $80+ boost): teklif ~110–165 Connect/gün bandı mümkün; boost’un önemli kısmı **iade** gelir, net tüketim daha düşük. 3. gün sonunda **durum değerlendir** (§2.3).
+
+### 2.2 Faz 1 — ilk 3 gün (veya ilk 2 hire’a kadar, hangisi önce)
+
+| Kural | Değer |
+| --- | --- |
+| Günlük GO tavanı | **Yok** — peak saatlerde **10–15 GO** hedefle (kalite düşerse dur) |
+| Hangi ilan | Sadece **K1–K6 GO**; Shortlist gürültüsü SKIP |
+| Boost | $80+ Tier-1, K3 → **bid = tavan** (§5.3) |
+| Paralel teslim | **≤2 aktif sözleşme**; 3. hire gelmeden yeni GO’yu **6/gün**’e indir |
+
+**Beklenti (garanti değil):** 3 günde **~25–40 GO** → %10–15 hire → **3–6 iş** başlangıcı; review akışı 1. hafta içinde.
+
+### 2.3 DUR — ne zaman yavaşla veya Connect al
+
+| Sinyal | Aksiyon |
+| --- | --- |
+| **Gün 3 bitti** | Log: GO, açılma, mesaj, hire. Hire **≥2** → Faz 2. Hire **0** ve açılma **<%30** → teklif metni, hacmi 1 gün **durdur** |
+| Bakiye **<80** Connect | Dur veya **+200–400** al; boost kilitlerini say |
+| **≥15 GO**, açılma **<%20** | Hacim artırma; §6 + açılış A/B |
+| **≥2 hire** aynı anda aktif | Yeni GO **≤6/gün** (teslim öncelik) |
+| İlk **funded milestone** | Kutla; Faz 2’ye geçmeyi düşün |
+
+### 2.4 Faz 2 — “birkaç iş aldık, duruma bakarız”
+
+- Tempo: **4–8 GO/gün** (teslime göre).
+- Boost: aynı K3; sandık <30 → sadece **$100+**.
+- Connect: kazançtan veya kasadan **sürdürülebilir** seviye (~150–250/hafta teklif hacmi); yine **günlük kota yok**, sadece K + DUR.
+
+**Özet:** Agresif = **seçici olmayı bırakmıyoruz**, **yapay teklif tavanını bırakıyoruz**. Bütçe 3 gün yetiyorsa full gaz; sonra metrikle karar.
 
 ---
 
@@ -113,22 +145,30 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 
 ---
 
-## 5) Boost — doğru model (Upwork resmi kuralları)
+## 5) Boost — güncel model (Upwork resmi, 2026 — araştırılmış)
 
-### 5.1 Nasıl çalışıyor (doğrulanmış)
+**Kaynaklar (bağlayıcı mekanik):**
+- [Boost your proposal](https://support.upwork.com/hc/en-us/articles/4406395531795-Boost-your-proposal)
+- [When and what will I be charged?](https://support.upwork.com/hc/en-us/articles/40444950584083-When-and-what-will-I-be-charged)
+- [Can I boost my proposal again?](https://support.upwork.com/hc/en-us/articles/40445096920851-Can-I-boost-my-proposal-again-or-update-it)
 
-Kaynak: Upwork Help — *Boost your proposal*, *When and what will I be charged?*, *Can I boost my proposal again?*
+### 5.1 Mekanik (kısa, doğru)
 
-| Kural | Anlamı |
-| --- | --- |
-| Açık artırma, **ilk 4 slot** | En yüksek 4 bid müşterinin listesinin en üstünde, “Boosted” etiketiyle görünür |
-| Açık artırma **7 gün** veya hire’a kadar sürer | Sonradan gelen biri seni geçebilir |
-| **Ücret sadece iki durumda:** müşteri boost’luyken etkileşime girerse **veya** açık artırma bittiğinde hâlâ ilk 4’teysen | Görünürlük işe yaradıysa ödersin |
-| **Geçilirsen ve etkileşim yoksa → boost Connect’i iade** | Kaybeden boost’un maliyeti ~0 (teklif Connect’i iade edilmez) |
-| Boost **sadece gönderimde, tek sefer**; bid **sonradan artırılamaz** | Doğru bid’i ilk seferde ver |
-| Boost şu durumlarda biter: müşteri etkileşime girer, 3 kez açıp işlem yapmaz, 5 kez görüp etkileşime girmez veya geçilirsin | Kısa ama yoğun bir görünürlük penceresi |
-| Min bid = **4. sıra + 1** | Tablo gönderim öncesi görünür |
-| Bazı ilanlar **placebo** (boost gösterilmez, Connect alınmaz) | Ölçüm gürültüsü; sorun değil |
+| Konu | Upwork’ün dediği | Plan kararı |
+| --- | --- | --- |
+| **Ne satın alıyorsun** | İlk **4** teklif slotu (⚡ Boosted); müşteri listesinin üstü | K3’te $80+ Tier-1 → **hedef bu 4 slot** |
+| **Süre** | Açık artırma **7 gün** veya işe hire | Boost Connect **günlerce kilitli** kalabilir; Faz 1’de bakiyeyi say (§5.4) |
+| **Toplam harcama (gönderim)** | **Teklif Connect + boost bid** (ekran altta toplamı gösterir) | Log’a ikisini ayrı yaz |
+| **Ne zaman **ücret** kesilir** | (1) Boost’luyken müşteri **uygun etkileşim** **veya** (2) açık artırma bittiğinde hâlâ **ilk 4**’teysen | Mesaj gelmese de 7 gün sonunda 4’te kalırsan **ödersin** — tavan bid bunun için |
+| **Ne zaman iade** | İlk 4’ten **düşürüldün** ve uygun etkileşim **yok** → boost Connect iade (açık artırma kapanınca) | Geçilmek **para kaybı değil**; **görünürlük kaybı** + teklif Connect gider |
+| **Bid sonrası** | Boost **bir kez**; bid **artırılamaz**; geçilirsen **yeniden boost yok** | **Asla** “sonra boostlarım” — K3’te gönderimde boost |
+| **Sonra boost ekleme** | Yardım metinleri çelişkili; güvenli yol: **ilk gönderimde boost** | Boost’suz gönderip sonra eklemeye **güvenme** |
+| **Boost biter** | Etkileşim; 3× açılıp işlem yok; 5× görülüp etkileşim yok; **geçilme** | Erken müşteri bakışı = boost süresi kısalır |
+| **Min bid** | **4. sıra + 1** Connect | B4+1 > tavanımız → K4 (girme) |
+| **Uygunluk** | Upwork eşleşmeye göre boost seçeneği göstermeyebilir | Seçenek yoksa K4 (taze boost’suz veya SKIP) |
+| **Placebo** | Bazı ilanlarda boost müşteriye gitmez, Connect alınmaz | Sayma; normal |
+
+**Unutma:** Rekabet **canlı** — tablo anlık; senden sonra herkes boost atabilir. Erken gelmek bid’i ucuzlatmaz, **görülme zamanını** iyileştirir (§5.3 son paragraf). Bid’i tabloya göre kısma → **tavan** (§5.3).
 
 ### 5.2 Bunun plana etkisi (eski planın hataları)
 
@@ -198,6 +238,8 @@ B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 ---
 
 ## 7) Günlük akış
+
+**Faz 1:** Tüm uygun GO’ları peak bloklarında işle (11–13, 15–22 TR); günlük sayı tavanı yok. **Faz 2:** günde 4–8 GO.
 
 1. Push gelir → ön eleme (§4).
 2. **REKABET kartı** → K1–K6.
