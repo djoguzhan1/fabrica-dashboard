@@ -55,6 +55,7 @@ def body_blocks(slug: str) -> str:
 def blueprint(slug: str, meta: dict) -> dict:
     php = f"""<?php
 require '/wordpress/wp-load.php';
+kses_remove_filters();
 $id = wp_insert_post( array(
 	'post_type'    => 'page',
 	'post_status'  => 'publish',

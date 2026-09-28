@@ -42,7 +42,7 @@
     },
     {
       "step": "runPHP",
-      "code": "<?php\nrequire '/wordpress/wp-load.php';\n$id = wp_insert_post( array(\n\t'post_type'    => 'page',\n\t'post_status'  => 'publish',\n\t'post_author'  => 1,\n\t'post_title'   => \"ProFix Plumbing\",\n\t'post_content' => wp_slash( file_get_contents( '/wordpress/wp-content/demo-content.html' ) ),\n) );\nupdate_post_meta( $id, '_demo_landing', \"plumbing-landing\" );\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', $id );\nupdate_option( 'blogname', \"ProFix Plumbing\" );\n"
+      "code": "<?php\nrequire '/wordpress/wp-load.php';\nkses_remove_filters();\n$id = wp_insert_post( array(\n\t'post_type'    => 'page',\n\t'post_status'  => 'publish',\n\t'post_author'  => 1,\n\t'post_title'   => \"ProFix Plumbing\",\n\t'post_content' => wp_slash( file_get_contents( '/wordpress/wp-content/demo-content.html' ) ),\n) );\nupdate_post_meta( $id, '_demo_landing', \"plumbing-landing\" );\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', $id );\nupdate_option( 'blogname', \"ProFix Plumbing\" );\n"
     }
   ]
 }
