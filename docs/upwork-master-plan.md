@@ -9,6 +9,7 @@
 | `upwork-vibeworker-pro-setup.md` | Vibeworker kurulum ekranları |
 | `upwork-job-alerts-setup.md` | Q1–Q20 arama sorguları ve araç kurulumu (eski bütçe/boost bölümleri kaldırıldı) |
 | `upwork-proposal-log.md` | Takip tablosu (sütunlar §9’a göre) |
+| `upwork-72h-first-job-plan.md` (dal `cursor/upwork-72h-plan-5f90`) | Arşiv. EV, bütçe ve boost kuralları **geçersiz**; sadece arka plan |
 
 ---
 

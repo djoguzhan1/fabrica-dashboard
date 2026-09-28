@@ -30,7 +30,7 @@ Upwork → **Find Work** → arama kutusuna sorguyu yapıştır → filtreler:
 | Sort | **Newest** |
 | Posted | **Last 24 hours** (Upwatcher/UpHunt’te “yeni ilan” modu varsa onu da aç) |
 | Job type | **Fixed price** ve **Hourly** (ikisi de) |
-| Budget / rate | **$20 – $1,000** (bildirimde gürültüyü keser; **$15 işler gelmez** — bilinçli: plan tabanı $20 Tier-2) |
+| Budget / rate | **$50 – $1,000** (ana plan tabanı $50; altı SKIP) |
 | Client | **Payment verified** ✓ |
 | Proposals | **Less than 5** ve **5 to 10** |
 | Experience | **Entry** + **Intermediate** |

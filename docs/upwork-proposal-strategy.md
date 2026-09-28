@@ -19,7 +19,7 @@ Piyasa gerçeği ($50–150, 10–20 teklifli ilanlar): ortalama freelancer **%5
 | Cevap → hire | %20–30 | **%50–60** (kapanış oyun kitabı) |
 | **Hire / teklif** | %2–4 | **%12–20** |
 
-%75 cevap / %80 kapanış tek tek ilanlarda olur; ortalama olarak hiçbir freelancer’da yok. **%2–4 → %12–20** = 4–6 kat; günde 7–10 teklifle **haftada 5–10 kapanış** demek. Asıl kazanç ilk 3–5 review.
+%75 cevap / %80 kapanış tek tek ilanlarda olur; ortalama olarak hiçbir freelancer’da yok. **%2–4 → %12–20** = 4–6 kat; 600 Connect sprintinde (~45 teklif) gerçekçi beklenti **4–5 iş**, %20’de ~9 (ana plan §2). Asıl kazanç ilk 3–5 review.
 
 ---
 
@@ -89,7 +89,7 @@ Denetim yok. **P0 şablonu**: “URL gönder, 30 dk içinde ne olduğunu ve sabi
 
 | İş | Bütçe | Sunulan kanıt | Biçim | Süre |
 | --- | --- | --- | --- | --- |
-| WP fix, URL var | $30–80 | 3 bulgu + işaretli telefon ekran görüntüsü | 1 PNG ek | 6–8 dk |
+| WP fix, URL var | $50–80 | 3 bulgu + işaretli telefon ekran görüntüsü | 1 PNG ek | 6–8 dk |
 | WP fix, URL var | $80–150 | Üstteki + **60–90 sn Loom** | PNG + link | 12–15 dk |
 | Hız | her | PSI mobil ekranı + LCP elemanı; opsiyonel Loom | 1 PNG (+link) | 6–10 dk |
 | Landing | $100–150 | **Kişiselleştirilmiş hero mock** + demo linki | 1 PNG + 1 link | 15–20 dk |
@@ -438,8 +438,8 @@ AI çıktısından sonra sen şunlardan **biri** varsa veto veya MAYBE:
 
 ```
 İlan geldi
-  → Blacklist / $15 / 50+ proposals? → SKIP (modele sorma)
-  → Risk 🟢, $20–80 → Composer 2.5: karar + teklif
+  → Blacklist / ≤$49 / K1–K2 (ana plan §4)? → SKIP (modele sorma)
+  → Risk 🟢, $50–80 → Composer 2.5: karar + teklif
   → Risk 🟢/🟡, $80–150 → Claude Opus 5.5 Low: teklif metni
   → Risk 🟡 (demo/sample isteği, belirsiz revizyon) → Claude Opus 5.5 Medium
   → Risk 🔴 (free test, sınırsız revizyon, production erişimi) → Opus 5.5 High/Max: varsayılan SKIP

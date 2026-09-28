@@ -93,7 +93,7 @@ Hepsi açıkken 349 → **14,7 iş/gün** kalıyor ve örnek listenin tamamı pl
 | hire rate 70%+ | ❌ | Aşırı sıkı |
 | client rating 4.8+ | ❌ | 4.5 yeter |
 | client has spent $50k+ | ❌ | Kurumsal |
-| **fixed price $100+** | ❌ **(en kritik)** | Açıksa $30–99 WP fix / hız / Sheets işleri hiç gelmez; alt sınırı preset’lerde ver |
+| **fixed price $100+** | ❌ **(en kritik)** | Açıksa $50–99 WP fix / hız / Sheets işleri hiç gelmez; alt sınırı preset’lerde ver |
 | hourly $15/hr+ | ✅ | $5–10/sa işleri keser; profil ücreti $15–25 |
 
 Preset’lerle hedef **10–30 push/gün**. Preset’te hire rate / spent / rating alanı yoksa: Settings’te “Shortlist” veya “Client quality” bölümüne bak; o da yoksa bu kontrolü bildirim geldiğinde plan müşteri filtresiyle elle yap. Preset’ler kurulduktan sonra da günde 5’ten az iş görünürse onboarding’i tekrarla veya destek adresine yaz.
@@ -150,12 +150,12 @@ Bilerek exclude **edilmeyenler** (iyi işi de keserler; bildirimde elle ele): `a
 
 | Preset | Tier / Q | Min fixed (`budgetMinFixed`) | Include (`keywordsInclude`, herhangi biri) | Ek exclude | Connects max | Skor | Push |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| **P1 WP-Fix** | T1 · Q1, Q3, Q8 | 30 | wordpress, elementor, divi, wpbakery, white screen, critical error, plugin conflict, contact form, wpforms, contact form 7 | custom plugin, plugin development, theme development, membership, lms, from scratch | 12 | 5 | ✅ |
+| **P1 WP-Fix** | T1 · Q1, Q3, Q8 | 50 | wordpress, elementor, divi, wpbakery, white screen, critical error, plugin conflict, contact form, wpforms, contact form 7 | custom plugin, plugin development, theme development, membership, lms, from scratch | 12 | 5 | ✅ |
 | **P2 Speed-Mobile** | T1 · Q2, Q7 | 50 | page speed, pagespeed, core web vitals, gtmetrix, lighthouse, site speed, slow website, load time, mobile responsive, mobile friendly, responsive fix | seo retainer, monthly seo | 12 | 5 | ✅ |
 | **P3 Landing-Local** | T1 · Q4, Q5, Q6 | 80 | landing page, one page, one-page, single page, small business website, simple website, hvac, plumbing, plumber, roofing, electrician, contractor, home services, cleaning, landscaping, google ads, lead generation | — | 12 | 6 | ✅ |
-| **P4 Sheets-Excel** | T2 · Q9, Q10 | 25 | google sheets, excel, spreadsheet, vlookup, xlookup, pivot table, conditional formatting, formula, dashboard, tracker, calculator | data entry, bookkeeping, power bi, tableau, financial model, vba | 8 | 6 | ✅ |
-| **P5 Small-Web** | T2 · Q11, Q12, Q19 | 20 | quick fix, small fix, small change, small task, html css, css fix, figma to html, psd to html, migrate, migration, dns, ssl, hosting, github pages, netlify, ga4, google tag manager, pixel, calendly, booking widget | — | 8 | 6 | ✅ |
-| **P6 Scripts-AI** | T3 · Q13–Q18, Q20 | 40 | python, apps script, google apps script, automation, automate, csv, pdf, openai, chatgpt, claude, api integration, webhook, zapier, n8n, make.com, scrape, scraping | linkedin, instagram, facebook, captcha, machine learning model, fine-tune, fine-tuning, computer vision | 12 | 7 | İlk hafta ❌ (sadece feed) |
+| **P4 Sheets-Excel** | T2 · Q9, Q10 | 50 | google sheets, excel, spreadsheet, vlookup, xlookup, pivot table, conditional formatting, formula, dashboard, tracker, calculator | data entry, bookkeeping, power bi, tableau, financial model, vba | 8 | 6 | ✅ |
+| **P5 Small-Web** | T2 · Q11, Q12, Q19 | 50 | quick fix, small fix, small change, small task, html css, css fix, figma to html, psd to html, migrate, migration, dns, ssl, hosting, github pages, netlify, ga4, google tag manager, pixel, calendly, booking widget | — | 8 | 6 | ✅ |
+| **P6 Scripts-AI** | T3 · Q13–Q18, Q20 | 50 | python, apps script, google apps script, automation, automate, csv, pdf, openai, chatgpt, claude, api integration, webhook, zapier, n8n, make.com, scrape, scraping | linkedin, instagram, facebook, captcha, machine learning model, fine-tune, fine-tuning, computer vision | 12 | 7 | İlk hafta ❌ (sadece feed) |
 
 P1–P3 için skor düşük tutulur: bunlar demolarla birebir örtüşen işler, kaçırmak pahalı. P6 kanıtları tidycsv / docbrief / sheet-notify; gürültü fazla olduğu için önce feed.
 
