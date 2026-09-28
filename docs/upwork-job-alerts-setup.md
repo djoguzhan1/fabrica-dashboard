@@ -186,6 +186,36 @@ UpHunt/Vibeworker’de 20 feed limiti çıkarsa: önce Q1–Q12, sonra Q13–Q20
 
 **Hız:** Tier-1 → **5 dk** içinde teklif; şablonlar T1/T2/T3/S4/S5/T6 (plan Bölüm 5 + Ek F6).
 
+### 7.1 Fiyat bandı (hedef)
+
+| Bant | Karar | Not |
+| --- | --- | --- |
+| **$50–150** | **Ana hedef** (strateji sweet spot) | İlk review’un geldiği yer; teklif başına denetim + ek buraya |
+| $150–400 | GO, Tier-1 ise | Landing / hız / 1–3 sayfa; 2 milestone |
+| $400–800 | Sadece Tier-1 tam eşleşme | 72h’de kapanmayabilir; scope dar tut |
+| $20–49 | GO ama **yalın** | Mock yok, denetim kısa; ≤3 saat efor, tek teslimat |
+| $15–19 | Yalnızca ≤1 saat efor **ve** ≤6 Connects | Review değeri fiyattan büyük |
+| $800+ | SKIP | 72h penceresinde kapanmaz |
+| Saatlik | $20/sa × ≤5 saat, contract’ta saat tavanı | Tracker zorunlu |
+
+Teklif tutarı ilan bütçesine **eşit veya altında**. Bütçe düşükse fiyatı değil **scope’u** küçült (“$29 = 1 fix, 3 değil”).
+
+### 7.2 Boost kararı (hepsi sağlanmalı)
+
+| Koşul | Eşik |
+| --- | --- |
+| İlan yaşı | **15–60 dk** (<5 dk faydasız, >60 dk zararlı) |
+| Tier | **Tier-1 tam eşleşme** (WP fix / hız / landing) |
+| Bütçe | **≥ $80 sabit** — boost maliyeti gelirin %5’ini geçmesin |
+| 1. sıra fiyatı | **≤ 10 Connects**; 13+ isteniyorsa vazgeç |
+| Teklif sayısı | < 10 |
+| Müşteri | ≥1 hire **ve** harcama geçmişi |
+| Bütçe disiplini | Sprint başına **en fazla 3 boost** (1 ödül + 2 koşullu) |
+
+**Neden bu kadar dar:** Connect $0,15. $40’lık işte 11 Connect teklif + 13 Connect boost = $3,60, gelirin ~%9’u. Aynı 13 Connect’i **iki taze ilana** koymak, iş alma olasılığına ~6–7 kat fazla katkı yapıyor (plan Ek C R1). Boost, teklifin zayıflığını telafi etmez — sadece görünürlük satın alır.
+
+Gönderim sonrası boost eklemek: etkisi ölçülmemiş, **yapma**.
+
 ---
 
 ## 8) Aylık maliyet özeti (cimri değil senaryo)
