@@ -136,12 +136,12 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | K1 | Teklif **≥20** veya yaş **>60 dk** | **SKIP** |
 | K2 | Hız **>1,0/dk** (ör. 15 dk’da 15+ teklif) | **SKIP** |
-| K3 | **$80+** Tier-1, yaş **≤15 dk**, teklif **<12**, **B1 ≤ bid** ve **B4+1 ≤ bid** (§5.3) | Teklif + **boost = sabit bid** |
-| K4 | **$50–79** Tier-1/2, yaş **≤10 dk**, teklif **<8**, **B1 ≤ 11** ve **B4+1 ≤ 11** | Teklif + **boost = 11** |
-| K5 | Geç / kalabalık / **B1 > bid** / **B4+1 > bid** / balina (§5.7) | **SKIP** |
+| K3 | **$80+** Tier-1, **B4+1 ≤ cap** ve **B1 ≤ cap** (§5.3) | Teklif + **boost = B4+1** (≤ cap) |
+| K4 | **$50–79** Tier-1/2, **B4+1 ≤ 11**, **B1 ≤ 11** | Teklif + boost **11** veya **B4+1** |
+| K5 | **B4+1 > cap** veya **B1 > cap** (balina) | **SKIP** — Connect **0** |
 | K6 | **≤$49** veya Tier dışı | **SKIP** |
 
-**Sert kural:** $80+ **boost’suz yok**. Gönderim anında tablo **senin sabit bid’ini aşıyorsa → SKIP** (1. sıra 100, sen 20 → **atma**). Rekabet **sen girdikten sonra da** artar; bid artıramazsın → pahalı tabloda girme, balina kovalamayı bırak.
+**Sert kural:** $80+ **boost’suz yok**. **1. sırayı kovalama** (B1=100 → SKIP). **4’e girebiliyorsan** (B4+1 ≤ cap) → gir; rekabet sonra artar, bid artıramazsın — o yüzden gönderim anındaki tablo **tek şans**.
 
 ---
 
@@ -179,30 +179,40 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | “Sprintte max 3 / 8 / 12 boost” | Kaybeden boost iade edildiği için sayı kotası anlamsız | **Kilitli boost Connect** + bakiye (§5.4); Faz 1’de GO sayısı sınırsız |
 | “Boost pahalı, az kullan” | Sadece işe yarayınca (etkileşim) ödüyorsun | Kaldıraç 1’in ana aracı → **K3’te varsayılan açık** |
 
-### 5.3 Sabit boost bid — ilk dakikalarda (senin kural)
+### 5.3 Boost bid — **4. sıra stratejisi** (1. sırayı kovalama)
 
-**Mantık:** Tablo sonradan şişer; bid artırılamaz. **İlk teklif dakikalarında** (ilan **≤15 dk**, gönderimde tekrar say) doğrudan **sabit** boost ver — tablodaki 1. sıraya göre kısma.
+**Saha gerçeği (senin $150 / ~1 saat ekranı):** 100 / 28 / 27 / 26 Connect. Rekabet **sen girdikten sonra da** artar; “erken boost’suz” ve “sabit 20” **çoğu popüler ilanda yetmez**. SKIP her ilana değil — **balina (B1) kovalamayı** bırak, **ilk 4’e minimum bid** ile gir.
 
-| İlan bütçesi (sabit) | Boost bid | Hangi K | Zaman |
-| --- | --- | --- | --- |
-| **$50–79** | **11** | K4 | yaş **≤10 dk**, teklif **<8** |
-| **$80–99** | **15** | K3 | yaş **≤15 dk**, teklif **<12** |
-| **$100–199** | **20** | K3 | yaş **≤15 dk**, teklif **<12** |
-| **$200+** | **30** | K3 | yaş **≤15 dk**, teklif **<12** |
+**Tavan (iş başına max boost — 1. için değil, 4. için):**
+
+| Bütçe | Max boost |
+| --- | --- |
+| $50–79 | **11** |
+| $80–99 | **15** |
+| $100–149 | **25** |
+| $150–199 | **30** |
+| $200+ | **40** |
+
+**Gönderim anında (tabloyu oku):**
 
 ```
-B4 = 4. sıradaki bid (tablo)
-bid = tablodaki sabit (11 / 15 / 20 / 30)
+cap = bütçeye göre max
+B4 = 4. sıradaki bid
 
-B4 + 1 > bid  →  SKIP (zaten mezar; $40 + 19 bid örneği)
-B4 + 1 ≤ bid  →  boost = bid (1. sıra ne olursa olsun; hedef ilk 4, ideal 1–3)
+gerekli = B4 + 1          // ilk 4’e girmek için minimum
+
+gerekli > cap  →  SKIP (4’e bile sığmıyorsun; 101’lik 1. sıraya asla girme)
+B1 > cap       →  SKIP (balina; örn. B1=100, cap=30)
+aksi           →  boost = min(cap, gerekli)   // çoğu zaman = gerekli; tablo boşsa cap’e kadar verebilirsin
 ```
 
-**$80–99 → 15:** $50=11 ve $100=20 arası; istersen tek band yap: **$80+ hepsi 20** — log’da not et.
+**Örnek ($150, tablo 100/28/27/26):** cap=**30**, gerekli=**27** → boost **27** (4. sıra), **101 atma**. Sonra biri 100 zaten 1.’de; sen 2–4 arası görünürlük.
 
-**Maliyet (kabaca):** $50 → ~11+11=22 Connect; $100 → ~31; $200 → ~41. Hepsi iş bedelinin **~%15 altı**.
+**Örnek ($40, tablo 19/18/17/12):** cap=11, gerekli=13 → **SKIP** (niş + bütçe uyumsuz).
 
-**Geçilirsen:** boost iade; teklif Connect kalır. **Kalabalıklaşmış ilana** sabit bid yetmezse **atma** — sonradan 50 kişi gelmesini bekleme.
+**Sonradan geçilirsen:** iade; teklif Connect gider — **normal**. Plan “kaçış” değil, **doğru fiyatta 4’e gir**.
+
+**Maliyet tavanı:** teklif + boost ≤ işin **~%15**; $150 + boost 30 ≈ %4–5.
 
 ### 5.7 Saha gerçeği — $150 iş, ~1 saat, tablo 100 / 28 / 27 / 26
 
@@ -225,7 +235,7 @@ Bu **normal** popüler ilanlarda; senin gözlemin doğru:
 
 **Ne avlıyoruz:** Tablo **boş veya düşük** (B4 ≤ bid−1), **niş** (WP fix, form, hız — “website developer payments 3 ay” değil), bazen **gece/UK** düşük rekabet. Popüler $100–150 landing = çoğu zaman **mezar**.
 
-**Senin 20 / 30 / 11 önerisi:** Mantık doğru **yalnızca tablo uygunsa**; $150 + 1. sıra 100 = **hiç teklif yok**.
+**Sabit 20/30 yerine:** Tablo **100/28/27/26** → boost **27–30**, balina **101** değil. Popüler ilanların çoğu böyle; **SKIP sadece cap’i aşan tabloda**.
 
 ### 5.4 Sandık ve kilitli Connect (Faz 1 ile uyumlu)
 
@@ -248,15 +258,14 @@ Bu **normal** popüler ilanlarda; senin gözlemin doğru:
 ### 5.6 Boost — tek sayfa özet (gönderimde bak)
 
 ```
-B1 > bid veya B1 ≥ 25 veya B4+1 > bid? → SKIP
-≤15 dk + Tier uygun + B1 ≤ bid + B4+1 ≤ bid?
-  $50–79  → boost 11  (≤10 dk, <8 teklif)
-  $80–99  → boost 15
-  $100–199 → boost 20
-  $200+    → boost 30
-  → Değilse SKIP (boost’suz yok)
+cap = $50→11 | $80→15 | $100→25 | $150→30 | $200→40
+gerekli = B4 + 1
 
-Gönderimden sonra bid değişmez; geçilirsen boost iade.
+B1 > cap veya gerekli > cap? → SKIP (balina / sığmıyor)
+$80+ Tier-1 GO? → boost = gerekli (≤ cap). 1. sıraya kovalama.
+$50–79? → boost = min(11, gerekli)
+
+Sonra rekabet artar; bid artıramazsın. Geçilirsen boost iade.
 ```
 
 ---
