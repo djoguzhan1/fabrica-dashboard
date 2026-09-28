@@ -1,5 +1,7 @@
 # Upwork teklif stratejisi — $50–150 işler, 0 review, maksimum dönüşüm
 
+> **Ana plan:** `docs/upwork-master-plan.md`. Bütçe, boost, GO/SKIP ve günlük akış orada; çelişkide o geçerli. Bu doküman şablon ve kapanış metinleri içindir.
+
 **Son güncelleme:** 2026-09-27
 **Kapsam:** Filtreden geçmiş (“çok uygun”) bir ilana atılan **teklif mesajı** ve sonrasındaki **kapanış sohbeti**. 72h plan (`docs/upwork-72h-first-job-plan.md`) aynen geçerli; bu doküman onun üstüne **teklif katmanı**dır.
 **Kural:** Abartı yok, sahte deneyim yok, Upwork dışı iletişim yok, “Dear client / honored / passionate” yok.

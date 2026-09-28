@@ -175,6 +175,8 @@ UpHunt/Vibeworker’de 20 feed limiti çıkarsa: önce Q1–Q12, sonra Q13–Q20
 
 ## 7) Bildirim geldiğinde (30 sn — başvuru kararı)
 
+> **GEÇERSİZ (§7–7.5):** Bütçe, boost ve rekabet kuralları `docs/upwork-master-plan.md` §2, §4, §5’e taşındı. Aşağıdaki sayılar (3/8/12 boost, 10/12/15 tavan, “<10 dk boost faydasız”) eskidir.
+
 **Rekabet:** EV/Tier sonrası teklif yazmadan önce **§7.5 REKABET kartı** (R1–R9); log sütunları `docs/upwork-proposal-log.md`.
 
 | Kontrol | Gönder | Atla |

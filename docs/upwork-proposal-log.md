@@ -1,6 +1,6 @@
 # Upwork teklif takip tablosu
 
-**Agresif sprint:** Teklif havuzu **~900 Connect** + boost sandığı **120 Connect (~$18)** ayrı. Max **12 boost**, bid **1. sıra+1** (max **15**). Bant A **$100–200** Tier-1 → boost varsayılan. Detay: `docs/upwork-job-alerts-setup.md` §7.4.
+**Kurallar:** `docs/upwork-master-plan.md` (tek kaynak). Sprint: **600 Connect** = ~480 teklif + **120 boost sandığı** (aynı anda en fazla 120 kilitli). Karar K1–K6, bid formülü §5.3.
 
 Sütunlar 72h planı Ek A’dan + rekabet (`docs/upwork-job-alerts-setup.md` §7.5). Her teklifi gönderdikten hemen sonra bir satır ekle; **T+24h** Insights → `Rekabet (T+24h)`; cevap / interview / offer geldikçe aynı satırı güncelle.
 Haftalık 5 dk: açılış/cevap → `docs/upwork-proposal-strategy.md` Bölüm 12. Haftalık 15 dk: **Haftalık rekabet özeti** + §7.5 D ayar çek.
@@ -19,20 +19,11 @@ Haftalık 5 dk: açılış/cevap → `docs/upwork-proposal-strategy.md` Bölüm 
 
 ## Boost sandığı (savaş cephesi)
 
-| Kalem | Connect | $ (~0,15) |
-| --- | --- | --- |
-| Teklif havuzu (ayrı) | **~900** | **~135** |
-| Boost sandığı (ayrı) | **120** | **~18** |
-| Tek boost tavanı | **≤ 15** (1. sıra+1) | |
-| Sprintte max boost | **12** | |
+Kurallar: `upwork-master-plan.md` §5. Bid = max(B1+1, 6), tavan $80–99 → 12 · $100–199 → 15 · $200+ → 20. Geçilirsen iade gelir; aynı anda kilitli ≤120.
 
-**Bant A:** $100–200 · Tier-1 · ilan 10–45 dk · proposals <8 → boost varsayılan.  
-**Bant B:** $80–99 veya $201–350 · Tier-1 · 15–60 dk · proposals <12 → max bid 10.  
-**$50–79:** teklif evet, boost hayır. **$40 altı / 1. sıra ≥16 / proposals ≥20:** teklif bile atma veya boost asla.
-
-| # | Tarih | İlan | Bant | Boost bid | 1. sıra | Harcandı | Sandık kalan (120) | Sonuç |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| — | — | — | — | — | — | 0 | **120** | — |
+| # | Tarih | İlan | Bütçe | B1 / B4 | Boost bid | Durum (açık / ödendi / iade) | Kilitli toplam (≤120) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| — | — | — | — | — | — | — | **0** |
 
 ## Haftalık rekabet özeti (§7.5 D — 15 dk)
 
