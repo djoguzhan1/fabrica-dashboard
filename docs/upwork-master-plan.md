@@ -7,7 +7,7 @@
 | `upwork-proposal-strategy.md` | Teklif şablonları (P0–P4), kapanış cümleleri, risk matrisi detayı |
 | `vibeworker-presets.md` | Yapıştırmaya hazır filtre JSON’ları |
 | `upwork-vibeworker-pro-setup.md` | Vibeworker kurulum ekranları |
-| `upwork-job-alerts-setup.md` | Q1–Q20 arama sorguları. **Bütçe / boost bölümleri (§7.1–7.5) geçersiz → bu doküman** |
+| `upwork-job-alerts-setup.md` | Q1–Q20 arama sorguları ve araç kurulumu (eski bütçe/boost bölümleri kaldırıldı) |
 | `upwork-proposal-log.md` | Takip tablosu (sütunlar §9’a göre) |
 
 ---
@@ -20,8 +20,8 @@
 | --- | --- | --- | --- | --- |
 | 1 | Görünmeyeceksen teklif atma | Açılma | Kalabalık ilana boost’suz teklif atılıyordu ($40 n8n, 22 teklif) | K1–K6: kalabalık → boost veya **SKIP** |
 | 2 | $80+ Tier-1’de boost **varsayılan** | Açılma | “Boost pahalı, sprintte 3/8/12 kez” | Kaybeden boost iade edilir; sınır **kilitli ≤120**, sayı değil |
-| 3 | Taze ilanda da boost | Açılma | “<10 dk boost faydasız” | Yanlıştı; taze = en ucuz bid |
-| 4 | Bid = B1+1, tavan 12/15/20 | Açılma | “1. sıra+1, max 10” — geçilip düşülüyordu | Kalıcı 1. sıra; bid sonradan artırılamaz |
+| 3 | Taze ilanda da boost | Açılma | “<10 dk boost faydasız” | Yanlıştı; müşteri erken bakar, boost o an işe yarar |
+| 4 | Bid = **tavan** (12/15/20), tabloya göre değil | Açılma | “1. sıra+1” — sonradan gelenler geçiyordu, bid artırılamıyor | Rekabet bilinmez → değere göre bid; kaybedersen iade |
 | 5 | Taban **$50** | Cevap/kapanış | $15–49 “yalın GO” bantları | ≤$49 **SKIP** (istisna yok) |
 | 6 | Hız >1/dk → SKIP | Açılma | Sadece “<20 teklif” bakılıyordu | Yaş + hız birlikte |
 | 7 | 150–220 kelime, tek soru, ≤3 madde | Cevap | İlk teklif 292 kelime, 2 soru, 7 madde | İstisnasız; sapma log’a |
@@ -103,8 +103,8 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | K1 | Teklif **≥20** veya yaş **>60 dk** | **SKIP** |
 | K2 | Hız **>1,0/dk** (ör. 15 dk’da 15+ teklif) | **SKIP** |
-| K3 | **$80+** Tier-1 ve **4. sıra bid’i ≤14** | **Teklif + boost** (§5) |
-| K4 | **$80+** Tier-1 ve 4. sıra bid’i **≥15** | Yaş <10 dk ve teklif <5 ise boost’suz teklif; aksi **SKIP** |
+| K3 | **$80+** Tier-1 ve **B4 + 1 ≤ tavan** | **Teklif + boost, bid = tavan** (§5.3) |
+| K4 | **$80+** Tier-1 ve B4 + 1 **> tavan** | Yaş <10 dk ve teklif <5 ise boost’suz teklif; aksi **SKIP** |
 | K5 | **$50–79**, yaş **<15 dk**, teklif **<5** | Teklif, **boost yok** |
 | K6 | **$50–79**, diğer her durum | **SKIP** |
 
@@ -134,28 +134,35 @@ Kaynak: Upwork Help — *Boost your proposal*, *When and what will I be charged?
 | Eski kural | Neden yanlış | Yeni kural |
 | --- | --- | --- |
 | “<10 dk ilanda boost faydasız” | Taze ilanda bid en ucuz halinde; kalabalık sonra gelir ve boost’suz teklif aşağı iner | **Tier-1 $80+ ilanda taze de olsa boost** |
-| “Bid = 1. sıra + 1, max 10–12” | Düşük bid geçilir → iade edilir ama görünürlük de kaybolur; bid sonradan artırılamaz | Kalıcı olmayı hedefleyen bid (§5.3) |
+| “Bid = 1. sıra + 1” | Tablo anlık; sonradan gelenler geçer, bid artırılamaz | **Bid = tavan** (§5.3) |
 | “Sprintte max 3 / 8 / 12 boost” | Kaybeden boost iade edildiği için sayı değil **kilitli Connect** sınırlı | **Aynı anda en fazla 120 Connect kilitli** |
 | “Boost pahalı, az kullan” | Sadece işe yarayınca (etkileşim) ödüyorsun | Kaldıraç 1’in ana aracı → **K3’te varsayılan açık** |
 
-### 5.3 Bid formülü
+### 5.3 Bid formülü — değere göre, anlık tabloya göre değil
+
+**Sorun:** Açık artırma canlı. Tablo sadece **şu anı** gösterir; senden sonra gelen herkes daha yüksek bid verip seni ilk 4’ten atabilir. Erken gelmek boost’ta avantaj **değildir**. Sen de bid’i sonradan artıramazsın. Yani gelecekteki rekabeti bilemezsin → bid’i rakibe göre değil, **o işin sana değerine göre** ver.
+
+**Çözüm:** Kaybedersen iade aldığın için, yüksek bid’in tek maliyeti **kazandığında biraz daha fazla ödemek**. Düşük bid’in maliyeti ise **görünmemek** (ve teklif Connect’ini boşa harcamak). Bu yüzden her zaman **tavanı** bid’le.
 
 ```
-B1 = 1. sıra bid, B4 = 4. sıra bid (tablodan)
+B4 = şu an 4. sıradaki bid (tablodan)
 
-Hedef bid = max(B1 + 1, 6)    → 1. sıraya otur, geç gelenlere karşı pay bırak
-Tavan     = bütçeye göre:
-            $80–99   → 12
-            $100–199 → 15
-            $200+    → 20
-Hedef bid > tavan ise:
-            B4 + 1 ≤ tavan → bid = tavan (ilk 4’te, 1. değil)
-            B4 + 1 > tavan → boost yok → K4
+Bid = tavan (bütçeye göre, sabit):
+      $80–99   → 12
+      $100–199 → 15
+      $200+    → 20
+
+B4 + 1 > tavan  → boost yok → K4 (şimdiden pahalı; sonra daha da pahalanır)
+B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 ```
 
-**Neden 1. sıra:** Sonradan gelen biri seni geçerse 4. sıradaki düşer, 1. sıradaki kalır. Kaybedersen zaten iade alırsın. Kaybetmenin maliyeti para değil, **görünürlük**.
+**Tablo sadece bir şeye yarar:** “Bu ilan zaten tavanımın üstünde mi?” sorusuna. Üstündeyse gir­me; altındaysa yine de tavanı ver, çünkü sonra gelenler fiyatı yükseltecek.
 
-**Maliyet tavanı:** teklif + boost ≤ iş bedelinin **~%15’i**. Örnek: $100 iş → 11 + 15 = 26 Connect ≈ $3,90 (%3,9). Bu yüzden tavanlar güvenli.
+**Geçilirsen:** iade gelir; teklif organik listeye düşer. Bu yüzden boost’lu teklif de **tek başına güçlü** olmalı (ilk 2 cümle + denetim). Boost bir sigorta, teklifin yerine geçmez.
+
+**Maliyet tavanı:** teklif + boost ≤ iş bedelinin **~%15’i**. $80 iş → 11 + 12 = 23 Connect ≈ $3,45 (%4,3). $100 iş → 26 Connect ≈ $3,90 (%3,9). Tavanlar güvenli.
+
+**Neden hız hâlâ önemli (boost’tan bağımsız):** Müşteri çoğu zaman ilk birkaç saatte bakar ve boost ilk etkileşimde biter. Erken gönderilen teklif, müşteri listeyi açtığında **boost’lu slotların hâlâ az rakiple dolu olduğu** anda görünür. Hız boost bid’ini değil, **görülme zamanını** belirler.
 
 ### 5.4 Sandık yönetimi (nakit akışı)
 
@@ -170,7 +177,7 @@ Hedef bid > tavan ise:
 | --- | --- |
 | Boost’lu tekliflerde açılma **<%50** | Sorun teklifin ilk 2 cümlesinde. Boost’u kısma, **açılışı değiştir** |
 | Boost’lu açılma iyi, cevap **<%20** | Sorun gövdede (denetim/ek). Strateji Bölüm 3–5 |
-| Çoğu boost **geçildi/iade** | Tavanı bir kademe yükselt ($100–199 → 18) |
+| Çoğu boost **geçildi/iade** ve açılma düşük | Tavanı bir kademe yükselt ($100–199 → 18); maliyet hâlâ işin %5’i altında |
 | Nişte B4 sürekli **≥15** | O preset’te min bütçeyi **$100**’e çek |
 
 ---
