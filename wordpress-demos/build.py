@@ -58,13 +58,13 @@ require '/wordpress/wp-load.php';
 $id = wp_insert_post( array(
 	'post_type'    => 'page',
 	'post_status'  => 'publish',
-	'post_title'   => {json.dumps(meta['title'])},
+	'post_title'   => {json.dumps(meta["title"], ensure_ascii=False)},
 	'post_content' => wp_slash( file_get_contents( '/wordpress/wp-content/demo-content.html' ) ),
 ) );
 update_post_meta( $id, '_demo_landing', {json.dumps(slug)} );
 update_option( 'show_on_front', 'page' );
 update_option( 'page_on_front', $id );
-update_option( 'blogname', {json.dumps(meta['site'])} );
+update_option( 'blogname', {json.dumps(meta["site"], ensure_ascii=False)} );
 """
     return {
         "$schema": "https://playground.wordpress.net/blueprint-schema.json",
