@@ -1,5 +1,7 @@
 # Upwork teklif takip tablosu
 
+**Boost savaş sandığı (72h sprint):** teklif Connect’lerinden **ayrı** rezerv. Başlangıç **60 Connect (~$9)** — sadece Bölüm 7.2 koşulları sağlanınca harcanır. Sprintte **max 3 boost** (1. sıra ≤10 Connect, bütçe ≥$80, ilan 15–60 dk). Kalan sandık: tabloda `Boost sandığı kalan` satırını güncelle.
+
 Sütunlar 72h planı Ek A’dan. Her teklifi gönderdikten hemen sonra bir satır ekle; cevap / interview / offer geldikçe aynı satırı güncelle.
 Haftalık 5 dk: hangi açılış görüntülendi, hangisi cevap aldı → `docs/upwork-proposal-strategy.md` Bölüm 12.
 
@@ -14,6 +16,23 @@ Haftalık 5 dk: hangi açılış görüntülendi, hangisi cevap aldı → `docs/
 | 1 | 292 kelime | 150–220 (Bölüm 5) | Node dökümü eke, mektupta 3 madde |
 | 1 | 2 soru soruldu | Tek akıllı soru (Bölüm 5, blok 6) | Tek soru |
 | 1 | 7 madde işareti | En fazla 3 (Bölüm 6) | 3 madde |
+
+## Boost sandığı (savaş cephesi)
+
+| Kalem | Connect | $ (~0,15) |
+| --- | --- | --- |
+| Sprint başı rezerv (teklif bakiyesinden **ayır**, karıştırma) | **60** | **~9** |
+| Tek boost tavanı (1. sıra için) | **≤ 10** | ~1,50 |
+| Sprintte max boost sayısı | **3** | ~30 max |
+| Sprintte max boost harcaması | **30** (3×10) | **~4,50** |
+
+**Ne zaman harcanır (hepsi ✅):** Tier-1 · $80–400 sabit · ilan **15–60 dk** · proposals **<10** · müşteri ≥1 hire · 1. sıra **≤10 Connect** · teklif metni hazır (denetim/ek kurallara uygun).
+
+**Ne zaman dokunulmaz:** $40–79 · ilan <15 dk veya >60 dk · 1. sıra ≥11 Connect · Tier-2/3 · “herkes boost yaptı” panik · gönderim sonrası boost.
+
+| # | Tarih | İlan | Boost bid | 1. sıra fiyatı | Harcandı | Sandık kalan (60’dan) | Sonuç |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| — | — | — | — | — | 0 | **60** | — |
 
 ## Bekleyen aksiyonlar
 

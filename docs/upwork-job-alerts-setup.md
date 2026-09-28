@@ -216,6 +216,24 @@ Teklif tutarı ilan bütçesine **eşit veya altında**. Bütçe düşükse fiya
 
 Gönderim sonrası boost eklemek: etkisi ölçülmemiş, **yapma**.
 
+### 7.3 Boost savaş sandığı (baştan ayır)
+
+Teklif Connect’leri ile **karıştırma**. Plus + teklif alımları (~1.200 Connect / sprint) günlük hacim için; boost ayrı bir “cephe”.
+
+| Kalem | Miktar | Not |
+| --- | --- | --- |
+| **Sprint başı sandık** | **60 Connect (~$9)** | Upwork’ten al, bakiyede “sadece boost” diye not et |
+| Tek seferde max bid | **10 Connect** | 1. sıra 11+ istiyorsa → sandığa dokunma, boost yok |
+| Sprintte max kullanım | **3 boost** | ~30 Connect max (~$4,50) — geri kalan 30 Connect yedek / 2. hafta |
+| Hedef iş bütçesi (boost’lu) | **$80–400** sabit | Sweet spot **$100–150** landing / WP hız |
+| Hedef iş bütçesi (boost’suz) | **$50–150** | $50–79 her zaman boost **kapalı** |
+
+**Oyunu bitiren kural:** Boost sandığı **görünürlük** satın alır; kapanışı **teklif metni + hız** getirir. Sandık boşalınca sprint bitene kadar boost yok — teklif hacmi devam eder.
+
+Takip: `docs/upwork-proposal-log.md` → “Boost sandığı” tablosu; her boost sonrası `Sandık kalan` güncelle.
+
+**İlk review sonrası (isteğe bağlı):** Sandığı **40 Connect**’e indir veya sadece **$150+** işlerde aç; ilk 3 review gelene kadar 60 / 3 boost kuralı yeterli.
+
 ---
 
 ## 8) Aylık maliyet özeti (cimri değil senaryo)
