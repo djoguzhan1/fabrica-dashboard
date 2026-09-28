@@ -234,6 +234,52 @@ Takip: `docs/upwork-proposal-log.md` → “Boost sandığı” tablosu; her boo
 
 **İlk review sonrası (isteğe bağlı):** Sandığı **40 Connect**’e indir veya sadece **$150+** işlerde aç; ilk 3 review gelene kadar 60 / 3 boost kuralı yeterli.
 
+### 7.4 Agresif mod — “görünmez teklif atmam” (0 review sprint)
+
+**Fikir:** Teklif Connect’i zaten gidiyor; Tier-1 + doğru bütçede **görünürlük satın al**. Kar kalır: hedef **iş alma maliyeti** (teklif + boost) gelirin **≤%15’i** ($100 iş → ≤$15 toplam Connect).
+
+#### Rahat sprint bütçesi (72 saat, max kapanış)
+
+| Kalem | Connect | ~USD ($0,15) | Not |
+| --- | --- | --- | --- |
+| Freelancer Plus | (100 dahil) | ~$20 | Anlık iş + içgörü |
+| **Teklif havuzu** (ayrı) | **~900** | **~$135** | ~70–80 teklif × ~11 ort. |
+| **Boost sandığı** (ayrı, karışmaz) | **120** | **~$18** | Agresif cephe |
+| Badge / yedek | ~20 | ~$3 | |
+| **Toplam Connect nakit** | **~1.020** | **~$153** | Plus’taki 100’ü say |
+| **Toplam sprint (nakit)** | | **~$175–190** | Araçlar (Vibeworker) hariç |
+
+İlk iş **$80–150** gelirse Connect maliyeti (~$20–30 teklif + ~$2–5 boost) hâlâ **yüksek marj** bırakır (Upwork %10 fee sonrası da).
+
+#### Boost sandığı — agresif kurallar
+
+| Sandık | **120 Connect** başlangıç |
+| --- | --- |
+| Sprintte max boost | **12** (≈10 Connect ort. → ~120 tavan) |
+| Tek boost tavanı | **1. sıra + 1 Connect**, **max 15 Connect** |
+| Min iş bütçesi (boost açık) | **$80 sabit** |
+| Alt bant $50–79 | Teklif **evet**, boost **hayır** |
+
+**SALDIR (boost zorunlu değil ama önerilen — hepsi ✅):**
+
+| Bant | Koşullar | Max boost bid |
+| --- | --- | --- |
+| **A — altın** | $100–200 · Tier-1 (WP fix / hız / landing) · ilan **10–45 dk** · proposals **<8** · müşteri ≥1 hire · teklif denetimli | 1. sıra ≤12 → **bid = min(1. sıra+1, 12)** |
+| **B — gümüş** | $80–99 veya $201–350 · Tier-1 · ilan **15–60 dk** · proposals **<12** | Max **10** |
+| **C — pas** | $50–79 · Tier-1/2 · boost kapalı | 0 |
+
+**ASLA boost:** $40 ve altı · ilan <10 dk (plan: boost faydasız) · proposals **≥20** · 1. sıra zaten **≥16** · müşteri 0 hire + <$50 · gönderim **sonrası** boost.
+
+**Görünürlük mantığı:** Tier-1 + bant A/B’de teklif atıyorsan ve 1. sıra **≤12** ise **boost’u varsayılan aç**; teklif metni zayıfsa boost yakma (önce metni düzelt).
+
+#### Günlük fren
+
+- Boost sandığı **<30** kaldı → sadece **bant A**.
+- Bugün **4 boost** harcandı → yarın sabaha kadar sadece bant A.
+- **2 gün üst üste** cevap yok → boost’u 1 hafta **max 10 Connect**’e indir; teklif metnini A/B (açılış) değiştir.
+
+Takip: `docs/upwork-proposal-log.md` — Boost sandığı tablosu (**120** başlangıç).
+
 ---
 
 ## 7.4 Rahat bütçe — teklif + boost (max kapanış, hâlâ marj)
