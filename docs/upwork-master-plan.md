@@ -176,7 +176,7 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | “<10 dk ilanda boost faydasız” | Taze ilanda bid en ucuz halinde; kalabalık sonra gelir ve boost’suz teklif aşağı iner | **Tier-1 $80+ ilanda taze de olsa boost** |
 | “Bid = 1. sıra + 1” | Tablo anlık; sonradan gelenler geçer, bid artırılamaz | **Bid = tavan** (§5.3) |
-| “Sprintte max 3 / 8 / 12 boost” | Kaybeden boost iade edildiği için sayı değil **kilitli Connect** sınırlı | **Aynı anda en fazla 120 Connect kilitli** |
+| “Sprintte max 3 / 8 / 12 boost” | Kaybeden boost iade edildiği için sayı kotası anlamsız | **Kilitli boost Connect** + bakiye (§5.4); Faz 1’de GO sayısı sınırsız |
 | “Boost pahalı, az kullan” | Sadece işe yarayınca (etkileşim) ödüyorsun | Kaldıraç 1’in ana aracı → **K3’te varsayılan açık** |
 
 ### 5.3 Bid formülü — değere göre, anlık tabloya göre değil
@@ -205,12 +205,14 @@ B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 
 **Neden hız hâlâ önemli (boost’tan bağımsız):** Müşteri çoğu zaman ilk birkaç saatte bakar ve boost ilk etkileşimde biter. Erken gönderilen teklif, müşteri listeyi açtığında **boost’lu slotların hâlâ az rakiple dolu olduğu** anda görünür. Hız boost bid’ini değil, **görülme zamanını** belirler.
 
-### 5.4 Sandık yönetimi (nakit akışı)
+### 5.4 Sandık ve kilitli Connect (Faz 1 ile uyumlu)
 
-- Boost Connect’i **7 güne kadar kilitli** kalabilir (etkileşim yoksa ve hâlâ ilk 4’teysen açık artırma sonuna kadar), iadeler açık artırma kapanınca gelir.
-- **Aynı anda kilitli boost toplamı ≤120.** Doluysa yeni boost yok → K4’e göre davran.
-- Sandık <30 → sadece **$100+** ilanlara boost.
-- Günlük log: `Boost bid`, `Sonuç` (ödendi / iade / hâlâ açık).
+- Her K3 boost = **tavan bid** kadar Connect, **gönderimde rezerve**; ücret kesimi §5.1’e göre (etkileşim veya 7 gün sonu ilk 4).
+- **Kilitli toplam** ≈ açık boost’ların bid’leri toplamı. **Hedef:** başlangıçta **≤120** kilitli (600’ün 120’si boost için ayrı say); Faz 1 agresifte çok K3 atarsan kilit **120’yi aşar** → ya **Connect al**, ya o ilanda **K4** (boost’suz taze) veya SKIP.
+- **Bakiye < teklif + tavan** → o ilana K3 yok (boost’suz veya bekle / al).
+- Çoğu geçilme → iade gelir ama **gecikmeli**; günlük “kullanılabilir bakiye”yi Upwork’ten kontrol et.
+- Faz 2: kilit **>150** sürekli → günlük K3 sayısını düşür veya tavanı sadece $100+’da kullan.
+- Log: `Boost bid`, `Durum` = **açık / ödendi / iade**, `Kilitli toplam`.
 
 ### 5.5 Haftalık boost kontrolü
 
@@ -220,6 +222,18 @@ B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 | Boost’lu açılma iyi, cevap **<%20** | Sorun gövdede (denetim/ek). Strateji Bölüm 3–5 |
 | Çoğu boost **geçildi/iade** ve açılma düşük | Tavanı bir kademe yükselt ($100–199 → 18); maliyet hâlâ işin %5’i altında |
 | Nişte B4 sürekli **≥15** | O preset’te min bütçeyi **$100**’e çek |
+
+### 5.6 Boost — tek sayfa özet (gönderimde bak)
+
+```
+K3 ($80+ Tier-1, B4+1 ≤ tavan)?
+  → Evet: cover letter + ek hazır → boost bid = TAVAN (12/15/20) → Send (teklif+tavan toplam Connect)
+  → Boost seçeneği yok / bakiye yetmez → K4
+  → Hayır (B4+1 > tavan) → taze boost’suz veya SKIP
+
+Gönderimden sonra boost bid DEĞİŞMEZ; geçilirsen iade, teklif Connect GİTMEZ.
+%20 için: görünürlük = K3 + hız; kalabalık + boost yok = SKIP.
+```
 
 ---
 
@@ -243,7 +257,7 @@ B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 
 1. Push gelir → ön eleme (§4).
 2. **REKABET kartı** → K1–K6.
-3. GO ise: denetim 5–10 dk → teklif (§6) → **boost kararı ve bid gönderim ekranında** (§5.3).
+3. GO ise: denetim 5–10 dk → teklif (§6) → gönderim ekranı: **K3 ise boost = tavan, toplam Connect’i onayla** (§5.6). Boost’suz gönderme.
 4. Gönder → log satırı.
 5. Cevap gelirse **5 dk içinde** yanıt; yoksa 24 saat sonra 1 yeni bulguyla takip, 48 saat sonra kısa kapanış.
 6. Gün sonu 5 dk: T+24h dolan tekliflerde Insights (açıldı mı, teklif sayısı) → log.
