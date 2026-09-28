@@ -434,14 +434,50 @@ AI çıktısından sonra sen şunlardan **biri** varsa veto veya MAYBE:
 
 ```
 İlan geldi
-  → Blacklist / $15 / 50+ proposals? → SKIP (AI yok veya Fast)
-  → Risk 🟢 → Composer 2.5 + karar prompt → GO → teklif (aynı model)
-  → Risk 🟡 → Sonnet Thinking Medium + prompt → MAYBE/GO + kanıt satırı
-  → Risk 🔴 → Opus/Thinking High → varsayılan SKIP; GO ise milestone metnini model yazsın, sen oku
-  → $120+ veya ilk 3 review için kritik iş → teklif metni Sonnet/Opus High
+  → Blacklist / $15 / 50+ proposals? → SKIP (modele sorma)
+  → Risk 🟢, $20–80 → Composer 2.5: karar + teklif
+  → Risk 🟢/🟡, $80–150 → Claude Opus 5.5 Low: teklif metni
+  → Risk 🟡 (demo/sample isteği, belirsiz revizyon) → Claude Opus 5.5 Medium
+  → Risk 🔴 (free test, sınırsız revizyon, production erişimi) → Opus 5.5 High/Max: varsayılan SKIP
+  → $120+ veya ilk 3 review için kritik iş → Opus 5.5 Medium/High
 ```
 
-**Haftalık bütçe mantığı:** ~25 ilan 🟢 (ucuz model) + ~8 🟡 (medium) + ~2 🔴 (high) = risk kontrollü, fatura makul.
+**Neden bu dağılım:** teklif yazmak muhakeme değil **talimat takibi** işi — 60 sn kontrol listesi, 150–220 kelime, tek soru, 3 madde. Bunun için güçlü yazım + kurala sadakat gerekir, yüksek düşünme modu gerekmez. Yüksek mod **karar** tarafında (risk sınıfı, efor tahmini, veto) değerlidir. Hız gerektiğinde (ilan <10 dk) Composer 2.5 veya `-fast` varyantları.
+
+**Model performansını ölçmedim** — bu dağılım görev tipine göredir. Takip tablosuna “Model” sütunu ekle; 2 hafta sonra cevap oranı hangi modelde yüksekse ona geç.
+
+**Haftalık bütçe mantığı:** ~25 ilan 🟢 (Composer) + ~8 🟡 (Opus Low/Medium) + ~2 🔴 (High) = risk kontrollü, fatura makul.
+
+### 16.4b Teklif yazdırma prompt’u (kopyala-yapıştır)
+
+Karar GO çıktıktan sonra, teklif metni için. Dosya referanslarını `@` ile ekle.
+
+```text
+@docs/upwork-proposal-strategy.md @docs/upwork-72h-first-job-plan.md @docs/upwork-profile.md
+
+Bu ilana Upwork cover letter yaz. Strateji dokümanı bağlayıcıdır, özellikle Bölüm 5 (7 blok), Bölüm 6 (insan hissi), Bölüm 11 (60 sn kontrol).
+
+İlan:
+[PASTE — başlık, açıklama, bütçe, tip, ilan yaşı, teklif sayısı, Connects]
+Müşteri: [ülke, rating, harcama, hire rate, açtığı ilan sayısı, geçmiş yorumlar]
+
+ZORUNLU:
+- 150–220 kelime. Metnin sonunda kelime sayısını yaz.
+- TEK soru. TEK link. En fazla 3 madde işareti.
+- İlk cümle: onların kelimesi veya site/ürün adı. "Hi" veya "I" ile başlama.
+- "I" ile başlayan en fazla 2 cümle. Kısaltma kullan (I'd, you'll).
+- Uydurma deneyim/yıl yok. 0 review cümlesi tek satır, dürüst.
+- Somut rakam ve saat dilimi. İletişim bilgisi yok.
+- Yasaklı: Dear, honored, passionate, ninja, guru, "hope this finds you well".
+- Fiyat = bid = milestone toplamı.
+
+Ayrıca ver:
+1. Milestone açıklaması (tek satır, müşterinin yapıştırabileceği).
+2. Kanıt kararı: none / screenshot / mock / loom — Bölüm 4 matrisine göre, bütçeyle uyumlu mu.
+3. Bölüm 11 kontrol listesi: madde madde ✅/❌.
+4. Eleme sorusu varsa cevapları.
+5. Kural dışına çıktığın her madde + gerekçe (sessiz sapma yok).
+```
 
 ### 16.5 Karar prompt’u (risk dahil — kopyala-yapıştır)
 
