@@ -170,8 +170,10 @@ P1–P3 için skor düşük tutulur: bunlar demolarla birebir örtüşen işler,
 | Push → GO oranı < %20 | Hangi preset gürültü yapıyor bak; o preset’in include listesini daralt |
 | Aynı alakasız iş tipi 3+ kez | Tek kelime exclude (ör. `elementor pro license`) |
 | Vibeworker push 5 dk’dan geç geliyor | FAQ ~1 dk diyor: telefonun pil tasarrufu Vibeworker’ı kısıtlıyor olabilir (Ayarlar → Pil → kısıtlama yok); Q1–Q8 Upwork kayıtlı aramaları yedek olarak açık kalsın |
+| GO anında teklif sık **≥12** (rekabet) | `posted_within_hours` 24→12; peak saat 15:00–22:00 TR; `docs/upwork-job-alerts-setup.md` §7.5 D |
+| Hız **&gt;1/dk** sık görülüyor | P1 `budget_min_fixed` +10; §7.5 R2/R3 — kalabalıkta boost veya SKIP |
 
-Hedef: **10–30 push/gün**, bunların **%25+’ı GO**.
+Hedef: **10–30 push/gün**, bunların **%25+’ı GO**. GO öncesi **REKABET kartı** zorunlu: `upwork-job-alerts-setup.md` §7.5 B.
 
 ### E) Freelancer Plus (zaten var)
 - Upwork app: kayıtlı arama + push = **yedek hat**.

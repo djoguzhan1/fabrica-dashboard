@@ -367,15 +367,17 @@ A/B: 1. hafta açılış A vs B dönüşümlü; 2. hafta kazananla devam, Loom�
 
 ## 14) Günlük akış (7–10 teklif, ~2 saat)
 
+0. **REKABET kartı** (30 sn, teklif yazmadan): yaş, teklif sayısı, hız = teklif÷max(yaş_dk,5), 1. sıra Connect, Insights ort. teklif. Karar: `docs/upwork-job-alerts-setup.md` **§7.5 B** (R1–R9). **$80+ ve (teklif≥8 veya yaş&gt;30 dk) + boost yok → SKIP.**
 1. Bildirim → 30 sn EV/Tier kararı (plan).
 2. **Denetim** 5–10 dk (Bölüm 3) → 3 bulgu + ek.
 3. Şablon seç (P0–P4) → köşeli parantezleri doldur → ilk 2 cümleyi **yeniden yaz**.
 4. Milestone’ları teklif ekranında yaz; bid = fiyat.
 5. 60 sn kontrol → gönder → log.
 6. Cevap gelince 5 dk içinde **R1**; 24/48h takip.
-7. Günün sonunda 5 dk: hangi açılış görüntülendi, hangisi cevap aldı.
+7. Günün sonunda 5 dk: hangi açılış görüntülendi, hangisi cevap aldı; **T+24h** dolan satırlarda Insights → log `Rekabet (T+24h)`.
+8. Haftada 1× (15 dk): `docs/upwork-proposal-log.md` haftalık rekabet özeti → §7.5 **D** ayar çek.
 
-**Hedef ritim:** ilan 0–10 dk yaşındayken **denetimli** teklif; “çok uygun” 7–10 ilanın **hepsine** ek/denetim; boost yalnızca en iyi 2–3’e (plan kuralları).
+**Hedef ritim:** ilan 0–10 dk yaşındayken **denetimli** teklif; “çok uygun” 7–10 ilanın **hepsine** ek/denetim; boost yalnızca **REKABET R4** (kalabalık $80+ Tier-1, 1. sıra ≤12) — taze ilanda hız, kalabalıkta boost veya SKIP.
 
 ---
 

@@ -175,6 +175,8 @@ UpHunt/Vibeworker’de 20 feed limiti çıkarsa: önce Q1–Q12, sonra Q13–Q20
 
 ## 7) Bildirim geldiğinde (30 sn — başvuru kararı)
 
+**Rekabet:** EV/Tier sonrası teklif yazmadan önce **§7.5 REKABET kartı** (R1–R9); log sütunları `docs/upwork-proposal-log.md`.
+
 | Kontrol | Gönder | Atla |
 | --- | --- | --- |
 | Blacklist (§3, plan Ek F4) | | ✓ |
@@ -334,6 +336,82 @@ Sprintte boost tavanı: **8 kullanım** (rahat) veya disiplinli **5** (marj içi
 2. **80 Connect = boost sandığı** (dokunma, sadece 7.2 + 7.4 tablosu).  
 3. Günlük: önce taze GO; 15–60 dk ve $80+ görürsen sandıktan boost.  
 4. Sandık **20’nin altına** inince 40 Connect daha al, yine sadece boost’a.
+
+### 7.5 Rekabet takibi ve dinamik ayar (eksik parça — bağlayıcı)
+
+Statik bantlar ($80+, &lt;8 teklif) yetmez: **aynı bütçede rekabet yoğunluğu gün gün değişir**. Amaç: teklif öncesi **REKABET kartı**, gönderim sonrası **Insights güncellemesi**, haftalık **ayar çekme** — boost / SKIP / filtreleri veriye göre sıkılaştır veya gevşet.
+
+#### A) Nereden okuyorsun (kaynaklar)
+
+| Ne | Nerede | Ne zaman |
+| --- | --- | --- |
+| Teklif sayısı, ilan yaşı | İlan sayfası + bildirimdeki snapshot | **GO öncesi** (zorunlu) |
+| **1. sıra boost fiyatı** | Teklif ekranı → Boost (göndermeden önce) | $80+ ve ilan ≥10 dk |
+| Ortalama teklif, başvuran profili | **Freelancer Plus → Proposal insights** (ilan detayı / tekliflerim) | GO öncesi mümkünse; **T+6h / T+24h** mutlaka |
+| Açıldı / mesaj / hire | Insights + “Proposals” sekmesi | T+24h, T+48h |
+| Piyasa hızı (tahmini) | `teklif_sayısı ÷ max(ilan_yaşı_dk, 5)` | GO öncesi 10 sn |
+
+Upwork her rakibi canlı listelemiyor; **sayı + yaş + 1. sıra + Insights ortalamaları** yeterli.
+
+#### B) GO öncesi — REKABET kartı (30 sn, teklif yazmadan önce)
+
+Her GO ilanda not et (log sütunları: `docs/upwork-proposal-log.md`):
+
+1. **Yaş (dk)** ve **teklif sayısı** (bildirimdeki ile sayfadaki farklıysa **sayfa** geçer).
+2. **Hız:** `hız = teklif ÷ max(yaş_dk, 5)`  
+   - **&lt;0,4 / dk** (ör. 10 dk’da &lt;4) → sakin  
+   - **0,4–1,0 / dk** → sıkılaşıyor  
+   - **&gt;1,0 / dk** (ör. 15 dk’da 20+) → **mezar**; §7.5 C’ye bak
+3. **1. sıra (Connect)** — boost ekranında; yoksa “—” (taze ilan).
+4. **Insights (varsa):** ort. teklif $, ort. başvuran kazanç / iş sayısı.
+
+**Karar önceliği (üst satır kazanır):**
+
+| # | Koşul | Karar |
+| --- | --- | --- |
+| R1 | Teklif **≥20** veya yaş **&gt;60 dk** | **SKIP** |
+| R2 | Hız **&gt;1,0/dk** ve bütçe **&lt;$80** | **SKIP** |
+| R3 | Hız **&gt;1,0/dk** ve **$80+** Tier-1 | **SKIP** *veya* boost **≤12** ve 1. sıra **≤12** — ikisi de değilse SKIP |
+| R4 | **$80+**, yaş **10–45 dk**, teklif **5–12**, 1. sıra **≤12** | Teklif + **boost varsayılan** (sandık) |
+| R5 | Yaş **&lt;15 dk**, teklif **&lt;5** | Teklif, **boost yok** (hız oyunu) |
+| R6 | **$50–79**, teklif **&lt;8**, yaş **&lt;20 dk**, hız **&lt;0,5/dk** | Teklif, boost yok |
+| R7 | **$50–79**, teklif **≥8** veya hız **≥0,5/dk** | **SKIP** |
+| R8 | 1. sıra **≥16** | **SKIP** (sandık korunur) |
+| R9 | 1. sıra **13–15** | Teklif **sadece** R5 (taze); aksi SKIP |
+
+**Sert kural (0 review sprint):** **$80+ ve (teklif ≥8 veya yaş &gt;30 dk) → boost yoksa GO yasak.** Kalabalıkta görünürlük satın alınmazsa Connect yakma.
+
+#### C) Gönderim sonrası — rekabet izleme (Connect geri alınamaz, öğrenme)
+
+| Zaman | Ne yap |
+| --- | --- |
+| **T+6h** | Teklif sayısı kaç oldu? **≥20** olduysa log’a `mezar` — follow-up önceliği düşük |
+| **T+24h** | Insights: **açıldı mı**, mesaj var mı, güncel teklif sayısı, ort. teklif |
+| **T+48h** | Hâlâ açılmadı + teklif **≥15** → strateji Bölüm 10 kısa kapanış; boost harcandıysa not |
+
+Log’da `Rekabet (T+24h)` sütununu doldur: örn. `28 prop, 0 opened` / `12 prop, opened, msg`.
+
+#### D) Haftalık ayar çekme (15 dk, Pazar veya sprint ortası)
+
+`docs/upwork-proposal-log.md` → **Haftalık rekabet özeti** tablosunu doldur. Sonra **en az bir** satır uygula:
+
+| Gözlem (son 7 gün, ≥5 GO teklif) | Ayar |
+| --- | --- |
+| GO’ların **≥40%**’ında gönderimde teklif **≥12** | Bildirim gecikmesi: UpHunt/VW ping süresi; **15:00–22:00 TR** telefon; `posted_within_hours` **24→12** (VW) |
+| GO’ların **≥50%**’ında hız **&gt;0,8/dk** | Preset’lerde `budget_min_fixed` **+10** (P1 30→40, P5 20→30); bant C **daralt** |
+| T+24h **açılma &lt;15%** ve çoğu ilanda teklif **≥15** | R1 eşiği: teklif **≥15** → SKIP (20’ye kadar bekleme) |
+| Boost attığın işlerde **0 mesaj**, 1. sıra ort. **≥11** | Boost yalnız bant **A**; B’de boost **kapalı** 3 gün |
+| Boost’suz taze (&lt;15 dk) işlerde **açılma ≥25%** | Boost sandığını koru; kalabalık işlere **daha agresif SKIP** |
+| 1. sıra sürekli **≥13** nişinde | O preset’te `connects_max` **10**; $80–99 işlere **sadece taze** |
+| Ort. teklif sürekli bütçenin **2× üstü** (Insights) | Fiyat değil **scope**; veya bütçe bandını **$100+**’a kaydır (daha az hacim, daha iyi marj) |
+
+**Geri alma:** Her ayarı **en fazla 5 gün** dene; cevap oranı düşerse bir önceki değere dön.
+
+#### E) Vibeworker / UpHunt ile bağlantı
+
+Rekabet **filtrede** çözülmez; sadece **doğru ilanı erken görme** çözülür. Rekabet kötüleşince (tablo D) önce **hız**, sonra **min bütçe / SKIP eşiği**; `keywords_exclude` ile rekabeti “azaltamazsın”, sadece gürültüyü kesersin.
+
+Detay günlük akış: `docs/upwork-proposal-strategy.md` Bölüm 14 (adım 0–1).
 
 ---
 
