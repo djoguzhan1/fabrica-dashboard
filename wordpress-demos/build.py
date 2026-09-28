@@ -58,6 +58,7 @@ require '/wordpress/wp-load.php';
 $id = wp_insert_post( array(
 	'post_type'    => 'page',
 	'post_status'  => 'publish',
+	'post_author'  => 1,
 	'post_title'   => {json.dumps(meta["title"], ensure_ascii=False)},
 	'post_content' => wp_slash( file_get_contents( '/wordpress/wp-content/demo-content.html' ) ),
 ) );
