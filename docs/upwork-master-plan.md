@@ -12,6 +12,29 @@
 
 ---
 
+## 0) Nihai kararlar — her kural %20’ye nasıl katkı yapar
+
+%20 = **açılma × cevap × kapanış** çarpımı: 0,70 × 0,45 × 0,50 ≈ **%16**; iyi haftada 0,75 × 0,50 × 0,55 ≈ **%20**. Her karar bu üç çarpandan birini büyütür.
+
+| # | Karar | Çarpan | Eski / kafa karıştıran | **Nihai** |
+| --- | --- | --- | --- | --- |
+| 1 | Görünmeyeceksen teklif atma | Açılma | Kalabalık ilana boost’suz teklif atılıyordu ($40 n8n, 22 teklif) | K1–K6: kalabalık → boost veya **SKIP** |
+| 2 | $80+ Tier-1’de boost **varsayılan** | Açılma | “Boost pahalı, sprintte 3/8/12 kez” | Kaybeden boost iade edilir; sınır **kilitli ≤120**, sayı değil |
+| 3 | Taze ilanda da boost | Açılma | “<10 dk boost faydasız” | Yanlıştı; taze = en ucuz bid |
+| 4 | Bid = B1+1, tavan 12/15/20 | Açılma | “1. sıra+1, max 10” — geçilip düşülüyordu | Kalıcı 1. sıra; bid sonradan artırılamaz |
+| 5 | Taban **$50** | Cevap/kapanış | $15–49 “yalın GO” bantları | ≤$49 **SKIP** (istisna yok) |
+| 6 | Hız >1/dk → SKIP | Açılma | Sadece “<20 teklif” bakılıyordu | Yaş + hız birlikte |
+| 7 | 150–220 kelime, tek soru, ≤3 madde | Cevap | İlk teklif 292 kelime, 2 soru, 7 madde | İstisnasız; sapma log’a |
+| 8 | Mini denetim + ek her GO’da | Cevap | Bazen atlanıyordu | Zorunlu |
+| 9 | 5 dk cevap, 24/48h takip | Kapanış | Yoktu / dağınıktı | §7 akış |
+| 10 | Haftalık tek ayar, 5 gün dene | Hepsi | Aynı anda çok değişiklik | §8 tablo |
+| 11 | 600 Connect: 480 teklif + 120 boost | Hacim | 900+120, 750+80+70, 1000+120+80 varyantları | Tek bütçe |
+| 12 | Günde 8 GO, 5–6 gün | Hacim | 72 saat / 23 teklif-gün | Kalite korunur |
+
+**Silinenler:** `upwork-job-alerts-setup.md` eski §7.1–7.5 (bant A/B/C, 3/8/12 boost, R1–R9) tamamen kaldırıldı. Geçerli tek karar tablosu **§4 K1–K6**, tek boost kuralı **§5**.
+
+---
+
 ## 1) Hedef
 
 | Metrik | Piyasa ortalaması | **Hedef** |
