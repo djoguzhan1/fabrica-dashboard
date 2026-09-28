@@ -136,12 +136,12 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | K1 | Teklif **≥20** veya yaş **>60 dk** | **SKIP** |
 | K2 | Hız **>1,0/dk** (ör. 15 dk’da 15+ teklif) | **SKIP** |
-| K3 | **$80+** Tier-1, yaş **≤15 dk**, teklif **<12**, **B4 + 1 ≤ bid** (§5.3) | Teklif + **boost = sabit bid** |
-| K4 | **$50–79** Tier-1/2, yaş **≤10 dk**, teklif **<8**, **B4 + 1 ≤ 11** | Teklif + **boost = 11** |
-| K5 | Boost şartı sağlanmıyor (geç, kalabalık, **B4+1 > bid**, boost kapalı) | **SKIP** |
+| K3 | **$80+** Tier-1, yaş **≤15 dk**, teklif **<12**, **B1 ≤ bid** ve **B4+1 ≤ bid** (§5.3) | Teklif + **boost = sabit bid** |
+| K4 | **$50–79** Tier-1/2, yaş **≤10 dk**, teklif **<8**, **B1 ≤ 11** ve **B4+1 ≤ 11** | Teklif + **boost = 11** |
+| K5 | Geç / kalabalık / **B1 > bid** / **B4+1 > bid** / balina (§5.7) | **SKIP** |
 | K6 | **≤$49** veya Tier dışı | **SKIP** |
 
-**Sert kural:** İlk **15 dk** dışında veya tablo **bid’in üstünde** (B4+1 > bid) → **teklif yok**. $80+ ilanda **boost’suz GO yok**. Sonradan 50 teklif + 19 bid tablosu = K1/K2/K5 ile elenir.
+**Sert kural:** $80+ **boost’suz yok**. Gönderim anında tablo **senin sabit bid’ini aşıyorsa → SKIP** (1. sıra 100, sen 20 → **atma**). Rekabet **sen girdikten sonra da** artar; bid artıramazsın → pahalı tabloda girme, balina kovalamayı bırak.
 
 ---
 
@@ -168,7 +168,7 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | **Uygunluk** | Upwork eşleşmeye göre boost seçeneği göstermeyebilir | Seçenek yoksa K4 (taze boost’suz veya SKIP) |
 | **Placebo** | Bazı ilanlarda boost müşteriye gitmez, Connect alınmaz | Sayma; normal |
 
-**Unutma:** Rekabet **canlı** — tablo anlık; sonradan 19 bid gelir. **İlk ≤15 dk** + **sabit bid** ile 4’e gir; geç veya tablo pahalı → **SKIP** (§5.3).
+**Unutma:** Rekabet **canlı ve 7 gün açık** — sen teklif attıktan **sonra** da biri 28 veya **100** bid atabilir; sen **artıramazsın** (iade veya ödeme). “Erken = güvende” **yanlış**; **güvence = gönderim anında tablo hâlâ bid’in altında** (§5.7).
 
 ### 5.2 Bunun plana etkisi (eski planın hataları)
 
@@ -204,6 +204,29 @@ B4 + 1 ≤ bid  →  boost = bid (1. sıra ne olursa olsun; hedef ilk 4, ideal 1
 
 **Geçilirsen:** boost iade; teklif Connect kalır. **Kalabalıklaşmış ilana** sabit bid yetmezse **atma** — sonradan 50 kişi gelmesini bekleme.
 
+### 5.7 Saha gerçeği — $150 iş, ~1 saat, tablo 100 / 28 / 27 / 26
+
+Bu **normal** popüler ilanlarda; senin gözlemin doğru:
+
+| Gerçek | Plan cevabı |
+| --- | --- |
+| İlk saatte tablo dolar, teklif 50+ olur | Gönderimde **tekrar say**; bildirimdeki “5 teklif” güvenilmez |
+| **1. sıra 100 Connect** ($150 iş) | **Balina** — asla kovalama; **B1 > bid** → K5 SKIP |
+| Sen **20** bid atıp 4’e girersin, sonra 100 gelir | **Beklenen**; boost iade, **teklif Connect gider** — sık tekrarlanırsa o niş **soğuk değil, sıcak** → min bütçe / filtre sıkı |
+| “İlk 3 yeter” | Sadece **boost’ta kaldığın süre**; 3’ten düşersen biter |
+| Sabit 20, $100–150 için | **Sadece B4+1 ≤ 20** (ör. 4. sıra ≤19) ilanlara; **26+ tablo** → SKIP |
+
+**Balina / sıcak tablo (gönderim anı, SKIP):**
+
+- **B1 > bid** (senin sabit boost’un) → **SKIP**
+- **B1 ≥ 25** (hangi bütçe olursa olsun, balina sinyali) → **SKIP**
+- **B4 + 1 > bid** → **SKIP** (4’e bile giremezsin)
+- Örnek: $150, B1=100 → bid=20 → **K5**, Connect **0**
+
+**Ne avlıyoruz:** Tablo **boş veya düşük** (B4 ≤ bid−1), **niş** (WP fix, form, hız — “website developer payments 3 ay” değil), bazen **gece/UK** düşük rekabet. Popüler $100–150 landing = çoğu zaman **mezar**.
+
+**Senin 20 / 30 / 11 önerisi:** Mantık doğru **yalnızca tablo uygunsa**; $150 + 1. sıra 100 = **hiç teklif yok**.
+
 ### 5.4 Sandık ve kilitli Connect (Faz 1 ile uyumlu)
 
 - Her boost = **sabit bid** (§5.3) kadar Connect, **gönderimde rezerve**; ücret kesimi §5.1’e göre (etkileşim veya 7 gün sonu ilk 4).
@@ -225,7 +248,8 @@ B4 + 1 ≤ bid  →  boost = bid (1. sıra ne olursa olsun; hedef ilk 4, ideal 1
 ### 5.6 Boost — tek sayfa özet (gönderimde bak)
 
 ```
-≤15 dk + Tier uygun + B4+1 ≤ bid?
+B1 > bid veya B1 ≥ 25 veya B4+1 > bid? → SKIP
+≤15 dk + Tier uygun + B1 ≤ bid + B4+1 ≤ bid?
   $50–79  → boost 11  (≤10 dk, <8 teklif)
   $80–99  → boost 15
   $100–199 → boost 20
