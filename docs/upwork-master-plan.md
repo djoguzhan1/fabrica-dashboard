@@ -22,7 +22,7 @@
 | 1 | Görünmeyeceksen teklif atma | Açılma | Kalabalık ilana boost’suz teklif atılıyordu ($40 n8n, 22 teklif) | K1–K6: kalabalık → boost veya **SKIP** |
 | 2 | $80+ Tier-1’de boost **varsayılan** | Açılma | “Boost pahalı, sprintte 3/8/12 kez” | Kaybeden boost iade edilir; sınır **kilitli ≤120**, sayı değil |
 | 3 | Taze ilanda da boost | Açılma | “<10 dk boost faydasız” | Yanlıştı; müşteri erken bakar, boost o an işe yarar |
-| 4 | Bid = **tavan** (12/15/20), tabloya göre değil | Açılma | “1. sıra+1” — sonradan gelenler geçiyordu, bid artırılamıyor | Rekabet bilinmez → değere göre bid; kaybedersen iade |
+| 4 | **Sabit boost:** 50→11, 80–99→15, 100→20, 200→30; **≤15 dk** | Açılma | Düşük tavan / boost’suz | Erken dakika + sabit bid; B4+1 > bid → SKIP |
 | 5 | Taban **$50** | Cevap/kapanış | $15–49 “yalın GO” bantları | ≤$49 **SKIP** (istisna yok) |
 | 6 | Hız >1/dk → SKIP | Açılma | Sadece “<20 teklif” bakılıyordu | Yaş + hız birlikte |
 | 7 | 150–220 kelime, tek soru, ≤3 madde | Cevap | İlk teklif 292 kelime, 2 soru, 7 madde | İstisnasız; sapma log’a |
@@ -136,12 +136,12 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | K1 | Teklif **≥20** veya yaş **>60 dk** | **SKIP** |
 | K2 | Hız **>1,0/dk** (ör. 15 dk’da 15+ teklif) | **SKIP** |
-| K3 | **$80+** Tier-1 ve **B4 + 1 ≤ tavan** | **Teklif + boost, bid = tavan** (§5.3) |
-| K4 | **$80+** Tier-1 ve B4 + 1 **> tavan** | Yaş <10 dk ve teklif <5 ise boost’suz teklif; aksi **SKIP** |
-| K5 | **$50–79**, yaş **<15 dk**, teklif **<5** | Teklif, **boost yok** |
-| K6 | **$50–79**, diğer her durum | **SKIP** |
+| K3 | **$80+** Tier-1, yaş **≤15 dk**, teklif **<12**, **B4 + 1 ≤ bid** (§5.3) | Teklif + **boost = sabit bid** |
+| K4 | **$50–79** Tier-1/2, yaş **≤10 dk**, teklif **<8**, **B4 + 1 ≤ 11** | Teklif + **boost = 11** |
+| K5 | Boost şartı sağlanmıyor (geç, kalabalık, **B4+1 > bid**, boost kapalı) | **SKIP** |
+| K6 | **≤$49** veya Tier dışı | **SKIP** |
 
-**Sert kural:** $80+ ilanda boost yapamıyorsan veya yapmıyorsan, sadece **taze (<10 dk) ve boş (<5 teklif)** ilana teklif atılır. Kalabalık + boost yok = **SKIP**.
+**Sert kural:** İlk **15 dk** dışında veya tablo **bid’in üstünde** (B4+1 > bid) → **teklif yok**. $80+ ilanda **boost’suz GO yok**. Sonradan 50 teklif + 19 bid tablosu = K1/K2/K5 ile elenir.
 
 ---
 
@@ -164,52 +164,51 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | **Bid sonrası** | Boost **bir kez**; bid **artırılamaz**; geçilirsen **yeniden boost yok** | **Asla** “sonra boostlarım” — K3’te gönderimde boost |
 | **Sonra boost ekleme** | Yardım metinleri çelişkili; güvenli yol: **ilk gönderimde boost** | Boost’suz gönderip sonra eklemeye **güvenme** |
 | **Boost biter** | Etkileşim; 3× açılıp işlem yok; 5× görülüp etkileşim yok; **geçilme** | Erken müşteri bakışı = boost süresi kısalır |
-| **Min bid** | **4. sıra + 1** Connect | B4+1 > tavanımız → K4 (girme) |
+| **Min bid** | **4. sıra + 1** Connect | B4+1 > **sabit bid** → K5 SKIP |
 | **Uygunluk** | Upwork eşleşmeye göre boost seçeneği göstermeyebilir | Seçenek yoksa K4 (taze boost’suz veya SKIP) |
 | **Placebo** | Bazı ilanlarda boost müşteriye gitmez, Connect alınmaz | Sayma; normal |
 
-**Unutma:** Rekabet **canlı** — tablo anlık; senden sonra herkes boost atabilir. Erken gelmek bid’i ucuzlatmaz, **görülme zamanını** iyileştirir (§5.3 son paragraf). Bid’i tabloya göre kısma → **tavan** (§5.3).
+**Unutma:** Rekabet **canlı** — tablo anlık; sonradan 19 bid gelir. **İlk ≤15 dk** + **sabit bid** ile 4’e gir; geç veya tablo pahalı → **SKIP** (§5.3).
 
 ### 5.2 Bunun plana etkisi (eski planın hataları)
 
 | Eski kural | Neden yanlış | Yeni kural |
 | --- | --- | --- |
 | “<10 dk ilanda boost faydasız” | Taze ilanda bid en ucuz halinde; kalabalık sonra gelir ve boost’suz teklif aşağı iner | **Tier-1 $80+ ilanda taze de olsa boost** |
-| “Bid = 1. sıra + 1” | Tablo anlık; sonradan gelenler geçer, bid artırılamaz | **Bid = tavan** (§5.3) |
+| “Bid = 1. sıra + 1” / düşük tavan | Tablo anlık; $40’da 19 bid | **Sabit bid tablosu** (§5.3) |
 | “Sprintte max 3 / 8 / 12 boost” | Kaybeden boost iade edildiği için sayı kotası anlamsız | **Kilitli boost Connect** + bakiye (§5.4); Faz 1’de GO sayısı sınırsız |
 | “Boost pahalı, az kullan” | Sadece işe yarayınca (etkileşim) ödüyorsun | Kaldıraç 1’in ana aracı → **K3’te varsayılan açık** |
 
-### 5.3 Bid formülü — değere göre, anlık tabloya göre değil
+### 5.3 Sabit boost bid — ilk dakikalarda (senin kural)
 
-**Sorun:** Açık artırma canlı. Tablo sadece **şu anı** gösterir; senden sonra gelen herkes daha yüksek bid verip seni ilk 4’ten atabilir. Erken gelmek boost’ta avantaj **değildir**. Sen de bid’i sonradan artıramazsın. Yani gelecekteki rekabeti bilemezsin → bid’i rakibe göre değil, **o işin sana değerine göre** ver.
+**Mantık:** Tablo sonradan şişer; bid artırılamaz. **İlk teklif dakikalarında** (ilan **≤15 dk**, gönderimde tekrar say) doğrudan **sabit** boost ver — tablodaki 1. sıraya göre kısma.
 
-**Çözüm:** Kaybedersen iade aldığın için, yüksek bid’in tek maliyeti **kazandığında biraz daha fazla ödemek**. Düşük bid’in maliyeti ise **görünmemek** (ve teklif Connect’ini boşa harcamak). Bu yüzden her zaman **tavanı** bid’le.
+| İlan bütçesi (sabit) | Boost bid | Hangi K | Zaman |
+| --- | --- | --- | --- |
+| **$50–79** | **11** | K4 | yaş **≤10 dk**, teklif **<8** |
+| **$80–99** | **15** | K3 | yaş **≤15 dk**, teklif **<12** |
+| **$100–199** | **20** | K3 | yaş **≤15 dk**, teklif **<12** |
+| **$200+** | **30** | K3 | yaş **≤15 dk**, teklif **<12** |
 
 ```
-B4 = şu an 4. sıradaki bid (tablodan)
+B4 = 4. sıradaki bid (tablo)
+bid = tablodaki sabit (11 / 15 / 20 / 30)
 
-Bid = tavan (bütçeye göre, sabit):
-      $80–99   → 12
-      $100–199 → 15
-      $200+    → 20
-
-B4 + 1 > tavan  → boost yok → K4 (şimdiden pahalı; sonra daha da pahalanır)
-B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
+B4 + 1 > bid  →  SKIP (zaten mezar; $40 + 19 bid örneği)
+B4 + 1 ≤ bid  →  boost = bid (1. sıra ne olursa olsun; hedef ilk 4, ideal 1–3)
 ```
 
-**Tablo sadece bir şeye yarar:** “Bu ilan zaten tavanımın üstünde mi?” sorusuna. Üstündeyse gir­me; altındaysa yine de tavanı ver, çünkü sonra gelenler fiyatı yükseltecek.
+**$80–99 → 15:** $50=11 ve $100=20 arası; istersen tek band yap: **$80+ hepsi 20** — log’da not et.
 
-**Geçilirsen:** iade gelir; teklif organik listeye düşer. Bu yüzden boost’lu teklif de **tek başına güçlü** olmalı (ilk 2 cümle + denetim). Boost bir sigorta, teklifin yerine geçmez.
+**Maliyet (kabaca):** $50 → ~11+11=22 Connect; $100 → ~31; $200 → ~41. Hepsi iş bedelinin **~%15 altı**.
 
-**Maliyet tavanı:** teklif + boost ≤ iş bedelinin **~%15’i**. $80 iş → 11 + 12 = 23 Connect ≈ $3,45 (%4,3). $100 iş → 26 Connect ≈ $3,90 (%3,9). Tavanlar güvenli.
-
-**Neden hız hâlâ önemli (boost’tan bağımsız):** Müşteri çoğu zaman ilk birkaç saatte bakar ve boost ilk etkileşimde biter. Erken gönderilen teklif, müşteri listeyi açtığında **boost’lu slotların hâlâ az rakiple dolu olduğu** anda görünür. Hız boost bid’ini değil, **görülme zamanını** belirler.
+**Geçilirsen:** boost iade; teklif Connect kalır. **Kalabalıklaşmış ilana** sabit bid yetmezse **atma** — sonradan 50 kişi gelmesini bekleme.
 
 ### 5.4 Sandık ve kilitli Connect (Faz 1 ile uyumlu)
 
-- Her K3 boost = **tavan bid** kadar Connect, **gönderimde rezerve**; ücret kesimi §5.1’e göre (etkileşim veya 7 gün sonu ilk 4).
+- Her boost = **sabit bid** (§5.3) kadar Connect, **gönderimde rezerve**; ücret kesimi §5.1’e göre (etkileşim veya 7 gün sonu ilk 4).
 - **Kilitli toplam** ≈ açık boost’ların bid’leri toplamı. **Hedef:** başlangıçta **≤120** kilitli (600’ün 120’si boost için ayrı say); Faz 1 agresifte çok K3 atarsan kilit **120’yi aşar** → ya **Connect al**, ya o ilanda **K4** (boost’suz taze) veya SKIP.
-- **Bakiye < teklif + tavan** → o ilana K3 yok (boost’suz veya bekle / al).
+- **Bakiye < teklif + bid** → SKIP veya Connect al.
 - Çoğu geçilme → iade gelir ama **gecikmeli**; günlük “kullanılabilir bakiye”yi Upwork’ten kontrol et.
 - Faz 2: kilit **>150** sürekli → günlük K3 sayısını düşür veya tavanı sadece $100+’da kullan.
 - Log: `Boost bid`, `Durum` = **açık / ödendi / iade**, `Kilitli toplam`.
@@ -220,19 +219,20 @@ B4 + 1 ≤ tavan  → bid = tavan   (tablodaki 1. sıra ne olursa olsun)
 | --- | --- |
 | Boost’lu tekliflerde açılma **<%50** | Sorun teklifin ilk 2 cümlesinde. Boost’u kısma, **açılışı değiştir** |
 | Boost’lu açılma iyi, cevap **<%20** | Sorun gövdede (denetim/ek). Strateji Bölüm 3–5 |
-| Çoğu boost **geçildi/iade** ve açılma düşük | Tavanı bir kademe yükselt ($100–199 → 18); maliyet hâlâ işin %5’i altında |
+| Çoğu boost **geçildi/iade** ve açılma düşük | Sabit bid +2 ($100 bandı 20→22); veya sadece **≤10 dk** penceresi |
 | Nişte B4 sürekli **≥15** | O preset’te min bütçeyi **$100**’e çek |
 
 ### 5.6 Boost — tek sayfa özet (gönderimde bak)
 
 ```
-K3 ($80+ Tier-1, B4+1 ≤ tavan)?
-  → Evet: cover letter + ek hazır → boost bid = TAVAN (12/15/20) → Send (teklif+tavan toplam Connect)
-  → Boost seçeneği yok / bakiye yetmez → K4
-  → Hayır (B4+1 > tavan) → taze boost’suz veya SKIP
+≤15 dk + Tier uygun + B4+1 ≤ bid?
+  $50–79  → boost 11  (≤10 dk, <8 teklif)
+  $80–99  → boost 15
+  $100–199 → boost 20
+  $200+    → boost 30
+  → Değilse SKIP (boost’suz yok)
 
-Gönderimden sonra boost bid DEĞİŞMEZ; geçilirsen iade, teklif Connect GİTMEZ.
-%20 için: görünürlük = K3 + hız; kalabalık + boost yok = SKIP.
+Gönderimden sonra bid değişmez; geçilirsen boost iade.
 ```
 
 ---
@@ -257,7 +257,7 @@ Gönderimden sonra boost bid DEĞİŞMEZ; geçilirsen iade, teklif Connect GİTM
 
 1. Push gelir → ön eleme (§4).
 2. **REKABET kartı** → K1–K6.
-3. GO ise: denetim 5–10 dk → teklif (§6) → gönderim ekranı: **K3 ise boost = tavan, toplam Connect’i onayla** (§5.6). Boost’suz gönderme.
+3. GO ise: denetim 5–10 dk → teklif (§6) → gönderim: **sabit boost bid** (§5.3). Boost’suz gönderme.
 4. Gönder → log satırı.
 5. Cevap gelirse **5 dk içinde** yanıt; yoksa 24 saat sonra 1 yeni bulguyla takip, 48 saat sonra kısa kapanış.
 6. Gün sonu 5 dk: T+24h dolan tekliflerde Insights (açıldı mı, teklif sayısı) → log.
