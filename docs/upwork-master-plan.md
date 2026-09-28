@@ -29,8 +29,8 @@
 | 8 | Mini denetim + ek her GO’da | Cevap | Bazen atlanıyordu | Zorunlu |
 | 9 | 5 dk cevap, 24/48h takip | Kapanış | Yoktu / dağınıktı | §7 akış |
 | 10 | Haftalık tek ayar, 5 gün dene | Hepsi | Aynı anda çok değişiklik | §8 tablo |
-| 11 | 600 Connect: 480 teklif + 120 boost | Hacim | 900+120, 750+80+70, 1000+120+80 varyantları | Tek bütçe |
-| 12 | Günde 8 GO, 5–6 gün | Hacim | 72 saat / 23 teklif-gün | Kalite korunur |
+| 11 | **Faz 1:** Connect’e günlük tavan yok | Hacim | “600 = 45 teklif” kotası | K1–K6 GO → at; bakiye bitene veya §2.3 **DUR**’a kadar |
+| 12 | **Faz 2:** 3. gün / 2 hire sonrası tempo düş | Hacim | Sabit 8 GO/gün | Teslim + nakit akışına göre 4–8 GO |
 
 **Silinenler:** `upwork-job-alerts-setup.md` eski §7.1–7.5 (bant A/B/C, 3/8/12 boost, R1–R9) tamamen kaldırıldı. Geçerli tek karar tablosu **§4 K1–K6**, tek boost kuralı **§5**.
 

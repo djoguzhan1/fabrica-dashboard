@@ -1,6 +1,6 @@
 # Upwork teklif takip tablosu
 
-**Kurallar:** `docs/upwork-master-plan.md` (tek kaynak). Sprint: **600 Connect** = ~480 teklif + **120 boost sandığı** (aynı anda en fazla 120 kilitli). Karar K1–K6, bid formülü §5.3.
+**Kurallar:** `docs/upwork-master-plan.md` (tek kaynak). **Faz 1 (3 gün):** K1–K6 sağlanan her GO atılır; günlük GO tavanı yok. **120** boost için ayrı say (kilitli ≤120 veya bakiye izin verirse daha fazla). Karar K1–K6, bid §5.3.
 
 Her teklifi gönderdikten hemen sonra bir satır ekle; **T+24h** Insights → `Rekabet (T+24h)`; cevap / interview / offer geldikçe aynı satırı güncelle. Haftalık 15 dk: **Haftalık özet** → ana plan §8 ayar çek.
 
