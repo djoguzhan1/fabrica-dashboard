@@ -177,3 +177,59 @@ Müşterinin kafası: veteran = "yine aynı şablon". Bizimki = "sayfamı açmı
 - 10 teklif sonra açılma oranını arketip bazında karşılaştır; en iyisine ağırlık ver.
 - Kart açılıp cevap gelmiyorsa sorun gövde veya fiyat; kart hiç açılmıyorsa sorun açılış veya başlık/foto.
 - Hedef (master plan): açılma ≥ %70.
+
+---
+
+## 12) Müşteri simülasyonu — göndermeden önce ilana özel işverene sına
+
+Göndermeden önce teklif, ilanı veren kişiyi oynayan modelde sınanır. Model 10/10'a yakın **dürüst** puan verene kadar düzeltilir.
+
+### 12.1 Kurallar (modelin bizi kandırmaması için)
+
+| Kural | Neden |
+| --- | --- |
+| Model **ilanın tam metni + müşteri bilgisi** (ülke, harcama, hire rate, yorumlar, soru listesi) ile kurulur | O ilana özel, gerçekçi işveren |
+| **İki aşama ayrı:** önce sadece kart (isim, foto, ücret, JSS yok, ilk ~150 karakter), sonra tam mektup + ek görsel | Müşteri de böyle görüyor; kart geçmezse gövde okunmaz |
+| Yanına **3 veteran kartı** konur (rozetli, JSS %100, $60K+, tipik şablon açılış) ve **sıralama** istenir | Mutlak puan şişer; karşılaştırma dürüst olur |
+| Sıralamada teklifimizin **hangisi olduğu söylenmez** (kör test) | Model bizimkini kayırmasın |
+| Modele "sert ol, 100–150 AI teklifi alan yorgun işverensin, övgü yasak" denir | Modeller varsayılan olarak nazik |
+| Model kendi sitesini/verisini bilmez: ön-işte bulduğumuz **gerçek** bulgular verilir, uydurma yok | Simülasyon ancak gerçek kanıt kadar dürüst |
+| **En fazla 3 tur**, toplam ≤10 dk | İlk 2 saat altın; tazelik mükemmellikten değerli |
+| 3 turda kart 1. sıraya çıkmadıysa: açılış arketipini değiştir (A1–A6), yine olmazsa **SKIP** | Zayıf kartla boost basmak Connect yakar |
+
+**Geçme eşiği:** kart aşamasında kör sıralamada **1. sıra** ve "açardım" + tam mektupta **≥9/10** ve "mesaj atardım". Ek görsel ayrıca "tek bakışta anlaşılıyor mu" testinden geçer.
+
+### 12.2 Hazır prompt (kopyala-yapıştır)
+
+```
+You are the client who posted this Upwork job. Stay in character.
+
+JOB POST (verbatim):
+<ilan metni>
+
+CLIENT INFO: <ülke, toplam harcama, hire rate, ortalama ödeme, son yorumlar>
+You have received <N> proposals, most look AI-written. You are busy and skeptical.
+You will not do phone or video calls with anyone. Praise is not allowed; be blunt.
+
+STAGE 1 — CARD VIEW. You only see name, photo description, hourly rate,
+badges/JSS and the first ~150 characters of each cover letter.
+Rank these 4 cards from "open first" to "skip". For each: open or skip, and why, in one line.
+
+Card A: <veteran 1: Top Rated Plus, JSS 100%, $60K+ earned, $45/hr, "Hello! I have carefully read...">
+Card B: <bizim kart: no JSS, no badge, $30/hr, ilk 150 karakter>
+Card C: <veteran 2 ...>
+Card D: <veteran 3 ...>
+(Kartların sırasını her turda karıştır.)
+
+STAGE 2 — only if you would open ours: read the full proposal and the attached image.
+Score 0–10 on: understood my job, proof it will work, risk to me, clarity, price/timeline fit.
+Then answer: Would you message this freelancer? What single sentence almost made you skip?
+What would make it a 10?
+```
+
+### 12.3 Tur döngüsü
+
+1. Tur 1 → modelin "almost made me skip" cümlesini ve "what would make it a 10" cevabını al.
+2. **Sadece gerçekle** düzelt: açılışı sıkılaştır, kanıtı öne al, eki netleştir. Olmayan bir sonucu vaat etme.
+3. Kartların sırasını karıştırıp tekrar sor. Geçme eşiği tutunca **gönder + boost**.
+4. Log'a yaz: `sim tur sayısı`, `kart sırası`, `mektup puanı`. Gerçek açılma oranıyla kıyasla; simülasyon 10 verip gerçekte açılmıyorsa prompt'u daha sert yap.
