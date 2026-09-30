@@ -7,7 +7,11 @@ Bildirim: P1–P5 çan açık, P6 çan kapalı, Shortlist çanı P1–P5 hazır 
 
 Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
 
-## Shortlist (geniş akış)
+## Shortlist (tek filtre — P1–P5 birleşik)
+
+**Any of these words** = aşağıdaki `keywords_include` (P1–P5’in tümü; en az **biri** ilanda geçmeli).  
+**All of these words** (`keywords_require`) = **boş** — her kelime zorunlu olsaydı ilan kaçırılır.  
+Eski planda Shortlist “sadece exclude” idi → **Ads/Payments** gibi gürültü; artık **pozitif liste şart**.
 
 ```json
 {
@@ -23,9 +27,37 @@ Ayrıntı ve gerekçeler: `docs/upwork-vibeworker-pro-setup.md` Bölüm 5D.
   "min_client_spent": 500,
   "min_hire_rate": 30,
   "min_hires": null,
-  "keywords_include": [],
+  "keywords_include": [
+    "wordpress", "elementor", "divi", "wpbakery", "white screen", "critical error", "plugin conflict", "contact form", "wpforms", "contact form 7",
+    "page speed", "pagespeed", "core web vitals", "gtmetrix", "lighthouse", "site speed", "slow website", "load time", "mobile responsive", "mobile friendly", "responsive fix",
+    "landing page", "one page", "one-page", "single page", "small business website", "simple website", "hvac", "plumbing", "plumber", "roofing", "electrician", "contractor", "home services", "cleaning", "landscaping",
+    "google sheets", "excel", "spreadsheet", "vlookup", "xlookup", "pivot table", "conditional formatting", "formula", "dashboard", "tracker", "calculator",
+    "quick fix", "small fix", "small change", "small task", "html css", "css fix", "figma to html", "psd to html", "migrate", "migration", "dns", "ssl", "hosting", "github pages", "netlify", "ga4", "google tag manager", "calendly", "booking widget"
+  ],
   "keywords_require": [],
-  "keywords_exclude": ["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","mentor","mentorship","devops","terraform","ansible","kubernetes"],
+  "keywords_exclude": [
+    "woocommerce", "shopify", "react", "next.js", "nextjs", "vue", "angular",
+    "react native", "flutter", "mobile app", "ios app", "android app",
+    "fullstack", "full stack", "full-stack",
+    "blockchain", "crypto", "nft", "web3", "trading bot",
+    "homework", "thesis", "unpaid", "free test", "test task",
+    "telegram only", "outside upwork",
+    "us citizen", "us person", "security clearance",
+    "senior developer", "senior engineer",
+    "lottery", "casino", "betting", "gambling", "football",
+    "power apps", "power automate", "power bi", "tableau",
+    "mentor", "mentorship",
+    "devops", "terraform", "ansible", "kubernetes",
+    "exhibitor", "exhibitor list", "trade show", "sponsors",
+    "lead list", "data entry", "linkedin", "instagram", "facebook",
+    "scrape", "scraping", "captcha",
+    "selenium", "playwright",
+    "video call", "phone call", "zoom", "google meet",
+    "native english", "native speaker",
+    "kimai", "custom plugin", "plugin development", "theme development", "from scratch",
+    "manuscript", "mobile game", "user acquisition", "voxel",
+    "n8n"
+  ],
   "exclude_locations": [],
   "min_percentile": null,
   "posted_within_hours": 24

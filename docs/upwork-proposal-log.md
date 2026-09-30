@@ -18,7 +18,7 @@ Her teklifi gönderdikten hemen sonra bir satır ekle; **T+24h** Insights → `R
 
 ## Boost sandığı (savaş cephesi)
 
-Kurallar: `upwork-master-plan.md` §5. **Bid = tavan** ($80–99 → 12 · $100–199 → 15 · $200+ → 20); B4+1 tavanı aşıyorsa boost yok. Geçilirsen iade gelir; aynı anda kilitli ≤120.
+Sabit boost: **$50–79 → 11** · **$80–99 → 15** · **$100–199 → 20** · **$200+ → 30** (ilk dk, §5.3). B4+1 > bid → SKIP. Geçilirsen iade gelir; aynı anda kilitli ≤120.
 
 | # | Tarih | İlan | Bütçe | B1 / B4 | Boost bid | Durum (açık / ödendi / iade) | Kilitli toplam (≤120) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
