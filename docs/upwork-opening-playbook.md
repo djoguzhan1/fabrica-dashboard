@@ -256,4 +256,17 @@ Bir model gerçek müşteri değildir. Hakem olarak kullanılan modellerin bilin
 **Güçlü veteran kartı (sabit, her testte bir tane):**
 > Top Rated Plus · JSS 100% · $60K+ · $45/hr — "Your mobile menu issue is almost always a z-index clash with the sticky header in Elementor. I fixed the same thing for 40+ sites, can do it today."
 
+### 12.5 Kalan riskler (önlemler azaltır, sıfırlamaz)
+
+| Risk | Karşılık |
+| --- | --- |
+| Rakip kartlarını göremiyoruz, **biz yazıyoruz** | Kütüphane: r/Upwork'te paylaşılan gerçek açılışlardan 6–8 kart; her testte 1 güçlü + 2 tipik rastgele seçilir |
+| **Hakeme göre optimize etme** (Goodhart: metin GPT'nin zevkine kayar) | En fazla 3 tur; sadece gerçek bulguyla değiştir; son karar insan: "Bunu okuyan bir esnaf tıklar mı?" |
+| Tüm modeller benzer önyargılı (farklı aile bile) | Canlı kalibrasyon tek gerçek ölçü |
+| Modeller **AI metni tespitinde zayıf** | Model sorusuna ek **kural kontrolü**: yasak kelimeler (§4), uzun tire yığını, "delve / seamless / leverage / I'd be happy to", üçlü sıfat listesi, her cümlenin aynı uzunlukta olması |
+| Mobil kart daha kısa (~110 karakter) | Açılışın ilk 110 karakteri de tek başına anlamlı olmalı |
+| Küçük örnek: 10 teklifte %70 uyum istatistiksel olarak zayıf | 10'da ön-sinyal, 30'da karar |
+| Kart dışı kayıplar: davetli/Uma/direkt teklif, placebo, müşteri hiç bakmıyor | Simülasyon çözemez; §6 ön-kontrol ve Catalog kanalı çözer |
+| Süre (3 persona × 2 sıra × 2 model) | Tek çağrıda panel: 3 persona + 2 sıra aynı prompt'ta, hakem modelde 1 çağrı, gerekirse 1 düzeltme turu; toplam ≤5 dk |
+
 Bizim kart bunu da geçmiyorsa gönderme; farkı ön-işin kendisi yaratmalı (bu ilanın gerçek sayfası, gerçek bulgu, açılan link).
