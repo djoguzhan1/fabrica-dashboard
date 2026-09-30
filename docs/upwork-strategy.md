@@ -182,6 +182,8 @@ aksi           → boost = gerekli   (tablo boşsa tavana kadar)
 B1 ne olursa olsun 1. sırayı kovalama (B1 = 100 tek başına SKIP sebebi değil)
 ```
 
+**Bütçe bandı önceliği (Connect kısıtlıysa, 2026-09 araştırması):** Sabit fiyatlı ilanlarda medyan bütçe $100 (UpHunt, 2.451 ilan; Upwatcher $150). Yani $100 en kalabalık fiyat noktası: ucuz toplu teklifçi ve bot en çok burada. Tavan $100–199 bandında aynı (35), bu yüzden boost maliyeti işin yüzdesi olarak $150'de en makul. Sıra: **$130–199 > $200+ > $100–129**. Hiçbiri atlanmaz; Connect azsa önce bu sırayla harcanır. İlk 3 yorum gelince $200+ öne geçer.
+
 **Örnekler:** $150, tablo 100/28/27/26 → boost 27. $150, tablo 100/40/38/36 → SKIP. $40 → SKIP (taban).
 
 **Kurallar:**
