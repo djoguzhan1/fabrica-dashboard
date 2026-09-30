@@ -22,7 +22,8 @@ def clamp(x, lo=0.02, hi=0.95):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--age", type=float, default=30, help="job age in minutes")
-    ap.add_argument("--proposals", type=int, default=10)
+    ap.add_argument("--proposals", type=int, default=3,
+                    help="at send time (early push); not used for SNIPER/GO band")
     ap.add_argument("--budget", type=float, default=100)
     ap.add_argument("--verified", action="store_true", help="payment verified")
     ap.add_argument("--interviewing", type=int, default=0)
@@ -45,14 +46,20 @@ def main():
         print("SKIP: budget below $50")
         return
 
+    vel = a.proposals / max(a.age, 5.0)
+
     # open rate
     o = 0.35
     if a.invite:
         o = 0.90
     else:
         o += 0.20 if a.boost_top4 else 0.0
-        o += 0.15 if a.age <= 15 else (0.05 if a.age <= 60 else -0.20)
-        o += 0.10 if a.proposals <= 5 else (0.0 if a.proposals <= 15 else -0.15)
+        o += 0.15 if a.age <= 15 else (0.05 if a.age <= 45 else -0.15)
+        # Proposal count spikes after the early window; K1/K2 already SKIP bots/crowds.
+        if vel > 1.0:
+            o -= 0.25
+        elif a.proposals >= 20:
+            o -= 0.15
         o += {"strong": 0.10, "light": 0.03, "none": -0.10}[a.prework]
         o -= 0.25 if a.interviewing >= 2 else (0.10 if a.interviewing == 1 else 0.0)
         o -= 0.15 if a.invites >= 5 else 0.0
@@ -78,7 +85,25 @@ def main():
 
     p = o * r * h
     decision = "SNIPER" if p >= SNIPER_MIN else ("GO" if p >= GO_MIN else "SKIP")
-    print(f"open {o:.0%} x reply {r:.0%} x hire {h:.0%} = {p:.1%}  ->  {decision}")
+    # Band label: package + activity + boost — not raw proposal count (§5.4 K1/K2, §20.1).
+    band = "davet" if a.invite else None
+    if band is None:
+        if (
+            a.boost_top4
+            and a.prework == "strong"
+            and a.demo_match in ("exact", "close")
+            and a.scope_clear
+            and a.interviewing == 0
+            and a.invites < 5
+            and vel <= 1.0
+            and a.proposals < 20
+        ):
+            band = "tam-paket"
+        elif a.prework == "none" or a.demo_match == "none" or a.interviewing >= 2:
+            band = "risk"
+        else:
+            band = "standart"
+    print(f"open {o:.0%} x reply {r:.0%} x hire {h:.0%} = {p:.1%}  ->  {decision}  band={band}")
 
 
 if __name__ == "__main__":

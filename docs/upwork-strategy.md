@@ -762,7 +762,20 @@ python3 scripts/go_score.py --age 10 --proposals 3 --budget 120 --verified \
 # open 90% x reply 60% x hire 59% = 31.9%  ->  SNIPER
 ```
 
-Girdiler: ilan yaşı, teklif sayısı, bütçe, ödeme doğrulaması, interviewing/davet sayısı, müşterinin işe alım sayısı ve oranı, geçmişte az yorumlu freelancer alıp almadığı, scope netliği, demomuzun ilana uyumu, ön-iş gücü, boost'un ilk 4'e sığması, davet olup olmadığı, bizim yorum sayımız. Ağırlıklar başlangıç tahmini; **her 10 teklifte log'daki gerçek sonuçla** yeniden ayarlanır.
+Girdiler: ilan yaşı, teklif sayısı (sadece K1/K2 ve hız için — **SNIPER/GO şeridi teklif sayısına göre değil**), bütçe, ödeme doğrulaması, Activity (interviewing / invites sent), müşteri sinyalleri, scope netliği, demo uyumu, ön-iş gücü, boost ilk 4, davet, yorum sayımız.
+
+**Şerit mantığı (boost erken atıldığı için):** Bildirimle gideriz; teklif sayısı sonra zirve yapar, bu yüzden **%32 / %18 / %12 tablosu teklif dilimine göre ayrılmaz.**
+
+| Band (`go_score` çıktısı) | Ne | Tipik **P** (boost ilk 4 + §21 varsayımı) |
+| --- | --- | --- |
+| **tam-paket** | boost + ön-iş strong + demo exact/close + scope net + interviewing 0 + invites < 5 + K1/K2 geçti | **~%28–32** (SNIPER) |
+| **standart** | GO gönderilir; ön-iş light veya interviewing 1 veya demo sadece close | **~%16–22** |
+| **risk** | Kanıt zayıf / interviewing ≥ 2 — normalde §5.3 SKIP; geçtiyse | **~%10–14** |
+| **davet** | `--invite` | **~%34** |
+
+Teklif sayısı yalnızca **SKIP** için: K1 (≥20 veya yaşlı+kalabalık), K2 (hız > 1/dk). Gönderdiğimiz ilanda “az teklif vs çok teklif” diye ihtimal satırı seçilmez.
+
+Ağırlıklar başlangıç tahmini; **her 10 teklifte log'daki gerçek sonuçla** yeniden ayarlanır.
 
 ### 20.2 SNIPER ilanlarda modellerin ekstra işi
 
