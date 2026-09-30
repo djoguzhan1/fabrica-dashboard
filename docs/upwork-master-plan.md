@@ -10,6 +10,7 @@
 | `upwork-job-alerts-setup.md` | Q1–Q20 arama sorguları ve araç kurulumu (eski bütçe/boost bölümleri kaldırıldı) |
 | `upwork-arena-strategy.md` | Cevap tarafı: 1. parti boost/Uma bulguları, müşteri eleme aşamaları, 12 maddelik ikna listesi, ön-kontrol, Catalog |
 | `upwork-opening-playbook.md` | 2. parti bulgular: "önce yap, sonra teklif et", ön-iş menüsü, A1–A6 açılışlar, 10/10 açılış testi |
+| `upwork-competitor-cards.md` | Simülasyon için gerçekçi rakip kartları (bot, şablon veteran, ajans, ucuz, elit) ve tek çağrılık hakem prompt'u |
 | `upwork-proposal-log.md` | Takip tablosu (sütunlar §9’a göre) |
 | `upwork-72h-first-job-plan.md` (dal `cursor/upwork-72h-plan-5f90`) | Arşiv. EV, bütçe ve boost kuralları **geçersiz**; sadece arka plan |
 

@@ -256,6 +256,8 @@ Bir model gerçek müşteri değildir. Hakem olarak kullanılan modellerin bilin
 **Güçlü veteran kartı (sabit, her testte bir tane):**
 > Top Rated Plus · JSS 100% · $60K+ · $45/hr — "Your mobile menu issue is almost always a z-index clash with the sticky header in Elementor. I fixed the same thing for 40+ sites, can do it today."
 
+**Rakip alanı ve tek çağrılık güçlendirilmiş prompt:** `upwork-competitor-cards.md` (8 kart: 2 bot, 1 şablon veteran, 1 ajans, 1 ucuz, 1 özgül orta, 1 elit veteran zorunlu, biz).
+
 ### 12.5 Kalan riskler (önlemler azaltır, sıfırlamaz)
 
 | Risk | Karşılık |
