@@ -374,7 +374,73 @@ TEST veya GO. Model seti: varsayılan §12.0. Alt agent, otomatik fix max 3 tur.
 [ilan / screenshot] · Boost tablosu · Activity
 ```
 
-Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En fazla 3 tur; 3 turda geçmezse arketipi değiştir, yine olmazsa SKIP.
+### 12.0.1 Mekanizma — tek sohbet, modeller birbirine konuşmaz
+
+**Net kural:** Opus, GPT ve Gemini **birbirini görmüyor**. Sadece **Composer 2.5 (bu sohbet)** hepsini çağırır, araya **yapılandırılmış paket** koyar, cevapları okur, sonraki adımı seçer.
+
+```
+Sen
+ └─► Composer 2.5 (tek thread, durum makinesi)
+        │
+        ├─► [Task] Opus 5.5 Low/Medium  ← JOB_BUNDLE + WRITER_TASK → letter + screening
+        ├─► shell: proposal_lint.py     ← modelsiz
+        ├─► [Task] GPT Terra Medium     ← JOB_BUNDLE + CARDS + letter → JUDGE1_JSON
+        └─► [Task] Gemini Flash Low/Med ← aynı paket, sıra B → JUDGE2_JSON
+        │
+        └─► Composer: PASS/FAIL, tur++, yükseltme?, sana özet
+```
+
+**Alt agent nasıl açılır:** Composer `Task` ile **tek seferlik** görev verir (prompt + paket). Alt agent bitince **sadece çıktı** döner (metin veya JSON). Composer bunu bir sonraki Task’a **kopyalar**; modeller arası sohbet yok.
+
+**JOB_BUNDLE (her Task’a giden ortak blok):**
+
+| Alan | İçerik |
+| --- | --- |
+| `job_post` | İlan metni (verbatim) |
+| `client_facts` | Ülke, harcama, hire rate, yaş, teklif sayısı |
+| `activity` | Davet / interviewing / last viewed |
+| `boost_table` | B1–B4 |
+| `prework` | Gerçek bulgular, linkler, ek açıklaması (uydurma yok) |
+| `must_terms` | T1 çıktısı (birebir kelimeler) |
+| `cards_a` / `cards_b` | 8 rakip + biz (§13), sıra B karışık |
+| `letter` | Güncel mektup (fix turunda güncellenir) |
+| `tur` | 1–3 |
+| `writer_model` / `judge2_model` | Şu anki slug (varsayılan veya yükseltilmiş) |
+
+**Composer sana her GO/TEST sonunda yazır:** `tur`, `lint`, `J1/J2` özet, `model_set`, `yükseltme nedeni` (varsa), `GO gönder` veya `SKIP` veya `T8 sende`.
+
+### 12.0.2 Yükseltme — yetmediğini nasıl anlar?
+
+**Başlangıç:** her zaman §12.0 varsayılan (Opus Low + Terra Medium + Gemini Low).
+
+**A) İlan açılırken otomatik (Composer, GO’dan önce):** aşağıdakilerden **biri** varsa **ilk turda** yükseltilmiş set:
+
+| Tetik | Yükseltme |
+| --- | --- |
+| Fixed bütçe **≥ $150** | Yazar → `claude-opus-5-5-medium`, Hakem 2 → `gemini-3.8-flash-medium` |
+| Boost tablosunda **B4 ≥ 25** | Aynı |
+| İlan metni **> 2500 karakter** veya 5+ zorunlu araç | Aynı |
+
+**B) Tur içinde otomatik (test hattı sonucu):**
+
+| Tetik | Aksiyon |
+| --- | --- |
+| **T2 lint FAIL** ve sebep dil/AI kalıbı/uzunluk | Yazar tekrar (aynı model); 2. lint FAIL → yazar **medium**’a yüksel |
+| **T2 lint FAIL** ve sebep eksik `must_terms` | T1 tekrar (GPT) → yazar düzelt |
+| **Hakem 1 FAIL**, Hakem 2 PASS | Tur++; feedback ile yazar; tur 3 hâlâ J1 FAIL → Hakem 1 **`gpt-5.6-terra-high`** (sadece o ilan) |
+| **Hakem 2 FAIL** (kanıt/itiraz), J1 PASS | Tur++; tur 2’de Hakem 2 → **medium**; tur 3 hâlâ FAIL → **SKIP** (kanıt/ön-iş zayıf) |
+| **İkisi FAIL** “bot/AI” | Yazar + lint; arketip değiştir (A1→A2…) |
+| **İkisi FAIL** “elit veteran daha iyi” | Ön-iş güçlendir (daha somut bulgu); yazar medium; 1 tur daha; yoksa SKIP |
+| **J1 ve J2 çelişir** (biri aç, biri atla) | Üçüncü hakem yok; **T8 zorunlu** + konservatif: geçmedi say |
+| **3 tur tükendi** | SKIP (Connect yok) |
+
+**C) Senin yükseltmen:** mesajda `YÜKSELT` veya `kritik ilan` → A seti. `Düşük mod` → varsayılan §12.0 (sadece düşük bütçe / alıştırma).
+
+**D) Uzun vadeli (log):** son 10 GO’da sim PASS ama Insights açılma < %30 → bir sonraki ilanlarda **varsayılan** Hakem 1 Terra **high** veya yazar **medium** (haftada bir kez, §17).
+
+**Yükseltme tavanı (maliyet):** bir ilanda en fazla yazar medium + J2 medium + (isteğe bağlı) J1 high; **Opus high / Terra max** yok — o noktada SKIP veya sen T8 ile manuel gönder.
+
+Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En fazda 3 tur; 3 turda geçmezse arketipi değiştir, yine olmazsa SKIP.
 
 | # | Test | Kim | Geçme şartı |
 | --- | --- | --- | --- |
