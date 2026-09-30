@@ -440,7 +440,27 @@ Sen
 
 **Yükseltme tavanı (maliyet):** bir ilanda en fazla yazar medium + J2 medium + (isteğe bağlı) J1 high; **Opus high / Terra max** yok — o noktada SKIP veya sen T8 ile manuel gönder.
 
-Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En fazda 3 tur; 3 turda geçmezse arketipi değiştir, yine olmazsa SKIP.
+### 12.0.3 Serbest sohbet yok, üç kontrollü ek var
+
+Hakemler arasında serbest tartışma **yok**: birbirine uyum sağlar (grup düşüncesi), maliyeti katlar, metni hakemlerin zevkine kaydırır. Yerine:
+
+| Ek | Ne zaman | Nasıl |
+| --- | --- | --- |
+| **Çapraz sorgu (1 tur)** | J1 ve J2 çelişirse | Composer her hakeme diğerinin **gerekçesini** (kararını değil) verir: "Bu itiraz geçerli mi? Kararını koru veya değiştir, tek cümle sebep." Hâlâ çelişirse geçmedi say |
+| **Saklı hakem** | Mektup J1 + J2'yi geçtikten sonra, **tek sefer** | Fix turlarında hiç kullanılmamış üçüncü aile: `grok-4.7-low` (Cursor havuzu, ucuz). Sadece T5 kart paneli. Açmazsa → gönderme, 1 tur daha veya SKIP. Metin iki hakeme göre cilalandığı için bu, ezberlemeyi yakalar |
+| **Kör geri bildirim** | Her fix turunda | Yazara hakem puanı/kararı gitmez; sadece "atlatan cümle" ve "eksik kanıt" satırları gider. Yazar hakemi memnun etmeye değil, müşteriye yazmaya devam eder |
+
+**Hakem çıktı formatı (zorunlu JSON, çelişkiyi ölçülebilir yapar):**
+
+```json
+{"opened_ours_order_a": true, "opened_ours_order_b": true, "flagged_bot": false,
+ "personas_would_message": 2, "beats_elite": true,
+ "skip_sentence": "...", "missing_proof": "...", "strongest_objection": "...", "verdict": "PASS"}
+```
+
+**Gerçek geri besleme:** her gönderilen teklifin Insights sonucu (açıldı / cevap / işe alım) kalibrasyon setine eklenir. Ayda bir: hakemlere geçmiş 10 kartı kör verip gerçek sonucu tahmin ettir; en kötü tahmin eden hakem değiştirilir.
+
+Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En fazla 3 tur; 3 turda geçmezse arketipi değiştir, yine olmazsa SKIP.
 
 | # | Test | Kim | Geçme şartı |
 | --- | --- | --- | --- |
