@@ -142,7 +142,7 @@ Toplam 90–150 kelime. Başlık, bullet'lı "WHY ME" bölümü, emoji, uzun lis
 **Veteranın kartı (tipik):**
 > Hello! I have carefully read your job description and I'm confident I'm the perfect fit. With 9+ years of WordPress and Elementor experience…
 
-**Bizim kart (148 karakter):**
+**Bizim kart (141 karakter):**
 > Your /services page breaks at 390 px: the 3-column container doesn't stack and the CTA falls off screen. Marked screenshots + fix plan below.
 
 **Gövde:**
