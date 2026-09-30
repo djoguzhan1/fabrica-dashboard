@@ -26,6 +26,7 @@
 16. Günlük akış
 17. Ölçüm ve haftalık ayar
 18. Asla yapılmayacaklar
+19. İşe alımı artıran eklemeler
 
 Ek A — Vibeworker filtre JSON'ları · Ek B — Teklif log'u
 
@@ -139,6 +140,7 @@ Bildirim → saatlik / görüşme şart / ≤$49?     → SKIP
 | Müşteri hire rate < %30 ve 5+ ilan açmış | SKIP (seçmeyen müşteri) |
 | Müşteri 0 işe alım + bütçe < $50 + belirsiz brief | SKIP |
 | Yeni ilan (< 2 saat), Interviewing 0 | SALDIR |
+| Ödemesi doğrulanmış yeni müşteri (net brief) veya geçmişinde az yorumlu freelancer işe almış | **GO+** (öncelik, §19) |
 
 ### 5.4 Rekabet kartı K1–K6 (ilk tutan satır geçerli)
 
@@ -706,6 +708,29 @@ Haftada tek ayar; en fazla 5 gün dene, kötüleşirse geri al. Stats and Trends
 - Fonlanmadan işe başlamak
 - Müşterinin yanlış çözümüne sessizce evet demek
 - Test hattından geçmemiş teklifi boost'la göndermek
+
+---
+
+## 19) İşe alımı artıran eklemeler (2026-09-30 araştırması)
+
+Açılma tarafı §7–§13 ile güçlü. En zayıf halka **son aşama**: müşteri açıyor, beğeniyor, ama 0 yorumlu birine para vermekten çekiniyor. Aşağıdakiler en çok bu aşamayı hedefler; etki sırasına göre.
+
+| # | Ekleme | Kaynak | Hedeflediği aşama | Yapılacak |
+| --- | --- | --- | --- | --- |
+| 1 | **İlk yorum sprinti** | Müşteri yorumları (r/Upwork): ilk işe alımda portföy uyumu + iletişim belirleyici; yorum ikinci planda ama 0 yorum son aşamada fren | Cevap → işe alım | İlk **2 işe alıma kadar** öncelik: net scope'lu **$50–150** düzeltme işleri. Büyük işe de teklif at ama "ilk yorumu kim en hızlı verir?" sorusuyla sırala |
+| 2 | **Başlangıç milestone'u (varsayılan)** | Müşteriler "önce küçük ücretli iş" istiyor | Cevap → işe alım | İlk 3 işe alımda $100+ tekliflerde M1 = en küçük görünür çıktı ($25–40, aynı gün). Müşterinin riski $25'e iner |
+| 3 | **Profile highlights (her teklifte)** | Upwork Help: teklif formunda profilden **en fazla 4** öğe (portföy, sertifika, geçmiş iş) eklenebilir | Açılan → cevap | Her GO'da ilanın arenasına uyan 1–2 portföy öğesini seç (landing → CoolAir/ProFix; Sheets → sheet-notify; Python → tidycsv/docbrief) |
+| 4 | **Direct Contracts ile gerçek ilk yorum** | Upwork Help: Direct Contract geri bildirimi JSS'e, Rising Talent'a, kazanca **aynı şekilde** sayılır | Hepsi (rozet + yorum) | Gerçekten iş isteyen bir tanıdık/yerel işletme varsa işi Upwork Direct Contract ile yap. **Sahte iş veya para karşılığı yorum yasak** (ToS, hesap kapanır) |
+| 5 | **Davet kanalı** | Upwork: %100 profil 4,5 kat daha fazla işe alım; Availability Badge ~%50 daha fazla davet (~14 Connect/hafta). Başlık, açıklamanın ilk 2 cümlesi ve beceri etiketleri aramada en ağır sinyal | Teklifsiz işe alım | Başlığı ve açıklamanın ilk 2 cümlesini arena kelimeleriyle yaz; beceri etiketlerini gerçek ilanlardan topla; görsel portföy; **30–60 sn profil videosu** (önceden kaydedilmiş, görüşme değil); ilk yorumdan sonra Badge'i 1 hafta dene |
+| 6 | **90 gün kuralı** | Upwork: yeni freelancer ilk tekliften sonraki 90 günde kazanç yoksa profil **gizliye** alınır, aramadan çıkar | Davet kanalı | İlk teklif tarihini log'a yaz; 60. günde hâlâ işe alım yoksa Catalog fiyatlarını düşür, Direct Contract ara |
+| 7 | **Davet = en hızlı cevap** | Davetle gelen müşteri zaten seni seçmiş | Cevap → işe alım | Davet push'u açık; **5 dk** içinde ön-iş + mektup; K1/K2 uygulanmaz, sadece §5.2 ve §5.3 |
+| 8 | **Yeni müşteriye sıcak bak** | r/Upwork: 0 yorumlu yeni müşteriler çoğu zaman daha az seçici, sonra uzun vadeli oluyor | Cevap → işe alım | Ödemesi doğrulanmış, net brief'li, 0 işe alımlı müşteri **GO+** (öncelik). Doğrulanmamış ödeme hâlâ SKIP |
+| 9 | **Müşterinin geçmişinde yeni freelancer var mı** | Müşteri iş geçmişi | Cevap → işe alım | Geçmiş işlerinde az yorumlu freelancer işe almışsa **GO+**; sadece Top Rated almışsa normal GO |
+| 10 | **Teklif sonrası değer ekleme** | Upwork Help: 6 saat / görülene kadar düzenleme; mesaj odası teklifle açılır ama bazı hesaplarda müşteri yazana kadar kapalı | Açılma → cevap | Görülmediyse ve 6 saat dolmadıysa: yeni bir bulgu/ek ile teklifi **Edit** et. Mesaj odası açıksa 24 saatte **tek** değer mesajı (yeni bulgu + M1 metni). "Checking in" yok |
+
+**Tahmini etki (dürüst):** 1 + 2 + 3 birlikte son aşamayı ~%45–55'ten ~%55–65'e çıkarabilir. Bu da ilan başına işe alımı yaklaşık **%9'dan %11–13'e** taşır. 4 (Direct Contract) ve 5 (davet) teklif hesabının **dışında** ek iş getirir. İlk yorum geldikten sonra son aşamadaki fren büyük ölçüde kalkar; plandaki %12–20 hedefine giden yol buradan geçer.
+
+**Yorum isteme (işten sonra, kurala uygun):** Teslimde "Everything's live; if anything looks off in the next 7 days, tell me and I'll fix it" → müşteri memnunsa kapanışta "If you're happy with the work, a short review on the contract helps a lot." İndirim veya "5 star" talebi yok.
 
 ---
 
