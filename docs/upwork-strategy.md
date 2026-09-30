@@ -2,7 +2,7 @@
 
 **Son güncelleme:** 2026-09-30 · **Tek kaynak.** Eski Upwork dokümanlarının hepsi bu belgeye birleştirildi ve silindi. Burada olmayan kural geçersiz.
 
-**Kim:** Oğuzhan, Bursa (GMT+3), Upwork'te 0 yorum. **Alan:** WordPress/Elementor, landing page, düzeltmeler, hız, Google Sheets/Apps Script, Python, küçük web ve n8n/API işleri. **Sınırlar:** telefon ve video görüşme yok, saatlik iş yok, ücretsiz iş yok.
+**Kim:** Oğuzhan, Bursa (GMT+3), Upwork'te 0 yorum. **Alan:** WordPress/Elementor, landing page, düzeltmeler, hız, Google Sheets/Apps Script, Python, küçük web ve n8n/API işleri. **Sınırlar:** telefon ve video görüşme yok, saatlik sözleşme ve izleme yok (saatlik ilanlara fixed teklifle girilir, §21.2), ücretsiz iş yok.
 
 ---
 
@@ -27,6 +27,8 @@
 17. Ölçüm ve haftalık ayar
 18. Asla yapılmayacaklar
 19. İşe alımı artıran eklemeler
+20. Keskin nişancı modu — teklif başına %25–40
+21. Seçici olmadan kazanmak — model ekibi + daha fazla ilan
 
 Ek A — Vibeworker filtre JSON'ları · Ek B — Teklif log'u
 
@@ -105,7 +107,8 @@ Pazartesi en yoğun gün. **Kalibrasyon:** push <5/gün → rating 4.5 ve spent 
 ### 5.1 30 saniyelik akış
 
 ```
-Bildirim → saatlik / görüşme şart / ≤$49?     → SKIP
+Bildirim → görüşme şart / ≤$49?              → SKIP
+         → saatlik ilan?                      → §21.2 fixed dönüşümü (SKIP değil)
          → arena dışı (§5.2)?                 → SKIP
          → Activity kötü (§5.3)?              → SKIP
          → K1 / K2 (kalabalık, yaşlı, hızlı)? → SKIP
@@ -128,6 +131,8 @@ Bildirim → saatlik / görüşme şart / ≤$49?     → SKIP
 | Küçük n8n / API bağlantısı | Akış şeması PNG |
 | Tasarım → HTML, küçük Figma işi | Önce/sonra mini revizyon |
 
+**Genişletilmiş arena (§21.3, küçük düzeltme işleri):** Shopify tema/CSS düzeltmesi, Webflow / Wix / Squarespace düzeltmesi, küçük React/Next.js bileşen hatası, HTML e-posta şablonu, GA4 / GTM / pixel kurulumu, Zapier / Make akışı, Airtable / Notion otomasyonu.
+
 **Arena dışı (SKIP):** AI agent / RAG üretim sistemi, GHL, CRM kurulumu, ML / model eğitimi, trading / MT4, WooCommerce checkout, mobil uygulama, retainer, CAPTCHA bypass, login arkası scrape, akademik iş, Upwork dışı ödeme.
 
 ### 5.3 Activity ön-kontrolü (ilan sayfası → "Activity on this job")
@@ -148,7 +153,7 @@ Bildirim → saatlik / görüşme şart / ≤$49?     → SKIP
 
 | # | Koşul | Karar |
 | --- | --- | --- |
-| K1 | Teklif ≥ 20 veya yaş > 60 dk | SKIP |
+| K1 | Teklif ≥ 20, veya yaş > 60 dk **ve** teklif ≥ 10 (eski ama boş ilan GO olabilir) | SKIP |
 | K2 | Hız > 1,0/dk (ör. 15 dk'da 15+ teklif, bot yoğun ilan) | SKIP |
 | K3 | $80+, arena içi, B4+1 ≤ tavan | Teklif + boost = B4+1 |
 | K4 | $50–79, arena içi, B4+1 ≤ 11 | Teklif + boost = B4+1 |
@@ -785,6 +790,69 @@ Vibeworker'ın webhook kanalı yeni ilanı bir Cursor Automation'a gönderip tas
 
 ---
 
+## 21) Seçici olmadan kazanmak — model ekibi + daha fazla ilan
+
+İlan az geliyor; daha da seçici olamayız. İki yol: **aynı ilanda kazanma oranını** model ekibiyle yükseltmek, **gelen ilan sayısını** büyütmek. `go_score.py` artık eleme için değil, **hangi ilana ne kadar model gücü verileceğini** seçmek için kullanılır.
+
+### 21.1 Her ilana SNIPER muamelesi — paralel model ekibi
+
+Sorun: SNIPER kalitesinde ön-iş elle 20–30 dk sürüyor, bu yüzden her ilana yapılamıyordu. Çözüm: Composer ilan gelir gelmez **aynı anda** 3 alt agent açar; ön-iş 5–10 dakikaya iner, her GO ilan SNIPER kalitesinde gider.
+
+```
+Composer (ilan geldi, t=0)
+ ├─► [Task] Araştırmacı   (composer-2.5 + tarayıcı)  → müşterinin sitesi 390/768/1366 px ekran görüntüsü,
+ │                                                     PageSpeed, kırık öğeler, sektör, rakip sitesi
+ ├─► [Task] Yapımcı       (claude-opus-5-5-low)       → "yapılmış dilim": düzeltilmiş CSS, Playground'da hero,
+ │                                                     çalışan Apps Script kopyası, Python script
+ └─► [Task] Görselci      (composer-2.5)             → işaretli 1 sayfa PNG + sessiz, altyazılı 30–60 sn
+                                                       ekran kaydı (Loom'a gerek yok, ses yok)
+        │  (t ≈ 8 dk, üçü birleşir)
+        ▼
+ Yazar (Opus Low) → lint → Hakem 1 + 2 (paralel) → saklı hakem → sen (T8)
+```
+
+| Ajan | Yeni | Neden kazanma oranını artırır |
+| --- | --- | --- |
+| **Araştırmacı** | Evet | Her açılış A2/A3 (teşhis, rakam) olur; tahmin değil ölçülmüş bulgu |
+| **Yapımcı** | Evet | Her açılış A1 ("already did X for your Y") olabilir: en güçlü arketip, veteranın yapmadığı şey |
+| **Görselci** | Evet | Ek görsel + **sessiz video**: sen konuşmadan Loom etkisi. Video = müşterinin kendi sitesinde düzeltilmiş hali |
+
+**Sınır:** yapılmış dilim küçük ve görsel kalır (ekran görüntüsü, önizleme linki, kısa video). Tam çözüm kodu veya dosya teslim edilmez; iş, milestone fonlanınca teslim edilir.
+
+**Beklenen etki (aynı ilan havuzunda):** açılma +10 puan (A1/A2 kartı), cevap +10–15 puan (çalışan dilim), işe alım +5 puan (risk görünür şekilde düştü) → ilan başına **~%9'dan ~%16–22'ye**. Seçicilik artmadı; her ilana daha güçlü teklif gitti.
+
+### 21.2 Saatlik ilanları fixed'e çevir (takip yok)
+
+Saatlik ilanlar havuzun büyük kısmı; hepsini atlamak ilanların yarısından fazlasını kaybetmek demek. Kural **değişmiyor**: saatlik çalışma ve izleme yok. Yöntem: saatlik ilana teklif at, ama **fixed milestone öner**.
+
+- Teklif ekranında saatlik ücret alanına profil ücretini yaz. Mektubun kanıt satırından sonra: "I'd suggest a fixed price for this: $[X] for [çıktı 1 + 2], delivered in [N] days, so you pay for results, not hours."
+- Müşteri kabul ederse **fixed sözleşme** ister ("Could you send it as a fixed-price offer?"). Müşteri saatlik sözleşmede ısrar ederse nazikçe çekil.
+- Sadece net scope'lu, kısa saatlik ilanlar ("~5–10 hours", "small fix", tek teslim). "Ongoing", "40 hrs/week", "long-term" SKIP.
+- Hakem sorusuna ek: "Would you accept a fixed-price offer instead of hourly for this?"
+
+### 21.3 Arenayı yapımcı ajanla genişlet
+
+Cursor ile kod yazan ajanlar birçok platformda küçük düzeltme yapabiliyor. "Küçük düzeltme" işlerinde arena genişler (§5.2 genişletilmiş arena). Koşullar:
+- İş **tek parça ve teslim edilebilir** (bir tema hatası, bir bileşen, bir akış). Sıfırdan mağaza, uygulama, entegrasyon sistemi değil.
+- Araştırmacı ön-işte sorunu **yeniden üretebildiyse** GO. Üretemediyse SKIP.
+- Portföy yoksa kanıt = yapılmış dilim (videolu).
+
+### 21.4 Kaçan ilanları geri kazan
+
+| Kayıp | Çözüm |
+| --- | --- |
+| Uykuda gelen ilanlar (sabah 4 iyi ilan kaçtı) | K1 artık yaşa değil **teklif sayısına** bakıyor: 3 saatlik ama 6 teklifli ilan GO. Sabah 09:30 bloğunda gece ilanları taranır |
+| Aynı müşteri tekrar ilan açar | Kazanamadığın iyi müşteriyi log'a "izle" diye yaz; yeni ilanında "Saw your earlier post about [X]" ile başla (A1 kanıt hazır) |
+| Kaybedilen ilanda ön-iş boşa gitti | Dilim ve video **portföye** eklenir (müşteri adı/verisi olmadan): her kayıp yeni kanıt üretir |
+
+### 21.5 Filtre değişiklikleri (Ek A'ya uygulandı)
+
+- Ortak exclude'dan `shopify`, `react`, `next.js`, `nextjs` çıkarıldı; yerine `shopify app`, `shopify store setup`, `react app from scratch`, `saas mvp` eklendi.
+- Yeni **P7 Stretch-Fix** preset'i: `shopify theme, shopify css, webflow, wix, squarespace, react bug, next.js bug, email template, html email, ga4, google tag manager, meta pixel, zapier, make.com, airtable, notion`.
+- `job_type: null` kalır (saatlik dahil); saatlik ilan §21.2 ile işlenir.
+
+---
+
 ## Ek A — Vibeworker filtre JSON'ları
 
 Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. P1–P5 çan açık, P6 çan kapalı (sadece feed), Shortlist çanı P1–P5 kurulunca kapalı.
@@ -817,10 +885,10 @@ Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle →
 **Ortak exclude:**
 
 ```json
-["woocommerce","shopify","react","next.js","nextjs","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","mentor","mentorship","devops","terraform","ansible","kubernetes"]
+["woocommerce","shopify app","shopify store setup","react app from scratch","saas mvp","vue","angular","react native","flutter","mobile app","ios app","android app","fullstack","full stack","full-stack","blockchain","crypto","nft","web3","trading bot","homework","thesis","unpaid","free test","test task","telegram only","outside upwork","us citizen","us person","security clearance","senior developer","senior engineer","lottery","casino","betting","gambling","power apps","power automate","mentor","mentorship","devops","terraform","ansible","kubernetes"]
 ```
 
-`react` bilerek exclude: React ilanlarının çoğu sıfırdan uygulama. Küçük React düzeltmeleri Upwork Plus önerilerinden gelir.
+Sıfırdan mağaza/uygulama işleri (`shopify app`, `react app from scratch`, `saas mvp`) exclude'da; küçük Shopify/React düzeltmeleri P7 ile gelir (§21.3).
 
 | Preset | `budget_min_fixed` | `connects_max` | `keywords_include` (herhangi biri) | Ortak exclude'a ek |
 | --- | --- | --- | --- | --- |
@@ -830,7 +898,8 @@ Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle →
 | **P4 Sheets-Excel** | 50 | 8 | google sheets, excel, spreadsheet, vlookup, xlookup, pivot table, conditional formatting, formula, dashboard, tracker, calculator | data entry, bookkeeping, power bi, tableau, financial model, vba |
 | **P5 Small-Web** | 50 | 8 | quick fix, small fix, small change, small task, html css, css fix, figma to html, psd to html, migrate, migration, dns, ssl, hosting, github pages, netlify, ga4, google tag manager, pixel, calendly, booking widget | — |
 | **P6 Scripts-AI** (çan kapalı) | 50 | 12 | python, apps script, google apps script, automation, automate, csv, pdf, openai, chatgpt, claude, api integration, webhook, zapier, n8n, make.com | linkedin, instagram, facebook, captcha, scrape, scraping, machine learning model, fine-tune, fine-tuning, computer vision |
-| **Shortlist** (tek filtre, çan kapalı) | 50 | 12 | P1–P6 include listelerinin birleşimi | football, power bi, tableau, exhibitor, exhibitor list, trade show, sponsors, lead list, data entry, linkedin, instagram, facebook, scrape, scraping, captcha, selenium, playwright, video call, phone call, zoom, google meet, native english, native speaker, kimai, custom plugin, plugin development, theme development, from scratch, manuscript, mobile game, user acquisition, voxel |
+| **P7 Stretch-Fix** | 50 | 12 | shopify theme, shopify css, webflow, wix, squarespace, react bug, next.js bug, email template, html email, ga4, google tag manager, meta pixel, zapier, make.com, airtable, notion | from scratch, full store, ongoing, 40 hours |
+| **Shortlist** (tek filtre, çan kapalı) | 50 | 12 | P1–P7 include listelerinin birleşimi | football, power bi, tableau, exhibitor, exhibitor list, trade show, sponsors, lead list, data entry, linkedin, instagram, facebook, scrape, scraping, captcha, selenium, playwright, video call, phone call, zoom, google meet, native english, native speaker, kimai, custom plugin, plugin development, theme development, from scratch, manuscript, mobile game, user acquisition, voxel |
 
 Shortlist'te `keywords_require` boş kalır (her kelime zorunlu olursa ilan kaçar).
 
