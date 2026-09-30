@@ -882,6 +882,25 @@ Tanıdık yok: platform dışı referans ve Direct Contract **kullanılmaz**. Ye
 
 Tanıdıksız dürüst aralık: 0 yorumla **%18–25**; ilk 3 yorumdan sonra **%28–33**; davetli ilanlarda **%35+**.
 
+### 22.2.1 Yorumsuz %30 yolu: davet payını artır (karma huni)
+
+Soğuk teklifte yorumsuz tavan ~%23–25. Davetli teklifte ~%35–45 (müşteri seni zaten seçmiş). Bu yüzden %30'un yolu, teklif sayısını azaltmadan **tekliflerin içindeki davet payını ~%40'a çıkarmak**:
+
+| Karışım | Soğuk (%23) | Davet (%40) | Teklif başına |
+| --- | --- | --- | --- |
+| Şimdi | %95 | %5 | ~%24 |
+| Hedef | %60 | %40 | **~%30** |
+
+Davet motoru (tanıdık, görüşme, saatlik, ücretsiz iş gerektirmez):
+1. **Profil SEO:** Başlık müşterinin aradığı kelimeyle: "WordPress & Elementor Fixes | Speed, Mobile, Landing Pages". Overview'un ilk 2 satırı ve 15 skill etiketi, ilanlarda en sık geçen kelimelerle birebir (Vibeworker ilanlarından çıkarılır).
+2. **2 uzmanlaşmış profil:** (a) WordPress/Elementor, (b) Google Sheets/Apps Script + Python otomasyon. Her biri kendi aramasında çıkar; davet yüzeyi 2 katı.
+3. **3 Project Catalog paketi:** Mobil düzeltme, hız optimizasyonu, Apps Script otomasyonu. Katalog ayrı arama kanalıdır, paket sayfası davet getirir.
+4. **Availability Badge sürekli açık** (~%50 daha fazla davet) ve **davete ilk 1 saatte yanıt**. Yanıt hızı arama sıralamasını etkiler.
+5. **Portföy = arama yüzeyi:** Her canlı demo başlığı arama kelimesi taşır ("Elementor mobile menu fix — before/after").
+6. **Davetlere öncelik:** Davet gelince sniper ekibi (§20–21) önce ona çalışır, boost gerekmez. `go_score.py --invite`.
+
+Ölçüm: Ek B log'unda her teklif `kaynak: soğuk/davet` ile işaretlenir. 2 haftada davet payı %20'nin altındaysa önce profil başlığı ve etiketler değiştirilir.
+
 ### 22.3 Araştırmacı ajanın aracı: `scripts/site_audit.mjs`
 
 ```bash
