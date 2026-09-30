@@ -348,21 +348,43 @@ Want me to start with /services today?
 
 ## 12) Test hattı — göndermeden önce (toplam ≤ 10 dk)
 
-**Modeller:**
-- **Yazar:** Claude Opus 5.5 (mektup, ön-iş notları). Hızlı GO/SKIP ön elemesi: Composer 2.5.
-- **Hakemler:** yazardan **farklı aile**, iki tane: GPT 5.6 ve Gemini 3.8. İkisi de geçirmeli.
+**Tek sohbet (Cloud Agent):** Composer 2.5 orkestra eder; yazar ve hakemler **alt agent (Task)** ile ayrı modellerde çalışır. Otomatik fix: `proposal_lint.py` → geçmezse yazar Task tekrar (hakem feedback ile) → max 3 tur. İki hakem **paralel** Task.
+
+### 12.0 Varsayılan model seti — tasarruflu, risk vermez
+
+Ödün yok: hepsi **low** değil; **lint + iki hakem + T8** zorunlu. Low sadece hızlı/ucuz katmanlarda; asıl sıkılık **GPT Terra Medium** hakemde.
+
+| Rol | Model (slug) | Neden |
+| --- | --- | --- |
+| **Orkestra + GO/SKIP + ön-iş koordinasyon** | Bu sohbet: **Composer 2.5** | Tek thread; lint çalıştırma; tur sayacı; paket hazırlama |
+| **Yazar** (mektup, tarama cevapları, ön-iş metinleri) | **`claude-opus-5-5-low`** | Talimat takibi + kısa İngilizce; maliyet düşük |
+| **Hakem 1** (T1 gereksinim, T5 kart paneli, T4 ek 3 sn, T7 dil) | **`gpt-5.6-terra-medium`** | Farklı aile; medium = şişirme puanına karşı sert |
+| **Hakem 2** (T3 kanıt, T6 mektup + itiraz, T5 ikinci sıra) | **`gemini-3.8-flash-low`** | İkinci aile; hızlı ikinci görüş; kart sırası B |
+
+**Geçme:** lint `PASS` + Hakem 1 ve 2 geçti + **T8 sen** (esnaf tıklar mı). Biri FAIL → fix turu.
+
+**Yükseltme (sadece o ilan, maliyet artar ama risk düşer):** bütçe **≥ $150** veya B4 ≥ 25 veya elit veteran kartı mektubumuzdan güçlü görünüyorsa → yazar **`claude-opus-5-5-medium`**, Hakem 2 **`gemini-3.8-flash-medium`**. Hakem 1 medium kalır.
+
+**Asla:** yazar = hakem aynı model/aile; hakem olmadan gönderim; lint FAIL ile gönderim.
+
+**Senin tetik cümlesi (her GO/TEST):**
+
+```text
+TEST veya GO. Model seti: varsayılan §12.0. Alt agent, otomatik fix max 3 tur.
+[ilan / screenshot] · Boost tablosu · Activity
+```
 
 Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En fazla 3 tur; 3 turda geçmezse arketipi değiştir, yine olmazsa SKIP.
 
 | # | Test | Kim | Geçme şartı |
 | --- | --- | --- | --- |
-| T1 | **Gereksinim çıkarma** (Uma simülasyonu) | Hakem 1 | İlandan zorunlu gereksinimler + birebir kelimeler listesi çıkar (araç, sayfa, çıktı, süre, soru, gizli kelime) |
+| T1 | **Gereksinim çıkarma** (Uma simülasyonu) | Hakem 1 (GPT Terra Medium) | İlandan zorunlu gereksinimler + birebir kelimeler listesi çıkar (araç, sayfa, çıktı, süre, soru, gizli kelime) |
 | T2 | **Kural kontrolü** | `scripts/proposal_lint.py` | `RESULT: PASS` |
 | T3 | **Kanıt doğrulama** | Sen + hakem 2 | Mektuptaki her iddia ön-iş bulgusuyla eşleşiyor; linkler gizli pencerede açılıyor; Loom public |
 | T4 | **Ek görsel 3 saniye testi** | Hakem 1 (görsel) | "3 saniyede bu görsel ne diyor?" cevabı amaçlanan mesajla aynı; 390 px genişlikte okunuyor |
 | T5 | **Kör kart paneli** (§13) | Hakem 1 ve 2 | İki sırada, 3 personadan en az 2'sinde açılan 2 karttan biri; bot/şablon diye işaretlenmemiş |
-| T6 | **Mektup + itiraz** | Hakem 2 | En az 2 persona "mesaj atarım"; elit veteranla eşit veya üstünde; "işe almamak için en güçlü sebep" mektupta önceden cevaplanmış |
-| T7 | **Dil** | Hakem 1 | Doğal ABD/İngiltere İngilizcesi; Türkçe'den çeviri kokan yapı yok; kısaltmalar (I'd, you'll) var |
+| T6 | **Mektup + itiraz** | Hakem 2 (Gemini Flash Low/Medium) | En az 2 persona "mesaj atarım"; elit veteranla eşit veya üstünde; "işe almamak için en güçlü sebep" mektupta önceden cevaplanmış |
+| T7 | **Dil** | Hakem 1 (GPT Terra Medium) | Doğal ABD/İngiltere İngilizcesi; Türkçe'den çeviri kokan yapı yok; kısaltmalar (I'd, you'll) var |
 | T8 | **Son insan kontrolü** | Sen | "Bunu okuyan yorgun bir esnaf tıklar mı?" Evet değilse gönderme |
 
 ### 12.1 T2 — kural kontrolü (script)
