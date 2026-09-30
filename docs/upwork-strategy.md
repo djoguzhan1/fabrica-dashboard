@@ -938,6 +938,85 @@ Müşteri mesaj attığında 10 dk içinde tek mesajda: (1) tek cümle sorun öz
 
 ---
 
+## 23) Sohbet ve mülakat hattı — teklif hattından ayrı model sistemi
+
+Teklif hattı (§12) kartı açtırır. Bu hat **mesajdan sözleşmeye** kadar çalışır. Ayrı çünkü amaç farklı: artık "tıklar mı" değil, **"şimdi offer gönderir mi"**. Kayıp en çok burada olur (§20.3).
+
+**Tetik:** Upwork'te müşteri mesajı, "invited to interview" veya offer bildirimi. Sen mesajı (ve varsa önceki konuşmayı) sohbete yapıştırırsın: `SOHBET` + mesaj.
+
+### 23.1 Sohbet ekibi (tek sohbet, alt agent)
+
+```
+Sen: SOHBET + müşteri mesajı
+ └─► Composer 2.5 — CHAT_BUNDLE hazırlar (ilan, gönderilen teklif, ön-iş, tüm konuşma, fiyat, M1)
+      ├─► [Task] Triage     (gemini-3.8-flash-low)   → mesaj tipi + risk bayrakları (JSON)
+      ├─► [Task] Yazar      (claude-opus-5-5-low)    → cevap + (gerekirse) milestone metni
+      ├─► shell: reply_lint.py --stage <tip>         → modelsiz kural kontrolü
+      ├─► [Task] Müşteri    (gpt-5.6-terra-medium)   → bu müşteri personası: "offer gönderir misin?"
+      └─► [Task] Bekçi      (grok-4.7-low)           → ToS + senin sınırların + scope/fiyat tutarlılığı
+      └─► Composer: PASS → sana kopyala-yapıştır cevap; FAIL → tek düzeltme turu (max 2)
+```
+
+Hedef süre: mesaj geldikten **≤ 10 dk** içinde gönderim. Gönderen her zaman sensin.
+
+### 23.2 Triage — mesaj tipleri
+
+| Tip | Örnek | Ne yapılır | `--stage` |
+| --- | --- | --- | --- |
+| **İlk mesaj / ilgi** | "Hi, can you tell me more?" | R1: bulgu + milestone metni + tek ihtiyaç | first |
+| **Yazılı mülakat soruları** | "How would you do X? Timeline? Similar work?" | Her soruya numaralı kısa cevap + kanıt linki + milestone | interview |
+| **Sesli/video görüşme isteği** | "Can we do a quick call?" | R4: yazılı çalışma + **önceden kaydedilmiş sessiz, altyazılı video** (Görselci ajan, §21.1) sorulacak noktaları cevaplar | objection |
+| **Fiyat itirazı** | "Too expensive / others quoted less" | R2/R3: scope küçült, fiyatı değil | objection |
+| **Test / ücretsiz örnek** | "Do a small test first" | R5: ücretli mikro milestone ($15–29) | objection |
+| **Saatlik ısrarı** | "Send an hourly contract" | Fixed offer öner; ısrarda nazikçe çekil (§21.2) | objection |
+| **Offer hazırlığı** | "What should I put in the milestone?" | Kopyalanabilir milestone: scope + $ + teslim saati | offer |
+| **Scope büyümesi** | "Can you also add…?" | Evet ama **ayrı milestone + fiyat** | scope |
+| **Kırmızı bayrak** | Upwork dışı ödeme/iletişim, "önce iş sonra ödeme", fonlanmamış başlangıç | Kibar ret + Upwork kuralı; gerekirse konuşmayı bitir | — |
+
+### 23.3 Müşteri hakemi (Terra Medium) — sorular
+
+Aynı müşteri personası (ilandaki dil, bütçe, müşteri geçmişi) konuşmanın tamamını okur:
+
+1. "Would you send an offer **right now**? yes/no."
+2. "What single thing is still stopping you?"
+3. "Did the reply answer **every** question you asked? List unanswered ones."
+4. "Does anything sound like a bot, a template, or a pushy sales line?"
+
+`no` veya cevapsız soru varsa yazar tek turda sadece o engeli çözer. 2. tur da `no` ise Composer sana engeli yazar; karar senin.
+
+### 23.4 Bekçi (Grok Low) — sınırlar
+
+FAIL sayılır: Upwork dışı iletişim/ödeme; telefon/video görüşme teklifi; saatlik sözleşme veya takip kabulü; ücretsiz iş; teklifteki fiyat/süreyle çelişen rakam; teslim edemeyeceğin söz; yorum karşılığı indirim. `reply_lint.py` aynı kuralların ilk süzgeci, bekçi bağlama bakar ("I can call" gizli teklifi, önceki mesajla çelişen fiyat).
+
+### 23.5 Yazılı mülakat şablonu
+
+```
+Answers in order:
+1) [Soru 1 kısa cevabı + neden]
+2) Timeline: [çıktı 1] by [gün/saat ET], [çıktı 2] by [gün].
+3) Similar work: [1 link: demo veya yapılmış dilim].
+
+Milestone text you can paste: "[scope], $[fiyat], delivered by [gün]".
+Anything unclear, ask here and I'll answer within the hour.
+```
+
+### 23.6 Sesli görüşme istenirse
+
+- Cevap R4 + **45–90 sn sessiz, altyazılı ekran kaydı**: müşterinin sitesinde sorun → plan → teslim. Görselci ajan hazırlar, sen konuşmazsın.
+- Müşteri görüşmede ısrar ederse: "Totally understand if a call is a must for you; in that case I'm probably not the right fit, and I wish you a smooth project." Konuşma kapanır, log'a `kayıp: call` yazılır. 10 kayıpta 3+ `call` ise video şablonu değişir.
+
+### 23.7 Offer geldikten sonra
+
+1. Offer'ı kontrol et: fixed mi, milestone tutarı ve scope yazışmayla aynı mı. Değilse kabul etmeden önce düzeltme iste.
+2. Kabul → R-işe alım mesajı (§14 son satır): "Backup taken, starting now. First update by [TIME]."
+3. Fonlanmadan iş yok. Teslimde 7 gün düzeltme sözü; kapanışta §19'daki kurala uygun yorum ricası.
+
+### 23.8 Ölçüm
+
+Ek B log'una: `mesaj tipi`, `cevap süresi (dk)`, `hakem yes/no`, `sonuç (offer / sessiz / kayıp: fiyat|call|saatlik|başkası)`. 10 konuşmada bir: en sık kayıp nedeni için şablon değişir. Hedef: mesaj → offer **≥ %60**.
+
+---
+
 ## Ek A — Vibeworker filtre JSON'ları
 
 Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. P1–P5 çan açık, P6 çan kapalı (sadece feed), Shortlist çanı P1–P5 kurulunca kapalı.
