@@ -853,6 +853,51 @@ Cursor ile kod yazan ajanlar birçok platformda küçük düzeltme yapabiliyor. 
 
 ---
 
+## 22) %33 planı — teklif başına işe alım
+
+### 22.1 Hedef huni
+
+| Aşama | Şimdi (tahmin) | Hedef | Kaldıraç |
+| --- | --- | --- | --- |
+| Açılma (kart görüldü → tıklandı) | ~55% | **80%** | Boost B4+1, ilk 15 dk, kart cümlesinde müşterinin kendi sayfası/sorunu (§22.3) |
+| Yanıt (açıldı → mesaj) | ~35% | **60%** | Ekran görüntüsü + 30–60 sn sessiz video + çalışan dilim (§21.1, §22.3) |
+| İşe alım (mesaj → sözleşme) | ~45% | **70%** | Teklif-hazır ilk yanıt + küçük başlangıç milestone'u + sosyal kanıt (§22.2, §22.4) |
+| **Toplam** | ~9% | **~33%** | 0.80 × 0.60 × 0.70 |
+
+Dürüst aralık: 0 yorumla ilk 10 teklifte **%20–28** beklenir; 3–5 yorum veya davetlerle **%30+**. Her kaldıraç ayrı ölçülür (§22.6).
+
+### 22.2 Yorumsuz sosyal kanıt (son aşama, en büyük kaldıraç)
+
+1. **Platform dışı referans:** Profile → Testimonials → Request a testimonial. Daha önce iş yaptığın 3–5 kişiye (arkadaş değil, gerçek iş) iste; müşterinin LinkedIn'i gerekir, en fazla 20 istek. Sahte/ücretli referans **yok**.
+2. **Direct Contract:** Tanıdık bir gerçek müşteriyi Upwork Direct Contract ile faturala → JSS ve Rising Talent sayılır; ilk yorum genelde 1–2 haftada gelir.
+3. **Project Catalog:** "WordPress/Elementor mobile fix — 24h" gibi 1 düşük fiyatlı paket ($30–50). İlk satış = ilk yorum.
+4. **Profil %100** (4.5x) + Availability Badge (~%50 daha fazla davet). Her teklife en uygun 4 highlight seçilir.
+5. 90 gün kuralı: ilk tekliften sonra 90 gün kazanç yoksa profil gizlenir; 22.2 adımları bu yüzden **ilk 2 haftada** yapılır.
+
+### 22.3 Araştırmacı ajanın aracı: `scripts/site_audit.mjs`
+
+```bash
+node scripts/site_audit.mjs https://musteri-sitesi.com audit-out
+```
+
+390/768/1366 px ekran görüntüsü + yatay taşma yapan elemanlar, kırık görseller, konsol hataları, başarısız istekler, LCP, küçük dokunma hedefleri. Çıktı `report.json`; Visual ajan PNG'yi işaretler, Writer ilk cümleye **somut bulguyu** koyar ("Your hero overflows 38px on iPhone — here's the fix"). Müşterinin URL'si yoksa ilandaki ekran görüntüsü/tarif kullanılır. Ücretsiz iş değil: sadece teşhis + küçük dilim, teslimat sözleşmeden sonra.
+
+### 22.4 Teklif-hazır ilk yanıt
+
+Müşteri mesaj attığında 10 dk içinde tek mesajda: (1) tek cümle sorun özeti, (2) 3 maddelik plan, (3) sabit fiyat + teslim süresi, (4) **küçük ilk milestone** ("Milestone 1: mobile fix, $X, 24h"), (5) tek soru. Görüşme istenirse: "I work async — here's a 45s walkthrough video instead." Writer bu mesajı teklifle birlikte önceden hazırlar; müşteri yanıtlayınca sadece uyarlanır.
+
+### 22.5 Hazır dilim kitleri (Builder 3 dk)
+
+`kits/` altında arena başına iskelet tutulur: Elementor mobil düzeltme CSS'i, landing page hero bloğu, Apps Script tetikleyici/e-posta şablonu, Python scraper/CSV temizleyici, n8n webhook akışı, Shopify/Webflow CSS düzeltme. Builder sıfırdan değil kitten başlar → her GO'da çalışan dilim, maliyet artmadan.
+
+### 22.6 Hız + öğrenme döngüsü
+
+- **Hız:** Vibeworker bildirimi → tek komutla JOB_BUNDLE (ilan metni yapıştır) → ekip paralel çalışır; hedef bildirimden gönderime **≤15 dk**. Gönderim her zaman **manuel** (ToS: otomatik teklif yok).
+- **Arketip A/B:** Her teklif log'a arketip (Teşhis / Dilim / Video / Soru-önce), boost, yaş, teklif sayısı, sonuç (görüldü/yanıt/işe alım) ile yazılır. 10 teklifte bir: en düşük açılma → kart cümlesi değişir; en düşük yanıt → ön-iş türü değişir; en düşük işe alım → ilk yanıt/milestone değişir. Kazanan arketip Writer prompt'una örnek olarak eklenir.
+- **Yargıç kalibrasyonu:** Kazanan/kaybeden gerçek teklifler holdout yargıca (grok) körlemesine verilir; skor sonuçla uyuşmuyorsa T1–T8 eşikleri güncellenir.
+
+---
+
 ## Ek A — Vibeworker filtre JSON'ları
 
 Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. P1–P5 çan açık, P6 çan kapalı (sadece feed), Shortlist çanı P1–P5 kurulunca kapalı.
