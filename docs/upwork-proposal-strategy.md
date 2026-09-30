@@ -106,7 +106,7 @@ Denetim yok. **P0 şablonu**: “URL gönder, 30 dk içinde ne olduğunu ve sabi
 
 ---
 
-## 5) Teklif anatomisi (7 blok, 150–220 kelime)
+## 5) Teklif anatomisi (7 blok, 90–150 kelime)
 
 Müşteri listede **ad, foto, başlık, ücret, ilk 2 cümle** görür. Uma da teklif metninde ilanın anahtar kelimelerini arar.
 
@@ -331,7 +331,7 @@ I don't do unpaid tests, but I can make the first milestone small: [SMALLEST ITE
 - [ ] İlanın anahtar kelimeleri (plugin/tema/araç adı) metinde doğal geçiyor
 - [ ] Yasaklı kelime yok (Dear, honored, passionate, ninja, guru)
 - [ ] Tek soru soruldu; soru brief’te zaten cevaplanmış bir şey değil
-- [ ] Yazım kontrolü; kelime sayısı 150–220
+- [ ] Yazım kontrolü; kelime sayısı 90–150
 
 ---
 
@@ -446,7 +446,7 @@ AI çıktısından sonra sen şunlardan **biri** varsa veto veya MAYBE:
   → $120+ veya ilk 3 review için kritik iş → Opus 5.5 Medium/High
 ```
 
-**Neden bu dağılım:** teklif yazmak muhakeme değil **talimat takibi** işi — 60 sn kontrol listesi, 150–220 kelime, tek soru, 3 madde. Bunun için güçlü yazım + kurala sadakat gerekir, yüksek düşünme modu gerekmez. Yüksek mod **karar** tarafında (risk sınıfı, efor tahmini, veto) değerlidir. Hız gerektiğinde (ilan <10 dk) Composer 2.5 veya `-fast` varyantları.
+**Neden bu dağılım:** teklif yazmak muhakeme değil **talimat takibi** işi — 60 sn kontrol listesi, 90–150 kelime, tek soru, 3 madde. Bunun için güçlü yazım + kurala sadakat gerekir, yüksek düşünme modu gerekmez. Yüksek mod **karar** tarafında (risk sınıfı, efor tahmini, veto) değerlidir. Hız gerektiğinde (ilan <10 dk) Composer 2.5 veya `-fast` varyantları.
 
 **Model performansını ölçmedim** — bu dağılım görev tipine göredir. Takip tablosuna “Model” sütunu ekle; 2 hafta sonra cevap oranı hangi modelde yüksekse ona geç.
 
@@ -466,7 +466,7 @@ Bu ilana Upwork cover letter yaz. Strateji dokümanı bağlayıcıdır, özellik
 Müşteri: [ülke, rating, harcama, hire rate, açtığı ilan sayısı, geçmiş yorumlar]
 
 ZORUNLU:
-- 150–220 kelime. Metnin sonunda kelime sayısını yaz.
+- 90–150 kelime. Metnin sonunda kelime sayısını yaz.
 - TEK soru. TEK link. En fazla 3 madde işareti.
 - İlk cümle: onların kelimesi veya site/ürün adı. "Hi" veya "I" ile başlama.
 - "I" ile başlayan en fazla 2 cümle. Kısaltma kullan (I'd, you'll).

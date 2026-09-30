@@ -41,7 +41,7 @@ Müşteri açtı. Soru: *"Riski ne? Bu kişiye para verirsem ne olur?"*
 
 ### Aşama D — Mesaj (ilk cevap)
 - Görüşme yok, sadece yazılı. Müşteri "call?" derse: "Yazılı gideyim, sorularınızı 1 Loom'da cevaplayayım; kararınız daha hızlı olur" + hemen Loom.
-- 1 saat içinde cevap. Hız, veteranın yapamadığı şey (onlar 10 işte aynı anda).
+- 5 dk içinde cevap (hedef), en geç 1 saat. Hız, veteranın yapamadığı şey (onlar 10 işte aynı anda).
 
 ---
 
@@ -76,7 +76,7 @@ Müşteri açtı. Soru: *"Riski ne? Bu kişiye para verirsem ne olur?"*
 
 ## 5) "En ikna modu" — 12 maddelik kontrol listesi (her teklif öncesi)
 
-1. **Ön-kontrol (§6) geçti mi?** Davet ≥3 veya Interviewing ≥1 ise ve ilan >6 saatlikse → atla.
+1. **Ön-kontrol (§6) geçti mi?** Tablodaki ATLA sinyallerinden biri varsa → atla.
 2. **İlk cümle** ilandaki bir isim/sayfa/araç kelimesini içeriyor ve bir **sonuç** söylüyor.
 3. **İkinci cümle** kanıt: link, Loom veya "ekte 1 sayfa".
 4. Kendi adın, yıl, "experience", "I'm excited" ilk 2 satırda **yok**.

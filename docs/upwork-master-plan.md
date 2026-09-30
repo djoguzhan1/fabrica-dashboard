@@ -25,10 +25,10 @@
 | 1 | Görünmeyeceksen teklif atma | Açılma | Kalabalık ilana boost’suz teklif atılıyordu ($40 n8n, 22 teklif) | K1–K6: kalabalık → boost veya **SKIP** |
 | 2 | $80+ Tier-1’de boost **varsayılan** | Açılma | “Boost pahalı, sprintte 3/8/12 kez” | Kaybeden boost iade edilir; sınır **kilitli ≤120**, sayı değil |
 | 3 | Taze ilanda da boost | Açılma | “<10 dk boost faydasız” | Yanlıştı; müşteri erken bakar, boost o an işe yarar |
-| 4 | **Sabit boost:** 50→11, 80–99→15, 100→20, 200→30; **≤15 dk** | Açılma | Düşük tavan / boost’suz | Erken dakika + sabit bid; B4+1 > bid → SKIP |
+| 4 | **Boost tavanı:** 50–79→11, 80–99→15, 100–199→35, 200+→40; **≤15 dk** | Açılma | Düşük tavan / boost’suz | Erken dakika + sabit bid; B4+1 > bid → SKIP |
 | 5 | Taban **$50** | Cevap/kapanış | $15–49 “yalın GO” bantları | ≤$49 **SKIP** (istisna yok) |
 | 6 | Hız >1/dk → SKIP | Açılma | Sadece “<20 teklif” bakılıyordu | Yaş + hız birlikte |
-| 7 | 150–220 kelime, tek soru, ≤3 madde | Cevap | İlk teklif 292 kelime, 2 soru, 7 madde | İstisnasız; sapma log’a |
+| 7 | 90–150 kelime, tek soru, ≤3 madde | Cevap | İlk teklif 292 kelime, 2 soru, 7 madde | İstisnasız; sapma log’a |
 | 8 | Mini denetim + ek her GO’da | Cevap | Bazen atlanıyordu | Zorunlu |
 | 9 | 5 dk cevap, 24/48h takip | Kapanış | Yoktu / dağınıktı | §7 akış |
 | 10 | Haftalık tek ayar, 5 gün dene | Hepsi | Aynı anda çok değişiklik | §8 tablo |
@@ -51,7 +51,7 @@
 
 1. **Görünürlük** — teklif müşterinin ilk ekranında olmalı (hız veya boost). Görünmeyen teklif %0’dır.
 2. **Seçicilik** — kazanılamayacak ilana teklif yok (§4 REKABET kartı).
-3. **Teklif kalitesi** — mini denetim + 150–220 kelime + tek soru (§6).
+3. **Teklif kalitesi** — mini denetim + 90–150 kelime + tek soru (§6).
 4. **Kapanış** — 5 dk içinde cevap, 24/48 saat takip (§7).
 
 **Temel ilke:** Görünmeyeceksen teklif atma. Connect’i kalabalığa değil, görünür olacağın ilana harca.
@@ -139,10 +139,10 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- | --- |
 | K1 | Teklif **≥20** veya yaş **>60 dk** | **SKIP** |
 | K2 | Hız **>1,0/dk** (ör. 15 dk’da 15+ teklif) | **SKIP** |
-| K3 | **$80+** Tier-1, **B4+1 ≤ cap** ve **B1 ≤ cap** (§5.3) | Teklif + **boost = B4+1** (≤ cap) |
-| K4 | **$50–79** Tier-1/2, **B4+1 ≤ 11**, **B1 ≤ 11** | Teklif + boost **11** veya **B4+1** |
-| K5 | **B4+1 > cap** veya **B1 > cap** (balina) | **SKIP** — Connect **0** |
-| K6 | **≤$49** veya Tier dışı | **SKIP** |
+| K3 | **$80+**, arena içi, **B4+1 ≤ cap** (§5.3) | Teklif + **boost = B4+1** (≤ cap) |
+| K4 | **$50–79**, arena içi, **B4+1 ≤ 11** | Teklif + boost **B4+1** |
+| K5 | **B4+1 > cap** | **SKIP** — Connect **0** |
+| K6 | **≤$49** veya arena dışı (`upwork-arena-strategy.md` §4) | **SKIP** |
 
 **Sert kural:** $80+ **boost’suz yok**. **1. sırayı kovalama** (B1=100 → SKIP). **4’e girebiliyorsan** (B4+1 ≤ cap) → gir; rekabet sonra artar, bid artıramazsın — o yüzden gönderim anındaki tablo **tek şans**.
 
@@ -165,7 +165,8 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | **Ne zaman **ücret** kesilir** | (1) Boost’luyken müşteri **uygun etkileşim** **veya** (2) açık artırma bittiğinde hâlâ **ilk 4**’teysen | Mesaj gelmese de 7 gün sonunda 4’te kalırsan **ödersin** — tavan bid bunun için |
 | **Ne zaman iade** | İlk 4’ten **düşürüldün** ve uygun etkileşim **yok** → boost Connect iade (açık artırma kapanınca) | Geçilmek **para kaybı değil**; **görünürlük kaybı** + teklif Connect gider |
 | **Bid sonrası** | Boost **bir kez**; bid **artırılamaz**; geçilirsen **yeniden boost yok** | **Asla** “sonra boostlarım” — K3’te gönderimde boost |
-| **Sonra boost ekleme** | Yardım metinleri çelişkili; güvenli yol: **ilk gönderimde boost** | Boost’suz gönderip sonra eklemeye **güvenme** |
+| **Sonra boost ekleme** | Upwork "Edit your proposal": boost’suz gönderilen teklife sonradan boost eklenebilir; var olan boost değiştirilemez | Kural yine **ilk gönderimde boost** (erken dakika en ucuz); sonradan ekleme sadece yedek |
+| **Metni düzeltme** | Kapak mektubu, ekler ve cevaplar **6 saat içinde veya müşteri görene kadar** düzenlenebilir | Gönderdikten sonra hata görürsen hemen düzelt; ama 10/10’u göndermeden önce yap, müşteri erken bakabilir |
 | **Boost biter** | Etkileşim; 3× açılıp işlem yok; 5× görülüp etkileşim yok; **geçilme** | Erken müşteri bakışı = boost süresi kısalır |
 | **Min bid** | **4. sıra + 1** Connect | B4+1 > **sabit bid** → K5 SKIP |
 | **Uygunluk** | Upwork eşleşmeye göre boost seçeneği göstermeyebilir | Seçenek yoksa K4 (taze boost’suz veya SKIP) |
@@ -192,8 +193,7 @@ Pazartesi en yoğun gün; Pazar 18:00 sonrası küçük bir artış olur.
 | --- | --- |
 | $50–79 | **11** |
 | $80–99 | **15** |
-| $100–149 | **25** |
-| $150–199 | **30** |
+| $100–199 | **35** (saha: <30 ilk 4'ten düşüyor, 35 tutuyor) |
 | $200+ | **40** |
 
 **Gönderim anında (tabloyu oku):**
@@ -205,11 +205,10 @@ B4 = 4. sıradaki bid
 gerekli = B4 + 1          // ilk 4’e girmek için minimum
 
 gerekli > cap  →  SKIP (4’e bile sığmıyorsun; 101’lik 1. sıraya asla girme)
-B1 > cap       →  SKIP (balina; örn. B1=100, cap=30)
 aksi           →  boost = min(cap, gerekli)   // çoğu zaman = gerekli; tablo boşsa cap’e kadar verebilirsin
 ```
 
-**Örnek ($150, tablo 100/28/27/26):** cap=**30**, gerekli=**27** → boost **27** (4. sıra), **101 atma**. Sonra biri 100 zaten 1.’de; sen 2–4 arası görünürlük.
+**Örnek ($150, tablo 100/28/27/26):** cap=**35**, gerekli=**27** → boost **27** (4. sıra), **101 atma**. Sonra biri 100 zaten 1.’de; sen 2–4 arası görünürlük.
 
 **Örnek ($40, tablo 19/18/17/12):** cap=11, gerekli=13 → **SKIP** (niş + bütçe uyumsuz).
 
@@ -224,17 +223,16 @@ Bu **normal** popüler ilanlarda; senin gözlemin doğru:
 | Gerçek | Plan cevabı |
 | --- | --- |
 | İlk saatte tablo dolar, teklif 50+ olur | Gönderimde **tekrar say**; bildirimdeki “5 teklif” güvenilmez |
-| **1. sıra 100 Connect** ($150 iş) | **Balina** — asla kovalama; **B1 > bid** → K5 SKIP |
+| **1. sıra 100 Connect** ($150 iş) | **Balina** — asla kovalama; B4+1 ≤ cap ise **4. sıraya** gir |
 | Sen **20** bid atıp 4’e girersin, sonra 100 gelir | **Beklenen**; boost iade, **teklif Connect gider** — sık tekrarlanırsa o niş **soğuk değil, sıcak** → min bütçe / filtre sıkı |
 | “İlk 3 yeter” | Sadece **boost’ta kaldığın süre**; 3’ten düşersen biter |
-| Sabit 20, $100–150 için | **Sadece B4+1 ≤ 20** (ör. 4. sıra ≤19) ilanlara; **26+ tablo** → SKIP |
+| $100–199 için | **B4+1 ≤ 35** ilanlara gir; **B4 ≥ 35** tablo → SKIP |
 
 **Balina / sıcak tablo (gönderim anı, SKIP):**
 
-- **B1 > bid** (senin sabit boost’un) → **SKIP**
-- **B1 ≥ 25** (hangi bütçe olursa olsun, balina sinyali) → **SKIP**
-- **B4 + 1 > bid** → **SKIP** (4’e bile giremezsin)
-- Örnek: $150, B1=100 → bid=20 → **K5**, Connect **0**
+- **B4 + 1 > cap** → **SKIP** (4’e bile giremezsin)
+- **B1 > cap**: 1. sırayı kovalama; B4+1 ≤ cap ise yine **4. sıraya** gir (B1=100 tek başına SKIP sebebi değil)
+- Örnek: $150, tablo 100/28/27/26 → boost **27**; tablo 100/40/38/36 → **SKIP**
 
 **Ne avlıyoruz:** Tablo **boş veya düşük** (B4 ≤ bid−1), **niş** (WP fix, form, hız — “website developer payments 3 ay” değil), bazen **gece/UK** düşük rekabet. Popüler $100–150 landing = çoğu zaman **mezar**.
 
@@ -261,10 +259,10 @@ Bu **normal** popüler ilanlarda; senin gözlemin doğru:
 ### 5.6 Boost — tek sayfa özet (gönderimde bak)
 
 ```
-cap = $50→11 | $80→15 | $100→25 | $150→30 | $200→40
+cap = $50→11 | $80→15 | $100→35 | $200→40
 gerekli = B4 + 1
 
-B1 > cap veya gerekli > cap? → SKIP (balina / sığmıyor)
+gerekli > cap? → SKIP (4’e sığmıyor). B1 ne olursa olsun kovalama.
 $80+ Tier-1 GO? → boost = gerekli (≤ cap). 1. sıraya kovalama.
 $50–79? → boost = min(11, gerekli)
 
@@ -275,7 +273,7 @@ Sonra rekabet artar; bid artıramazsın. Geçilirsen boost iade.
 
 ## 6) Teklif kuralları (her GO’da, istisnasız)
 
-- **150–220 kelime.** Göndermeden önce kelime sayısını kontrol et.
+- **90–150 kelime.** Göndermeden önce kelime sayısını kontrol et.
 - **Tek soru**, **tek link**, **en fazla 3 madde işareti**. Detay ekte.
 - İlk cümle: onların kelimesi veya site/ürün adı. “Hi” veya “I” ile başlama.
 - Mini denetim: siteye gerçekten bakılmış 2–3 bulgu.

@@ -121,6 +121,7 @@ Müşterinin anlattığı istek: *ne yapacaksın, milestone'lar, süre, inceleme
 7. **CTA:** tek, 5 saniyelik karar: "Want me to start with [çıktı 1] today?" Soru sormak değil, **evet/hayır kararı**.
 
 Toplam 90–150 kelime. Başlık, bullet'lı "WHY ME" bölümü, emoji, uzun liste yok.
+Kapak mektubu **düz metin**: `**kalın**`, `#` veya markdown işaretleri müşteriye olduğu gibi görünür. Maddeler `1)` `2)` ile, satır aralarıyla yazılır.
 
 ---
 
@@ -166,7 +167,7 @@ Müşterinin kafası: veteran = "yine aynı şablon". Bizimki = "sayfamı açmı
 
 - **İlk 2 saat altın, 6 saat sınır** (Uma shortlist'i birkaç saat içinde oluşur). Ön-iş 10–20 dk'yı geçmez.
 - Bildirim → 2 dk ön-kontrol (arena stratejisi §6) → 15 dk ön-iş → 5 dk metin → 10/10 testi → gönder + boost tablosu.
-- Müşteri yazınca **≤1 saat** içinde cevap ver ve ilk mesajda bir sonraki küçük çıktıyı ekle ("Here's the fixed mobile preview for /services, same as in the Loom").
+- Müşteri yazınca **5 dk** içinde (en geç 1 saat) cevap ver ve ilk mesajda bir sonraki küçük çıktıyı ekle ("Here's the fixed mobile preview for /services, same as in the Loom").
 
 ---
 

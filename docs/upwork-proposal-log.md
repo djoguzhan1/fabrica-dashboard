@@ -18,7 +18,7 @@ Her teklifi gönderdikten hemen sonra bir satır ekle; **T+24h** Insights → `R
 
 ## Boost sandığı (savaş cephesi)
 
-Sabit boost: **$50–79 → 11** · **$80–99 → 15** · **$100–199 → 20** · **$200+ → 30** (ilk dk, §5.3). B4+1 > bid → SKIP. Geçilirsen iade gelir; aynı anda kilitli ≤120.
+Boost tavanı: **$50–79 → 11** · **$80–99 → 15** · **$100–199 → 35** · **$200+ → 40** (ilk dk, §5.3). Bid = B4+1; B4+1 > tavan → SKIP. Geçilirsen iade gelir; aynı anda kilitli ≤120.
 
 | # | Tarih | İlan | Bütçe | B1 / B4 | Boost bid | Durum (açık / ödendi / iade) | Kilitli toplam (≤120) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
