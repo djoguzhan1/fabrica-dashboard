@@ -191,6 +191,8 @@ B1 ne olursa olsun 1. sırayı kovalama (B1 = 100 tek başına SKIP sebebi deği
 - Maliyet: teklif + boost ≤ işin ~%15'i.
 - Log: boost bid, durum (açık / ödendi / iade), düşüş sebebi (outbid / kart görüldü / etkileşim).
 
+**Bütçe bandı önceliği (aynı anda iki GO gelirse; eleme değil):** **$120–180 önce**, sonra $181–250, sonra $100–119. $100 piyasanın medyan bütçesi, en kalabalık ve bot yoğun bant; $150 aynı boost tavanıyla (35) %50 daha fazla kâr bırakır; $200+ tavan 40 ve müşteri 0 yorumluya daha temkinli, bu yüzden M1 küçük tutulur ($40–60). Her GO'da kazanç ≈ net ücret − (teklif + boost) ÷ P.
+
 ---
 
 ## 7) Ön-iş — önce yap, sonra teklif et
