@@ -233,3 +233,27 @@ What would make it a 10?
 2. **Sadece gerçekle** düzelt: açılışı sıkılaştır, kanıtı öne al, eki netleştir. Olmayan bir sonucu vaat etme.
 3. Kartların sırasını karıştırıp tekrar sor. Geçme eşiği tutunca **gönder + boost**.
 4. Log'a yaz: `sim tur sayısı`, `kart sırası`, `mektup puanı`. Gerçek açılma oranıyla kıyasla; simülasyon 10 verip gerçekte açılmıyorsa prompt'u daha sert yap.
+
+### 12.4 Güçlendirme — hakem modelin bilinen zaafları ve karşılıkları
+
+Bir model gerçek müşteri değildir. Hakem olarak kullanılan modellerin bilinen hataları ve her birine karşı alınan önlem:
+
+| Zaaf | Risk | Önlem (zorunlu) |
+| --- | --- | --- |
+| **Kendi yazısını kayırma** | Yazan model kendi metnini beğenir | Hakem **farklı model ailesi** (örn. metni Claude yazdıysa hakem GPT veya Gemini) |
+| **AI tarzı metni sevme** | İnsanın "AI kokuyor" diye atladığı metne yüksek puan | Ayrı soru: "Which of these read AI-written or templated?" Bizimki işaretlenirse **otomatik kaldı** |
+| **Sıra etkisi** | İlk veya son kartı kayırma | Aynı testi **2 farklı sırayla** çalıştır; **ikisinde de 1.** olmalı |
+| **Pipet rakip** | Zayıf veteran kartlarına karşı kolay zafer | 3 rakipten biri **güçlü veteran**: özgül, teşhisli açılış + rozet + JSS. Onu da geçmek şart |
+| **Nezaket / puan şişirme** | 8–9 herkese | Puan yerine **davranış**: "You have time to open only 2. Which 2?" |
+| **Tek kişilik** | Tek persona tesadüf | **3 persona paneli**, aynı ilandan: acele eden sahip, detaycı teknik kişi, bütçe hassas. En az **2/3** açmalı |
+| **Kanıtı doğrulayamaz** | Uydurma bulguya da inanır | Sadece ön-işte gerçekten bulunan veriler; link/ek gerçekten açılıyor olmalı |
+| **Gerçekle kopukluk** | Simülasyon ≠ piyasa | Aşağıdaki kalibrasyon |
+
+**Hakem kalibrasyonu (güvenmeden önce, bir kez):** Kazandığı bilinen 3 teklif (r/Upwork ve ilk-iş hikâyelerinden gerçek açılışlar) ile atlandığı bilinen 3 teklifi (bizim 0 açılmış eski açılışlarımız dahil) karıştırıp hakeme ver. Hakem kazananları **en az 5/6 doğru** ayırmıyorsa prompt'u sertleştir veya hakem modeli değiştir.
+
+**Canlı kalibrasyon:** Her 10 gerçek teklifte simülasyon kararı ("açardı / açmazdı") ile Insights'taki gerçek açılmayı karşılaştır. Uyum <%70 ise panel veya prompt değiştirilir.
+
+**Güçlü veteran kartı (sabit, her testte bir tane):**
+> Top Rated Plus · JSS 100% · $60K+ · $45/hr — "Your mobile menu issue is almost always a z-index clash with the sticky header in Elementor. I fixed the same thing for 40+ sites, can do it today."
+
+Bizim kart bunu da geçmiyorsa gönderme; farkı ön-işin kendisi yaratmalı (bu ilanın gerçek sayfası, gerçek bulgu, açılan link).
