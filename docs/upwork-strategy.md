@@ -868,11 +868,19 @@ Dürüst aralık: 0 yorumla ilk 10 teklifte **%20–28** beklenir; 3–5 yorum v
 
 ### 22.2 Yorumsuz sosyal kanıt (son aşama, en büyük kaldıraç)
 
-1. **Platform dışı referans:** Profile → Testimonials → Request a testimonial. Daha önce iş yaptığın 3–5 kişiye (arkadaş değil, gerçek iş) iste; müşterinin LinkedIn'i gerekir, en fazla 20 istek. Sahte/ücretli referans **yok**.
-2. **Direct Contract:** Tanıdık bir gerçek müşteriyi Upwork Direct Contract ile faturala → JSS ve Rising Talent sayılır; ilk yorum genelde 1–2 haftada gelir.
-3. **Project Catalog:** "WordPress/Elementor mobile fix — 24h" gibi 1 düşük fiyatlı paket ($30–50). İlk satış = ilk yorum.
-4. **Profil %100** (4.5x) + Availability Badge (~%50 daha fazla davet). Her teklife en uygun 4 highlight seçilir.
-5. 90 gün kuralı: ilk tekliften sonra 90 gün kazanç yoksa profil gizlenir; 22.2 adımları bu yüzden **ilk 2 haftada** yapılır.
+Tanıdık yok: platform dışı referans ve Direct Contract **kullanılmaz**. Yerine:
+
+1. **Riski müşteriden al:** Sabit fiyat + escrow + "Milestone 1 sadece siz test edip onaylayınca serbest bırakılır; beğenmezseniz 1 revizyon dahil." Ücretsiz iş değil, onaya bağlı ödeme (Upwork'ün zaten sağladığı güvence, açıkça söylenir).
+2. **Mikro ilk milestone:** Büyük işte bile ilk adım $20–40 / 24 saat ("mobile fix only"). Yeni birini denemenin maliyeti düşer; ilk yorum hızlı gelir.
+3. **İlk 3 iş = yorum işi:** İlk 3 işte fiyat piyasanın ~%70'i (ücretsiz değil), teslim süre sözünün yarısında, bitince kibarca yorum istenir. 3 yorumdan sonra normal fiyat.
+4. **Kanıt = müşterinin kendi sayfası:** Yorum yerine `site_audit.mjs` bulgusu + işaretli PNG + 30–60 sn video + çalışan dilim. "Bana güven" değil "sorununu zaten buldum".
+5. **Canlı demo portföyü:** Her arenada 1 canlı demo (Elementor landing, Apps Script otomasyonu, Python araç, n8n akışı) + kısa vaka yazısı ("sorun → çözüm → sonuç sayısı"). Kaybedilen ilanların dilimleri buraya eklenir (§21.4).
+6. **Project Catalog:** "WordPress/Elementor mobile fix — 24h" $30–50 paket. Tanıdık gerekmez; ilk satış = ilk yorum.
+7. **Yeni freelancer'a açık müşteri:** `go_score.py --hires-new-freelancers` yüksek puanlı ilanlarda boost önce harcanır.
+8. **Profil %100** (4.5x) + Availability Badge (~%50 daha fazla davet). Her teklife en uygun 4 highlight.
+9. 90 gün kuralı: ilk tekliften sonra 90 gün kazanç yoksa profil gizlenir; bu adımlar **ilk 2 haftada** yapılır.
+
+Tanıdıksız dürüst aralık: 0 yorumla **%18–25**; ilk 3 yorumdan sonra **%28–33**; davetli ilanlarda **%35+**.
 
 ### 22.3 Araştırmacı ajanın aracı: `scripts/site_audit.mjs`
 
