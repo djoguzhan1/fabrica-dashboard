@@ -734,6 +734,57 @@ Açılma tarafı §7–§13 ile güçlü. En zayıf halka **son aşama**: müşt
 
 ---
 
+## 20) Keskin nişancı modu — teklif başına %25–40 hedefi
+
+**Gerçek:** ilan başına işe alım sadece metinle %9'dan %39'a çıkmaz; 0 yorumlu bir profilin rastgele GO ilanında son aşaması buna izin vermez. %39'a giden yol **seçim**: sadece kazanma ihtimali yüksek ilana teklif atmak. Hacim düşer, teklif başına oran yükselir.
+
+| Şerit | Ne | Beklenen işe alım / teklif | Hacim |
+| --- | --- | --- | --- |
+| **Davet** | Müşteri bizi davet etti | **%35–45** | Profil ve Catalog'a bağlı |
+| **SNIPER** | `go_score.py` ≥ %25 | **%25–35** | Günde 1–2 |
+| **GO** | %10–25 | %10–15 | Günde 2–4 |
+| **SKIP** | < %10 | — | Connect 0 |
+
+Karışım örneği: 1 davet + 4 SNIPER + 5 GO ≈ 0,40 + 1,2 + 0,6 = 2,2 iş / 10 teklif → **~%22 ortalama**. Davetler arttıkça ve ilk yorumlar geldikçe ortalama %30–40 bandına yaklaşır.
+
+### 20.1 Adım 0 — kazanma tahmini (`scripts/go_score.py`)
+
+Test hattından **önce**, Connect harcamadan:
+
+```bash
+python3 scripts/go_score.py --age 10 --proposals 3 --budget 120 --verified \
+  --boost-top4 --scope-clear --demo-match exact --prework strong --hires-new-freelancers
+# open 90% x reply 60% x hire 59% = 31.9%  ->  SNIPER
+```
+
+Girdiler: ilan yaşı, teklif sayısı, bütçe, ödeme doğrulaması, interviewing/davet sayısı, müşterinin işe alım sayısı ve oranı, geçmişte az yorumlu freelancer alıp almadığı, scope netliği, demomuzun ilana uyumu, ön-iş gücü, boost'un ilk 4'e sığması, davet olup olmadığı, bizim yorum sayımız. Ağırlıklar başlangıç tahmini; **her 10 teklifte log'daki gerçek sonuçla** yeniden ayarlanır.
+
+### 20.2 SNIPER ilanlarda modellerin ekstra işi
+
+| Katman | Normal GO | SNIPER |
+| --- | --- | --- |
+| Ön-iş | 10–20 dk bulgu | **"Yapılmış dilim"**: müşterinin kendi sayfasında/verisinde çalışan küçük parça (tam iş değil) + 60–90 sn Loom |
+| Yazar | Opus Low | **Opus Medium** |
+| Hakem 1 | Terra Medium | Terra Medium + saklı hakem Grok |
+| Ek hakem sorusu | — | "Would you hire this person **today** without a call? If not, what exact thing stops you?" Cevaptaki engel mektupta çözülmeden gönderilmez |
+| Tarama cevapları | Kanıt | Her cevaba 1 somut link/rakam |
+| Kapanış | R1–R6 | Mesaj gelince **cevap da test hattından** geçer (§20.3) |
+
+### 20.3 Sohbet aşaması için model döngüsü (en büyük kayıp burada)
+
+0 yorumun freni en çok müşteri yazdıktan sonra çıkar. Müşteri mesajı gelince:
+
+1. Composer mesajı ve ilan paketini hazırlar.
+2. Yazar (Opus Low) R1–R6'dan uygun cevabı + M1 milestone metnini yazar.
+3. Hakem 1 (Terra Medium) müşteri personasıyla: "Would you send the offer now? What's missing?" → `yes/no + tek eksik`.
+4. `no` ise tek düzeltme turu, sonra gönder. Hedef: **5 dk içinde** cevap.
+
+### 20.4 Hız otomasyonu (opsiyonel, kurulum gerekir)
+
+Vibeworker'ın webhook kanalı yeni ilanı bir Cursor Automation'a gönderip taslak GO paketini (skor, ön-iş listesi, mektup taslağı, lint) **bildirimden 2–3 dk sonra** hazır edebilir. Gönderim ve boost her zaman **elle** kalır (otomatik teklif Upwork ToS ihlali).
+
+---
+
 ## Ek A — Vibeworker filtre JSON'ları
 
 Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. P1–P5 çan açık, P6 çan kapalı (sadece feed), Shortlist çanı P1–P5 kurulunca kapalı.
