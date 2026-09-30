@@ -2,7 +2,9 @@
 """Rule-based pre-send check for an Upwork cover letter.
 
 Usage:
-  python3 scripts/proposal_lint.py letter.txt [--must "Elementor,390 px,contact form"]
+  python3 scripts/proposal_lint.py letter.txt [--must "Elementor,contact form"]
+                                    [--card-must "Google Sheets,onEdit"]
+                                    [--ban-in-card "LCP,PageSpeed,overflow"]
                                     [--title "Fix Elementor mobile layout"] [--check-links]
 
 Exit code 0 = all hard checks pass, 1 = at least one FAIL.
@@ -61,7 +63,9 @@ def check_links(urls):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("letter")
-    ap.add_argument("--must", default="", help="comma-separated job terms that must appear verbatim")
+    ap.add_argument("--must", default="", help="comma-separated job terms that must appear verbatim in letter")
+    ap.add_argument("--card-must", default="", help="primary deliverable terms; all must appear in first 150 chars")
+    ap.add_argument("--ban-in-card", dest="ban_in_card", default="", help="off-scope audit terms; must not appear in first 150 chars")
     ap.add_argument("--title", default="", help="job title; repeating it verbatim is a bot sign")
     ap.add_argument("--check-links", action="store_true")
     a = ap.parse_args()
@@ -121,8 +125,19 @@ def main():
     if musts:
         missing = [m for m in musts if m.lower() not in low]
         res("FAIL" if missing else "PASS", "job requirement terms present verbatim", "missing: " + ", ".join(missing) if missing else f"{len(musts)}/{len(musts)}")
-        in_card = [m for m in musts if m.lower() in card.lower()]
-        res("PASS" if in_card else "FAIL", "at least one job term inside the card", ", ".join(in_card))
+        if not a.card_must:
+            in_card = [m for m in musts if m.lower() in card.lower()]
+            res("PASS" if in_card else "FAIL", "at least one job term inside the card", ", ".join(in_card))
+
+    card_musts = [m.strip() for m in a.card_must.split(",") if m.strip()]
+    if card_musts:
+        missing_card = [m for m in card_musts if m.lower() not in card.lower()]
+        res("FAIL" if missing_card else "PASS", "primary deliverable in card (150)", "missing: " + ", ".join(missing_card) if missing_card else f"{len(card_musts)}/{len(card_musts)}")
+
+    bans = [b.strip() for b in a.ban_in_card.split(",") if b.strip()]
+    if bans:
+        hit = [b for b in bans if b.lower() in card.lower()]
+        res("FAIL" if hit else "PASS", "no off-scope audit in card", ", ".join(hit) if hit else "clean")
 
     width = max(len(n) for _, n, _ in results)
     for level, name, detail in results:

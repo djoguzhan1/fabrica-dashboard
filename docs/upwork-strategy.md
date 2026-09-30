@@ -217,6 +217,33 @@ B1 ne olursa olsun 1. sırayı kovalama (B1 = 100 tek başına SKIP sebebi deği
 
 **Loom:** 60–90 sn; ilk 5 saniyede müşterinin kendi sayfası/dosyası ekranda; tanıtım yok; sonunda "this is what I'd do first".
 
+### 7.1 Asıl istek önce — site bulgusu ikinci planda
+
+Modeller **o ilana özel** çalışır. Araştırmacı siteyi tarar ama **ilan metnindeki asıl teslimat** her şeyin üstünde.
+
+**Composer, T1'den sonra JOB_BUNDLE'a yazır:**
+
+| Alan | İçerik |
+| --- | --- |
+| `primary_deliverable` | Müşterinin istediği tek cümle (ör. "Apps Script: form → Sheet → email") |
+| `primary_terms` | Kartta ve dilimde geçecek birebir kelimeler (T1) |
+| `secondary_findings` | Site audit / ek bulgular (LCP, taşma, kırık form…) — **ilan bunu istemiyorsa** |
+| `prework_slice` | Sadece **primary** için yapılmış dilim |
+| `plan2_note` | İsteğe bağlı 2. milestone metni (secondary için) |
+
+**Kurallar (yazar + görselci + yapımcı + hakem):**
+
+| Durum | Kart / ilk cümle | Ön-iş / video | Mektup gövdesi |
+| --- | --- | --- | --- |
+| Bulgu **doğrudan** asıl işe bağlı (mobil ilan + mobil taşma) | Teşhis asıl işte | İşaretli ekran görüntüsü asıl sayfada | Aynı |
+| Bulgu **başka** (Sheets ilanı, sitede LCP kötü) | **Sadece Sheets**; LCP kartta **yasak** | Dilim = Sheet akışı; LCP video'da **yok** | Asıl iş + fiyat; LCP **en fazla 1 cümle**: "After the script is live, I also noticed slow mobile LCP — happy to quote that as milestone 2 if you want." |
+| Müşteri sitede **hiç** bahsetmedi, URL yok | Site audit **teklife sokulmaz** | Brief / demo / plan | — |
+| İlan "site speed" der, müşteri aslında "logo değişimi" yazmışsa net değilse | Netleştiren **tek soru** | Teşhis yok | "Just to scope M1: is this the logo swap only, or speed too?" |
+
+**Lint:** `proposal_lint.py --card-must` = `primary_terms`; `--ban-in-card` = secondary'den kelimeler (ör. `LCP,PageSpeed,overflow` Sheets ilanında). **T3b Scope:** Hakem 1 — "Does the opening sell what they asked for, or hijack with unrelated site issues?" → hijack = FAIL.
+
+**Sohbet hattı (§23):** Müşteri mesajı da aynı kural; cevap önce onun son sorusu / offer scope, audit ikinci planda.
+
 ---
 
 ## 8) Açılış — kart ilk 150 karakterde kazanılır
@@ -412,6 +439,8 @@ Sen
 | `activity` | Davet / interviewing / last viewed |
 | `boost_table` | B1–B4 |
 | `prework` | Gerçek bulgular, linkler, ek açıklaması (uydurma yok) |
+| `primary_deliverable` | T1: müşterinin asıl istediği (§7.1) |
+| `primary_terms` / `secondary_findings` | Kart vs 2. plan ayrımı |
 | `must_terms` | T1 çıktısı (birebir kelimeler) |
 | `cards_a` / `cards_b` | 8 rakip + biz (§13), sıra B karışık |
 | `letter` | Güncel mektup (fix turunda güncellenir) |
@@ -478,6 +507,7 @@ Testler sırayla; herhangi biri kalırsa düzelt ve o testten tekrar başla. En 
 | T1 | **Gereksinim çıkarma** (Uma simülasyonu) | Hakem 1 (GPT Terra Medium) | İlandan zorunlu gereksinimler + birebir kelimeler listesi çıkar (araç, sayfa, çıktı, süre, soru, gizli kelime) |
 | T2 | **Kural kontrolü** | `scripts/proposal_lint.py` | `RESULT: PASS` |
 | T3 | **Kanıt doğrulama** | Sen + hakem 2 | Mektuptaki her iddia ön-iş bulgusuyla eşleşiyor; linkler gizli pencerede açılıyor; Loom public |
+| T3b | **Scope — asıl istek** | Hakem 1 | Kart ve dilim **primary**'yi satıyor; unrelated site audit kartı ele geçirmiyor (§7.1); secondary varsa plan-2 cümlesi, ücretsiz iş vaadi yok |
 | T4 | **Ek görsel 3 saniye testi** | Hakem 1 (görsel) | "3 saniyede bu görsel ne diyor?" cevabı amaçlanan mesajla aynı; 390 px genişlikte okunuyor |
 | T5 | **Kör kart paneli** (§13) | Hakem 1 ve 2 | İki sırada, 3 personadan en az 2'sinde açılan 2 karttan biri; bot/şablon diye işaretlenmemiş |
 | T6 | **Mektup + itiraz** | Hakem 2 (Gemini Flash Low/Medium) | En az 2 persona "mesaj atarım"; elit veteranla eşit veya üstünde; "işe almamak için en güçlü sebep" mektupta önceden cevaplanmış |
@@ -502,8 +532,11 @@ You are Upwork's Uma Recruiter. From the job post below, list:
 1) every hard requirement (tools, pages, outputs, deadline, format),
 2) the exact words the client used for each (verbatim, no synonyms),
 3) any question or hidden keyword the client asked applicants to include,
-4) the single outcome the client cares about most.
-Return a comma-separated list of the verbatim terms at the end.
+4) the single PRIMARY deliverable (what they are hiring for now),
+5) SECONDARY findings you might notice on their site but they did NOT ask for (list separately; empty if N/A).
+Return:
+PRIMARY_TERMS: <comma-separated verbatim terms for the card>
+SECONDARY_TERMS: <comma-separated; off-scope audit words to ban from card if job is not about these>
 JOB POST: <ilan>
 ```
 
@@ -817,12 +850,9 @@ Sorun: SNIPER kalitesinde ön-iş elle 20–30 dk sürüyor, bu yüzden her ilan
 
 ```
 Composer (ilan geldi, t=0)
- ├─► [Task] Araştırmacı   (composer-2.5 + tarayıcı)  → müşterinin sitesi 390/768/1366 px ekran görüntüsü,
- │                                                     PageSpeed, kırık öğeler, sektör, rakip sitesi
- ├─► [Task] Yapımcı       (claude-opus-5-5-low)       → "yapılmış dilim": düzeltilmiş CSS, Playground'da hero,
- │                                                     çalışan Apps Script kopyası, Python script
- └─► [Task] Görselci      (composer-2.5)             → işaretli 1 sayfa PNG + sessiz, altyazılı 30–60 sn
-                                                       ekran kaydı (Loom'a gerek yok, ses yok)
+ ├─► [Task] Araştırmacı   (composer-2.5 + tarayıcı)  → site_audit + ilan: PRIMARY vs SECONDARY raporu (§7.1)
+ ├─► [Task] Yapımcı       (claude-opus-5-5-low)       → dilim **yalnızca primary** (Sheets ilanı = script, WP = o sayfa)
+ └─► [Task] Görselci      (composer-2.5)             → video/PNG **primary**'yi gösterir; secondary yoksa kullanılmaz
         │  (t ≈ 8 dk, üçü birleşir)
         ▼
  Yazar (Opus Low) → lint → Hakem 1 + 2 (paralel) → saklı hakem → sen (T8)
@@ -962,6 +992,8 @@ Sen: SOHBET + müşteri mesajı
 ```
 
 Hedef süre: mesaj geldikten **≤ 10 dk** içinde gönderim. Gönderen her zaman sensin.
+
+**Scope (§7.1):** Triage önce müşteri mesajındaki **asıl isteği** çıkarır. Cevap önce onu kapatır; site audit bulgusu yalnızca ilgiliyse veya plan-2 olarak geçer.
 
 ### 23.2 Triage — mesaj tipleri
 
