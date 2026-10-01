@@ -1122,7 +1122,7 @@ Shortlist'te `keywords_require` boş kalır (her kelime zorunlu olursa ilan kaç
 | `prompts/job_bundle.schema.json` | Task'lara giden ortak paket |
 | `kits/` | Builder başlangıç dilimleri |
 
-**Adım 0 (her GO):** `go_precheck` → geçmezse model yok. **Adım 0b:** `go_score` (proposals varsayılan 3 = erken bildirim; band için sayıya bakılmaz).
+**Adım 0 (her GO):** `go_precheck` → geçmezse model yok. **Adım 0b:** `go_score` (proposals varsayılan 3 = erken bildirim; band için sayıya bakılmaz). **Tek komut:** `scripts/go_pipeline.py` · **Composer:** `prompts/COMPOSER_MASTER.md`.
 
 ---
 
