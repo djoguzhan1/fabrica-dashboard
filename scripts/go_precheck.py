@@ -52,9 +52,13 @@ def main():
     ap.add_argument("--ongoing", action="store_true", help="job marked ongoing")
     ap.add_argument("--interviewing", type=int, default=0)
     ap.add_argument("--invites", type=int, default=0)
+    ap.add_argument("--age-minutes", type=float, default=None, help="job age for K1/K2 (§5.4)")
+    ap.add_argument("--proposals", type=int, default=None, help="proposal count at send for K1/K2")
     ap.add_argument("--last-viewed-hours", type=float, default=None)
     ap.add_argument("--client-hire-rate", type=float, default=None)
     ap.add_argument("--client-hires", type=int, default=None)
+    ap.add_argument("--allow-picky-client", action="store_true",
+                    help="allow GO when hire<30%% and 5+ jobs if tam-stack committed (§hardest)")
     ap.add_argument("--b4-plus-one", type=int, default=None, help="required boost bid; compare to cap")
     a = ap.parse_args()
 
@@ -91,8 +95,27 @@ def main():
         skips.append("Activity: interviewing≥2")
     if a.last_viewed_hours is not None and a.last_viewed_hours > 24:
         skips.append("Activity: client last viewed >24h ago")
-    if a.client_hire_rate is not None and a.client_hires and a.client_hires >= 5 and a.client_hire_rate < 30:
-        skips.append("client hire rate <30% with 5+ jobs")
+    if (
+        a.client_hire_rate is not None
+        and a.client_hires
+        and a.client_hires >= 5
+        and a.client_hire_rate < 30
+    ):
+        if a.allow_picky_client:
+            warns.append(
+                "picky client (hire<30%, 5+ jobs): tam-stack + sim T8 + M1 mandatory (docs/hardest_scenario.md)"
+            )
+        else:
+            skips.append("client hire rate <30% with 5+ jobs (use --allow-picky-client + tam-stack)")
+
+    if a.proposals is not None and a.age_minutes is not None:
+        age = a.age_minutes
+        n = a.proposals
+        vel = n / max(age, 5.0)
+        if n >= 20 or (age > 60 and n >= 10):
+            skips.append(f"K1: proposals={n} age={age}m")
+        if vel > 1.0:
+            skips.append(f"K2: velocity {vel:.2f}/min > 1.0")
 
     if a.budget < 50 and a.client_hires == 0 and len(text) < 200:
         warns.append("new client + low budget + thin brief")

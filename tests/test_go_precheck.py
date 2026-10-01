@@ -32,8 +32,36 @@ def test_wp_go():
     assert code == 0 and "GO" in out
 
 
+def test_picky_skip_without_flag():
+    code, out = run(
+        120, "Elementor", "Fix Elementor mobile",
+        ["--client-hire-rate", "25", "--client-hires", "8"],
+    )
+    assert code == 1 and "hire rate <30%" in out
+
+
+def test_picky_warn_with_allow():
+    code, out = run(
+        120, "Elementor", "Fix Elementor mobile",
+        ["--client-hire-rate", "25", "--client-hires", "8", "--allow-picky-client",
+         "--age-minutes", "12", "--proposals", "6"],
+    )
+    assert code == 0 and "picky client" in out
+
+
+def test_k1_skip():
+    code, out = run(
+        120, "Elementor", "Fix Elementor",
+        ["--age-minutes", "70", "--proposals", "12"],
+    )
+    assert code == 1 and "K1" in out
+
+
 if __name__ == "__main__":
     test_rag_skip()
     test_ongoing_skip()
     test_wp_go()
+    test_picky_skip_without_flag()
+    test_picky_warn_with_allow()
+    test_k1_skip()
     print("ok")

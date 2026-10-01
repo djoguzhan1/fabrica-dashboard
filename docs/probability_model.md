@@ -22,4 +22,7 @@ Tek teklif P = `open × reply × hire` (`go_score.py`). **Teklif sayısı band s
 ## 10 teklifte 2 iş
 Tam-paket ~%30 → beklenen 3 iş; %20 hedefi tam-paket + sohbet hattı ile tutar.
 
+## En zor tam GO + tam yığın (floor)
+Soğuk teklif, bot-yoğun saha, picky müşteri, screening: **%30 yalnızca** 11 kapı açıkken (`--tam-stack`, `docs/hardest_scenario.md`). Floor = `max(hesaplanan, 0.73×0.58×0.71)` (picky hire tabanı 0.70). CI: `scripts/go_hardest_scenario.py`.
+
 Kalibrasyon: `docs/calibration.md`
