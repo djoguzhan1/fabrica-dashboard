@@ -54,12 +54,12 @@ def main():
             check=False,
         )
     print("\n=== NEXT ===")
-    print("1) Parallel Tasks: prompts/researcher.md, builder_opus.md, visual_agent.md")
-    print("2) writer_opus.md → proposal_lint.py (--card-must, --ban-in-card)")
-    print("3) judge1_terra.md + judge2_gemini.md parallel")
-    print("4) T8 → set job_bundle tam_go.complete + job_bundle_validate.py → go_score_from_bundle.py")
-    print("5) Send only if P≥30% (en zorda tam-go-complete); boost B4+1")
-    print("6) On message: SOHBET → prompts/chat_*.md + reply_lint.py")
+    print("0) cat bundle.json | python3 scripts/go_standard_enrich.py  # M1 + kit + chat path")
+    print("1) Writer → proposal_lint.py → go_standard.lint_passed=true")
+    print("2) judge1_terra.md (PASS) OR human T8")
+    print("3) go_standard.complete=true → job_bundle_validate → go_score_from_bundle (P≥30% en zor)")
+    print("4) Optional Tam GO: + builder/visual/sim → tam_go.complete")
+    print("5) Send boost B4+1")
 
 
 if __name__ == "__main__":

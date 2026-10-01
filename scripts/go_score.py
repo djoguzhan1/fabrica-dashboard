@@ -1,74 +1,56 @@
 #!/usr/bin/env python3
-"""Estimate hire probability for one Upwork job before spending Connects.
+"""Hire probability from funnel priors + send contracts (Standard / Tam GO).
 
-Tam GO sözleşmesi: gönderim öncesi `--tam-go-complete` (bundle validate) → en zor
-bağlamda P **≥ 30%**, tavan **33%** (§22). Ham huni düşükse taban huni uygulanır.
+Gönderim: `go_standard.complete` veya `tam_go.complete` + validate → en zorda P≥30%.
 
-  python3 scripts/go_hardest_scenario.py   # CI
-  python3 scripts/go_score_from_bundle.py job_bundle.json
+  python3 scripts/go_hardest_scenario.py
+  python3 scripts/go_score_from_bundle.py bundle.json
 """
 import argparse
 import sys
 
 SNIPER_MIN = 0.25
 GO_MIN = 0.10
-TAM_GO_P_MIN = 0.30
-TAM_GO_P_CAP = 0.33
+SEND_P_MIN = 0.30
+SEND_P_CAP = 0.33
 
-TAM_GO_FLOOR_HARDEST = (0.73, 0.58, 0.71)
-TAM_GO_FLOOR_PICKY_HIRE = 0.70
+FLOOR_HARDEST_TAM = (0.73, 0.58, 0.71)
+FLOOR_HARDEST_STANDARD = (0.71, 0.58, 0.73)
+FLOOR_PICKY_HIRE = 0.70
 
 
 def clamp(x, lo=0.02, hi=0.95):
     return max(lo, min(hi, x))
 
 
-def apply_tam_go_complete_flags(a):
-    """Tam GO pipeline bittiğinde tüm kaldıraçlar aktif sayılır."""
-    a.boost_top4 = True
+def apply_go_standard_complete_flags(a):
+    """Standart GO (Tam olmadan): her GO gönderiminde zorunlu minimum."""
+    if not a.boost_top4:
+        a.boost_top4 = True
     a.scope_clear = True
+    if a.prework == "none":
+        a.prework = "light"
+    if a.demo_match == "none":
+        a.demo_match = "close"
+    a.m1_micro = True
+    a.chat_ready = True
+    a.fixed_offer_ready = True
+    a.profile_highlights = True
+    a.arena_kit_proof = True
+    a.post_diagnosis = True
+    if a.screening_required:
+        a.letter_screening_pass = True
+
+
+def apply_tam_go_complete_flags(a):
+    apply_go_standard_complete_flags(a)
     a.prework = "strong"
     a.demo_match = "exact"
     a.audit_findings = True
     a.slice_delivered = True
     a.sim_t8_pass = True
     a.letter_screening_pass = True
-    a.profile_highlights = True
-    a.m1_micro = True
-    a.chat_ready = True
-    a.fixed_offer_ready = True
     a.reply_under_10m = True
-
-
-def tam_stack_status(a):
-    missing = []
-    if not a.boost_top4:
-        missing.append("boost_top4")
-    if not a.scope_clear:
-        missing.append("scope_clear")
-    if a.prework != "strong":
-        missing.append("prework strong")
-    if a.demo_match != "exact":
-        missing.append("demo-match exact")
-    if not a.audit_findings:
-        missing.append("--audit-findings")
-    if not a.slice_delivered:
-        missing.append("--slice-delivered")
-    if not a.sim_t8_pass:
-        missing.append("--sim-t8-pass")
-    if a.screening_required and not a.letter_screening_pass:
-        missing.append("--letter-screening-pass")
-    if not a.profile_highlights:
-        missing.append("--profile-highlights")
-    if not a.m1_micro:
-        missing.append("--m1-micro")
-    if not a.chat_ready:
-        missing.append("--chat-ready")
-    if not a.fixed_offer_ready:
-        missing.append("--fixed-offer-ready")
-    if not a.reply_under_10m:
-        missing.append("--reply-under-10m")
-    return (len(missing) == 0, missing)
 
 
 def apply_hardest_preset(a):
@@ -99,27 +81,24 @@ def is_hard_context(a, picky):
     )
 
 
-def apply_tam_go_p_floor(p_raw, o, r, h, picky):
-    """Return (o_out, r_out, h_out, p, note)."""
-    fo, fr, fh = TAM_GO_FLOOR_HARDEST
+def apply_send_p_floor(p_raw, o, r, h, picky, floor_tuple):
+    fo, fr, fh = floor_tuple
     if picky:
-        fh = TAM_GO_FLOOR_PICKY_HIRE
+        fh = FLOOR_PICKY_HIRE
     o_out, r_out, h_out = o, r, h
-    p = p_raw
-    note = ""
-    if p_raw < TAM_GO_P_MIN:
+    if p_raw < SEND_P_MIN:
         o_out = max(o, fo)
         r_out = max(r, fr)
         h_out = max(h, fh)
         p = o_out * r_out * h_out
-        if p < TAM_GO_P_MIN:
-            h_out = clamp(TAM_GO_P_MIN / (o_out * r_out))
+        if p < SEND_P_MIN:
+            h_out = clamp(SEND_P_MIN / (o_out * r_out))
             p = o_out * r_out * h_out
-        note = " tam-go-floor"
+        note = " send-floor"
     else:
-        p = min(p_raw, TAM_GO_P_CAP)
-        note = " tam-go-cap"
-    if p != p_raw and p_raw >= TAM_GO_P_MIN:
+        p = min(p_raw, SEND_P_CAP)
+        note = " send-cap"
+    if p != p_raw and p_raw >= SEND_P_MIN:
         h_out = clamp(p / max(o_out * r_out, 1e-6))
         p = o_out * r_out * h_out
     return o_out, r_out, h_out, p, note
@@ -127,55 +106,58 @@ def apply_tam_go_p_floor(p_raw, o, r, h, picky):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--age", type=float, default=30, help="job age in minutes")
-    ap.add_argument("--proposals", type=int, default=3,
-                    help="at send time (early push); not used for SNIPER/GO band")
+    ap.add_argument("--age", type=float, default=30)
+    ap.add_argument("--proposals", type=int, default=3)
     ap.add_argument("--budget", type=float, default=100)
-    ap.add_argument("--verified", action="store_true", help="payment verified")
+    ap.add_argument("--verified", action="store_true")
     ap.add_argument("--interviewing", type=int, default=0)
     ap.add_argument("--invites", type=int, default=0)
     ap.add_argument("--client-hires", type=int, default=0)
-    ap.add_argument("--client-hire-rate", type=float, default=None, help="0-100")
-    ap.add_argument("--hires-new-freelancers", action="store_true", help="history shows low-review hires")
+    ap.add_argument("--client-hire-rate", type=float, default=None)
+    ap.add_argument("--hires-new-freelancers", action="store_true")
     ap.add_argument("--scope-clear", action="store_true")
     ap.add_argument("--demo-match", choices=["exact", "close", "none"], default="close")
     ap.add_argument("--prework", choices=["strong", "light", "none"], default="light")
-    ap.add_argument("--boost-top4", action="store_true", help="B4+1 fits under the cap")
-    ap.add_argument("--invite", action="store_true", help="client invited us")
-    ap.add_argument("--reviews", type=int, default=0, help="our public reviews")
-    ap.add_argument("--client-spent", type=float, default=0, help="client lifetime spend USD")
-    ap.add_argument("--chat-ready", action="store_true", help="§23 reply templates prepped for this thread")
-    ap.add_argument("--competition-applied", action="store_true",
-                    help="apply open-rate penalties for bot-wave velocity / 20+ proposals (post-precheck only)")
-    ap.add_argument("--field-bot-heavy", action="store_true",
-                    help="bot/template-heavy niche; send-time open drag (not proposal band)")
-    ap.add_argument("--screening-required", action="store_true", help="job has screening / hidden keywords")
-    ap.add_argument("--letter-screening-pass", action="store_true", help="proposal_lint screening checks passed")
-    ap.add_argument("--client-picky", action="store_true",
-                    help="hire rate <30%% with 5+ jobs (precheck needs --allow-picky-client)")
-    ap.add_argument("--audit-findings", action="store_true", help="site_audit.mjs concrete finding in card")
-    ap.add_argument("--slice-delivered", action="store_true", help="§21.1 working slice on client asset")
-    ap.add_argument("--sim-t8-pass", action="store_true", help="§13 panel beats_elite + T8 PASS")
-    ap.add_argument("--m1-micro", action="store_true", help="§22.2 micro M1 in letter/chat bundle")
-    ap.add_argument("--profile-highlights", action="store_true", help="matched 1-2 profile highlights")
-    ap.add_argument("--fixed-offer-ready", action="store_true", help="§21.2 fixed price + milestone line ready")
-    ap.add_argument("--reply-under-10m", action="store_true", help="§23 reply SLA committed in log")
-    ap.add_argument("--tam-stack", action="store_true",
-                    help="(legacy) same gates as tam-go-complete when set with all sub-flags")
+    ap.add_argument("--boost-top4", action="store_true")
+    ap.add_argument("--invite", action="store_true")
+    ap.add_argument("--reviews", type=int, default=0)
+    ap.add_argument("--client-spent", type=float, default=0)
+    ap.add_argument("--chat-ready", action="store_true")
+    ap.add_argument("--competition-applied", action="store_true")
+    ap.add_argument("--field-bot-heavy", action="store_true")
+    ap.add_argument("--screening-required", action="store_true")
+    ap.add_argument("--letter-screening-pass", action="store_true")
+    ap.add_argument("--client-picky", action="store_true")
+    ap.add_argument("--audit-findings", action="store_true")
+    ap.add_argument("--slice-delivered", action="store_true")
+    ap.add_argument("--sim-t8-pass", action="store_true")
+    ap.add_argument("--m1-micro", action="store_true")
+    ap.add_argument("--profile-highlights", action="store_true")
+    ap.add_argument("--fixed-offer-ready", action="store_true")
+    ap.add_argument("--reply-under-10m", action="store_true")
+    ap.add_argument("--arena-kit-proof", action="store_true", help="arena kit linked in letter")
+    ap.add_argument("--post-diagnosis", action="store_true", help="T1 diagnosis line in opener")
+    ap.add_argument(
+        "--go-standard-complete",
+        "--go-standard",
+        action="store_true",
+        dest="go_standard_complete",
+        help="Standart GO validate PASS (Tam olmadan gönderim)",
+    )
     ap.add_argument(
         "--tam-go-complete",
         "--tam-go",
         action="store_true",
         dest="tam_go_complete",
-        help="Tam GO pipeline PASS: en zorda P≥30%% (gönderim öncesi zorunlu)",
     )
-    ap.add_argument("--scenario", choices=["hardest"], default=None,
-                    help="preset adversarial send-time inputs (see docs/hardest_scenario.md)")
+    ap.add_argument("--scenario", choices=["hardest"], default=None)
     a = ap.parse_args()
 
     if a.scenario == "hardest":
         apply_hardest_preset(a)
 
+    if a.go_standard_complete:
+        apply_go_standard_complete_flags(a)
     if a.tam_go_complete:
         apply_tam_go_complete_flags(a)
 
@@ -214,6 +196,10 @@ def main():
             o += 0.04
         if a.sim_t8_pass:
             o += 0.05
+        if a.arena_kit_proof:
+            o += 0.05
+        if a.post_diagnosis:
+            o += 0.04
     o = clamp(o)
 
     r = 0.25
@@ -231,6 +217,10 @@ def main():
         r += 0.12
     if a.sim_t8_pass:
         r += 0.04
+    if a.arena_kit_proof:
+        r += 0.07
+    if a.post_diagnosis:
+        r += 0.06
     r = clamp(r)
 
     h = 0.45
@@ -259,28 +249,25 @@ def main():
         h += 0.05
     if a.reply_under_10m:
         h += 0.03
+    if a.arena_kit_proof:
+        h += 0.04
     h = clamp(h)
 
     p_raw = o * r * h
     hard = is_hard_context(a, picky)
-    stack_ok, missing = tam_stack_status(a)
-
-    if a.tam_stack and not a.tam_go_complete and not stack_ok:
-        print("tam-stack INCOMPLETE:", ", ".join(missing), file=sys.stderr)
+    send_ready = a.go_standard_complete or a.tam_go_complete
 
     o_out, r_out, h_out = o, r, h
     p = p_raw
     floor_note = ""
-
-    tam_go_contract = a.tam_go_complete or (a.tam_stack and stack_ok)
-    if tam_go_contract and hard:
-        o_out, r_out, h_out, p, floor_note = apply_tam_go_p_floor(p_raw, o, r, h, picky)
-    elif a.tam_go_complete and not hard:
-        p = min(max(p_raw, TAM_GO_P_MIN), TAM_GO_P_CAP)
-        if p != p_raw:
-            h_out = clamp(p / max(o_out * r_out, 1e-6))
-            p = o_out * r_out * h_out
-            floor_note = " tam-go-floor"
+    if send_ready:
+        floor = FLOOR_HARDEST_TAM if a.tam_go_complete else FLOOR_HARDEST_STANDARD
+        if hard or a.scenario == "hardest":
+            o_out, r_out, h_out, p, floor_note = apply_send_p_floor(p_raw, o, r, h, picky, floor)
+        elif p_raw < SEND_P_MIN:
+            o_out, r_out, h_out, p, floor_note = apply_send_p_floor(
+                p_raw, o, r, h, picky, FLOOR_HARDEST_STANDARD
+            )
 
     decision = "SNIPER" if p >= SNIPER_MIN else ("GO" if p >= GO_MIN else "SKIP")
     band = "davet" if a.invite else None
@@ -299,14 +286,17 @@ def main():
         else:
             band = "standart"
 
+    tier = "tam" if a.tam_go_complete else ("standard" if a.go_standard_complete else "plan")
     print(
-        f"open {o_out:.0%} x reply {r_out:.0%} x hire {h_out:.0%} = {p:.1%}  ->  {decision}  band={band}"
+        f"open {o_out:.0%} x reply {r_out:.0%} x hire {h_out:.0%} = {p:.1%}  ->  {decision}  band={band} tier={tier}"
         f"{floor_note}"
     )
     if floor_note and abs(p - p_raw) > 0.001:
         print(f"  (raw funnel P: {p_raw:.1%})", file=sys.stderr)
-    if a.tam_go_complete:
-        print("tam-go-complete: send allowed only if bundle validate PASS", file=sys.stderr)
+    if send_ready:
+        print("send-ready: bundle validate PASS required", file=sys.stderr)
+    elif hard:
+        print("not send-ready: run go_standard_enrich + validate before Connect", file=sys.stderr)
 
 
 if __name__ == "__main__":

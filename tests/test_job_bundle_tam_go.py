@@ -41,6 +41,19 @@ def test_tam_go_complete_requires_artifacts():
 
 def test_tam_go_complete_pass_scores():
     b = base_bundle()
+    stub = os.path.join(ROOT, "kits/chat_stubs/first_reply.json")
+    b["go_standard"] = {
+        "complete": True,
+        "lint_passed": True,
+        "m1_micro_text": "M1: mobile fix $35 24h",
+        "fixed_offer_line": "Fixed $130 for scope",
+        "arena_kit_proof": os.path.join(ROOT, "kits/elementor-mobile/fix-sticky-offset.css"),
+        "chat_bundle_path": stub,
+        "judge1_pass": True,
+        "hardest_scenario": True,
+        "field_bot_heavy": True,
+        "client_picky": True,
+    }
     b["tam_go"] = {
         "complete": True,
         "sim_t8_pass": True,

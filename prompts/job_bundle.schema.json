@@ -33,6 +33,22 @@
     "client_test_instruction": "",
     "start_with_prefix": ""
   },
+  "go_standard": {
+    "complete": false,
+    "lint_passed": false,
+    "m1_micro_text": "",
+    "fixed_offer_line": "",
+    "arena_kit_id": "",
+    "arena_kit_proof": "",
+    "post_diagnosis_line": "",
+    "chat_bundle_path": "",
+    "profile_highlight_ids": [],
+    "judge1_pass": false,
+    "human_t8": false,
+    "field_bot_heavy": false,
+    "client_picky": false,
+    "hardest_scenario": false
+  },
   "tam_go": {
     "complete": false,
     "audit_report_path": "",

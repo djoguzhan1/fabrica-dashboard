@@ -2,7 +2,7 @@
 
 ## Kural (değişmez)
 
-**En zor bağlamda gönderim** yalnızca `tam_go.complete: true` + `job_bundle_validate.py` PASS sonrası. O anda skor:
+**En zor bağlamda gönderim** `go_standard.complete` veya `tam_go.complete` + validate PASS. Skor:
 
 ```bash
 python3 scripts/go_score_from_bundle.py bundle.json

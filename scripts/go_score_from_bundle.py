@@ -25,6 +25,7 @@ def main():
     cf = data.get("client_facts") or {}
     act = data.get("activity") or {}
     tg = data.get("tam_go") or {}
+    gs = data.get("go_standard") or {}
     args = [
         sys.executable,
         f"{ROOT}/scripts/go_score.py",
@@ -41,23 +42,20 @@ def main():
         str(cf.get("hires") or 0),
         "--boost-top4",
         "--scope-clear",
-        "--demo-match",
-        "exact",
-        "--prework",
-        "strong",
     ]
     if cf.get("hire_rate_pct") is not None:
         args += ["--client-hire-rate", str(cf["hire_rate_pct"])]
     scr = data.get("screening") or {}
     if scr.get("required"):
         args.append("--screening-required")
-    if tg.get("field_bot_heavy"):
+    if tg.get("field_bot_heavy") or gs.get("field_bot_heavy"):
         args.append("--field-bot-heavy")
-    if tg.get("client_picky"):
+    if tg.get("client_picky") or gs.get("client_picky"):
         args.append("--client-picky")
-    if tg.get("hardest_scenario"):
-        args.append("--scenario")
-        args.append("hardest")
+    if tg.get("hardest_scenario") or gs.get("hardest_scenario"):
+        args += ["--scenario", "hardest"]
+    if gs.get("complete"):
+        args.append("--go-standard-complete")
     if tg.get("complete"):
         args.append("--tam-go-complete")
     subprocess.run(args, check=True)

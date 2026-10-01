@@ -1,0 +1,6 @@
+{
+  "first": "Thanks — the main issue is {{PRIMARY}}. Plan: (1) {{STEP1}}, (2) {{STEP2}}, (3) quick check on mobile. {{M1_LINE}} {{FIXED_LINE}} One thing: {{ONE_QUESTION}}",
+  "interview": "1) {{Q1_ANSWER}}\n2) {{Q2_ANSWER}}\n{{M1_LINE}}",
+  "objection_call": "I work async — here's a 45s screen recording instead of a call: {{VIDEO_OR_KIT_PROOF}}",
+  "offer": "{{M1_LINE}}\nScope: {{PRIMARY}}\nTotal: {{FIXED_LINE}}"
+}
