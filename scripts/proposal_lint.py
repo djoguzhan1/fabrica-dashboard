@@ -67,6 +67,8 @@ def main():
     ap.add_argument("--card-must", default="", help="primary deliverable terms; all must appear in first 150 chars")
     ap.add_argument("--ban-in-card", dest="ban_in_card", default="", help="off-scope audit terms; must not appear in first 150 chars")
     ap.add_argument("--title", default="", help="job title; repeating it verbatim is a bot sign")
+    ap.add_argument("--screening-start", default="",
+                    help="if client said proposal must start with X, check card starts with it (case-insensitive prefix)")
     ap.add_argument("--check-links", action="store_true")
     a = ap.parse_args()
 
@@ -120,6 +122,11 @@ def main():
 
     if a.title and a.title.lower() in low:
         res("FAIL", "job title not repeated verbatim (bot sign)", a.title)
+
+    if a.screening_start:
+        need = a.screening_start.strip().lower()
+        if not card.lower().startswith(need) and need not in card.lower()[:80]:
+            res("FAIL", "screening: card must lead with client instruction", a.screening_start[:60])
 
     musts = [m.strip() for m in a.must.split(",") if m.strip()]
     if musts:

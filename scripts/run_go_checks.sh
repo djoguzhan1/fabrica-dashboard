@@ -4,6 +4,9 @@ set -euo pipefail
 BUDGET="${1:?budget}"
 shift
 POST="${POST_FILE:-/tmp/job_post.txt}"
-python3 "$(dirname "$0")/go_precheck.py" --budget "$BUDGET" "$@" --description-file "$POST"
-python3 "$(dirname "$0")/go_score.py" --budget "$BUDGET" --verified --proposals 3 \
+PRECHECK="$(dirname "$0")/go_precheck.py"
+SCORE="$(dirname "$0")/go_score.py"
+python3 "$PRECHECK" --budget "$BUDGET" "$@" --description-file "$POST"
+# proposals=3 = early notification prior; not used for band label
+python3 "$SCORE" --budget "$BUDGET" --verified --proposals 3 \
   --boost-top4 --prework strong --scope-clear --demo-match exact "$@"
