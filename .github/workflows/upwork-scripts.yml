@@ -16,4 +16,4 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python3 tests/test_go_precheck.py && python3 tests/test_go_score.py
+      - run: python3 tests/test_go_precheck.py && python3 tests/test_go_score.py && python3 tests/test_proposal_lint.py

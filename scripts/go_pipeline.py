@@ -43,6 +43,16 @@ def main():
     )
     print("=== SCORE ===")
     print(score.stdout)
+    # EV hint
+    import re
+    m = re.search(r"= ([0-9.]+)%", score.stdout)
+    if m:
+        p = float(m.group(1)) / 100
+        subprocess.run(
+            [sys.executable, f"{ROOT}/scripts/estimate_ev.py",
+             "--budget", str(args.budget), "--p", str(p)],
+            check=False,
+        )
     print("\n=== NEXT ===")
     print("1) Parallel Tasks: prompts/researcher.md, builder_opus.md, visual_agent.md")
     print("2) writer_opus.md → proposal_lint.py (--card-must, --ban-in-card)")

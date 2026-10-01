@@ -36,6 +36,8 @@ def main():
     ap.add_argument("path")
     ap.add_argument("--stage", choices=sorted(LIMITS), default="first")
     ap.add_argument("--must", default="", help="comma-separated terms from the client's message")
+    ap.add_argument("--client-question-count", type=int, default=None,
+                    help="if client asked N numbered questions, reply must have >= N numbered answers")
     a = ap.parse_args()
 
     text = open(a.path, encoding="utf-8").read().strip()
@@ -61,6 +63,10 @@ def main():
     for term in [t.strip() for t in a.must.split(",") if t.strip()]:
         if term.lower() not in low:
             fails.append(f"client term not answered: '{term}'")
+    if a.client_question_count is not None:
+        numbered = len(re.findall(r"(?m)^\s*\d+[\).\]]\s", text))
+        if numbered < a.client_question_count:
+            fails.append(f"numbered answers {numbered} < client questions {a.client_question_count}")
 
     for w in warns:
         print("WARN:", w)

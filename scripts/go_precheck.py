@@ -61,6 +61,8 @@ def main():
     text = f"{a.title}\n{read_text(a)}".lower()
     skips, warns, goplus = [], [], []
 
+    if re.search(r"\b(\d+\s*hours?\s*/?\s*week|full[- ]?time|retainer)\b", text, re.I):
+        skips.append("hourly/retainer pattern in post (§21.2)")
     if a.budget < 50:
         skips.append("K6: budget < $50")
     if not a.payment_verified:
