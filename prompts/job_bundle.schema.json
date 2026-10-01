@@ -49,6 +49,17 @@
     "client_picky": false,
     "hardest_scenario": false
   },
+  "apex_go": {
+    "complete": false,
+    "uma_echo_terms": [],
+    "uma_echo_in_card": false,
+    "client_last_viewed_hours": null,
+    "go_plus_reason": "",
+    "catalog_or_portfolio_url": "",
+    "edit_six_hour_plan": "",
+    "elite_margin_unanimous": false,
+    "proof_chain": []
+  },
   "tam_go": {
     "complete": false,
     "audit_report_path": "",

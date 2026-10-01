@@ -14,10 +14,14 @@ GO_MIN = 0.10
 STANDARD_P_MIN = 0.30
 STANDARD_P_CAP = 0.33
 TAM_P_MIN = 0.35
-TAM_P_CAP = 0.38  # §20 SNIPER üst band; dilim+sim+elite kanıt
+TAM_P_CAP = 0.38
+APEX_P_MIN = 0.40
+APEX_P_CAP = 0.42  # L3: echo + aktif client + kanıt zinciri + elite unanimous
 
 FLOOR_HARDEST_TAM = (0.76, 0.60, 0.77)
 FLOOR_HARDEST_STANDARD = (0.71, 0.58, 0.73)
+FLOOR_HARDEST_APEX = (0.81, 0.62, 0.80)
+FLOOR_PICKY_HIRE_APEX = 0.78
 FLOOR_PICKY_HIRE_TAM = 0.76
 FLOOR_PICKY_HIRE_STANDARD = 0.70
 
@@ -56,6 +60,17 @@ def apply_tam_go_complete_flags(a):
     a.reply_under_10m = True
 
 
+def apply_apex_go_complete_flags(a):
+    """L3 Apex = L2 Tam + zaman/Uma/GO+/katalog/6h edit/elite unanimous."""
+    apply_tam_go_complete_flags(a)
+    a.uma_echo_pass = True
+    a.client_active = True
+    a.go_plus_client = True
+    a.catalog_or_portfolio_exact = True
+    a.edit_six_hour_plan = True
+    a.elite_margin_unanimous = True
+
+
 def apply_hardest_preset(a):
     a.age = 12
     a.proposals = 6
@@ -87,7 +102,12 @@ def is_hard_context(a, picky):
 def apply_send_p_floor(p_raw, o, r, h, picky, floor_tuple, p_min, p_cap):
     fo, fr, fh = floor_tuple
     if picky:
-        fh = FLOOR_PICKY_HIRE_TAM if p_min >= TAM_P_MIN else FLOOR_PICKY_HIRE_STANDARD
+        if p_min >= APEX_P_MIN:
+            fh = FLOOR_PICKY_HIRE_APEX
+        elif p_min >= TAM_P_MIN:
+            fh = FLOOR_PICKY_HIRE_TAM
+        else:
+            fh = FLOOR_PICKY_HIRE_STANDARD
     o_out, r_out, h_out = o, r, h
     if p_raw < p_min:
         o_out = max(o, fo)
@@ -153,6 +173,18 @@ def main():
         action="store_true",
         dest="tam_go_complete",
     )
+    ap.add_argument(
+        "--apex-go-complete",
+        "--apex",
+        action="store_true",
+        dest="apex_go_complete",
+    )
+    ap.add_argument("--uma-echo-pass", action="store_true", help="echo terms in card first 110")
+    ap.add_argument("--client-active", action="store_true", help="client viewed job <6h")
+    ap.add_argument("--go-plus-client", action="store_true", help="new client or hires low-review")
+    ap.add_argument("--catalog-exact", action="store_true", help="catalog/portfolio exact arena match")
+    ap.add_argument("--edit-six-hour-plan", action="store_true", help="planned 6h value edit if unseen")
+    ap.add_argument("--elite-margin-unanimous", action="store_true", help="3/3 personas prefer us over elite")
     ap.add_argument("--scenario", choices=["hardest"], default=None)
     a = ap.parse_args()
 
@@ -161,7 +193,9 @@ def main():
 
     if a.go_standard_complete:
         apply_go_standard_complete_flags(a)
-    if a.tam_go_complete:
+    if a.apex_go_complete:
+        apply_apex_go_complete_flags(a)
+    elif a.tam_go_complete:
         apply_tam_go_complete_flags(a)
 
     if a.client_picky and a.client_hire_rate is None:
@@ -203,6 +237,12 @@ def main():
             o += 0.05
         if a.post_diagnosis:
             o += 0.04
+        if getattr(a, "uma_echo_pass", False):
+            o += 0.04
+        if getattr(a, "client_active", False):
+            o += 0.05
+        if getattr(a, "catalog_or_portfolio_exact", False):
+            o += 0.03
     o = clamp(o)
 
     r = 0.25
@@ -224,6 +264,10 @@ def main():
         r += 0.07
     if a.post_diagnosis:
         r += 0.06
+    if getattr(a, "uma_echo_pass", False):
+        r += 0.05
+    if getattr(a, "edit_six_hour_plan", False):
+        r += 0.03
     r = clamp(r)
 
     h = 0.45
@@ -254,17 +298,26 @@ def main():
         h += 0.03
     if a.arena_kit_proof:
         h += 0.04
+    if getattr(a, "go_plus_client", False):
+        h += 0.05
+    if getattr(a, "elite_margin_unanimous", False):
+        h += 0.06
+    if getattr(a, "client_active", False):
+        h += 0.04
     h = clamp(h)
 
     p_raw = o * r * h
     hard = is_hard_context(a, picky)
-    send_ready = a.go_standard_complete or a.tam_go_complete
+    send_ready = a.go_standard_complete or a.tam_go_complete or a.apex_go_complete
 
     o_out, r_out, h_out = o, r, h
     p = p_raw
     floor_note = ""
     if send_ready:
-        if a.tam_go_complete:
+        if a.apex_go_complete:
+            p_min, p_cap = APEX_P_MIN, APEX_P_CAP
+            floor = FLOOR_HARDEST_APEX
+        elif a.tam_go_complete:
             p_min, p_cap = TAM_P_MIN, TAM_P_CAP
             floor = FLOOR_HARDEST_TAM
         else:
@@ -296,7 +349,14 @@ def main():
         else:
             band = "standart"
 
-    tier = "tam" if a.tam_go_complete else ("standard" if a.go_standard_complete else "plan")
+    if a.apex_go_complete:
+        tier = "apex"
+    elif a.tam_go_complete:
+        tier = "tam"
+    elif a.go_standard_complete:
+        tier = "standard"
+    else:
+        tier = "plan"
     print(
         f"open {o_out:.0%} x reply {r_out:.0%} x hire {h_out:.0%} = {p:.1%}  ->  {decision}  band={band} tier={tier}"
         f"{floor_note}"

@@ -58,6 +58,9 @@ def main():
         args.append("--go-standard-complete")
     if tg.get("complete"):
         args.append("--tam-go-complete")
+    ax = data.get("apex_go") or {}
+    if ax.get("complete"):
+        args.append("--apex-go-complete")
     subprocess.run(args, check=True)
 
 

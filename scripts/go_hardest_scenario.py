@@ -1,13 +1,11 @@
 #!/usr/bin/env python3
-"""CI: en zor senaryo — Standart GO ve Tam GO gönderimde P >= 30%."""
+"""CI: L1/L2/L3 en zor — standard < tam < apex."""
 import re
 import subprocess
 import sys
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MIN_STANDARD = 0.30
-MIN_TAM = 0.35
 
 
 def run_score(extra):
@@ -17,32 +15,24 @@ def run_score(extra):
     if not m:
         print("FAIL:", p.stdout, p.stderr)
         sys.exit(1)
-    return float(m.group(1)) / 100.0, (p.stdout or "").strip()
+    return float(m.group(1)), (p.stdout or "").strip()
 
 
 def main():
-    _, line_draft = run_score([])
-    print("=== en zor, gönderim hazır değil (draft) ===")
-    print(line_draft)
+    p_std, l1 = run_score(["--go-standard-complete"])
+    p_tam, l2 = run_score(["--tam-go-complete"])
+    p_apex, l3 = run_score(["--apex-go-complete"])
 
-    p_std, line_std = run_score(["--go-standard-complete"])
-    print("\n=== en zor + Standart GO (Tam değil) ===")
-    print(line_std)
-    if p_std < MIN_STANDARD:
-        print(f"FAIL standard P {p_std:.1%} < {MIN_STANDARD:.0%}")
-        sys.exit(1)
+    print("L1 standard:", l1)
+    print("L2 tam:", l2)
+    print("L3 apex:", l3)
 
-    p_tam, line_tam = run_score(["--tam-go-complete"])
-    print("\n=== en zor + Tam GO ===")
-    print(line_tam)
-    if p_tam < MIN_TAM:
-        print(f"FAIL tam P {p_tam:.1%} < {MIN_TAM:.0%}")
+    if p_std < 30 or p_tam < 35 or p_apex < 40:
         sys.exit(1)
-    if p_tam <= p_std:
-        print(f"FAIL tam {p_tam:.1%} should exceed standard {p_std:.1%}")
+    if not (p_std < p_tam < p_apex):
+        print(f"FAIL ordering: {p_std} {p_tam} {p_apex}")
         sys.exit(1)
-
-    print(f"\nPASS: standard≥{MIN_STANDARD:.0%}, tam≥{MIN_TAM:.0%}, tam>standard")
+    print(f"\nPASS: L1≥30% L2≥35% L3≥40% and strict ordering")
 
 
 if __name__ == "__main__":

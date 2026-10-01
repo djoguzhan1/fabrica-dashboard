@@ -48,6 +48,19 @@ def main():
         )
     stub_path = os.path.join(ROOT, "kits/chat_stubs/first_reply.json")
     gs.setdefault("chat_bundle_path", stub_path)
+    echo = subprocess.run(
+        [sys.executable, f"{ROOT}/scripts/go_client_echo.py",
+         "--title", data.get("title", ""), "--json"],
+        input=post,
+        capture_output=True,
+        text=True,
+    )
+    if echo.returncode == 0:
+        ej = json.loads(echo.stdout)
+        ax = data.get("apex_go") or {}
+        ax.setdefault("uma_echo_terms", ej.get("uma_echo_terms", []))
+        data["apex_go"] = ax
+        gs.setdefault("must_terms_hint", ej.get("card_must", []))
     data["go_standard"] = gs
     json.dump(data, sys.stdout, indent=2)
     sys.stdout.write("\n")

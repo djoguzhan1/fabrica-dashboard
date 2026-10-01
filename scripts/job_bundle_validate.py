@@ -96,6 +96,41 @@ def main():
 
     tg = data.get("tam_go") or {}
     gs = data.get("go_standard") or {}
+    ax = data.get("apex_go") or {}
+
+    if ax.get("complete"):
+        fails = []
+        if not gs.get("complete"):
+            fails.append("go_standard.complete")
+        else:
+            fails += validate_standard(data, scr)
+        if not tg.get("complete"):
+            fails.append("tam_go.complete")
+        else:
+            fails += validate_tam(data, scr)
+        letter = data.get("letter", "")
+        for term in ax.get("uma_echo_terms") or []:
+            if term.lower() not in letter[:110].lower():
+                fails.append(f"uma_echo in card: {term}")
+        if ax.get("client_last_viewed_hours") is None or ax["client_last_viewed_hours"] > 6:
+            fails.append("client_last_viewed_hours <= 6")
+        if not (ax.get("go_plus_reason") or "").strip():
+            fails.append("go_plus_reason")
+        if not (ax.get("catalog_or_portfolio_url") or "").strip():
+            fails.append("catalog_or_portfolio_url")
+        if not (ax.get("edit_six_hour_plan") or "").strip():
+            fails.append("edit_six_hour_plan")
+        if not ax.get("elite_margin_unanimous"):
+            fails.append("elite_margin_unanimous")
+        if len(ax.get("proof_chain") or []) < 2:
+            fails.append("proof_chain min 2")
+        if fails:
+            print("FAIL apex_go.complete:")
+            for f in fails:
+                print(" ", f)
+            sys.exit(1)
+        print("PASS apex_go.complete")
+        sys.exit(0)
 
     if tg.get("complete"):
         fails = []
