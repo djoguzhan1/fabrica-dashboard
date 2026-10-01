@@ -37,6 +37,8 @@ def main():
     ap.add_argument("--boost-top4", action="store_true", help="B4+1 fits under the cap")
     ap.add_argument("--invite", action="store_true", help="client invited us")
     ap.add_argument("--reviews", type=int, default=0, help="our public reviews")
+    ap.add_argument("--client-spent", type=float, default=0, help="client lifetime spend USD")
+    ap.add_argument("--chat-ready", action="store_true", help="§23 reply templates prepped for this thread")
     a = ap.parse_args()
 
     if not a.verified:
@@ -46,7 +48,7 @@ def main():
         print("SKIP: budget below $50")
         return
 
-    vel = a.proposals / max(a.age, 5.0)
+    vel = a.proposals / max(a.age, 5.0)  # only for bot-wave penalty, not band label
 
     # open rate
     o = 0.35
@@ -81,6 +83,10 @@ def main():
         h -= 0.20
     h += min(a.reviews, 5) * 0.03
     h += 0.10 if a.invite else 0.0
+    if a.client_hire_rate is not None and a.client_hire_rate >= 70 and a.client_spent >= 100:
+        h += 0.05
+    if a.chat_ready:
+        h += 0.04
     h = clamp(h)
 
     p = o * r * h
@@ -95,8 +101,6 @@ def main():
             and a.scope_clear
             and a.interviewing == 0
             and a.invites < 5
-            and vel <= 1.0
-            and a.proposals < 20
         ):
             band = "tam-paket"
         elif a.prework == "none" or a.demo_match == "none" or a.interviewing >= 2:

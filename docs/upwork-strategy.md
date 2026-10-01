@@ -29,6 +29,9 @@
 19. İşe alımı artıran eklemeler
 20. Keskin nişancı modu — teklif başına %25–40
 21. Seçici olmadan kazanmak — model ekibi + daha fazla ilan
+22. %33 planı
+23. Sohbet ve mülakat hattı
+24. Sistem dosyaları (precheck, prompts, kits)
 
 Ek A — Vibeworker filtre JSON'ları · Ek B — Teklif log'u
 
@@ -1105,9 +1108,27 @@ Shortlist'te `keywords_require` boş kalır (her kelime zorunlu olursa ilan kaç
 
 ---
 
+## 24) Sistem dosyaları (2026-10 güçlendirme)
+
+| Dosya | Rol |
+| --- | --- |
+| `scripts/go_precheck.py` | Yapısal GO/SKIP — **teklif sayısı kullanmaz** (ongoing, arena dışı, kapsam/bütçe, Activity, boost cap) |
+| `scripts/go_score.py` | Hunisi + band (`tam-paket` / `standart` / `risk`); iyi müşteri (+hire) ve `--chat-ready` son aşama |
+| `scripts/proposal_lint.py` / `reply_lint.py` | Teklif ve sohbet kural bekçisi |
+| `scripts/site_audit.mjs` | Araştırmacı site çıktısı |
+| `scripts/run_go_checks.sh` | precheck + score tek komut |
+| `docs/go-orchestration.md` | Composer adım adım |
+| `prompts/*.md` | Writer, hakem, araştırmacı, sohbet, escalation, holdout |
+| `prompts/job_bundle.schema.json` | Task'lara giden ortak paket |
+| `kits/` | Builder başlangıç dilimleri |
+
+**Adım 0 (her GO):** `go_precheck` → geçmezse model yok. **Adım 0b:** `go_score` (proposals varsayılan 3 = erken bildirim; band için sayıya bakılmaz).
+
+---
+
 ## Ek B — Teklif log'u
 
-Her teklifi gönderince bir satır; T+24h Insights; cevap/işe alım geldikçe aynı satır güncellenir.
+Her teklifi gönderince bir satır; T+24h Insights; cevap/işe alım geldikçe aynı satır güncellenir. **Her GO değerlendirmesinde** (SKIP bile): `b4_at_view`, `budget_band`, `precheck_reason` yaz — teklif sayısına göre karar verilmez, ama B4 trendi için veri toplanır.
 
 | # | Tarih (GMT+3) | İlan | Arena | Bütçe | Yaş | Teklif sayısı | Hız | B1 / B4 | Karar (K#) | Boost bid | Boost sonucu (açık / ödendi / iade) | Düşüş sebebi (outbid / kart görüldü / etkileşim) | Arketip (A1–A6) | Ön-iş | Lint | Sim (tur, kart sırası, mektup) | Kelime | Açıldı mı (T+24h) | Cevap | İşe alım | Not |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
