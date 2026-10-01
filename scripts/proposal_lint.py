@@ -69,6 +69,10 @@ def main():
     ap.add_argument("--title", default="", help="job title; repeating it verbatim is a bot sign")
     ap.add_argument("--screening-start", default="",
                     help="if client said proposal must start with X, check card starts with it (case-insensitive prefix)")
+    ap.add_argument("--must-in-first-n-sentences", type=int, default=0,
+                    help="all --must terms must appear in first N sentences")
+    ap.add_argument("--forbidden-letter", dest="forbidden_letter", default="",
+                    help="comma-separated; must not appear anywhere in letter")
     ap.add_argument("--check-links", action="store_true")
     a = ap.parse_args()
 
@@ -142,9 +146,30 @@ def main():
         res("FAIL" if missing_card else "PASS", "primary deliverable in card (150)", "missing: " + ", ".join(missing_card) if missing_card else f"{len(card_musts)}/{len(card_musts)}")
 
     bans = [b.strip() for b in a.ban_in_card.split(",") if b.strip()]
-    if bans:
+    if bans and card_musts:
+        first_prim = min((card.lower().find(m.lower()) for m in card_musts if m.lower() in card.lower()), default=-1)
+        for b in bans:
+            pos = card.lower().find(b.lower())
+            if pos >= 0 and (first_prim < 0 or pos < first_prim):
+                res("FAIL", "audit term before primary in card", b)
+                break
+        else:
+            hit = [b for b in bans if b.lower() in card.lower()]
+            res("FAIL" if hit else "PASS", "no off-scope audit in card", ", ".join(hit) if hit else "clean")
+    elif bans:
         hit = [b for b in bans if b.lower() in card.lower()]
         res("FAIL" if hit else "PASS", "no off-scope audit in card", ", ".join(hit) if hit else "clean")
+
+    forbidden = [f.strip() for f in a.forbidden_letter.split(",") if f.strip()]
+    if forbidden:
+        hit = [f for f in forbidden if f.lower() in low]
+        res("FAIL" if hit else "PASS", "forbidden terms in letter", ", ".join(hit))
+
+    if a.must_in_first_n_sentences and musts:
+        early = " ".join(sentences(text)[: a.must_in_first_n_sentences]).lower()
+        miss = [m for m in musts if m.lower() not in early]
+        res("FAIL" if miss else "PASS", f"must terms in first {a.must_in_first_n_sentences} sentences",
+            "missing: " + ", ".join(miss) if miss else "ok")
 
     width = max(len(n) for _, n, _ in results)
     for level, name, detail in results:

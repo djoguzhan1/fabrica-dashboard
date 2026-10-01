@@ -10,7 +10,7 @@ import argparse
 import re
 import sys
 
-LIMITS = {"first": 130, "interview": 180, "objection": 110, "offer": 140, "scope": 120}
+LIMITS = {"first": 130, "interview": 180, "objection": 110, "offer": 140, "scope": 120, "red_flag": 80}
 
 BANNED = [
     (r"\b(whatsapp|telegram|skype|discord|gmail|@gmail|phone number|my number|call me at)\b", "off-platform contact"),
@@ -38,6 +38,8 @@ def main():
     ap.add_argument("--must", default="", help="comma-separated terms from the client's message")
     ap.add_argument("--client-question-count", type=int, default=None,
                     help="if client asked N numbered questions, reply must have >= N numbered answers")
+    ap.add_argument("--primary-request", default="", help="triage primary_request; must appear in first ~40 words")
+    ap.add_argument("--audit-terms", default="", help="comma-separated; fail if before primary_request is addressed")
     a = ap.parse_args()
 
     text = open(a.path, encoding="utf-8").read().strip()
@@ -63,6 +65,16 @@ def main():
     for term in [t.strip() for t in a.must.split(",") if t.strip()]:
         if term.lower() not in low:
             fails.append(f"client term not answered: '{term}'")
+    if a.primary_request:
+        first_words = " ".join(text.split()[:40]).lower()
+        if a.primary_request.lower() not in first_words:
+            fails.append("primary_request not in opening (~40 words)")
+    if a.audit_terms and a.must:
+        must0 = a.must.split(",")[0].strip().lower()
+        for term in [t.strip() for t in a.audit_terms.split(",") if t.strip()]:
+            if term.lower() in low[:200] and must0 and must0 not in low[:200]:
+                fails.append(f"audit term '{term}' before client must-answer")
+                break
     if a.client_question_count is not None:
         numbered = len(re.findall(r"(?m)^\s*\d+[\).\]]\s", text))
         if numbered < a.client_question_count:

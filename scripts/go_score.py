@@ -39,6 +39,10 @@ def main():
     ap.add_argument("--reviews", type=int, default=0, help="our public reviews")
     ap.add_argument("--client-spent", type=float, default=0, help="client lifetime spend USD")
     ap.add_argument("--chat-ready", action="store_true", help="§23 reply templates prepped for this thread")
+    ap.add_argument("--competition-applied", action="store_true",
+                    help="apply open-rate penalties for bot-wave velocity / 20+ proposals (post-precheck only)")
+    ap.add_argument("--screening-required", action="store_true", help="job has screening / hidden keywords")
+    ap.add_argument("--letter-screening-pass", action="store_true", help="proposal_lint screening checks passed")
     a = ap.parse_args()
 
     if not a.verified:
@@ -57,11 +61,11 @@ def main():
     else:
         o += 0.20 if a.boost_top4 else 0.0
         o += 0.15 if a.age <= 15 else (0.05 if a.age <= 45 else -0.15)
-        # Proposal count spikes after the early window; K1/K2 already SKIP bots/crowds.
-        if vel > 1.0:
-            o -= 0.25
-        elif a.proposals >= 20:
-            o -= 0.15
+        if a.competition_applied:
+            if vel > 1.0:
+                o -= 0.25
+            elif a.proposals >= 20:
+                o -= 0.15
         o += {"strong": 0.10, "light": 0.03, "none": -0.10}[a.prework]
         o -= 0.25 if a.interviewing >= 2 else (0.10 if a.interviewing == 1 else 0.0)
         o -= 0.15 if a.invites >= 5 else 0.0
@@ -73,6 +77,10 @@ def main():
     r += {"strong": 0.12, "light": 0.03, "none": -0.10}[a.prework]
     r += 0.08 if a.scope_clear else -0.05
     r += 0.15 if a.invite else 0.0
+    if a.screening_required and not a.letter_screening_pass:
+        r -= 0.12
+    elif a.screening_required and a.letter_screening_pass:
+        r += 0.06
     r = clamp(r)
 
     # reply -> hire

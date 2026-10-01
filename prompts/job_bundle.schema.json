@@ -25,6 +25,14 @@
   "prework_slice": "",
   "plan2_note": "",
   "must_terms": [],
+  "screening": {
+    "required": false,
+    "must_answer_in_letter": [],
+    "hidden_keywords": [],
+    "forbidden_in_letter": [],
+    "client_test_instruction": "",
+    "start_with_prefix": ""
+  },
   "letter": "",
   "tur": 1,
   "writer_model": "claude-opus-5-5-low",

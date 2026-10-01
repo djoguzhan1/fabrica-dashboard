@@ -47,7 +47,7 @@ def test_ban_in_card_fail():
     )
     code, out = lint(["--ban-in-card", "LCP,PageSpeed", "--card-must", "Sheets"], body)
     assert code != 0
-    assert "no off-scope audit in card" in out
+    assert "off-scope" in out.lower() or "audit term before primary" in out
     assert "FAIL" in out
 
 
