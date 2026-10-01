@@ -11,4 +11,8 @@ Teklif kural kontrolü: `python3 scripts/proposal_lint.py letter.txt --must "...
 
 GO yapısal kontrol (teklif sayısı yok): `python3 scripts/go_precheck.py --budget 100 --payment-verified --title "..." < post.txt`
 
-Orkestrasyon: [go-orchestration.md](./go-orchestration.md) · Promptlar: `prompts/`
+Orkestrasyon: [go-orchestration.md](./go-orchestration.md) · İhtimal: [probability_model.md](./probability_model.md) · Kalibrasyon: [calibration.md](./calibration.md)
+
+Tek komut checklist: `python3 scripts/go_pipeline.py --budget 100 --payment-verified --title "..." < post.txt`
+
+Promptlar: `prompts/`
