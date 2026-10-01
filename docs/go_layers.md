@@ -1,6 +1,7 @@
-# GO katmanları (L0–L4) — sistem geneli
+# GO katmanları (L0–L4) — **bizim** iç operasyon
 
-Tek soğuk teklifte **%40** gerçekçi üst sınır; §22 dürüst soğuk ~%23–25. **Aynı en zor ilanda** %40’a yaklaşmak için katmanlar **üst üste** gerçek artefakt ister; sayı şişirme yok.
+Bu dosya rakip veya “Upwork standardı” kıyası değil; **fabrica GO hattının** paketleri. Gerçek başarı: `docs/bizim_basari.md` + `go_bizim_ozet.py`.  
+`go_score` yüzdeleri = gönderim öncesi **iç EV**; Insights sonucu değil.
 
 ## Katman tablosu (aynı ilan, gönderim anı)
 

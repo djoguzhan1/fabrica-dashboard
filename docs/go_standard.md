@@ -1,4 +1,4 @@
-# Standart GO (Tam GO olmadan gönderim)
+# paket-min (go_standard) — bizim minimum gönderim hattı
 
 Her **GO** ilanında minimum sistem — paralel builder/video şart değil.
 

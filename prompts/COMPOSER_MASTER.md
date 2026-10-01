@@ -10,7 +10,7 @@
 7. Task `writer_opus.md` → `proposal_lint.py` with `--card-must`, `--ban-in-card`, `--screening-start`, `--must-in-first-n-sentences 3`, `--forbidden-letter`
 8. Parallel Task judges; `composer_escalation.md` on FAIL
 9. **Standart GO gönderim:** enrich → lint → judge1/T8 → `go_standard.complete` → validate → score (**en zorda P≥30%**, Tam şart değil). Opsiyonel `tam_go.complete` üst katman.
-10. Log Ek B with `tier: standard|tam`.
+10. Log Ek B / `docs/proposal_log.tsv`: `tier=paket-min|paket-tam|paket-apex`, `validate_pass`, `system_p_at_send`, `opened_24h`… — başarı = Insights, skor değil (`docs/bizim_basari.md`).
 10. On client message: `SOHBET` → triage → `chat_writer.md` → `reply_lint.py`; rescore with `--chat-ready` when reply drafted
 
 Models never see each other's raw chat; only Composer passes JSON/text blocks.
