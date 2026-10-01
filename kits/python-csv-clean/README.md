@@ -1,3 +1,5 @@
 # Python CSV clean kit
 
-Builder runs `clean_sample.py` on a 5-row public sample for PREWORK_SLICE before/after in proposal.
+Minimal dedupe + column normalize for messy exports. Builder copies `clean.py`, sets `KEY_COLUMNS` and delimiter, and ships a before/after row count in the proposal demo.
+
+Usage: `python3 clean.py input.csv -o output.csv`

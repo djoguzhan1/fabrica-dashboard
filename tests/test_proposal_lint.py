@@ -6,6 +6,17 @@ import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# ~100 words; Google Sheets + onEdit in first 150 chars; passes hard lint rules.
+CARD_MUST_LETTER = """\
+Google Sheets onEdit automation emails the row owner when column D changes — same trigger pattern as your intake tab.
+
+The handler uses SpreadsheetApp and MailApp only, no add-ons. A test copy is linked below: edit column D once and the inbox copy arrives within about a minute.
+
+Scope is the notification flow only, not dashboards or charts. Fixed $90 covers trigger wiring plus the email template, delivered within 24 hours.
+
+Milestone one is the onEdit email path end to end. Which sheet tab name should the trigger watch for edits?
+"""
+
 
 def lint(args, body):
     with tempfile.NamedTemporaryFile("w", suffix=".txt", delete=False, encoding="utf-8") as f:
@@ -21,16 +32,10 @@ def lint(args, body):
 
 
 def test_card_must_pass():
-    body = (
-        "Your Google Sheets onEdit trigger can email the row owner when column D changes — "
-        "working copy in the link below.\n\n"
-        "Attached: test sheet copy.\n\n"
-        "Fixed $90, 24h. Milestone: onEdit email flow only.\n\n"
-        "Which tab should notifications use?"
-    )
-    code, out = lint(["--card-must", "Google Sheets,onEdit", "--must", "onEdit"], body)
-    assert code == 0 or "word count" in out  # short body may fail words; card check matters
-    assert "primary deliverable in card" in out or "PASS" in out
+    code, out = lint(["--card-must", "Google Sheets,onEdit"], CARD_MUST_LETTER)
+    assert code == 0, out
+    assert "PASS  primary deliverable in card" in out
+    assert "RESULT: PASS" in out
 
 
 def test_ban_in_card_fail():
@@ -42,11 +47,11 @@ def test_ban_in_card_fail():
     )
     code, out = lint(["--ban-in-card", "LCP,PageSpeed", "--card-must", "Sheets"], body)
     assert code != 0
-    assert "off-scope" in out.lower() or "FAIL" in out
+    assert "no off-scope audit in card" in out
+    assert "FAIL" in out
 
 
 if __name__ == "__main__":
+    test_card_must_pass()
     test_ban_in_card_fail()
-    print("ban ok")
-    # card_must may fail word count on short sample — run extended if needed
     print("ok")
