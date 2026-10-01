@@ -58,7 +58,8 @@ Log (Ek B): `b4_at_send`, `budget_band`, `band`, `primary_deliverable`.
 | Kaldıraç | Etki (son aşama / toplam) |
 | --- | --- |
 | `tam-paket` + boost ilk 4 | ~%28–32 teklif → işe alım |
-| En zor + `--tam-stack` (11 kapı) | **≥%30** floor, **≤%33** cap (`docs/hardest_scenario.md`) |
+| En zor + Standart GO | **%30–33** (`docs/go_standard.md`) |
+| En zor + Tam GO | **%35–38** (`docs/hardest_scenario.md`) |
 | `--chat-ready` (§23 metin hazır) | hire +~4 puan |
 | İyi müşteri (hire ≥70%, spent ≥$100) | hire +~5 puan |
 | `standart` paket | ~%16–22 |

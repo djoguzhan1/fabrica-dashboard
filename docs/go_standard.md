@@ -9,7 +9,7 @@ Her **GO** ilanında minimum sistem — paralel builder/video şart değil.
 3. Writer + `proposal_lint.py` → `lint_passed: true`  
 4. Hakem 1 PASS **veya** insan T8 → `judge1_pass` / `human_t8`  
 5. `go_standard.complete: true` → `job_bundle_validate.py` PASS  
-6. `go_score_from_bundle.py` → en zorda **P ≥ 30%** (`tier=standard`)
+6. `go_score_from_bundle.py` → en zorda **P ≈ 30–33%** (`tier=standard`)
 
 ## Zorunlu alanlar (`go_standard`)
 
@@ -23,7 +23,7 @@ Her **GO** ilanında minimum sistem — paralel builder/video şart değil.
 
 ## Tam GO farkı
 
-Tam GO = Standart GO **+** dilim, audit, Loom, sim beats_elite, T8 tam paket. Skor tavanı aynı (**33%**); kaldıraç ayrı.
+Tam GO = Standart GO **+** dilim, audit, Loom, sim beats_elite. Skor: **≈35–38%** en zorda (`tier=tam`); Standart **30–33%**. Ek iş = elit panel + müşteri diliminde kanıt.
 
 ## Komutlar
 

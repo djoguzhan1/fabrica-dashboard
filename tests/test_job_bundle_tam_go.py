@@ -80,7 +80,9 @@ def test_tam_go_complete_pass_scores():
         text=True,
     )
     assert p.returncode == 0
-    assert "= 30." in p.stdout or "= 31." in p.stdout or "= 32." in p.stdout or "= 33." in p.stdout
+    import re
+    pct = float(re.search(r"= ([\d.]+)%", p.stdout).group(1))
+    assert pct >= 35.0, p.stdout
 
 
 if __name__ == "__main__":

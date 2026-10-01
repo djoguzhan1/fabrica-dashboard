@@ -6,7 +6,8 @@ import sys
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MIN_P = 0.30
+MIN_STANDARD = 0.30
+MIN_TAM = 0.35
 
 
 def run_score(extra):
@@ -27,18 +28,21 @@ def main():
     p_std, line_std = run_score(["--go-standard-complete"])
     print("\n=== en zor + Standart GO (Tam değil) ===")
     print(line_std)
-    if p_std < MIN_P:
-        print(f"FAIL standard P {p_std:.1%} < {MIN_P:.0%}")
+    if p_std < MIN_STANDARD:
+        print(f"FAIL standard P {p_std:.1%} < {MIN_STANDARD:.0%}")
         sys.exit(1)
 
     p_tam, line_tam = run_score(["--tam-go-complete"])
     print("\n=== en zor + Tam GO ===")
     print(line_tam)
-    if p_tam < MIN_P:
-        print(f"FAIL tam P {p_tam:.1%} < {MIN_P:.0%}")
+    if p_tam < MIN_TAM:
+        print(f"FAIL tam P {p_tam:.1%} < {MIN_TAM:.0%}")
+        sys.exit(1)
+    if p_tam <= p_std:
+        print(f"FAIL tam {p_tam:.1%} should exceed standard {p_std:.1%}")
         sys.exit(1)
 
-    print(f"\nPASS: standard & tam send-ready >= {MIN_P:.0%}")
+    print(f"\nPASS: standard≥{MIN_STANDARD:.0%}, tam≥{MIN_TAM:.0%}, tam>standard")
 
 
 if __name__ == "__main__":

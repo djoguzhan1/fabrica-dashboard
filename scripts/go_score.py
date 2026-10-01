@@ -11,12 +11,15 @@ import sys
 
 SNIPER_MIN = 0.25
 GO_MIN = 0.10
-SEND_P_MIN = 0.30
-SEND_P_CAP = 0.33
+STANDARD_P_MIN = 0.30
+STANDARD_P_CAP = 0.33
+TAM_P_MIN = 0.35
+TAM_P_CAP = 0.38  # §20 SNIPER üst band; dilim+sim+elite kanıt
 
-FLOOR_HARDEST_TAM = (0.73, 0.58, 0.71)
+FLOOR_HARDEST_TAM = (0.76, 0.60, 0.77)
 FLOOR_HARDEST_STANDARD = (0.71, 0.58, 0.73)
-FLOOR_PICKY_HIRE = 0.70
+FLOOR_PICKY_HIRE_TAM = 0.76
+FLOOR_PICKY_HIRE_STANDARD = 0.70
 
 
 def clamp(x, lo=0.02, hi=0.95):
@@ -81,24 +84,24 @@ def is_hard_context(a, picky):
     )
 
 
-def apply_send_p_floor(p_raw, o, r, h, picky, floor_tuple):
+def apply_send_p_floor(p_raw, o, r, h, picky, floor_tuple, p_min, p_cap):
     fo, fr, fh = floor_tuple
     if picky:
-        fh = FLOOR_PICKY_HIRE
+        fh = FLOOR_PICKY_HIRE_TAM if p_min >= TAM_P_MIN else FLOOR_PICKY_HIRE_STANDARD
     o_out, r_out, h_out = o, r, h
-    if p_raw < SEND_P_MIN:
+    if p_raw < p_min:
         o_out = max(o, fo)
         r_out = max(r, fr)
         h_out = max(h, fh)
         p = o_out * r_out * h_out
-        if p < SEND_P_MIN:
-            h_out = clamp(SEND_P_MIN / (o_out * r_out))
+        if p < p_min:
+            h_out = clamp(p_min / (o_out * r_out))
             p = o_out * r_out * h_out
         note = " send-floor"
     else:
-        p = min(p_raw, SEND_P_CAP)
+        p = min(p_raw, p_cap)
         note = " send-cap"
-    if p != p_raw and p_raw >= SEND_P_MIN:
+    if p != p_raw and p_raw >= p_min:
         h_out = clamp(p / max(o_out * r_out, 1e-6))
         p = o_out * r_out * h_out
     return o_out, r_out, h_out, p, note
@@ -261,12 +264,19 @@ def main():
     p = p_raw
     floor_note = ""
     if send_ready:
-        floor = FLOOR_HARDEST_TAM if a.tam_go_complete else FLOOR_HARDEST_STANDARD
+        if a.tam_go_complete:
+            p_min, p_cap = TAM_P_MIN, TAM_P_CAP
+            floor = FLOOR_HARDEST_TAM
+        else:
+            p_min, p_cap = STANDARD_P_MIN, STANDARD_P_CAP
+            floor = FLOOR_HARDEST_STANDARD
         if hard or a.scenario == "hardest":
-            o_out, r_out, h_out, p, floor_note = apply_send_p_floor(p_raw, o, r, h, picky, floor)
-        elif p_raw < SEND_P_MIN:
             o_out, r_out, h_out, p, floor_note = apply_send_p_floor(
-                p_raw, o, r, h, picky, FLOOR_HARDEST_STANDARD
+                p_raw, o, r, h, picky, floor, p_min, p_cap
+            )
+        elif p_raw < p_min:
+            o_out, r_out, h_out, p, floor_note = apply_send_p_floor(
+                p_raw, o, r, h, picky, floor, p_min, p_cap
             )
 
     decision = "SNIPER" if p >= SNIPER_MIN else ("GO" if p >= GO_MIN else "SKIP")

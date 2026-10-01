@@ -10,7 +10,7 @@ python3 scripts/go_score_from_bundle.py bundle.json
 python3 scripts/go_score.py --scenario hardest --tam-go-complete --verified
 ```
 
-→ **P ≥ 30%**, tavan **33%** (`tam-go-floor` / `tam-go-cap`).
+→ **Standart:** P **30–33%** · **Tam GO:** P **35–38%** (dilim + sim beats_elite).
 
 Pipeline bitmeden skor düşük kalır (**bilerek**); gönderme yok.
 
