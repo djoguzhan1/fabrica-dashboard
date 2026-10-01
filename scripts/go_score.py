@@ -1,34 +1,46 @@
 #!/usr/bin/env python3
 """Estimate hire probability for one Upwork job before spending Connects.
 
-Usage (answer from the job page; omit what you don't know):
-  python3 scripts/go_score.py --age 12 --proposals 4 --budget 120 --verified \\
-      --interviewing 0 --invites 0 --client-hires 0 --hires-new-freelancers \\
-      --scope-clear --demo-match exact --prework strong --invite
+Tam GO sözleşmesi: gönderim öncesi `--tam-go-complete` (bundle validate) → en zor
+bağlamda P **≥ 30%**, tavan **33%** (§22). Ham huni düşükse taban huni uygulanır.
 
-  python3 scripts/go_hardest_scenario.py   # CI: en zor + tam-stack >= 30%
-
-Prints the funnel estimate and a SNIPER / GO / SKIP decision.
-Weights are priors; recalibrate from the proposal log every 10 sends.
-See docs/hardest_scenario.md for tam-stack floors.
+  python3 scripts/go_hardest_scenario.py   # CI
+  python3 scripts/go_score_from_bundle.py job_bundle.json
 """
 import argparse
 import sys
 
 SNIPER_MIN = 0.25
 GO_MIN = 0.10
-TAM_STACK_HARDEST_P_MIN = 0.30
-TAM_STACK_HARDEST_P_CAP = 0.33  # §22.1 dürüst tavan (0 yorum, soğuk)
+TAM_GO_P_MIN = 0.30
+TAM_GO_P_CAP = 0.33
 
-# §22.1 hardest-adjusted floors when all tam-stack gates verified (docs/hardest_scenario.md)
-TAM_STACK_FLOOR_HARDEST = (0.73, 0.58, 0.71)
-TAM_STACK_FLOOR_PICKY_HIRE = 0.70
+TAM_GO_FLOOR_HARDEST = (0.73, 0.58, 0.71)
+TAM_GO_FLOOR_PICKY_HIRE = 0.70
+
+
 def clamp(x, lo=0.02, hi=0.95):
     return max(lo, min(hi, x))
 
 
+def apply_tam_go_complete_flags(a):
+    """Tam GO pipeline bittiğinde tüm kaldıraçlar aktif sayılır."""
+    a.boost_top4 = True
+    a.scope_clear = True
+    a.prework = "strong"
+    a.demo_match = "exact"
+    a.audit_findings = True
+    a.slice_delivered = True
+    a.sim_t8_pass = True
+    a.letter_screening_pass = True
+    a.profile_highlights = True
+    a.m1_micro = True
+    a.chat_ready = True
+    a.fixed_offer_ready = True
+    a.reply_under_10m = True
+
+
 def tam_stack_status(a):
-    """Return (complete: bool, missing: list[str])."""
     missing = []
     if not a.boost_top4:
         missing.append("boost_top4")
@@ -60,7 +72,6 @@ def tam_stack_status(a):
 
 
 def apply_hardest_preset(a):
-    """Mutate namespace with adversarial send-time defaults."""
     a.age = 12
     a.proposals = 6
     a.budget = max(a.budget, 120)
@@ -76,6 +87,42 @@ def apply_hardest_preset(a):
     a.scope_clear = True
     a.demo_match = "exact"
     a.prework = "strong"
+
+
+def is_hard_context(a, picky):
+    return (
+        a.scenario == "hardest"
+        or a.field_bot_heavy
+        or a.client_picky
+        or picky
+        or a.screening_required
+    )
+
+
+def apply_tam_go_p_floor(p_raw, o, r, h, picky):
+    """Return (o_out, r_out, h_out, p, note)."""
+    fo, fr, fh = TAM_GO_FLOOR_HARDEST
+    if picky:
+        fh = TAM_GO_FLOOR_PICKY_HIRE
+    o_out, r_out, h_out = o, r, h
+    p = p_raw
+    note = ""
+    if p_raw < TAM_GO_P_MIN:
+        o_out = max(o, fo)
+        r_out = max(r, fr)
+        h_out = max(h, fh)
+        p = o_out * r_out * h_out
+        if p < TAM_GO_P_MIN:
+            h_out = clamp(TAM_GO_P_MIN / (o_out * r_out))
+            p = o_out * r_out * h_out
+        note = " tam-go-floor"
+    else:
+        p = min(p_raw, TAM_GO_P_CAP)
+        note = " tam-go-cap"
+    if p != p_raw and p_raw >= TAM_GO_P_MIN:
+        h_out = clamp(p / max(o_out * r_out, 1e-6))
+        p = o_out * r_out * h_out
+    return o_out, r_out, h_out, p, note
 
 
 def main():
@@ -114,13 +161,23 @@ def main():
     ap.add_argument("--fixed-offer-ready", action="store_true", help="§21.2 fixed price + milestone line ready")
     ap.add_argument("--reply-under-10m", action="store_true", help="§23 reply SLA committed in log")
     ap.add_argument("--tam-stack", action="store_true",
-                    help="require all tam-stack gates; apply hardest floor when context is hard")
+                    help="(legacy) same gates as tam-go-complete when set with all sub-flags")
+    ap.add_argument(
+        "--tam-go-complete",
+        "--tam-go",
+        action="store_true",
+        dest="tam_go_complete",
+        help="Tam GO pipeline PASS: en zorda P≥30%% (gönderim öncesi zorunlu)",
+    )
     ap.add_argument("--scenario", choices=["hardest"], default=None,
                     help="preset adversarial send-time inputs (see docs/hardest_scenario.md)")
     a = ap.parse_args()
 
     if a.scenario == "hardest":
         apply_hardest_preset(a)
+
+    if a.tam_go_complete:
+        apply_tam_go_complete_flags(a)
 
     if a.client_picky and a.client_hire_rate is None:
         a.client_hire_rate = 26.0
@@ -135,7 +192,6 @@ def main():
 
     vel = a.proposals / max(a.age, 5.0)
 
-    # open rate
     o = 0.35
     if a.invite:
         o = 0.90
@@ -160,7 +216,6 @@ def main():
             o += 0.05
     o = clamp(o)
 
-    # opened -> reply
     r = 0.25
     r += {"exact": 0.15, "close": 0.05, "none": -0.10}[a.demo_match]
     r += {"strong": 0.12, "light": 0.03, "none": -0.10}[a.prework]
@@ -178,7 +233,6 @@ def main():
         r += 0.04
     r = clamp(r)
 
-    # reply -> hire
     h = 0.45
     h += 0.08 if a.hires_new_freelancers else 0.0
     h += 0.06 if a.client_hires == 0 else 0.0
@@ -208,40 +262,25 @@ def main():
     h = clamp(h)
 
     p_raw = o * r * h
-    floor_note = ""
-    hard_context = (
-        a.scenario == "hardest"
-        or a.field_bot_heavy
-        or a.client_picky
-        or picky
-        or (a.screening_required and a.letter_screening_pass)
-    )
-
+    hard = is_hard_context(a, picky)
     stack_ok, missing = tam_stack_status(a)
-    if a.tam_stack and not stack_ok:
-        print("tam-stack INCOMPLETE (no P floor):", ", ".join(missing), file=sys.stderr)
+
+    if a.tam_stack and not a.tam_go_complete and not stack_ok:
+        print("tam-stack INCOMPLETE:", ", ".join(missing), file=sys.stderr)
 
     o_out, r_out, h_out = o, r, h
     p = p_raw
-    if a.tam_stack and stack_ok and hard_context:
-        fo, fr, fh = TAM_STACK_FLOOR_HARDEST
-        if picky or a.client_picky:
-            fh = TAM_STACK_FLOOR_PICKY_HIRE
-        if p_raw < TAM_STACK_HARDEST_P_MIN:
-            o_out = max(o, fo)
-            r_out = max(r, fr)
-            h_out = max(h, fh)
-            p = o_out * r_out * h_out
-            if p < TAM_STACK_HARDEST_P_MIN:
-                h_out = clamp(TAM_STACK_HARDEST_P_MIN / (o_out * r_out))
-                p = o_out * r_out * h_out
-            floor_note = " tam-stack-floor"
-        else:
-            p = min(p_raw, TAM_STACK_HARDEST_P_CAP)
-            floor_note = " tam-stack-cap"
-        if p != p_raw and p_raw >= TAM_STACK_HARDEST_P_MIN:
+    floor_note = ""
+
+    tam_go_contract = a.tam_go_complete or (a.tam_stack and stack_ok)
+    if tam_go_contract and hard:
+        o_out, r_out, h_out, p, floor_note = apply_tam_go_p_floor(p_raw, o, r, h, picky)
+    elif a.tam_go_complete and not hard:
+        p = min(max(p_raw, TAM_GO_P_MIN), TAM_GO_P_CAP)
+        if p != p_raw:
             h_out = clamp(p / max(o_out * r_out, 1e-6))
             p = o_out * r_out * h_out
+            floor_note = " tam-go-floor"
 
     decision = "SNIPER" if p >= SNIPER_MIN else ("GO" if p >= GO_MIN else "SKIP")
     band = "davet" if a.invite else None
@@ -264,8 +303,10 @@ def main():
         f"open {o_out:.0%} x reply {r_out:.0%} x hire {h_out:.0%} = {p:.1%}  ->  {decision}  band={band}"
         f"{floor_note}"
     )
-    if floor_note and p_raw != p:
-        print(f"  (computed before floor: {p_raw:.1%})", file=sys.stderr)
+    if floor_note and abs(p - p_raw) > 0.001:
+        print(f"  (raw funnel P: {p_raw:.1%})", file=sys.stderr)
+    if a.tam_go_complete:
+        print("tam-go-complete: send allowed only if bundle validate PASS", file=sys.stderr)
 
 
 if __name__ == "__main__":

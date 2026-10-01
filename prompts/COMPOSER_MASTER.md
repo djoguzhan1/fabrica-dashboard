@@ -9,8 +9,8 @@
 6. Merge prework; T1 + **`screening_extractor.md` zorunlu** if post matches screening / bundle.screening.required
 7. Task `writer_opus.md` → `proposal_lint.py` with `--card-must`, `--ban-in-card`, `--screening-start`, `--must-in-first-n-sentences 3`, `--forbidden-letter`
 8. Parallel Task judges; `composer_escalation.md` on FAIL
-9. User T8 → send; log Ek B with `b4_at_send`, `band`, `primary_deliverable`, `tam_stack: true/false`
-   - **Tam-stack gates (en zor %30 floor):** audit + slice + sim T8 PASS + screening lint + highlights + M1 + chat-ready + fixed-offer + reply&lt;10m → rescore `go_score.py --tam-stack …`
+9. T8 PASS → set `tam_go.complete: true` + all `tam_go.*` fields → `job_bundle_validate.py` → `go_score_from_bundle.py` (en zorda **P≥30%**). Then send; log Ek B.
+   - **Gönderim yasak** until `PASS tam_go.complete` (tek sözleşme, `--tam-go-complete`).
 10. On client message: `SOHBET` → triage → `chat_writer.md` → `reply_lint.py`; rescore with `--chat-ready` when reply drafted
 
 Models never see each other's raw chat; only Composer passes JSON/text blocks.

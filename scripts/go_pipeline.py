@@ -57,8 +57,9 @@ def main():
     print("1) Parallel Tasks: prompts/researcher.md, builder_opus.md, visual_agent.md")
     print("2) writer_opus.md → proposal_lint.py (--card-must, --ban-in-card)")
     print("3) judge1_terra.md + judge2_gemini.md parallel")
-    print("4) T8 → send boost B4+1")
-    print("5) On message: SOHBET → prompts/chat_*.md + reply_lint.py --chat-ready for rescore")
+    print("4) T8 → set job_bundle tam_go.complete + job_bundle_validate.py → go_score_from_bundle.py")
+    print("5) Send only if P≥30% (en zorda tam-go-complete); boost B4+1")
+    print("6) On message: SOHBET → prompts/chat_*.md + reply_lint.py")
 
 
 if __name__ == "__main__":

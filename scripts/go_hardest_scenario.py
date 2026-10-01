@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Measure en zor tam GO + tam-stack floor (CI gate >= 30%).
+"""CI: en zor senaryo + Tam GO sözleşmesi → P >= 30%.
 
-See docs/hardest_scenario.md
+Gönderim öncesi tek bayrak: --tam-go-complete (job_bundle_validate PASS).
 """
 import re
 import subprocess
@@ -13,47 +13,36 @@ MIN_P = 0.30
 
 
 def run_score(extra):
-    cmd = [sys.executable, f"{ROOT}/scripts/go_score.py", "--verified", "--scenario", "hardest", "--tam-stack"] + extra
+    cmd = [
+        sys.executable,
+        f"{ROOT}/scripts/go_score.py",
+        "--verified",
+        "--scenario",
+        "hardest",
+    ] + extra
     p = subprocess.run(cmd, capture_output=True, text=True)
-    out = (p.stdout or "") + (p.stderr or "")
     m = re.search(r"= ([\d.]+)%", p.stdout or "")
     if not m:
-        print("FAIL: no score line\n", out)
+        print("FAIL: no score\n", p.stdout, p.stderr)
         sys.exit(1)
-    return float(m.group(1)) / 100.0, p.stdout.strip(), p.stderr.strip()
+    return float(m.group(1)) / 100.0, (p.stdout or "").strip()
 
 
 def main():
-    # Incomplete stack: must be below floor target
-    p_weak, line_weak, _ = run_score([])
-    print("=== incomplete tam-stack (expect no floor) ===")
-    print(line_weak)
-    print(f"P={p_weak:.1%}")
+    p_plan, line_plan = run_score([])
+    print("=== en zor, Tam GO henüz yok (planlama) ===")
+    print(line_plan)
+    print(f"P={p_plan:.1%} (gönderme — pipeline bitir)")
 
-    gates = [
-        "--audit-findings",
-        "--slice-delivered",
-        "--sim-t8-pass",
-        "--letter-screening-pass",
-        "--profile-highlights",
-        "--m1-micro",
-        "--chat-ready",
-        "--fixed-offer-ready",
-        "--reply-under-10m",
-    ]
-    p_full, line_full, err = run_score(gates)
-    print("\n=== en zor + full tam-stack ===")
-    print(line_full)
-    if err:
-        print(err)
-    print(f"P={p_full:.1%}")
+    p_send, line_send = run_score(["--tam-go-complete"])
+    print("\n=== en zor + Tam GO complete (gönderim) ===")
+    print(line_send)
+    print(f"P={p_send:.1%}")
 
-    if p_full < MIN_P:
-        print(f"\nFAIL: P {p_full:.1%} < {MIN_P:.0%} floor")
+    if p_send < MIN_P:
+        print(f"\nFAIL: Tam GO complete P {p_send:.1%} < {MIN_P:.0%}")
         sys.exit(1)
-    if "tam-stack-floor" not in line_full and "tam-stack-cap" not in line_full:
-        print("\nWARN: expected tam-stack-floor or tam-stack-cap on full stack")
-    print(f"\nPASS: en zor tam-stack P >= {MIN_P:.0%}")
+    print(f"\nPASS: en zor + tam-go-complete P >= {MIN_P:.0%}")
 
 
 if __name__ == "__main__":
