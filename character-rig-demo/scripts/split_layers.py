@@ -12,40 +12,60 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "assets" / "source.jpg"
 OUT = ROOT / "assets" / "layers"
 
-# Normalized polygons for 720x1280 — forest night, standing full-body (user asset only).
-# Each layer: one polygon or a list of polygons (for disjoint background strips).
+# User forest JPG, arms at sides (720x1280).
 LayerPolys = list[tuple[float, float]] | list[list[tuple[float, float]]]
 
 LAYER_DEFS: dict[str, LayerPolys] = {
-    # Forest + ground (frame strips; character filled by layers above)
     "background": [
-        [(0, 0), (1, 0), (1, 0.1), (0, 0.1)],
+        [(0, 0), (1, 0), (1, 0.09), (0, 0.09)],
         [(0, 0.56), (1, 0.56), (1, 1), (0, 1)],
-        [(0, 0), (0.16, 0), (0.16, 1), (0, 1)],
-        [(0.84, 0), (1, 0), (1, 1), (0.84, 1)],
+        [(0, 0.09), (0.05, 0.09), (0.05, 0.56), (0, 0.56)],
+        [(0.95, 0.09), (1, 0.09), (1, 0.56), (0.95, 0.56)],
     ],
-    # Long green hair (behind body; sways with head)
     "hair_back": [
         (0.04, 0.08),
         (0.96, 0.08),
-        (0.99, 0.8),
-        (0.01, 0.8),
+        (0.99, 0.82),
+        (0.01, 0.82),
     ],
-    # Torso + arms behind back
+    # Screen-left arm (character right)
+    "arm_l_upper": [
+        (0.0, 0.245),
+        (0.155, 0.245),
+        (0.17, 0.385),
+        (0.02, 0.395),
+    ],
+    "arm_l_lower": [
+        (0.02, 0.37),
+        (0.175, 0.37),
+        (0.19, 0.535),
+        (0.04, 0.545),
+    ],
+    # Screen-right arm (character left)
+    "arm_r_upper": [
+        (0.845, 0.245),
+        (1.0, 0.245),
+        (0.98, 0.395),
+        (0.83, 0.385),
+    ],
+    "arm_r_lower": [
+        (0.825, 0.37),
+        (0.98, 0.37),
+        (0.96, 0.545),
+        (0.81, 0.535),
+    ],
     "torso": [
         (0.2, 0.23),
         (0.8, 0.23),
         (0.84, 0.5),
         (0.16, 0.5),
     ],
-    # Legs, stockings, feet
     "legs": [
         (0.14, 0.46),
         (0.86, 0.46),
         (0.93, 1),
         (0.07, 1),
     ],
-    # Face + hat crown (bells separate)
     "head": [
         (0.2, 0.015),
         (0.8, 0.015),
@@ -64,6 +84,14 @@ LAYER_DEFS: dict[str, LayerPolys] = {
         (0.97, 0.21),
         (0.79, 0.19),
     ],
+}
+
+# Joint pivots (normalized); limbs use these instead of polygon centroid.
+PIVOT_OVERRIDES: dict[str, tuple[float, float]] = {
+    "arm_l_upper": (0.12, 0.26),
+    "arm_l_lower": (0.11, 0.39),
+    "arm_r_upper": (0.88, 0.26),
+    "arm_r_lower": (0.89, 0.39),
 }
 
 
@@ -94,7 +122,6 @@ def polygon_centroid(points: list[tuple[float, float]]) -> tuple[float, float]:
 def layer_centroid(polys: list[list[tuple[float, float]]]) -> tuple[float, float]:
     if len(polys) == 1:
         return polygon_centroid(polys[0])
-    # Weighted by bounding-box area (rough pivot for multi-strip background)
     total = 0.0
     sx = sy = 0.0
     for points in polys:
@@ -129,7 +156,10 @@ def main() -> None:
         layer = extract_layer(base, mask)
         path = OUT / f"{name}.png"
         layer.save(path)
-        cx, cy = layer_centroid(polys)
+        if name in PIVOT_OVERRIDES:
+            cx, cy = PIVOT_OVERRIDES[name]
+        else:
+            cx, cy = layer_centroid(polys)
         meta["layers"][name] = {
             "file": f"layers/{name}.png",
             "pivot": [cx, cy],
@@ -146,6 +176,9 @@ def main() -> None:
             px = [(x * w, y * h) for x, y in points]
             draw.polygon(px, outline=(255, 64, 64, 200), width=2)
             draw.text(px[0], name, fill=(255, 255, 0, 255))
+        if name in PIVOT_OVERRIDES:
+            px, py = PIVOT_OVERRIDES[name]
+            draw.ellipse((px * w - 4, py * h - 4, px * w + 4, py * h + 4), fill=(0, 255, 128, 255))
 
     preview.save(OUT / "_mask_preview.png")
     (OUT / "manifest.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")

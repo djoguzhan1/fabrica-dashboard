@@ -7,8 +7,8 @@
     "background": {
       "file": "layers/background.png",
       "pivot": [
-        0.49999999999999994,
-        0.5909302325581395
+        0.5,
+        0.6282928942807626
       ],
       "z": 0
     },
@@ -16,9 +16,41 @@
       "file": "layers/hair_back.png",
       "pivot": [
         0.5,
-        0.44
+        0.44999999999999996
       ],
       "z": 1
+    },
+    "arm_l_upper": {
+      "file": "layers/arm_l_upper.png",
+      "pivot": [
+        0.12,
+        0.26
+      ],
+      "z": 2
+    },
+    "arm_l_lower": {
+      "file": "layers/arm_l_lower.png",
+      "pivot": [
+        0.11,
+        0.39
+      ],
+      "z": 3
+    },
+    "arm_r_upper": {
+      "file": "layers/arm_r_upper.png",
+      "pivot": [
+        0.88,
+        0.26
+      ],
+      "z": 4
+    },
+    "arm_r_lower": {
+      "file": "layers/arm_r_lower.png",
+      "pivot": [
+        0.89,
+        0.39
+      ],
+      "z": 5
     },
     "torso": {
       "file": "layers/torso.png",
@@ -26,7 +58,7 @@
         0.5,
         0.365
       ],
-      "z": 2
+      "z": 6
     },
     "legs": {
       "file": "layers/legs.png",
@@ -34,7 +66,7 @@
         0.5,
         0.73
       ],
-      "z": 3
+      "z": 7
     },
     "head": {
       "file": "layers/head.png",
@@ -42,7 +74,7 @@
         0.5,
         0.13
       ],
-      "z": 4
+      "z": 8
     },
     "bell_left": {
       "file": "layers/bell_left.png",
@@ -50,7 +82,7 @@
         0.11,
         0.11
       ],
-      "z": 5
+      "z": 9
     },
     "bell_right": {
       "file": "layers/bell_right.png",
@@ -58,7 +90,7 @@
         0.89,
         0.11
       ],
-      "z": 6
+      "z": 10
     }
   }
 }
