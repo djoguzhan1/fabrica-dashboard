@@ -1,0 +1,64 @@
+{
+  "size": [
+    816,
+    1264
+  ],
+  "layers": {
+    "background": {
+      "file": "layers/background.png",
+      "pivot": [
+        0.5,
+        0.26666666666666666
+      ],
+      "z": 0
+    },
+    "hair_back": {
+      "file": "layers/hair_back.png",
+      "pivot": [
+        0.5,
+        0.335
+      ],
+      "z": 1
+    },
+    "torso": {
+      "file": "layers/torso.png",
+      "pivot": [
+        0.5,
+        0.55
+      ],
+      "z": 2
+    },
+    "legs": {
+      "file": "layers/legs.png",
+      "pivot": [
+        0.5,
+        0.74
+      ],
+      "z": 3
+    },
+    "head": {
+      "file": "layers/head.png",
+      "pivot": [
+        0.5,
+        0.18000000000000002
+      ],
+      "z": 4
+    },
+    "bell_left": {
+      "file": "layers/bell_left.png",
+      "pivot": [
+        0.1425,
+        0.105
+      ],
+      "z": 5
+    },
+    "bell_right": {
+      "file": "layers/bell_right.png",
+      "pivot": [
+        0.8574999999999999,
+        0.105
+      ],
+      "z": 6
+    }
+  }
+}
