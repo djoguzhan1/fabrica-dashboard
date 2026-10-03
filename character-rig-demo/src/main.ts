@@ -116,10 +116,16 @@ function animate() {
     pivots.torso.scale.set(1 + breath, 1 + breath * 0.6, 1);
   }
   if (pivots.legs) {
-    pivots.legs.rotation.x = Math.sin(t * 1.2) * 0.008;
+    const sway = Math.sin(t * 1.1) * 0.012;
+    pivots.legs.rotation.z = sway;
+    pivots.legs.position.x = sway * 0.02;
   }
   if (pivots.hair_back) {
-    pivots.hair_back.rotation.z = headAngle * 0.35 + Math.sin(t * 0.9) * 0.01;
+    pivots.hair_back.rotation.z = headAngle * 0.4 + Math.sin(t * 0.85) * 0.018;
+    pivots.hair_back.rotation.x = Math.sin(t * 0.7) * 0.006;
+  }
+  if (pivots.torso) {
+    pivots.torso.rotation.z = headAngle * 0.15 + Math.sin(t * 1.4) * 0.004;
   }
 
   const bellTargetL = headAngle * 1.8 + Math.sin(t * 2.3) * 0.05;

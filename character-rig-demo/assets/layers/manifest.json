@@ -1,14 +1,14 @@
 {
   "size": [
-    816,
-    1264
+    720,
+    1280
   ],
   "layers": {
     "background": {
       "file": "layers/background.png",
       "pivot": [
-        0.5,
-        0.26666666666666666
+        0.49999999999999994,
+        0.5909302325581395
       ],
       "z": 0
     },
@@ -16,7 +16,7 @@
       "file": "layers/hair_back.png",
       "pivot": [
         0.5,
-        0.335
+        0.44
       ],
       "z": 1
     },
@@ -24,7 +24,7 @@
       "file": "layers/torso.png",
       "pivot": [
         0.5,
-        0.55
+        0.365
       ],
       "z": 2
     },
@@ -32,7 +32,7 @@
       "file": "layers/legs.png",
       "pivot": [
         0.5,
-        0.74
+        0.73
       ],
       "z": 3
     },
@@ -40,23 +40,23 @@
       "file": "layers/head.png",
       "pivot": [
         0.5,
-        0.18000000000000002
+        0.13
       ],
       "z": 4
     },
     "bell_left": {
       "file": "layers/bell_left.png",
       "pivot": [
-        0.1425,
-        0.105
+        0.11,
+        0.11
       ],
       "z": 5
     },
     "bell_right": {
       "file": "layers/bell_right.png",
       "pivot": [
-        0.8574999999999999,
-        0.105
+        0.89,
+        0.11
       ],
       "z": 6
     }

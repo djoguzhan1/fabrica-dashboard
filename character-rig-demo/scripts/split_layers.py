@@ -11,68 +11,101 @@ from PIL import Image, ImageDraw
 ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "assets" / "source.jpg"
 OUT = ROOT / "assets" / "layers"
-# Normalized polygon points (x, y) in 0..1, tuned for 816x1264 source pose.
-LAYER_DEFS: dict[str, list[tuple[float, float]]] = {
-    # Bed / room (static back)
+
+# Normalized polygons for 720x1280 — forest night, standing full-body (user asset only).
+# Each layer: one polygon or a list of polygons (for disjoint background strips).
+LayerPolys = list[tuple[float, float]] | list[list[tuple[float, float]]]
+
+LAYER_DEFS: dict[str, LayerPolys] = {
+    # Forest + ground (frame strips; character filled by layers above)
     "background": [
-        (0, 0),
-        (1, 0),
-        (1, 0.42),
-        (0.72, 0.38),
-        (0.28, 0.38),
-        (0, 0.42),
+        [(0, 0), (1, 0), (1, 0.1), (0, 0.1)],
+        [(0, 0.56), (1, 0.56), (1, 1), (0, 1)],
+        [(0, 0), (0.16, 0), (0.16, 1), (0, 1)],
+        [(0.84, 0), (1, 0), (1, 1), (0.84, 1)],
     ],
-    # Hair mass behind head & shoulders
+    # Long green hair (behind body; sways with head)
     "hair_back": [
-        (0.18, 0.12),
-        (0.82, 0.12),
-        (0.88, 0.55),
-        (0.12, 0.55),
+        (0.04, 0.08),
+        (0.96, 0.08),
+        (0.99, 0.8),
+        (0.01, 0.8),
     ],
-    # Torso + arms (mostly hidden; moves as one block for breathing)
+    # Torso + arms behind back
     "torso": [
-        (0.22, 0.38),
-        (0.78, 0.38),
-        (0.85, 0.72),
-        (0.15, 0.72),
+        (0.2, 0.23),
+        (0.8, 0.23),
+        (0.84, 0.5),
+        (0.16, 0.5),
     ],
-    # Legs / knees (foreground)
+    # Legs, stockings, feet
     "legs": [
-        (0.12, 0.48),
-        (0.88, 0.48),
-        (0.95, 1),
-        (0.05, 1),
+        (0.14, 0.46),
+        (0.86, 0.46),
+        (0.93, 1),
+        (0.07, 1),
     ],
-    # Head + face (rotates slightly)
+    # Face + hat crown (bells separate)
     "head": [
-        (0.28, 0.02),
-        (0.72, 0.02),
-        (0.78, 0.34),
-        (0.22, 0.34),
+        (0.2, 0.015),
+        (0.8, 0.015),
+        (0.82, 0.245),
+        (0.18, 0.245),
     ],
-    # Jester hat bells (secondary motion)
     "bell_left": [
-        (0.05, 0.02),
-        (0.22, 0.02),
-        (0.24, 0.18),
-        (0.06, 0.2),
+        (0.01, 0.02),
+        (0.19, 0.02),
+        (0.21, 0.19),
+        (0.03, 0.21),
     ],
     "bell_right": [
-        (0.78, 0.02),
-        (0.95, 0.02),
-        (0.94, 0.2),
-        (0.76, 0.18),
+        (0.81, 0.02),
+        (0.99, 0.02),
+        (0.97, 0.21),
+        (0.79, 0.19),
     ],
 }
 
 
-def poly_mask(size: tuple[int, int], points: list[tuple[float, float]]) -> Image.Image:
+def _normalize_polys(points: LayerPolys) -> list[list[tuple[float, float]]]:
+    if not points:
+        return []
+    if isinstance(points[0], tuple):
+        return [points]  # type: ignore[list-item]
+    return points  # type: ignore[return-value]
+
+
+def poly_mask(size: tuple[int, int], polys: list[list[tuple[float, float]]]) -> Image.Image:
     w, h = size
     mask = Image.new("L", size, 0)
     draw = ImageDraw.Draw(mask)
-    px = [(x * w, y * h) for x, y in points]
-    draw.polygon(px, fill=255)
+    for points in polys:
+        px = [(x * w, y * h) for x, y in points]
+        draw.polygon(px, fill=255)
     return mask
+
+
+def polygon_centroid(points: list[tuple[float, float]]) -> tuple[float, float]:
+    cx = sum(p[0] for p in points) / len(points)
+    cy = sum(p[1] for p in points) / len(points)
+    return cx, cy
+
+
+def layer_centroid(polys: list[list[tuple[float, float]]]) -> tuple[float, float]:
+    if len(polys) == 1:
+        return polygon_centroid(polys[0])
+    # Weighted by bounding-box area (rough pivot for multi-strip background)
+    total = 0.0
+    sx = sy = 0.0
+    for points in polys:
+        xs = [p[0] for p in points]
+        ys = [p[1] for p in points]
+        area = (max(xs) - min(xs)) * (max(ys) - min(ys))
+        cx, cy = polygon_centroid(points)
+        total += area
+        sx += cx * area
+        sy += cy * area
+    return sx / total, sy / total
 
 
 def extract_layer(base: Image.Image, mask: Image.Image) -> Image.Image:
@@ -88,36 +121,35 @@ def main() -> None:
 
     base = Image.open(SRC).convert("RGBA")
     OUT.mkdir(parents=True, exist_ok=True)
-    meta: dict[str, dict] = {"size": base.size, "layers": {}}
+    meta: dict[str, dict] = {"size": list(base.size), "layers": {}}
 
-    for name, points in LAYER_DEFS.items():
-        mask = poly_mask(base.size, points)
+    for name, raw in LAYER_DEFS.items():
+        polys = _normalize_polys(raw)
+        mask = poly_mask(base.size, polys)
         layer = extract_layer(base, mask)
         path = OUT / f"{name}.png"
         layer.save(path)
-        # Pivot: polygon centroid (normalized)
-        cx = sum(p[0] for p in points) / len(points)
-        cy = sum(p[1] for p in points) / len(points)
+        cx, cy = layer_centroid(polys)
         meta["layers"][name] = {
             "file": f"layers/{name}.png",
             "pivot": [cx, cy],
             "z": list(LAYER_DEFS.keys()).index(name),
         }
 
-    # Full reference for alignment checks
     base.save(OUT / "_full.png")
 
     preview = base.copy()
     draw = ImageDraw.Draw(preview)
     w, h = base.size
-    for name, points in LAYER_DEFS.items():
-        px = [(x * w, y * h) for x, y in points]
-        draw.polygon(px, outline=(255, 64, 64, 200), width=2)
-        draw.text(px[0], name, fill=(255, 255, 0, 255))
+    for name, raw in LAYER_DEFS.items():
+        for points in _normalize_polys(raw):
+            px = [(x * w, y * h) for x, y in points]
+            draw.polygon(px, outline=(255, 64, 64, 200), width=2)
+            draw.text(px[0], name, fill=(255, 255, 0, 255))
 
     preview.save(OUT / "_mask_preview.png")
     (OUT / "manifest.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
-    print(f"Wrote {len(LAYER_DEFS)} layers to {OUT}")
+    print(f"Wrote {len(LAYER_DEFS)} layers to {OUT} ({base.size[0]}x{base.size[1]})")
 
 
 if __name__ == "__main__":
