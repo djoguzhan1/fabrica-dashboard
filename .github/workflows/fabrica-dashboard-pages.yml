@@ -10,6 +10,7 @@ on:
     branches: [master, gh-pages]
     paths:
       - 'web-dev-portfolio/**'
+      - 'character-rig-demo/**'
       - '.github/workflows/fabrica-dashboard-pages.yml'
   workflow_dispatch:
 
@@ -44,6 +45,15 @@ jobs:
             echo "::error::No portfolio files found in checkout."
             exit 1
           fi
+
+      - name: Build character rig demo (static)
+        if: hashFiles('character-rig-demo/package.json') != ''
+        run: |
+          cd character-rig-demo
+          npm ci
+          GITHUB_PAGES=1 npm run build
+          mkdir -p ../public/demos/character-rig
+          cp -r dist/* ../public/demos/character-rig/
 
       - uses: actions/configure-pages@v5
         with:

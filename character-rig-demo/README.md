@@ -1,29 +1,49 @@
 # Karakter rig denemesi (senin orman JPG → katman + Three.js)
 
-Tek kaynak görsel: `assets/source.jpg` (720×1280, orman, kollar yanda). Başka karakter dosyası kullanılmıyor.
+Tek kaynak görsel: `assets/source.jpg` (720×1280, orman, kollar yanda).
 
-Katmanlar `scripts/split_layers.py` içindeki normalize poligon maskeleriyle üretilir.
+## `localhost` bağlanmayı reddetti?
 
-## Komutlar
+Bu normal: tarayıcı **senin bilgisayarındaki** `localhost`’a bakıyor. Sunucuyu **senin** açman gerekir (Cursor bulutu senin PC’ndeki 5173’e bağlamaz).
+
+### Windows (PowerShell veya CMD)
 
 ```bash
+cd character-rig-demo
 npm install
 npm run dev
 ```
 
-Maskeleri güncelledikten sonra:
+Terminalde şuna benzer bir satır görürsün: `Local: http://localhost:5173/` — **o adresi** tarayıcıda aç.
+
+Kapatmak: terminalde `Ctrl+C`.
+
+Alternatif (production build önizleme):
+
+```bash
+npm run build
+npm run preview
+```
+
+→ `http://localhost:4173`
+
+### Canlı link (GitHub Pages, `master` deploy sonrası)
+
+https://djoguzhan1.github.io/fabrica-dashboard/demos/character-rig/
+
+(PR henüz merge değilse önce yerel `npm run dev` kullan veya PR branch’ini çek.)
+
+---
+
+## Katmanları yeniden üret
 
 ```bash
 python3 scripts/split_layers.py
 ```
 
-Önizleme: `assets/layers/_mask_preview.png` (kırmızı çerçeveler).
+Önizleme: `assets/layers/_mask_preview.png`
 
 ## Animasyon
 
 - Nefes, baş, saç, çanlar, bacak sway
-- `arm_l_upper` / `arm_l_lower` ve sağ kol: omuz→dirsek zinciri, spring easing ile kol kaldırma döngüsü
-
-## Katmanlar
-
-`arm_*` maskeleri `scripts/split_layers.py` içinde; yeşil nokta = joint pivot.
+- Kol zinciri (`arm_*`): spring ile kol kaldırma döngüsü
