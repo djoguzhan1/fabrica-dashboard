@@ -1,0 +1,572 @@
+{
+  "schema_version": 2,
+  "methodology": {
+    "name": "deprem_metaforu",
+    "description": "ONI her dönem (~1 ay) için E=10^(1.5*(ONI+5)); olay toplamı ΣE; M_toplam=(2/3)*log10(ΣE). ONI 2.0≈M7.0, 2.5≈M7.5, 3.0≈M8.0.",
+    "M_instant_formula": "ONI + 5",
+    "E_period_formula": "10^(1.5 * (ONI + 5))",
+    "M_total_formula": "(2/3) * log10(sum(E))",
+    "event_window_rule": "ONI >= 0.5, en az 5 ardışık dönem (NOAA El Niño tanımı).",
+    "data_source": "NOAA CPC ONI"
+  },
+  "events": [
+    {
+      "id": "2015-16-super-el-nino",
+      "label": "2015 süper El Niño",
+      "window": {
+        "start": "2014-SON",
+        "end": "2016-AMJ"
+      },
+      "periods": [
+        {
+          "season": "2014-SON",
+          "oni": 0.51,
+          "M_instant": 5.51,
+          "E_relative": 184077200.14689583
+        },
+        {
+          "season": "2014-OND",
+          "oni": 0.7,
+          "M_instant": 5.7,
+          "E_relative": 354813389.23357606
+        },
+        {
+          "season": "2014-NDJ",
+          "oni": 0.8,
+          "M_instant": 5.8,
+          "E_relative": 501187233.6272715
+        },
+        {
+          "season": "2015-DJF",
+          "oni": 0.73,
+          "M_instant": 5.73,
+          "E_relative": 393550075.45577806
+        },
+        {
+          "season": "2015-JFM",
+          "oni": 0.65,
+          "M_instant": 5.65,
+          "E_relative": 298538261.89179695
+        },
+        {
+          "season": "2015-FMA",
+          "oni": 0.72,
+          "M_instant": 5.72,
+          "E_relative": 380189396.32056123
+        },
+        {
+          "season": "2015-MAM",
+          "oni": 0.86,
+          "M_instant": 5.86,
+          "E_relative": 616595001.8614835
+        },
+        {
+          "season": "2015-AMJ",
+          "oni": 1.04,
+          "M_instant": 6.04,
+          "E_relative": 1148153621.496884
+        },
+        {
+          "season": "2015-MJJ",
+          "oni": 1.19,
+          "M_instant": 6.19,
+          "E_relative": 1927524913.1909366
+        },
+        {
+          "season": "2015-JJA",
+          "oni": 1.44,
+          "M_instant": 6.44,
+          "E_relative": 4570881896.148752
+        },
+        {
+          "season": "2015-JAS",
+          "oni": 1.73,
+          "M_instant": 6.73,
+          "E_relative": 12445146117.71387
+        },
+        {
+          "season": "2015-ASO",
+          "oni": 2.02,
+          "M_instant": 7.02,
+          "E_relative": 33884415613.920204
+        },
+        {
+          "season": "2015-SON",
+          "oni": 2.28,
+          "M_instant": 7.28,
+          "E_relative": 83176377110.26675
+        },
+        {
+          "season": "2015-OND",
+          "oni": 2.45,
+          "M_instant": 7.45,
+          "E_relative": 149623565609.44357
+        },
+        {
+          "season": "2015-NDJ",
+          "oni": 2.59,
+          "M_instant": 7.59,
+          "E_relative": 242661009508.24142
+        },
+        {
+          "season": "2016-DJF",
+          "oni": 2.5,
+          "M_instant": 7.5,
+          "E_relative": 177827941003.89227
+        },
+        {
+          "season": "2016-JFM",
+          "oni": 2.21,
+          "M_instant": 7.21,
+          "E_relative": 65313055264.74716
+        },
+        {
+          "season": "2016-FMA",
+          "oni": 1.69,
+          "M_instant": 6.69,
+          "E_relative": 10839269140.212038
+        },
+        {
+          "season": "2016-MAM",
+          "oni": 1.11,
+          "M_instant": 6.11,
+          "E_relative": 1462177174.4567213
+        },
+        {
+          "season": "2016-AMJ",
+          "oni": 0.57,
+          "M_instant": 5.57,
+          "E_relative": 226464430.7593062
+        }
+      ],
+      "summary": {
+        "period_count": 20,
+        "peak": {
+          "season": "2015-NDJ",
+          "oni": 2.59,
+          "M_instant": 7.59
+        },
+        "mean_oni": 1.389,
+        "sum_E_relative": 787834931963.0272,
+        "M_total": 7.931,
+        "ratio_to_one_month_oni_2_0": 24.91,
+        "bands": [
+          {
+            "threshold_oni": 1.0,
+            "period_count": 12,
+            "sum_E_relative": 784879516973.7306,
+            "M_total_if_only_this_band": 7.93
+          },
+          {
+            "threshold_oni": 1.5,
+            "period_count": 8,
+            "sum_E_relative": 775770779368.4373,
+            "M_total_if_only_this_band": 7.926
+          },
+          {
+            "threshold_oni": 2.0,
+            "period_count": 6,
+            "sum_E_relative": 752486364110.5114,
+            "M_total_if_only_this_band": 7.918
+          },
+          {
+            "threshold_oni": 2.5,
+            "period_count": 2,
+            "sum_E_relative": 420488950512.13367,
+            "M_total_if_only_this_band": 7.749
+          }
+        ]
+      },
+      "source_table": "NOAA CPC ONI"
+    },
+    {
+      "id": "2023-24-el-nino",
+      "label": "2023 El Niño",
+      "window": {
+        "start": "2023-MJJ",
+        "end": "2024-MAM"
+      },
+      "periods": [
+        {
+          "season": "2023-MJJ",
+          "oni": 0.73,
+          "M_instant": 5.73,
+          "E_relative": 393550075.45577806
+        },
+        {
+          "season": "2023-JJA",
+          "oni": 1.0,
+          "M_instant": 6.0,
+          "E_relative": 1000000000.0
+        },
+        {
+          "season": "2023-JAS",
+          "oni": 1.25,
+          "M_instant": 6.25,
+          "E_relative": 2371373705.6616554
+        },
+        {
+          "season": "2023-ASO",
+          "oni": 1.5,
+          "M_instant": 6.5,
+          "E_relative": 5623413251.903491
+        },
+        {
+          "season": "2023-SON",
+          "oni": 1.74,
+          "M_instant": 6.74,
+          "E_relative": 12882495516.931322
+        },
+        {
+          "season": "2023-OND",
+          "oni": 1.9,
+          "M_instant": 6.9,
+          "E_relative": 22387211385.683468
+        },
+        {
+          "season": "2023-NDJ",
+          "oni": 1.99,
+          "M_instant": 6.99,
+          "E_relative": 30549211132.15509
+        },
+        {
+          "season": "2024-DJF",
+          "oni": 1.84,
+          "M_instant": 6.84,
+          "E_relative": 18197008586.099827
+        },
+        {
+          "season": "2024-JFM",
+          "oni": 1.53,
+          "M_instant": 6.53,
+          "E_relative": 6237348354.824191
+        },
+        {
+          "season": "2024-FMA",
+          "oni": 1.18,
+          "M_instant": 6.18,
+          "E_relative": 1862087136.6628656
+        },
+        {
+          "season": "2024-MAM",
+          "oni": 0.77,
+          "M_instant": 5.77,
+          "E_relative": 451855944.3749217
+        }
+      ],
+      "summary": {
+        "period_count": 11,
+        "peak": {
+          "season": "2023-NDJ",
+          "oni": 1.99,
+          "M_instant": 6.99
+        },
+        "mean_oni": 1.403,
+        "sum_E_relative": 101955555089.75261,
+        "M_total": 7.339,
+        "ratio_to_one_month_oni_2_0": 3.22,
+        "bands": [
+          {
+            "threshold_oni": 1.0,
+            "period_count": 9,
+            "sum_E_relative": 101110149069.9219,
+            "M_total_if_only_this_band": 7.337
+          },
+          {
+            "threshold_oni": 1.5,
+            "period_count": 6,
+            "sum_E_relative": 95876688227.59738,
+            "M_total_if_only_this_band": 7.321
+          }
+        ]
+      },
+      "source_table": "NOAA CPC ONI"
+    },
+    {
+      "id": "2009-10-el-nino",
+      "label": "2009–2010 güçlü El Niño",
+      "window": {
+        "start": "2009-JJA",
+        "end": "2010-FMA"
+      },
+      "periods": [
+        {
+          "season": "2009-JJA",
+          "oni": 0.5,
+          "M_instant": 5.5,
+          "E_relative": 177827941.00389227
+        },
+        {
+          "season": "2009-JAS",
+          "oni": 0.56,
+          "M_instant": 5.56,
+          "E_relative": 218776162.3949552
+        },
+        {
+          "season": "2009-ASO",
+          "oni": 0.66,
+          "M_instant": 5.66,
+          "E_relative": 309029543.2513592
+        },
+        {
+          "season": "2009-SON",
+          "oni": 0.92,
+          "M_instant": 5.92,
+          "E_relative": 758577575.0291821
+        },
+        {
+          "season": "2009-OND",
+          "oni": 1.31,
+          "M_instant": 6.31,
+          "E_relative": 2917427014.001166
+        },
+        {
+          "season": "2009-NDJ",
+          "oni": 1.5,
+          "M_instant": 6.5,
+          "E_relative": 5623413251.903491
+        },
+        {
+          "season": "2010-DJF",
+          "oni": 1.47,
+          "M_instant": 6.47,
+          "E_relative": 5069907082.747045
+        },
+        {
+          "season": "2010-JFM",
+          "oni": 1.21,
+          "M_instant": 6.21,
+          "E_relative": 2065380155.810527
+        },
+        {
+          "season": "2010-FMA",
+          "oni": 0.88,
+          "M_instant": 5.88,
+          "E_relative": 660693448.0075965
+        }
+      ],
+      "summary": {
+        "period_count": 9,
+        "peak": {
+          "season": "2009-NDJ",
+          "oni": 1.5,
+          "M_instant": 6.5
+        },
+        "mean_oni": 1.001,
+        "sum_E_relative": 17801032174.149216,
+        "M_total": 6.834,
+        "ratio_to_one_month_oni_2_0": 0.56,
+        "bands": [
+          {
+            "threshold_oni": 1.0,
+            "period_count": 4,
+            "sum_E_relative": 15676127504.462229,
+            "M_total_if_only_this_band": 6.797
+          },
+          {
+            "threshold_oni": 1.5,
+            "period_count": 1,
+            "sum_E_relative": 5623413251.903491,
+            "M_total_if_only_this_band": 6.5
+          }
+        ]
+      },
+      "source_table": "NOAA CPC ONI"
+    },
+    {
+      "id": "2018-19-el-nino",
+      "label": "2018–2019 orta El Niño",
+      "window": {
+        "start": "2018-ASO",
+        "end": "2019-MJJ"
+      },
+      "periods": [
+        {
+          "season": "2018-ASO",
+          "oni": 0.52,
+          "M_instant": 5.52,
+          "E_relative": 190546071.79632443
+        },
+        {
+          "season": "2018-SON",
+          "oni": 0.82,
+          "M_instant": 5.82,
+          "E_relative": 537031796.3702532
+        },
+        {
+          "season": "2018-OND",
+          "oni": 1.04,
+          "M_instant": 6.04,
+          "E_relative": 1148153621.496884
+        },
+        {
+          "season": "2018-NDJ",
+          "oni": 1.05,
+          "M_instant": 6.05,
+          "E_relative": 1188502227.4370165
+        },
+        {
+          "season": "2019-DJF",
+          "oni": 0.99,
+          "M_instant": 5.99,
+          "E_relative": 966050878.9898121
+        },
+        {
+          "season": "2019-JFM",
+          "oni": 0.94,
+          "M_instant": 5.94,
+          "E_relative": 812830516.1640995
+        },
+        {
+          "season": "2019-FMA",
+          "oni": 0.87,
+          "M_instant": 5.87,
+          "E_relative": 638263486.1905483
+        },
+        {
+          "season": "2019-MAM",
+          "oni": 0.82,
+          "M_instant": 5.82,
+          "E_relative": 537031796.3702532
+        },
+        {
+          "season": "2019-AMJ",
+          "oni": 0.71,
+          "M_instant": 5.71,
+          "E_relative": 367282300.49808425
+        },
+        {
+          "season": "2019-MJJ",
+          "oni": 0.59,
+          "M_instant": 5.59,
+          "E_relative": 242661009.50824144
+        }
+      ],
+      "summary": {
+        "period_count": 10,
+        "peak": {
+          "season": "2018-NDJ",
+          "oni": 1.05,
+          "M_instant": 6.05
+        },
+        "mean_oni": 0.835,
+        "sum_E_relative": 6628353704.821517,
+        "M_total": 6.548,
+        "ratio_to_one_month_oni_2_0": 0.21,
+        "bands": [
+          {
+            "threshold_oni": 1.0,
+            "period_count": 2,
+            "sum_E_relative": 2336655848.933901,
+            "M_total_if_only_this_band": 6.246
+          }
+        ]
+      },
+      "source_table": "NOAA CPC ONI"
+    },
+    {
+      "id": "2019-20-el-nino",
+      "label": "2019–2020 zayıf El Niño",
+      "window": {
+        "start": "2019-SON",
+        "end": "2020-FMA"
+      },
+      "periods": [
+        {
+          "season": "2019-SON",
+          "oni": 0.51,
+          "M_instant": 5.51,
+          "E_relative": 184077200.14689583
+        },
+        {
+          "season": "2019-OND",
+          "oni": 0.72,
+          "M_instant": 5.72,
+          "E_relative": 380189396.32056123
+        },
+        {
+          "season": "2019-NDJ",
+          "oni": 0.75,
+          "M_instant": 5.75,
+          "E_relative": 421696503.42858225
+        },
+        {
+          "season": "2020-DJF",
+          "oni": 0.71,
+          "M_instant": 5.71,
+          "E_relative": 367282300.49808425
+        },
+        {
+          "season": "2020-JFM",
+          "oni": 0.66,
+          "M_instant": 5.66,
+          "E_relative": 309029543.2513592
+        },
+        {
+          "season": "2020-FMA",
+          "oni": 0.57,
+          "M_instant": 5.57,
+          "E_relative": 226464430.7593062
+        }
+      ],
+      "summary": {
+        "period_count": 6,
+        "peak": {
+          "season": "2019-NDJ",
+          "oni": 0.75,
+          "M_instant": 5.75
+        },
+        "mean_oni": 0.653,
+        "sum_E_relative": 1888739374.404789,
+        "M_total": 6.184,
+        "ratio_to_one_month_oni_2_0": 0.06,
+        "bands": []
+      },
+      "source_table": "NOAA CPC ONI"
+    }
+  ],
+  "comparisons": {
+    "ranked_by_M_total_2008_2026": [
+      {
+        "rank": 1,
+        "id": "2015-16-super-el-nino",
+        "label": "2015 süper El Niño",
+        "M_total": 7.931,
+        "peak_oni": 2.59,
+        "sum_E_relative": 787834931963.0272
+      },
+      {
+        "rank": 2,
+        "id": "2023-24-el-nino",
+        "label": "2023 El Niño",
+        "M_total": 7.339,
+        "peak_oni": 1.99,
+        "sum_E_relative": 101955555089.75261
+      },
+      {
+        "rank": 3,
+        "id": "2009-10-el-nino",
+        "label": "2009–2010 güçlü El Niño",
+        "M_total": 6.834,
+        "peak_oni": 1.5,
+        "sum_E_relative": 17801032174.149216
+      },
+      {
+        "rank": 4,
+        "id": "2018-19-el-nino",
+        "label": "2018–2019 orta El Niño",
+        "M_total": 6.548,
+        "peak_oni": 1.05,
+        "sum_E_relative": 6628353704.821517
+      },
+      {
+        "rank": 5,
+        "id": "2019-20-el-nino",
+        "label": "2019–2020 zayıf El Niño",
+        "M_total": 6.184,
+        "peak_oni": 0.75,
+        "sum_E_relative": 1888739374.404789
+      }
+    ]
+  }
+}
