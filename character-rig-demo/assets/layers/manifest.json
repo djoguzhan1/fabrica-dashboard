@@ -1,0 +1,96 @@
+{
+  "size": [
+    720,
+    1280
+  ],
+  "layers": {
+    "background": {
+      "file": "layers/background.png",
+      "pivot": [
+        0.5,
+        0.6282928942807626
+      ],
+      "z": 0
+    },
+    "hair_back": {
+      "file": "layers/hair_back.png",
+      "pivot": [
+        0.5,
+        0.44999999999999996
+      ],
+      "z": 1
+    },
+    "arm_l_upper": {
+      "file": "layers/arm_l_upper.png",
+      "pivot": [
+        0.12,
+        0.26
+      ],
+      "z": 2
+    },
+    "arm_l_lower": {
+      "file": "layers/arm_l_lower.png",
+      "pivot": [
+        0.11,
+        0.39
+      ],
+      "z": 3
+    },
+    "arm_r_upper": {
+      "file": "layers/arm_r_upper.png",
+      "pivot": [
+        0.88,
+        0.26
+      ],
+      "z": 4
+    },
+    "arm_r_lower": {
+      "file": "layers/arm_r_lower.png",
+      "pivot": [
+        0.89,
+        0.39
+      ],
+      "z": 5
+    },
+    "torso": {
+      "file": "layers/torso.png",
+      "pivot": [
+        0.5,
+        0.365
+      ],
+      "z": 6
+    },
+    "legs": {
+      "file": "layers/legs.png",
+      "pivot": [
+        0.5,
+        0.73
+      ],
+      "z": 7
+    },
+    "head": {
+      "file": "layers/head.png",
+      "pivot": [
+        0.5,
+        0.13
+      ],
+      "z": 8
+    },
+    "bell_left": {
+      "file": "layers/bell_left.png",
+      "pivot": [
+        0.11,
+        0.11
+      ],
+      "z": 9
+    },
+    "bell_right": {
+      "file": "layers/bell_right.png",
+      "pivot": [
+        0.89,
+        0.11
+      ],
+      "z": 10
+    }
+  }
+}
