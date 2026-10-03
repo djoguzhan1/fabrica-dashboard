@@ -1,0 +1,19 @@
+name: upwork-scripts
+on:
+  push:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+  pull_request:
+    paths:
+      - 'scripts/**'
+      - 'tests/**'
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python3 tests/test_go_precheck.py && python3 tests/test_go_score.py && python3 tests/test_go_hardest_floor.py && python3 tests/test_go_standard_hardest.py && python3 tests/test_job_bundle_tam_go.py && python3 tests/test_proposal_lint.py

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "landingPage": "/",
+  "preferredVersions": {
+    "php": "8.2",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
+  "steps": [
+    {
+      "step": "login"
+    },
+    {
+      "step": "mkdir",
+      "path": "/wordpress/wp-content/mu-plugins/demo-landing"
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-landing.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/djoguzhan1/fabrica-dashboard/cursor/upwork-job-alerts-fc98/wordpress-demos/demo-landing.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/mu-plugins/demo-landing/template.php",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/djoguzhan1/fabrica-dashboard/cursor/upwork-job-alerts-fc98/wordpress-demos/template.php"
+      }
+    },
+    {
+      "step": "writeFile",
+      "path": "/wordpress/wp-content/demo-content.html",
+      "data": {
+        "resource": "url",
+        "url": "https://raw.githubusercontent.com/djoguzhan1/fabrica-dashboard/cursor/upwork-job-alerts-fc98/wordpress-demos/content-hvac-landing.html"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php\nrequire '/wordpress/wp-load.php';\nkses_remove_filters();\n$id = wp_insert_post( array(\n\t'post_type'    => 'page',\n\t'post_status'  => 'publish',\n\t'post_author'  => 1,\n\t'post_title'   => \"CoolAir HVAC\",\n\t'post_content' => wp_slash( file_get_contents( '/wordpress/wp-content/demo-content.html' ) ),\n) );\nupdate_post_meta( $id, '_demo_landing', \"hvac-landing\" );\nupdate_option( 'show_on_front', 'page' );\nupdate_option( 'page_on_front', $id );\nupdate_option( 'blogname', \"CoolAir HVAC · Dallas–Fort Worth\" );\n"
+    }
+  ]
+}

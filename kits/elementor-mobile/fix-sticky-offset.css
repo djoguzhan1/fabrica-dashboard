@@ -1,0 +1,12 @@
+/* Starter slice: sticky header overlapping hero on mobile Elementor */
+@media (max-width: 767px) {
+  .elementor-sticky--active {
+    top: 0 !important;
+  }
+  body.admin-bar .elementor-sticky--active {
+    top: 32px !important;
+  }
+  .elementor-section.hero-section {
+    padding-top: var(--header-height, 72px);
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$comment": "Composer fills this before any Task; models never chat with each other.",
+  "job_post": "verbatim",
+  "title": "",
+  "budget_fixed": 0,
+  "connects_submit": 0,
+  "client_facts": {
+    "country": "",
+    "spent_usd": 0,
+    "hire_rate_pct": 0,
+    "hires": 0,
+    "payment_verified": true,
+    "job_age_minutes": 0
+  },
+  "activity": {
+    "interviewing": 0,
+    "invites_sent": 0,
+    "ongoing": false
+  },
+  "boost_table": { "b1": 0, "b2": 0, "b3": 0, "b4": 0 },
+  "primary_deliverable": "",
+  "primary_terms": [],
+  "secondary_findings": [],
+  "ban_in_card": [],
+  "prework_slice": "",
+  "plan2_note": "",
+  "must_terms": [],
+  "screening": {
+    "required": false,
+    "must_answer_in_letter": [],
+    "hidden_keywords": [],
+    "forbidden_in_letter": [],
+    "client_test_instruction": "",
+    "start_with_prefix": ""
+  },
+  "go_standard": {
+    "complete": false,
+    "lint_passed": false,
+    "m1_micro_text": "",
+    "fixed_offer_line": "",
+    "arena_kit_id": "",
+    "arena_kit_proof": "",
+    "post_diagnosis_line": "",
+    "chat_bundle_path": "",
+    "profile_highlight_ids": [],
+    "judge1_pass": false,
+    "human_t8": false,
+    "field_bot_heavy": false,
+    "client_picky": false,
+    "hardest_scenario": false
+  },
+  "apex_go": {
+    "complete": false,
+    "uma_echo_terms": [],
+    "uma_echo_in_card": false,
+    "client_last_viewed_hours": null,
+    "go_plus_reason": "",
+    "catalog_or_portfolio_url": "",
+    "edit_six_hour_plan": "",
+    "elite_margin_unanimous": false,
+    "proof_chain": []
+  },
+  "tam_go": {
+    "complete": false,
+    "audit_report_path": "",
+    "slice_evidence": "",
+    "loom_or_video_path": "",
+    "sim_t8_pass": false,
+    "beats_elite": false,
+    "m1_micro_text": "",
+    "profile_highlights": [],
+    "chat_bundle_ready": false,
+    "fixed_offer_line": "",
+    "field_bot_heavy": false,
+    "client_picky": false,
+    "hardest_scenario": false
+  },
+  "letter": "",
+  "tur": 1,
+  "writer_model": "claude-opus-5-5-low",
+  "judge2_model": "gemini-3.8-flash-low"
+}

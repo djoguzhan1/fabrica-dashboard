@@ -1,0 +1,11 @@
+# Paste-ready milestone lines (edit brackets)
+
+WP fix: "Fix [page] mobile menu + contact form on [domain]; backup first; before/after screenshots", $[PRICE], delivered by [DAY] [TIME] ET.
+
+Sheets: "Build onEdit trigger: [column] change → email [recipient] with row summary", $[PRICE], delivered by [DAY].
+
+Landing slice: "Implement hero section from your Figma (desktop + mobile), one page section only", $[PRICE], delivered in [N] days.
+
+Speed (only if job asked): "Reduce mobile LCP on [URL] — hero image + blocking script fixes", $[PRICE], 48h.
+
+Plan 2 upsell: "Optional milestone 2: [secondary finding from audit]", $[PRICE], after M1 approval.

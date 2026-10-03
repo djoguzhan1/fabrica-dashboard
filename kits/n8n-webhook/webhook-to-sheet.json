@@ -1,0 +1,22 @@
+{
+  "name": "Webhook to Sheet stub",
+  "nodes": [
+    {
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "parameters": { "path": "client-slug", "httpMethod": "POST" }
+    },
+    {
+      "name": "Append row",
+      "type": "n8n-nodes-base.googleSheets",
+      "parameters": {
+        "operation": "append",
+        "sheetName": "Leads",
+        "columns": { "mappingMode": "defineBelow", "value": { "email": "={{ $json.body.email }}" } }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": { "main": [[{ "node": "Append row", "type": "main", "index": 0 }]] }
+  }
+}
