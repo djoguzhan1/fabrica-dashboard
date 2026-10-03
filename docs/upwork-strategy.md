@@ -89,7 +89,7 @@ Ek A — Vibeworker filtre JSON'ları · Ek B — Teklif log'u
 
 ## 4) İlan akışı ve saatler
 
-**Kaynaklar:** Upwork Plus önerileri + kayıtlı aramalar (ana hat), Vibeworker Pro push (P1–P5 çan açık, P6 sadece feed, Shortlist çanı kapalı). Filtre JSON'ları Ek A'da.
+**Kaynaklar:** Upwork 30 kayıtlı arama (§4.2) + Plus job alerts, Vibeworker **P0-Discovery** (çan açık) + P1–P7. Filtre JSON'ları Ek A'da.
 
 **Vibeworker ortak ayarlar:** Hunting mode **Quick Wins**, AI ranking **Review Stacking**; Sniper ve High Value preset'leri kapalı. Bildirim: uygulama içi push açık, sessiz saat 01:00–09:00 (Europe/Istanbul); telefonda Vibeworker için pil kısıtlaması kapalı. Slack yok.
 
@@ -102,6 +102,71 @@ Ek A — Vibeworker filtre JSON'ları · Ek B — Teklif log'u
 | 22:00–00:30 | Orta-az (US Batı) | Sadece taze ve iyi ilan |
 
 Pazartesi en yoğun gün. **Kalibrasyon:** push <5/gün → rating 4.5 ve spent $500 eşiğini gevşet; push >40/gün ve çoğu alakasız → exclude listesine kelime ekle; Vibeworker push 5 dk'dan geç geliyorsa telefonun pil tasarrufu kısıtlıyordur.
+
+### 4.1 Keşif (alert) ≠ başvuru (GO)
+
+Günde **0 uyumlu** ilan görmenin iki ayrı nedeni olur; karıştırma:
+
+| Sorun | Belirti | Çözüm |
+| --- | --- | --- |
+| **Keşif dar** | Push/günde <5, feed boş | Alert’leri genişlet (§4.2–4.3); GO kurallarına dokunma |
+| **Seçim sıkı** | Push geliyor, hepsi SKIP | Normal (hourly, $50 yoga, ongoing hourly vb.); keşfi daha da şişirme, sabah taraması + K1 esnekliği (§21.4) |
+
+Hedef: **günde 15–40 keşif bildirimi**, bunların **1–3’ü GO** (0 yorumla gerçekçi). Alert’te hourly ilan da görünür; **başvurmazsın**, §5’te elersin.
+
+### 4.2 Upwork — 30 kayıtlı arama (tüm arena)
+
+Upwork **en fazla 30** kayıtlı arama. Her biri ayrı feed; tek aramaya tüm kelimeleri sıkıştırma (AND ile ilan kaçar).
+
+**Ortak filtre (her aramada):** Fixed-price · Payment verified · **Entry + Intermediate + Expert** · Client history: **Any** (spent/rating alert’te kapalı; GO’da Activity §5.3).
+
+**Arama metni + isim önerisi (20 arama — kopyala, kaydet, sabah 09:30’da sırayla tara):**
+
+| # | Kayıtlı arama adı | Arama kutusu (kelime) |
+| --- | --- | --- |
+| 1 | WP-fix | `wordpress fix OR elementor fix OR plugin conflict OR white screen` |
+| 2 | WP-forms | `wordpress contact form OR wpforms OR contact form 7` |
+| 3 | Elementor | `elementor OR divi OR wpbakery` |
+| 4 | Speed | `page speed OR core web vitals OR lighthouse OR gtmetrix` |
+| 5 | Mobile | `mobile responsive OR mobile friendly wordpress` |
+| 6 | Landing | `landing page OR one page website OR single page` |
+| 7 | Local biz | `small business website OR hvac OR plumber OR contractor website` |
+| 8 | Sheets | `google sheets OR spreadsheet automation OR apps script` |
+| 9 | Excel-bridge | `excel formula OR vlookup OR pivot table dashboard` |
+| 10 | Python | `python script OR csv OR pdf automation` |
+| 11 | n8n-Zapier | `n8n OR zapier OR make.com automation` |
+| 12 | Small web | `html css fix OR figma to html OR psd to html` |
+| 13 | Hosting | `wordpress migration OR dns OR ssl OR hosting fix` |
+| 14 | Booking | `wordpress booking OR amelia OR appointment plugin` |
+| 15 | Shopify-fix | `shopify theme fix OR shopify css` |
+| 16 | Webflow-Wix | `webflow fix OR wix OR squarespace` |
+| 17 | React-small | `react bug OR next.js fix` |
+| 18 | Analytics | `ga4 OR google tag manager OR meta pixel setup` |
+| 19 | Email-html | `html email template OR email template fix` |
+| 20 | Quick | `quick fix OR small fix OR small task wordpress` |
+
+**Boş 10 slot:** En çok teklif attığın 2–3 arena için duplicate (ör. `elementor landing`, `google apps script`) veya §5.2 geniş arena kelimesi.
+
+**Upwork Plus anlık alert:** Ayarlar → Job alerts → **Fixed-price**, minimum **$30** (keşif); uyarılar geçmişte **bireysel** attığın tekliflere benzer işlere gider — ilk 3–5 teklifi **arena içi** işlere at (alakasız teklif = alakasız alert). Uygulama bildirimi açık.
+
+**Günlük rutin:** 09:30 → 20 kayıtlı aramada “Posted last 24h” · 15:00 → sadece P1–P3 Vibeworker push · gece push’ları sabaha bırakma (K1 yaş değil teklif sayısı, §21.4).
+
+### 4.3 Vibeworker — geniş keşif (P0 + mevcut P1–P7)
+
+**İki katman kullan:**
+
+1. **P0-Discovery** (çan **açık**): tüm arena kelimeleri, **gevşek müşteri eşiği** — Ek A tablosu.
+2. **P1–P7** (mevcut): başvuruya yakın sıkı filtre; isteğe bağlı çan (P6 artık çan açılabilir).
+
+**Hemen gevşet (push <10/gün ise):** `min_client_spent` **0**, `min_client_rating` **4.0**, `min_hire_rate` **0**, `budget_min_fixed` **30**, `connects_max` **16**, `posted_within_hours` **48**. `require_payment_verified: true` kalsın.
+
+**P3 Landing:** keşif için ikinci filtre **P3b** — `budget_min_fixed` **50** (80 sadece “sıcak” landing).
+
+**Shortlist:** çan kapalı ama **günde 1 kez** (09:30) feed kaydır; P1–P7 include birleşimi kaçan kelime yakalar.
+
+**Keşif exclude (hafif):** arena dışı (blockchain, homework, mobile app, devops…) kalsın; **`ongoing` keşif exclude’dan çıkar** (fixed ongoing ilanlar gelir; hourly metin §5’te elenir). **`video call` / `phone call`** keşifte **kalsın** (görürsün, başvurmazsın).
+
+**Telegram / webhook:** Vibeworker’da aynı P0’ı ikinci kanala bağlayabilirsin; gönderim yine elle.
 
 ---
 
@@ -1058,7 +1123,7 @@ Ek B log'una: `mesaj tipi`, `cevap süresi (dk)`, `hakem yes/no`, `sonuç (offer
 
 ## Ek A — Vibeworker filtre JSON'ları
 
-Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. P1–P5 çan açık, P6 çan kapalı (sadece feed), Shortlist çanı P1–P5 kurulunca kapalı.
+Kullanım: filtre ⚙️ → View / edit as JSON → Edit → kutuyu temizle → yapıştır → Done → Save changes. Kategoriler JSON'da yok; her filtrede CATEGORIES satırından ayarla. **P0-Discovery** çan açık; P1–P7 isteğe bağlı; Shortlist çan kapalı, günlük feed (§4.3).
 
 **Ortak şablon** (her preset'te `keywords_include`, `keywords_exclude`, `budget_min_fixed`, `connects_max` aşağıdaki tabloya göre değişir):
 
@@ -1095,13 +1160,16 @@ Sıfırdan mağaza/uygulama işleri (`shopify app`, `react app from scratch`, `s
 
 | Preset | `budget_min_fixed` | `connects_max` | `keywords_include` (herhangi biri) | Ortak exclude'a ek |
 | --- | --- | --- | --- | --- |
+| **P0-Discovery** (çan açık, §4.3) | 30 | 16 | P1–P7 `keywords_include` birleşimi (tek filtre) | Ortak exclude **minus** `ongoing` yok; Shortlist'teki video/phone/zoom **keşifte dahil** (başvuruda §5 eler) |
+| **P0 şablon override** | — | — | `min_client_spent`: **0**, `min_client_rating`: **4.0**, `min_hire_rate`: **0**, `posted_within_hours`: **48** | — |
 | **P1 WP-Fix** | 50 | 12 | wordpress, elementor, divi, wpbakery, white screen, critical error, plugin conflict, contact form, wpforms, contact form 7 | custom plugin, plugin development, theme development, membership, lms, from scratch |
 | **P2 Speed-Mobile** | 50 | 12 | page speed, pagespeed, core web vitals, gtmetrix, lighthouse, site speed, slow website, load time, mobile responsive, mobile friendly, responsive fix | seo retainer, monthly seo |
 | **P3 Landing-Local** | 80 | 12 | landing page, one page, one-page, single page, small business website, simple website, hvac, plumbing, plumber, roofing, electrician, contractor, home services, cleaning, landscaping, google ads, lead generation | — |
 | **P4 Sheets-Excel** | 50 | 8 | google sheets, excel, spreadsheet, vlookup, xlookup, pivot table, conditional formatting, formula, dashboard, tracker, calculator | data entry, bookkeeping, power bi, tableau, financial model, vba |
 | **P5 Small-Web** | 50 | 8 | quick fix, small fix, small change, small task, html css, css fix, figma to html, psd to html, migrate, migration, dns, ssl, hosting, github pages, netlify, ga4, google tag manager, pixel, calendly, booking widget | — |
 | **P6 Scripts-AI** (çan kapalı) | 50 | 12 | python, apps script, google apps script, automation, automate, csv, pdf, openai, chatgpt, claude, api integration, webhook, zapier, n8n, make.com | linkedin, instagram, facebook, captcha, scrape, scraping, machine learning model, fine-tune, fine-tuning, computer vision |
-| **P7 Stretch-Fix** | 50 | 12 | shopify theme, shopify css, webflow, wix, squarespace, react bug, next.js bug, email template, html email, ga4, google tag manager, meta pixel, zapier, make.com, airtable, notion | from scratch, full store, ongoing, 40 hours |
+| **P3b Landing-wide** | 50 | 12 | P3 ile aynı include | — |
+| **P7 Stretch-Fix** | 50 | 12 | shopify theme, shopify css, webflow, wix, squarespace, react bug, next.js bug, email template, html email, ga4, google tag manager, meta pixel, zapier, make.com, airtable, notion | from scratch, full store, 40 hours (**`ongoing` exclude kaldırıldı** — keşif) |
 | **Shortlist** (tek filtre, çan kapalı) | 50 | 12 | P1–P7 include listelerinin birleşimi | football, power bi, tableau, exhibitor, exhibitor list, trade show, sponsors, lead list, data entry, linkedin, instagram, facebook, scrape, scraping, captcha, selenium, playwright, video call, phone call, zoom, google meet, native english, native speaker, kimai, custom plugin, plugin development, theme development, from scratch, manuscript, mobile game, user acquisition, voxel |
 
 Shortlist'te `keywords_require` boş kalır (her kelime zorunlu olursa ilan kaçar).
